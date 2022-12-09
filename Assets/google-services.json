@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "154982748260",
+    "project_id": "cscd488-f516a",
+    "storage_bucket": "cscd488-f516a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:154982748260:android:d1041953b37f958b714f71",
+        "android_client_info": {
+          "package_name": "com.CSCD488.ClimateOptions"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "154982748260-sqmukj0psbg5tvmeu7idook2qfkkkqc6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDF3myakbCsO5EXubrDgVksSnsh2kX2e6M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "154982748260-sqmukj0psbg5tvmeu7idook2qfkkkqc6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
