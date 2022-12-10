@@ -310,11 +310,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2511037177930434151, guid: edaed3409bb204546aec7c3b337a5d2b, type: 3}
       propertyPath: m_text
-      value: 'Error: Account Already Exist / Passwords Dont Match'
-      objectReference: {fileID: 0}
-    - target: {fileID: 2511037177930434151, guid: edaed3409bb204546aec7c3b337a5d2b, type: 3}
-      propertyPath: m_TextStyleHashCode
-      value: 93368250
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5939243191935561808, guid: edaed3409bb204546aec7c3b337a5d2b, type: 3}
       propertyPath: targetCamera
@@ -367,10 +363,6 @@ PrefabInstance:
     - target: {fileID: 5939243192885390525, guid: edaed3409bb204546aec7c3b337a5d2b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8808820835119144010, guid: edaed3409bb204546aec7c3b337a5d2b, type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: edaed3409bb204546aec7c3b337a5d2b, type: 3}
