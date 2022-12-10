@@ -8,6 +8,7 @@ using System.Text.RegularExpressions;
 using System.Globalization;
 using Firebase;
 using UnityEngine.UI;
+using Firebase.Extensions;
 
 public class AuthController : MonoBehaviour
 {
@@ -54,7 +55,7 @@ public class AuthController : MonoBehaviour
     {
         if (!VerifyFields()) return;
 
-        FirebaseAuth.DefaultInstance.CreateUserWithEmailAndPasswordAsync(email.text, password1.text).ContinueWith(task =>
+        FirebaseAuth.DefaultInstance.CreateUserWithEmailAndPasswordAsync(email.text, password1.text).ContinueWithOnMainThread(task =>
         {
             if (task.IsCanceled)
             {
