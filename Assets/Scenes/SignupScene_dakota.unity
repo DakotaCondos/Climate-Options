@@ -322,7 +322,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2511037177930434151, guid: edaed3409bb204546aec7c3b337a5d2b, type: 3}
       propertyPath: m_text
-      value: 'Error: Account Already Exist / Passwords Dont Match'
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2511037177930434151, guid: edaed3409bb204546aec7c3b337a5d2b, type: 3}
       propertyPath: m_TextStyleHashCode
@@ -374,15 +374,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5939243191935561807, guid: edaed3409bb204546aec7c3b337a5d2b, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.0011569114
+      value: 0.0011756468
       objectReference: {fileID: 0}
     - target: {fileID: 5939243191935561807, guid: edaed3409bb204546aec7c3b337a5d2b, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.0011569114
+      value: 0.0011756468
       objectReference: {fileID: 0}
     - target: {fileID: 5939243191935561807, guid: edaed3409bb204546aec7c3b337a5d2b, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.0011569114
+      value: 0.0011756468
       objectReference: {fileID: 0}
     - target: {fileID: 5939243191935561808, guid: edaed3409bb204546aec7c3b337a5d2b, type: 3}
       propertyPath: targetCamera
@@ -448,6 +448,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 18.61
       objectReference: {fileID: 0}
+    - target: {fileID: 7534361702585627662, guid: edaed3409bb204546aec7c3b337a5d2b, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8808820835119144010, guid: edaed3409bb204546aec7c3b337a5d2b, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -482,17 +486,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: edaed3409bb204546aec7c3b337a5d2b, type: 3}
---- !u!114 &7958156262636980302 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7534361702585627662, guid: edaed3409bb204546aec7c3b337a5d2b, type: 3}
-  m_PrefabInstance: {fileID: 7958156262636980301}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9a45f893942b7e4cbbeda81936ac353, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &7958156262636980303 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2511037177930434151, guid: edaed3409bb204546aec7c3b337a5d2b, type: 3}
@@ -557,5 +550,4 @@ MonoBehaviour:
   email: {fileID: 7958156262636980306}
   password1: {fileID: 7958156262636980305}
   password2: {fileID: 7958156262636980304}
-  responseRed: {fileID: 7958156262636980303}
-  responseGreen: {fileID: 7958156262636980302}
+  responseTextblock: {fileID: 7958156262636980303}

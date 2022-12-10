@@ -7,6 +7,7 @@ using System;
 using System.Text.RegularExpressions;
 using System.Globalization;
 using Firebase;
+using UnityEngine.UI;
 
 public class AuthController : MonoBehaviour
 {
@@ -17,9 +18,7 @@ public class AuthController : MonoBehaviour
     [SerializeField]
     public TMP_Text password2;
     [SerializeField]
-    public TMP_Text responseRed;
-    [SerializeField]
-    public TMP_Text responseGreen;
+    public TMP_Text responseTextblock;
 
     public void Login()
     {
@@ -45,14 +44,6 @@ public class AuthController : MonoBehaviour
         });
     }
 
-    private void GetErrorMessage(AuthError errorCode)
-    {
-        string message = "";
-        message = errorCode.ToString();
-
-
-        Debug.Log(message);
-    }
 
     public void LoginAnonymous()
     {
@@ -85,6 +76,7 @@ public class AuthController : MonoBehaviour
             }
             if (task.IsCompleted)
             {
+                UpdateResponse("Account Created Successfully", 1);
                 Debug.Log("ResgisterUser success");
             }
         });
@@ -101,6 +93,7 @@ public class AuthController : MonoBehaviour
         if (!IsValidEmail(email.text))
         {
             Debug.Log("Invalid Email");
+            UpdateResponse("Invalid Email", 0);
             return false;
         }
         if (!IsValidPassword())
@@ -116,16 +109,19 @@ public class AuthController : MonoBehaviour
         if (password1.text == null || password2.text == null)
         {
             Debug.Log("Password Field is null");
+            UpdateResponse("Password Field is null", 0);
             return false;
         }
         if (!String.Equals(password1.text, password2.text))
         {
             Debug.Log("Passwords do not match");
+            UpdateResponse("Passwords do not match", 0);
             return false;
         }
-        if (password1.text.Length < 7)
+        if (password1.text.Length < 8)
         {
             Debug.Log("Password must be 8 characters or more");
+            UpdateResponse("Password must be 8 characters or more", 0);
             return false;
         }
         return true;
@@ -178,6 +174,36 @@ public class AuthController : MonoBehaviour
         {
             return false;
         }
+    }
+    private void GetErrorMessage(AuthError errorCode)
+    {
+        string message = "BlankMessage";
+        message = errorCode.ToString();
+
+        UpdateResponse(message, 2);
+        Debug.Log(message);
+    }
+
+    public void UpdateResponse(string msg, int colorType)
+    {
+        print($"UpdateResponse called, message: '{msg}',colorType: '{colorType}'");
+        switch (colorType)
+        {
+            case 0:
+                responseTextblock.color = Color.red;
+                break;
+            case 1:
+                responseTextblock.color = Color.green;
+                break;
+            case 2:
+                responseTextblock.color = Color.yellow;
+                break;
+            default:
+                responseTextblock.color = Color.red;
+                break;
+        }
+
+        responseTextblock.text = msg;        
     }
 }
 
