@@ -41,6 +41,8 @@ public class AuthController : MonoBehaviour
             }
             if (task.IsCompleted)
             {
+                UpdateResponse("Login Successful", Color.green);
+                print("Login Successful");
             }
         });
     }
@@ -48,7 +50,25 @@ public class AuthController : MonoBehaviour
 
     public void LoginAnonymous()
     {
+        FirebaseAuth.DefaultInstance.SignInAnonymouslyAsync().ContinueWithOnMainThread(task =>
+        {
+            if (task.IsCanceled)
+            {
+            }
+            if (task.IsFaulted)
+            {
+                Firebase.FirebaseException e =
+                task.Exception.Flatten().InnerExceptions[0] as Firebase.FirebaseException;
 
+                GetErrorMessage((AuthError)e.ErrorCode);
+
+                return;
+            }
+            if (task.IsCompleted)
+            {
+                print("Login Successful");
+            }
+        });
     }
 
     public void ResgisterUser()
@@ -77,7 +97,7 @@ public class AuthController : MonoBehaviour
             }
             if (task.IsCompleted)
             {
-                UpdateResponse("Account Created Successfully", 1);
+                UpdateResponse("Account Created Successfully", Color.green);
                 Debug.Log("ResgisterUser success");
             }
         });
@@ -86,7 +106,10 @@ public class AuthController : MonoBehaviour
 
     public void Logout()
     {
-
+        if (FirebaseAuth.DefaultInstance.CurrentUser != null)
+        {
+            FirebaseAuth.DefaultInstance.SignOut();
+        }
     }
 
     public bool VerifyFields()
@@ -94,7 +117,7 @@ public class AuthController : MonoBehaviour
         if (!IsValidEmail(email.text))
         {
             Debug.Log("Invalid Email");
-            UpdateResponse("Invalid Email", 0);
+            UpdateResponse("Invalid Email", Color.red);
             return false;
         }
         if (!IsValidPassword())
@@ -110,19 +133,19 @@ public class AuthController : MonoBehaviour
         if (password1.text == null || password2.text == null)
         {
             Debug.Log("Password Field is null");
-            UpdateResponse("Password Field is null", 0);
+            UpdateResponse("Password Field is null", Color.red);
             return false;
         }
         if (!String.Equals(password1.text, password2.text))
         {
             Debug.Log("Passwords do not match");
-            UpdateResponse("Passwords do not match", 0);
+            UpdateResponse("Passwords do not match", Color.red);
             return false;
         }
         if (password1.text.Length < 8)
         {
             Debug.Log("Password must be 8 characters or more");
-            UpdateResponse("Password must be 8 characters or more", 0);
+            UpdateResponse("Password must be 8 characters or more", Color.red);
             return false;
         }
         return true;
@@ -158,10 +181,12 @@ public class AuthController : MonoBehaviour
         }
         catch (RegexMatchTimeoutException e)
         {
+            Debug.LogException(e);
             return false;
         }
         catch (ArgumentException e)
         {
+            Debug.LogException(e);
             return false;
         }
 
@@ -181,30 +206,15 @@ public class AuthController : MonoBehaviour
         string message = "BlankMessage";
         message = errorCode.ToString();
 
-        UpdateResponse(message, 2);
+        UpdateResponse(message, Color.yellow);
         Debug.Log(message);
     }
 
-    public void UpdateResponse(string msg, int colorType)
+    public void UpdateResponse(string msg, Color color)
     {
-        print($"UpdateResponse called, message: '{msg}',colorType: '{colorType}'");
-        switch (colorType)
-        {
-            case 0:
-                responseTextblock.color = Color.red;
-                break;
-            case 1:
-                responseTextblock.color = Color.green;
-                break;
-            case 2:
-                responseTextblock.color = Color.yellow;
-                break;
-            default:
-                responseTextblock.color = Color.red;
-                break;
-        }
-
-        responseTextblock.text = msg;        
+        print($"UpdateResponse called, message: '{msg}', color: '{color}'");
+        responseTextblock.color = color;
+        responseTextblock.text = msg;
     }
 }
 
