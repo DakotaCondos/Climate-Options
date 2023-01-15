@@ -25,7 +25,7 @@ public class AuthController : MonoBehaviour
     {
         if (!VerifyFields()) return;
 
-        FirebaseAuth.DefaultInstance.SignInWithEmailAndPasswordAsync(email.text, password1.text).ContinueWith(task =>
+        FirebaseAuth.DefaultInstance.SignInWithEmailAndPasswordAsync(email.text, password1.text).ContinueWithOnMainThread(task =>
         {
             if (task.IsCanceled)
             {
@@ -66,7 +66,7 @@ public class AuthController : MonoBehaviour
             }
             if (task.IsCompleted)
             {
-                print("Login Successful");
+                print("Anonymous Login Successful");
             }
         });
     }
@@ -201,18 +201,17 @@ public class AuthController : MonoBehaviour
             return false;
         }
     }
+
     private void GetErrorMessage(AuthError errorCode)
     {
-        string message = "BlankMessage";
-        message = errorCode.ToString();
+        string message = errorCode.ToString();
 
-        UpdateResponse(message, Color.yellow);
+        UpdateResponse(message, Color.red);
         Debug.Log(message);
     }
 
     public void UpdateResponse(string msg, Color color)
     {
-        print($"UpdateResponse called, message: '{msg}', color: '{color}'");
         responseTextblock.color = color;
         responseTextblock.text = msg;
     }
