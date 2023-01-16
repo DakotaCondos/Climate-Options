@@ -21,6 +21,14 @@ public class AuthController : MonoBehaviour
     [SerializeField]
     public TMP_Text responseTextblock;
 
+    LoginUIController loginUIController;
+
+    private void Awake()
+    {
+        loginUIController = GetComponent<LoginUIController>();
+        
+    }
+
     public void Login()
     {
         if (!VerifyFields()) return;
@@ -110,6 +118,52 @@ public class AuthController : MonoBehaviour
         {
             FirebaseAuth.DefaultInstance.SignOut();
         }
+    }
+
+    public void ResetPassword()
+    {
+        if (!IsValidEmail(email.text))
+        {
+            Debug.Log("Invalid Email");
+            UpdateResponse("Invalid Email", Color.red);
+            return;
+        }
+
+        FirebaseAuth.DefaultInstance.SendPasswordResetEmailAsync(email.text).ContinueWithOnMainThread(task =>
+        {
+            if (task.IsCanceled)
+            {
+                Firebase.FirebaseException e =
+                task.Exception.Flatten().InnerExceptions[0] as Firebase.FirebaseException;
+
+                GetErrorMessage((AuthError)e.ErrorCode);
+
+                return;
+            }
+            if (task.IsFaulted)
+            {
+                Firebase.FirebaseException e =
+                task.Exception.Flatten().InnerExceptions[0] as Firebase.FirebaseException;
+
+                GetErrorMessage((AuthError)e.ErrorCode);
+
+                return;
+            }
+            if (task.IsCompleted)
+            {
+                UpdateResponse("Password Reset Sent Successfully", Color.green);
+                Debug.Log("Password Reset Sent Successfully");
+
+                if (loginUIController == null)
+                {
+                    throw new MissingComponentException("LoginUIController not found");
+                }
+
+                loginUIController.DisablePasswordResetButton();
+
+            }
+        });
+
     }
 
     public bool VerifyFields()
