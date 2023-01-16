@@ -301,6 +301,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1688892510 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7942136026051002458, guid: 1d1bf61e16445b14880712eece108aa2, type: 3}
+  m_PrefabInstance: {fileID: 8824268793587890552}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8824268793587890552
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -404,6 +409,34 @@ PrefabInstance:
       propertyPath: OnClicked.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 7942136026051002459, guid: 1d1bf61e16445b14880712eece108aa2, type: 3}
+      propertyPath: OnClicked.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7942136026051002459, guid: 1d1bf61e16445b14880712eece108aa2, type: 3}
+      propertyPath: OnClicked.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7942136026051002459, guid: 1d1bf61e16445b14880712eece108aa2, type: 3}
+      propertyPath: OnClicked.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 8824268793587890558}
+    - target: {fileID: 7942136026051002459, guid: 1d1bf61e16445b14880712eece108aa2, type: 3}
+      propertyPath: OnClicked.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7942136026051002459, guid: 1d1bf61e16445b14880712eece108aa2, type: 3}
+      propertyPath: OnClicked.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ResetPassword
+      objectReference: {fileID: 0}
+    - target: {fileID: 7942136026051002459, guid: 1d1bf61e16445b14880712eece108aa2, type: 3}
+      propertyPath: OnClicked.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: AuthController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7942136026051002459, guid: 1d1bf61e16445b14880712eece108aa2, type: 3}
+      propertyPath: OnClicked.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8691287980781561361, guid: 1d1bf61e16445b14880712eece108aa2, type: 3}
       propertyPath: OnClicked.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -499,3 +532,16 @@ MonoBehaviour:
   password1: {fileID: 8824268793587890555}
   password2: {fileID: 8824268793587890555}
   responseTextblock: {fileID: 8824268793587890554}
+--- !u!114 &8824268793587890559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8824268793587890557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af4c6ac3f67d02e4c958097c6016c182, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resetPasswordButton: {fileID: 1688892510}
