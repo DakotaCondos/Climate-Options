@@ -4,43 +4,105 @@ using UnityEngine;
 using UnityEngine.UI;
 using Nova;
 using System.IO;
+using TMPro;
 
-public class HouseController : MonoBehaviour
+namespace NovaSamples.UIControls
 {
-
-    public Image myNameImage;
-
-    string folderPath;
-    string[] filePaths;
-
-    private void Awake()
+    public class HouseController : MonoBehaviour
     {
-  
-        ImageLoader(0);
-    }
-    public void RightClick()
-    {
-        ImageLoader(1);
-    }
+        public UIBlock2D block;
 
-    public void ImageLoader(int n)
-    {
-        //Create an array of file paths from which to choose
-        folderPath = Application.streamingAssetsPath + "/image/";  //Get path of folder
-        filePaths = Directory.GetFiles(folderPath, "*.jpg"); // Get all files of type .png in this folder
+        string folderPath;
+        string[] filePaths;
+        int index = -1;
 
-        //Converts desired path into byte array
-        byte[] pngBytes = System.IO.File.ReadAllBytes(filePaths[n]);
+        int floor;
+        int bedroom;
+        int bathroom;
 
-        //Creates texture and loads byte array data to create image
-        Texture2D tex = new Texture2D(2, 2);
-        tex.LoadImage(pngBytes);
+        public void HouseSelectionConfirm()
+        {
 
-        //Creates a new Sprite based on the Texture2D
-        Sprite fromTex = Sprite.Create(tex, new Rect(0.0f, 0.0f, tex.width, tex.height), new Vector2(0.5f, 0.5f), 100.0f);
+            Debug.Log(floor);
+            Debug.Log(bedroom);
+            Debug.Log(bathroom);
 
-        //Assigns the UI sprite
-        myNameImage.sprite = fromTex;
+            if(floor == 0 && bedroom == 0 && bathroom == 0)
+            {
+                getImageFile("1floor1bed1bath");
+                index = -1;
+            }
+            if(floor == 1 & bedroom == 0 && bathroom ==0)
+            {
+                getImageFile("2floor1bed1bath");
+                index = -1;
+            }
+        }
+
+        public void FloorSelect()
+        {
+            floor = Dropdown.selectedIndex;
+        }
+        public void BedroomSelect()
+        {
+            bedroom = Dropdown.selectedIndex;
+        }
+        public void BathroomSelect()
+        {
+            bathroom = Dropdown.selectedIndex;
+        }
+
+        public void RightClick()
+        {
+            index += 1;
+            if (index >= 2)
+            {
+                index = 2;
+            }
+            if (index < 0)
+            {
+                index = 0;
+            }
+
+            ImageLoader(index);
+        }
+
+        public void LeftClick()
+        {
+            index -= 1;
+            if (index >= 2)
+            {
+                index = 2;
+            }
+            if (index < 0)
+            {
+                index = 0;
+            }
+
+            ImageLoader(index);
+        }
+        public void getImageFile(string folder)
+        {
+            //Create an array of file paths from which to choose
+            folderPath = Application.streamingAssetsPath + $"/image/{folder}/";  //Get path of folder
+            filePaths = Directory.GetFiles(folderPath, "*.jpg"); // Get all files of type .png in this folder
+        }
+        public void ImageLoader(int n)
+        {
+
+            //Converts desired path into byte array
+            byte[] pngBytes = System.IO.File.ReadAllBytes(filePaths[n]);
+
+            //Creates texture and loads byte array data to create image
+            Texture2D tex = new Texture2D(2, 2);
+            tex.LoadImage(pngBytes);
+
+            //Assigns the UI sprite
+            //myNameImage.sprite = fromTex;
+            block.SetImage(tex);
+        }
+
+
     }
 
 }
