@@ -5610,7 +5610,7 @@ GameObject:
   - component: {fileID: 1191605963}
   - component: {fileID: 1191605962}
   m_Layer: 0
-  m_Name: TextBlock
+  m_Name: input_validation_text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5633,7 +5633,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.53300005, y: -192.979}
+  m_AnchoredPosition: {x: 0.53300005, y: -180}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1191605962
@@ -5665,7 +5665,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4278190333
   m_fontColor: {r: 0.990566, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -5683,8 +5683,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 400
-  m_fontSizeBase: 400
+  m_fontSize: 300
+  m_fontSizeBase: 300
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -5699,7 +5699,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
@@ -5719,7 +5719,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -243.449, y: -32.612003, z: -243.449, w: -32.612003}
+  m_margin: {x: -245, y: -32.612003, z: -245, w: -32.612003}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   _SortingLayer: 0
@@ -5745,7 +5745,7 @@ MonoBehaviour:
   layout:
     Size:
       X:
-        Raw: 486.898
+        Raw: 490
         Type: 0
       Y:
         Raw: 65.22401
@@ -5758,7 +5758,7 @@ MonoBehaviour:
         Raw: 0.53300005
         Type: 0
       Y:
-        Raw: -192.979
+        Raw: -180
         Type: 0
       Z:
         Raw: 0

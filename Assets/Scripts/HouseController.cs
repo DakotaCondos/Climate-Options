@@ -11,9 +11,11 @@ namespace NovaSamples.UIControls
     public class HouseController : MonoBehaviour
     {
         public UIBlock2D block;
-        public TMP_Text responseText;
+        [SerializeField]
+        TMP_Text responseText;
         [SerializeField]
         TMP_Text houseSize;
+        int x = 0;
 
         string folderPath;
         string[] filePaths;
@@ -31,6 +33,26 @@ namespace NovaSamples.UIControls
             Debug.Log(bedroom);
             Debug.Log(bathroom);
             Debug.Log(houseSize.text);
+            responseText.text = "";
+
+            if (floor == 1 && bedroom == 1 && bathroom == 2)
+            {
+                responseText.text = "Option not available.";
+                return;
+            }
+            if(floor == 2 && bedroom == 1 && bathroom == 2)
+            {
+                responseText.text = "Option not available.";
+                return;
+            }
+            if (!int.TryParse(houseSize.text, out x))
+            {
+                Debug.Log("Inside of tryparse");
+                responseText.text = "House size must be a whole number.";
+                return;
+            }
+            
+            index = -1;
             getImageFile($"{floor}floor{bedroom}bed{bathroom}bath");
             
         }
