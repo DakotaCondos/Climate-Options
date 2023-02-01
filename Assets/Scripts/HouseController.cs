@@ -11,14 +11,18 @@ namespace NovaSamples.UIControls
     public class HouseController : MonoBehaviour
     {
         public UIBlock2D block;
+        public TMP_Text responseText;
+        [SerializeField]
+        TMP_Text houseSize;
 
         string folderPath;
         string[] filePaths;
         int index = -1;
 
-        int floor;
-        int bedroom;
-        int bathroom;
+        int fileSize;
+        int floor = 1;
+        int bedroom = 1;
+        int bathroom = 1;
 
         public void HouseSelectionConfirm()
         {
@@ -26,38 +30,34 @@ namespace NovaSamples.UIControls
             Debug.Log(floor);
             Debug.Log(bedroom);
             Debug.Log(bathroom);
-
-            if(floor == 0 && bedroom == 0 && bathroom == 0)
-            {
-                getImageFile("1floor1bed1bath");
-                index = -1;
-            }
-            if(floor == 1 & bedroom == 0 && bathroom ==0)
-            {
-                getImageFile("2floor1bed1bath");
-                index = -1;
-            }
+            Debug.Log(houseSize.text);
+            getImageFile($"{floor}floor{bedroom}bed{bathroom}bath");
+            
         }
 
         public void FloorSelect()
         {
-            floor = Dropdown.selectedIndex;
+            floor = Dropdown.selectedIndex + 1;
+       
+            
         }
         public void BedroomSelect()
         {
-            bedroom = Dropdown.selectedIndex;
+            bedroom = Dropdown.selectedIndex + 1;
         }
         public void BathroomSelect()
         {
-            bathroom = Dropdown.selectedIndex;
+            bathroom = Dropdown.selectedIndex + 1;
         }
 
         public void RightClick()
         {
+            
             index += 1;
-            if (index >= 2)
+            Debug.Log(index);
+            if (index >= fileSize - 1)
             {
-                index = 2;
+                index = fileSize - 1;
             }
             if (index < 0)
             {
@@ -69,10 +69,12 @@ namespace NovaSamples.UIControls
 
         public void LeftClick()
         {
+            
             index -= 1;
-            if (index >= 2)
+            Debug.Log(index);
+            if (index >= fileSize - 1)
             {
-                index = 2;
+                index = fileSize - 1;
             }
             if (index < 0)
             {
@@ -81,11 +83,13 @@ namespace NovaSamples.UIControls
 
             ImageLoader(index);
         }
-        public void getImageFile(string folder)
+        public int getImageFile(string folder)
         {
             //Create an array of file paths from which to choose
             folderPath = Application.streamingAssetsPath + $"/image/{folder}/";  //Get path of folder
             filePaths = Directory.GetFiles(folderPath, "*.jpg"); // Get all files of type .png in this folder
+            fileSize = filePaths.Length;
+            return fileSize;
         }
         public void ImageLoader(int n)
         {
