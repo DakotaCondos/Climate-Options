@@ -1,8 +1,12 @@
 using Newtonsoft.Json;
+using System.Collections.Generic;
 using System.IO;
 
 public class ClimateControlComponentFactory
 {
+    HouseConfig houseConfig;
+
+    
     public ClimateControlComponent CreateComponentFromJsonFile(string filePath)
     {
         if (!File.Exists(filePath))
@@ -21,10 +25,10 @@ public class ClimateControlComponentFactory
         return JsonConvert.SerializeObject(component);
     }
 
-    public void SetParentComponent(ClimateControlComponent childComponent, ClimateControlComponent parentComponent)
+    public void SetParentComponentsList(ClimateControlComponent childComponent, List<ClimateControlComponent> parentComponentsList)
     {
-        if (childComponent != null && parentComponent != null)
-            childComponent.parentComponent = parentComponent;
+        if (childComponent != null && parentComponentsList != null)
+            childComponent.parentComponentsList = parentComponentsList;
     }
 }
 

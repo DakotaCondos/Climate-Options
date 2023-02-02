@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 public class ClimateControlComponent
 {
@@ -33,7 +34,7 @@ public class ClimateControlComponent
     public readonly ClimateControlComponentTypes componentType;
     public readonly UtilityType utilityType;
 
-    public ClimateControlComponent parentComponent = null;
+    public List<ClimateControlComponent> parentComponentsList = null;
 
     public ClimateControlComponent(string name, string description, string pros, string cons, 
         string[] prerequisiteComponents, bool isParentOnlyComponent, bool isChildOnlyComponent,
