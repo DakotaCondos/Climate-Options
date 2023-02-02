@@ -207,7 +207,7 @@ public class AuthController : MonoBehaviour
 
 
 
-    //IsValidEmail courtesy of Microsoft https://learn.microsoft.com/en-us/dotnet/standard/base-types/how-to-verify-that-strings-are-in-valid-email-format
+    // IsValidEmail courtesy of Microsoft https://learn.microsoft.com/en-us/dotnet/standard/base-types/how-to-verify-that-strings-are-in-valid-email-format
     public static bool IsValidEmail(string email)
     {
         if (string.IsNullOrWhiteSpace(email))
