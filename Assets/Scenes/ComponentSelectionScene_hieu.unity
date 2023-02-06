@@ -4441,7 +4441,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Hieu, this will be the panel used to display the component information.
     This entire scene is a duplicate of the one i am working on. when you are done
-    i will just copy your version of this panel here inot my scene
+    i will just copy your version of this panel here into my scene
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
