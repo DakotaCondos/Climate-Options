@@ -30,7 +30,7 @@ public class ComponentSelectionController : MonoBehaviour
 
         //Instantiate and assign buttons for each room
         roomUIButtons = new GameObject[houseConfig.rooms.Count];
-        int bathroomCountLabel = 0;
+        int bathroomCountLabel = 1;
         for (int i = 0; i < roomUIButtons.Length; i++)
         {
             GameObject g = Instantiate(buttonPrefab, instantiateLocation.transform);
