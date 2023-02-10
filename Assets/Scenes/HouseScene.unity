@@ -10320,7 +10320,7 @@ MonoBehaviour:
       Adjustment:
         CenterUV: {x: 0, y: 0}
         UVScale: {x: 1, y: 1}
-        scaleMode: 2
+        scaleMode: 0
       Mode: 1
     SoftenEdges: 1
     FillEnabled: 1
