@@ -33,86 +33,10 @@ public class GetDatabase : MonoBehaviour
     string fileImage;
 
 
-    public void GetWindowAC()
+    public void GetHVACSystem(string HVACName)
     {
-        ImageLoader("window-ac-unit");
-        GetUnit("Window AC units");
-    }
-    public void GetPortableAC()
-    {
-        ImageLoader("portable-air-condition");
-        GetUnit("Portable Air Conditioners");
-    }
-
-    public void GetDuctlessMiniSplitAC()
-    {
-        ImageLoader("ductless-mini-split-air-conditioning-systems");
-        GetUnit("Ductless Mini Split AC");
-    }
-    public void GetCentralACSystem()
-    {
-        ImageLoader("central-air-conditioning-system");
-        GetUnit("Central AC System");
-    }
-    public void GetElectricFurnace()
-    {
-        ImageLoader("electric-furnace");
-        GetUnit("Electric Furnace");
-    }
-    public void GetGasFurnace()
-    {
-        ImageLoader("gas-furnace");
-        GetUnit("Gas Furnace");
-    }
-    public void GetOilFurnace()
-    {
-        ImageLoader("oil furnace");
-        GetUnit("Oil Furnace");
-    }
-    public void GetGasBoiler()
-    {
-        ImageLoader("gas-boiler");
-        GetUnit("Gas Boiler");
-    }
-    public void GetHeatPump()
-    {
-        ImageLoader("heat-pump");
-        GetUnit("Heat Pump");
-    }
-    public void GetMicroCombinedHeatandPower()
-    {
-        ImageLoader("micro-combined-heat-and-power");
-        GetUnit("Micro Combined Heat and Power");
-    }
-    public void GetElectricRadiantFloorHeating()
-    {
-        ImageLoader("electric-radiant-floor-heating");
-        GetUnit("Electric Radiant Floor Heating");
-    }
-    public void GetGasFiredSpaceHeaters()
-    {
-        ImageLoader("gas-fired-space-heaters");
-        GetUnit("Gas Fired Space Heaters");
-    }
-    public void GetElectricSpaceHeaters()
-    {
-        ImageLoader("electric-space-heaters");
-        GetUnit("Electric Space Heaters");
-    }
-    public void GetWoodBurningStoves()
-    {
-        ImageLoader("wood-burning-stoves");
-        GetUnit("Wood Burning Stoves");
-    }
-    public void GetFireplaces()
-    {
-        ImageLoader("fireplaces");
-        GetUnit("Fireplaces");
-    }
-    public void GetDuctlessMiniSplitSystem()
-    {
-        ImageLoader("ductless-mini-split-air-conditioning-systems");
-        GetUnit("Ductless Mini Split System");
+        ImageLoader(HVACName);
+        GetUnit(HVACName);
     }
 
     public void ImageLoader(string fileName)
