@@ -11,7 +11,6 @@ using Unity.VisualScripting;
 
 public class GetDatabase : MonoBehaviour
 {
-    HVACDatabase database = new HVACDatabase();
 
     [SerializeField]
     TMP_Text HVACName;
@@ -27,7 +26,6 @@ public class GetDatabase : MonoBehaviour
     TMP_Text HVACCons;
     [SerializeField]
     TMP_Text HVACCost;
-
     public UIBlock2D block;
     string folderPath;
     string fileImage;
@@ -36,7 +34,9 @@ public class GetDatabase : MonoBehaviour
     public void GetHVACSystem(string HVACName)
     {
         ImageLoader(HVACName);
-        GetUnit(HVACName);
+        ClimateControlComponent unit = new ClimateControlComponent("Window AC Unit", "Description", "Pros", "Cons", new string[] { "string1", "string2" }, false, false, false, false, 0.0f, 0.0f, 0.0f, 0.0f,
+                    ClimateControlComponentTypes.Heater, UtilityType.Electric);
+        DisplayUnit(unit);
     }
 
     public void ImageLoader(string fileName)
@@ -57,18 +57,14 @@ public class GetDatabase : MonoBehaviour
         block.SetImage(tex);
     }
 
-    public void GetUnit(string HVACUnit)
+    public void DisplayUnit(ClimateControlComponent unit)
     {
-        List<HVACType> ACData = database.findAll();
-        HVACType ACUnit = ACData.Find(n => n.Name == HVACUnit);
-        Debug.Log(ACUnit.Name);
-        HVACName.text = ACUnit.Name;
-        HVACUtilType.text = ACUnit.UtilityType;
-        HVACPrereq.text = ACUnit.Prerequisites;
-        HVACCost.text = ACUnit.ApproximateCost;
-        HVACDescription.text = ACUnit.Description;
-        HVACPros.text = ACUnit.Pros;
-        HVACCons.text = ACUnit.Cons;
+        HVACName.text = unit.Name;
+        HVACUtilType.text = unit.utilityType.ToString();
+        HVACPrereq.text = string.Join(", ", unit.PrerequisiteComponents);
+        HVACCost.text = "0";
+        HVACDescription.text = unit.Description;
+        HVACPros.text = unit.Pros;
+        HVACCons.text = unit.Cons;
     }
-
 }

@@ -17648,7 +17648,7 @@ GameObject:
   - component: {fileID: 2905764966753109037}
   - component: {fileID: 2905764966753109034}
   m_Layer: 0
-  m_Name: Button_Modern
+  m_Name: Window
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
