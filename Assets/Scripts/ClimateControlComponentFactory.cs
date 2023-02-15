@@ -1,6 +1,7 @@
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
+using UnityEngine;
 
 public class ClimateControlComponentFactory
 {
@@ -23,6 +24,12 @@ public class ClimateControlComponentFactory
     public string ConvertToJson(ClimateControlComponent component)
     {
         return JsonConvert.SerializeObject(component);
+    }
+
+    public void SaveObjectToJsonFile(object objectToSave, string filePath)
+    {
+        string json = JsonUtility.ToJson(objectToSave);
+        File.WriteAllText(filePath, json);
     }
 }
 
