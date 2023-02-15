@@ -15,6 +15,8 @@ public class ClimateControlComponent
     private readonly float coolingBTUOutput;
     private readonly float heatingCostPerBTU;
     private readonly float coolingCostPerBTU;
+    private readonly ClimateControlComponentTypes componentType;
+    private readonly UtilityType utilityType;
 
     public string Name => name;
     public string Description => description;
@@ -28,9 +30,8 @@ public class ClimateControlComponent
     public float HeatingCostPerBTU { get => heatingCostPerBTU; }
     public float CoolingCostPerBTU { get => coolingCostPerBTU; }
     public ClimateControlComponentTypes[] PrerequisiteComponentType { get => prerequisiteComponentType; }
-    public readonly ClimateControlComponentTypes componentType;
-    public readonly UtilityType utilityType;
-    public List<ClimateControlComponent> parentComponentsList = null;
+    public ClimateControlComponentTypes ComponentType => componentType;
+    public UtilityType UtilityType => utilityType;
 
     public ClimateControlComponent(
         string name, string description, string pros, string cons,
@@ -38,7 +39,7 @@ public class ClimateControlComponent
         bool isWholeHomeComponent, bool isHeating, bool isCooling,
         float heatingBTUOutput, float coolingBTUOutput, float heatingCostPerBTU,
         float coolingCostPerBTU, ClimateControlComponentTypes componentType,
-        UtilityType utilityType, List<ClimateControlComponent> parentComponentsList)
+        UtilityType utilityType)
     {
         this.name = name;
         this.description = description;
@@ -54,6 +55,5 @@ public class ClimateControlComponent
         this.coolingCostPerBTU = coolingCostPerBTU;
         this.componentType = componentType;
         this.utilityType = utilityType;
-        this.parentComponentsList = parentComponentsList;
     }
 }
