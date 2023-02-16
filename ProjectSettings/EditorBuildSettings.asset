@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/ProgramStartupScene.unity
+    guid: 71009fb178a35df458b3037d02ae5912
+  - enabled: 1
     path: Assets/Scenes/HomeScene_dakota.unity
     guid: 1cd8bd5596957d5419d590f62c97bfb8
   - enabled: 1
