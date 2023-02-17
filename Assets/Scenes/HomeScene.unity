@@ -338,7 +338,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1741876875367291131, guid: 77f3b6b4764556244a590c752b04fcb5, type: 3}
       propertyPath: OnClicked.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: SignupScene_dakota
+      value: SignupScene
       objectReference: {fileID: 0}
     - target: {fileID: 1741876876301656765, guid: 77f3b6b4764556244a590c752b04fcb5, type: 3}
       propertyPath: OnClicked.m_PersistentCalls.m_Calls.Array.size
@@ -370,11 +370,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1741876876301656765, guid: 77f3b6b4764556244a590c752b04fcb5, type: 3}
       propertyPath: OnClicked.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: LoginScene_dakota
+      value: LoginScene
       objectReference: {fileID: 0}
     - target: {fileID: 1741876876301656765, guid: 77f3b6b4764556244a590c752b04fcb5, type: 3}
       propertyPath: OnClicked.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1741876876855574677, guid: 77f3b6b4764556244a590c752b04fcb5, type: 3}
+      propertyPath: OnClicked.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1741876876855574677, guid: 77f3b6b4764556244a590c752b04fcb5, type: 3}
+      propertyPath: OnClicked.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3494575734865874559}
+    - target: {fileID: 1741876876855574677, guid: 77f3b6b4764556244a590c752b04fcb5, type: 3}
+      propertyPath: OnClicked.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadSceneName
+      objectReference: {fileID: 0}
+    - target: {fileID: 1741876876855574677, guid: 77f3b6b4764556244a590c752b04fcb5, type: 3}
+      propertyPath: OnClicked.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ProgramManagerController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1741876876855574677, guid: 77f3b6b4764556244a590c752b04fcb5, type: 3}
+      propertyPath: OnClicked.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: HouseScene
       objectReference: {fileID: 0}
     - target: {fileID: 4750830480615981366, guid: 77f3b6b4764556244a590c752b04fcb5, type: 3}
       propertyPath: m_RootOrder
@@ -426,15 +446,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4750830481574469060, guid: 77f3b6b4764556244a590c752b04fcb5, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.0011065154
+      value: 0.0010856206
       objectReference: {fileID: 0}
     - target: {fileID: 4750830481574469060, guid: 77f3b6b4764556244a590c752b04fcb5, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.0011065154
+      value: 0.0010856206
       objectReference: {fileID: 0}
     - target: {fileID: 4750830481574469060, guid: 77f3b6b4764556244a590c752b04fcb5, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.0011065154
+      value: 0.0010856206
       objectReference: {fileID: 0}
     - target: {fileID: 4750830481574469083, guid: 77f3b6b4764556244a590c752b04fcb5, type: 3}
       propertyPath: targetCamera

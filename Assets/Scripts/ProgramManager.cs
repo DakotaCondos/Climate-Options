@@ -51,7 +51,7 @@ public class ProgramManager : MonoBehaviour
 
     private void OnLoadingComplete()
     {
-        sceneController.LoadSceneName("HomeScene_dakota");
+        sceneController.LoadSceneName("HomeScene");
     }
 
     void ProcessJsonFiles()

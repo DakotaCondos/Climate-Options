@@ -9,12 +9,24 @@ EditorBuildSettings:
     path: Assets/Scenes/_ProgramStartupScene.unity
     guid: 71009fb178a35df458b3037d02ae5912
   - enabled: 1
-    path: Assets/Scenes/HomeScene_dakota.unity
+    path: Assets/Scenes/HomeScene.unity
     guid: 1cd8bd5596957d5419d590f62c97bfb8
   - enabled: 1
-    path: Assets/Scenes/LoginScene_dakota.unity
+    path: Assets/Scenes/LoginScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
-    path: Assets/Scenes/SignupScene_dakota.unity
+    path: Assets/Scenes/SignupScene.unity
     guid: f8ee5f4daa276764c8b0996c8e02e6a8
+  - enabled: 1
+    path: Assets/Scenes/_ComponentCreatorTool.unity
+    guid: ecb2cc963b7f9b84f889de2a78fea0c4
+  - enabled: 1
+    path: Assets/Scenes/ComponentSelectionScene_dakota.unity
+    guid: e9fe889d1db4b554ca74fb1283210f28
+  - enabled: 1
+    path: Assets/Scenes/HouseScene.unity
+    guid: 1bd08ecc7b84d4b5b82e08bffcfe2c60
+  - enabled: 1
+    path: Assets/Scenes/SetupScene.unity
+    guid: e9cf804601e68fd4f9fe81b3fbe85933
   m_configObjects: {}
