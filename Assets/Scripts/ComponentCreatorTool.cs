@@ -4,6 +4,7 @@ using UnityEngine;
 using Nova;
 using System;
 using System.Linq;
+using UnityEngine.SceneManagement;
 
 public class ComponentCreatorTool : MonoBehaviour
 {
@@ -52,11 +53,7 @@ public class ComponentCreatorTool : MonoBehaviour
     }
     public void Reset()
     {
-        foreach (var item in textBlocks)
-        {
-            item.Text = "";
-        }
-        component = null;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void CreateClimateControlComponent()
