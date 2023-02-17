@@ -12,11 +12,14 @@ public class ComponentSelectionController : MonoBehaviour
     [SerializeField]
     GameObject instantiateLocation;
 
+    public ProgramManager programManager;
+    public int selectedComponentIndex;
+
     private void Awake()
     {
 
-        //to-do
-        //load HouseConfig from persistent data source
+        programManager = FindObjectOfType<ProgramManager>();
+        selectedComponentIndex = -1;
 
 
         // ---------------- Demo house only DELETE ------------------

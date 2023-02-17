@@ -51,7 +51,8 @@ public class ProgramManager : MonoBehaviour
 
     private void OnLoadingComplete()
     {
-        sceneController.LoadSceneName("HomeScene");
+        //sceneController.LoadSceneName("HomeScene");
+        sceneController.LoadSceneName("ComponentSelectionScene_hieu");
     }
 
     void ProcessJsonFiles()
