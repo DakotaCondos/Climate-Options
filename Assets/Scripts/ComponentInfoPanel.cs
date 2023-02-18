@@ -1,4 +1,5 @@
 using Nova;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,35 +22,24 @@ public class ComponentInfoPanel : MonoBehaviour
         programManager = FindObjectOfType<ProgramManager>();
     }
 
-    [ContextMenu("Update Component Info Panel")]
-    public void UpdateComponentInfoPanel(int index)
+    public void UpdateComponentInfoPanel(ClimateControlComponent component)
     {
-        if (index < 0)
-        {
-            //make all text fields empty
-        }
-        else
-        {
-            ClimateControlComponent component = programManager.components[index];
-            if (component == null) return;
-            componentName.Text = component.componentName;
-            description.Text = component.description;
-            utilType.Text = component.utilityType.ToString();
-            preReq.Text = component.prerequisiteComponentType.ToString();
-            cost.Text = $"${component.priceRange.Item1} - ${component.priceRange.Item2}";
-            pros.Text = component.pros;
-            cons.Text = component.cons;
-            //picture block goes here
+        if (component == null) return;
+        componentName.Text = component.componentName;
+        description.Text = component.description;
+        utilType.Text = component.utilityType.ToString();
+        preReq.Text = ConvertEnumListToString(component);
+        cost.Text = $"${component.priceRange.Item1} - ${component.priceRange.Item2}";
+        pros.Text = component.pros;
+        cons.Text = component.cons;
+        //picture block goes here
 
-        }
-    }
-
-
-    private void Start()
-    {
 
     }
 
-
+    private string ConvertEnumListToString(ClimateControlComponent component)
+    {
+        return string.Join(", ", component.prerequisiteComponentType);
+    }
 
 }

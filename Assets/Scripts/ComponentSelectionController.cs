@@ -2,15 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Nova;
+using System;
 
 public class ComponentSelectionController : MonoBehaviour
 {
     public HouseConfig houseConfig;
     GameObject[] roomUIButtons;
+    public List<ClimateControlComponent> componentListBeingEdited = null;
     [SerializeField]
     GameObject buttonPrefab;
     [SerializeField]
-    GameObject instantiateLocation;
+    GameObject instantiateRoomButttonLocation;
+
+    [SerializeField]
+    GameObject instantiateComponentButtonGroupLocation;
+    [SerializeField]
+    GameObject componentButtonGroupPrefab;
 
     public ProgramManager programManager;
     public int selectedComponentIndex;
@@ -31,12 +38,37 @@ public class ComponentSelectionController : MonoBehaviour
         // ---------------------------------------------------------
 
 
+        CreateRoomButtons();
+        CreateComponentButtons();
+
+    }
+
+    private void CreateComponentButtons()
+    {
+        //for now just create a button for every component
+        for (int i = 0; i < programManager.components.Count; i++)
+        {
+            GameObject buttongroup = Instantiate(componentButtonGroupPrefab, instantiateComponentButtonGroupLocation.transform);
+            ComponentButton componentButton = buttongroup.GetComponent<ComponentButtonRowHelper>().componentButton.GetComponent<ComponentButton>();
+            componentButton.component = programManager.components[i];
+            ComponentInfoButton componentInfoButton = buttongroup.GetComponent<ComponentButtonRowHelper>().infoButton.GetComponent<ComponentInfoButton>();
+            componentInfoButton.component = programManager.components[i];
+        }
+    }
+
+    private void CreateRoomButtons()
+    {
         //Instantiate and assign buttons for each room
         roomUIButtons = new GameObject[houseConfig.rooms.Count];
         int bathroomCountLabel = 1;
         for (int i = 0; i < roomUIButtons.Length; i++)
         {
-            GameObject g = Instantiate(buttonPrefab, instantiateLocation.transform);
+            GameObject g = Instantiate(buttonPrefab, instantiateRoomButttonLocation.transform);
+
+            //set RoomHelper reference to room in house
+            g.GetComponent<RoomHelper>().componentsList = houseConfig.GetRoomByID(i).components;
+
+            //set TextBlock text
             var textBlock = g.GetComponentInChildren<TextBlock>();
             if (textBlock != null)
             {
@@ -57,12 +89,5 @@ public class ComponentSelectionController : MonoBehaviour
             }
             roomUIButtons[i] = g;
         }
-
-    }
-
-    [ContextMenu("Load Rooms")]
-    void DoSomething()
-    {
-        Debug.Log("Perform operation");
     }
 }

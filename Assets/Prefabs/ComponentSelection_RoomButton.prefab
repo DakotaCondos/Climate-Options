@@ -366,8 +366,9 @@ GameObject:
   - component: {fileID: 3587869902484766}
   - component: {fileID: 3587869902484767}
   - component: {fileID: 3587869902484764}
+  - component: {fileID: 5169603821690657007}
   m_Layer: 0
-  m_Name: ComponentSelection_Button_UI_Nova
+  m_Name: ComponentSelection_RoomButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -381,7 +382,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3587869902484762}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.4199996, y: 154.56128, z: 0}
+  m_LocalPosition: {x: -40, y: -144.36392, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -419,7 +420,7 @@ MonoBehaviour:
   layout:
     Size:
       X:
-        Raw: 0.87
+        Raw: 1
         Type: 1
       Y:
         Raw: 74.100006
@@ -567,7 +568,7 @@ MonoBehaviour:
     LightingModel: 0
     ShadowCastingMode: 2
     ReceiveShadows: 1
-  PreviewSize: {x: 80, y: 25, z: 0}
+  PreviewSize: {x: 80, y: 74.100006, z: 0}
   visuals:
     Color: {r: 0.13999999, g: 0.32552147, b: 0.7, a: 1}
     CornerRadius:
@@ -695,7 +696,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnClicked:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5169603821690657007}
+        m_TargetAssemblyTypeName: RoomHelper, Assembly-CSharp
+        m_MethodName: SetComponentListToEdit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &5169603821690657007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3587869902484762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59313f7519fe6a74592e4470c3b87e51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  componentsList: []
 --- !u!1 &3587871288673334
 GameObject:
   m_ObjectHideFlags: 0

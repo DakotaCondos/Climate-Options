@@ -52,7 +52,7 @@ public class ProgramManager : MonoBehaviour
     private void OnLoadingComplete()
     {
         //sceneController.LoadSceneName("HomeScene");
-        sceneController.LoadSceneName("ComponentSelectionScene_hieu");
+        sceneController.LoadSceneName("ComponentSelectionScene_dakota");
     }
 
     void ProcessJsonFiles()
