@@ -26,4 +26,9 @@ public class HouseConfig
         }
         return null;
     }
+
+    public List<RoomConfig> GetRooms()
+    {
+        return this.rooms;
+    }
 }
