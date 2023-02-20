@@ -35,6 +35,7 @@ public class UserConfigDatabase : MonoBehaviour
         UtilityConfig utilityConfig = new UtilityConfig();
         ClimateControlSystemConfig climateControlSystemConfig = new ClimateControlSystemConfig(houseConfig, utilityConfig);
         StartCoroutine(SaveConfig(auth.CurrentUser.UserId, climateControlSystemConfig));
+        StartCoroutine(GetConfig(auth.CurrentUser.UserId));
     }
     public IEnumerator SaveConfig(string userID, ClimateControlSystemConfig climateControlSystemConfig)
     {
@@ -60,6 +61,7 @@ public class UserConfigDatabase : MonoBehaviour
         else
         {
             DataSnapshot dataSnapshot = DBTask.Result;
+            Debug.Log(dataSnapshot.GetRawJsonValue());
 
         }
     }
