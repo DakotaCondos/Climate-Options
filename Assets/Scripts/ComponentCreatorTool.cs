@@ -63,25 +63,9 @@ public class ComponentCreatorTool : MonoBehaviour
         string _description = description.Text;
         string _pros = pros.Text;
         string _cons = cons.Text;
-        List<ClimateControlComponentTypes> _prerequisiteComponentType = new();
+        if (!Enum.TryParse(prerequisiteComponentType.Text, out ClimateControlComponentTypes _prerequisiteComponentType))
         {
-            string enumsString = prerequisiteComponentType.Text;
-            string[] enumsArray = enumsString.Split(',');
-            //_prerequisiteComponentType = enumsArray.Select(c => Enum.TryParse(c, out ClimateControlComponentTypes colorEnum) ? colorEnum : ClimateControlComponentTypes.Error).ToArray();
-            foreach (var item in enumsArray)
-            {
-                if (item.CompareTo("") == 0) { continue; }
-                if (Enum.TryParse(item, out ClimateControlComponentTypes _temp))
-                {
-                    _prerequisiteComponentType.Add(_temp);
-                }
-                else
-                {
-                    Debug.Log("Prerequisite Component Type Not Found");
-                    return;
-                }
-            }
-
+            Debug.Log("Prerequisite Component Type Not Found");
         }
 
         bool _isWholeHomeComponent = Convert.ToBoolean(isWholeHomeComponent.Text);

@@ -7,7 +7,6 @@ using UnityEngine;
 public class ComponentInfoPanel : MonoBehaviour
 {
     public ProgramManager programManager;
-    int activeComponentIndex = -1;
 
     public TextBlock componentName;
     public TextBlock description;
@@ -27,11 +26,11 @@ public class ComponentInfoPanel : MonoBehaviour
         if (component == null) return;
         componentName.Text = component.componentName;
         description.Text = component.description;
-        utilType.Text = component.utilityType.ToString();
-        preReq.Text = ConvertEnumListToString(component);
-        cost.Text = $"${component.priceRange.Item1} - ${component.priceRange.Item2}";
-        pros.Text = component.pros;
-        cons.Text = component.cons;
+        utilType.Text = "Utility Type: " + component.utilityType.ToString();
+        preReq.Text = "Required Components: " + ConvertEnumListToString(component);
+        cost.Text = $"Price: ${component.priceRange.Item1} - ${component.priceRange.Item2}";
+        pros.Text = "Pros: " + component.pros;
+        cons.Text = "Pros: " + component.cons;
         //picture block goes here
 
 

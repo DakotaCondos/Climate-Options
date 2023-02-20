@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
 
-public class HouseConfig
+public class HouseConfig : MonoBehaviour
 {
     public List<RoomConfig> rooms;
     public List<ClimateControlComponent> components;

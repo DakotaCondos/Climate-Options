@@ -9,7 +9,7 @@ public class ClimateControlComponent
     public string description;
     public string pros;
     public string cons;
-    public List<ClimateControlComponentTypes> prerequisiteComponentType;
+    public ClimateControlComponentTypes prerequisiteComponentType;
     public bool isWholeHomeComponent;
     public bool isHeating;
     public bool isCooling;
@@ -23,7 +23,7 @@ public class ClimateControlComponent
 
     public ClimateControlComponent(
         string name, string description, string pros, string cons,
-        List<ClimateControlComponentTypes> prerequisiteComponentType,
+        ClimateControlComponentTypes prerequisiteComponentType,
         bool isWholeHomeComponent, bool isHeating, bool isCooling,
         float heatingBTUOutput, float coolingBTUOutput, float heatingCostPerBTU,
         float coolingCostPerBTU, ClimateControlComponentTypes componentType,

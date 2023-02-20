@@ -51,7 +51,7 @@ public class ProgramManager : MonoBehaviour
 
     private void OnLoadingComplete()
     {
-        //sceneController.LoadSceneName("HomeScene");
+        //sceneController.LoadSceneName("HomeScene"); <= put this back after testing phase is done
         sceneController.LoadSceneName("ComponentSelectionScene_dakota");
     }
 
@@ -70,11 +70,10 @@ public class ProgramManager : MonoBehaviour
             if (component != null)
             {
                 components.Add(component);
-                Debug.Log($"Processed file {fileName}");
             }
             else
             {
-                Debug.Log($"PROCESS FAILURE of file {fileName}");
+                Debug.Log($"COMPONENT CREATION FAILURE OF FILE {fileName}");
 
             }
         }

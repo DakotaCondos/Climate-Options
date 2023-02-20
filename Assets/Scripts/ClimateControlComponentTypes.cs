@@ -7,5 +7,6 @@
     Heater,
     AirConditioner,
     Thermostat,
-    Debug
+    None,
+    AirDuct
 }
