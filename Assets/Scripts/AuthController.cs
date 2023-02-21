@@ -159,7 +159,7 @@ public class AuthController : MonoBehaviour
                     throw new MissingComponentException("LoginUIController not found");
                 }
 
-                loginUIController.DisablePasswordResetButton();
+                //loginUIController.DisablePasswordResetButton();
 
             }
         });

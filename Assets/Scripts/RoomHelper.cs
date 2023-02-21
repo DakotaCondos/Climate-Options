@@ -25,7 +25,8 @@ public class RoomHelper : MonoBehaviour
     public void SetComponentListToEdit()
     {
         componentSelectionController.componentListBeingEdited = componentsList;
-        componentSelectionController.UpdateComponentsDisplay(isWholeHomeButton);
+        componentSelectionController.SetShowWholeHomeFilter(isWholeHomeButton);
+        componentSelectionController.UpdateComponentsDisplay();
         componentSelectionController.UpdateComponentHeaderLabel(areaDisplayName);
     }
 }

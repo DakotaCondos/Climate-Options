@@ -15,12 +15,17 @@ public class ComponentSelectionController : MonoBehaviour
     GameObject buttonPrefab;
     [SerializeField]
     GameObject instantiateRoomButttonLocation;
-
+    [Range(1, 6)]
+    public int heating_Cooling_Combined_Filter = 0;
     [SerializeField]
     GameObject instantiateComponentButtonGroupLocation;
     [SerializeField]
     GameObject componentButtonGroupPrefab;
     [SerializeField] TextBlock componentsHeaderLabel;
+
+    [SerializeField] UIBlock2D[] filterButtons;
+
+    public bool showWholeHomeFilter = true;
 
 
 
@@ -50,8 +55,23 @@ public class ComponentSelectionController : MonoBehaviour
 
     private void Start()
     {
-        UpdateComponentsDisplay(true);
+        UpdateComponentsDisplay();
         componentListBeingEdited = houseConfig.components;
+    }
+
+    public void SetHeatColdFilter(int value)
+    {
+        heating_Cooling_Combined_Filter = value;
+        for (int i = 0; i < filterButtons.Length; i++)
+        {
+            filterButtons[i].Border.Enabled = (i == heating_Cooling_Combined_Filter);
+        }
+        UpdateComponentsDisplay();
+    }
+
+    public void SetShowWholeHomeFilter(bool value)
+    {
+        showWholeHomeFilter = value;
     }
 
     public void UpdateComponentHeaderLabel(string roomDisplayName)
@@ -62,11 +82,11 @@ public class ComponentSelectionController : MonoBehaviour
         }
     }
 
-    public void UpdateComponentsDisplay(bool isWholeHomeButton)
+    public void UpdateComponentsDisplay()
     {
         List<ClimateControlComponent> returnList;
         List<ClimateControlComponent> enumerationList;
-        if (isWholeHomeButton)
+        if (showWholeHomeFilter)
         {
             returnList = programManager.components.Where(s => s.isWholeHomeComponent == true).ToList();
         }
@@ -94,9 +114,30 @@ public class ComponentSelectionController : MonoBehaviour
                 }
             }
         }
+        returnList = ApplyHeatCoolFilter(returnList);
         CreateComponentButtons(returnList);
     }
 
+    private List<ClimateControlComponent> ApplyHeatCoolFilter(List<ClimateControlComponent> returnList)
+    {
+        switch (heating_Cooling_Combined_Filter)
+        {
+            case 1:
+                //heating filter
+                returnList = returnList.Where(s => s.isHeating == true).ToList();
+                break;
+
+            case 2:
+                //cooling filter
+                returnList = returnList.Where(s => s.isCooling == true).ToList();
+                break;
+
+            default:
+                break;
+        }
+
+        return returnList;
+    }
 
     private void CreateComponentButtons(List<ClimateControlComponent> componentListArg)
     {
@@ -135,7 +176,7 @@ public class ComponentSelectionController : MonoBehaviour
             var textBlock = g.GetComponentInChildren<TextBlock>();
             if (textBlock != null)
             {
-                string labelText = "";
+                string labelText;
                 if (houseConfig.GetRoomByID(i).isBathroom)
                 {
                     labelText = $"Bathroom {bathroomCountLabel++}";
