@@ -11,7 +11,6 @@ using Unity.VisualScripting;
 
 public class GetDatabase : MonoBehaviour
 {
-    HVACDatabase database = new HVACDatabase();
 
     [SerializeField]
     TMP_Text HVACName;
@@ -27,92 +26,18 @@ public class GetDatabase : MonoBehaviour
     TMP_Text HVACCons;
     [SerializeField]
     TMP_Text HVACCost;
-
     public UIBlock2D block;
     string folderPath;
     string fileImage;
 
 
-    public void GetWindowAC()
+    public void GetHVACSystem(string HVACName)
     {
-        ImageLoader("window-ac-unit");
-        GetUnit("Window AC units");
-    }
-    public void GetPortableAC()
-    {
-        ImageLoader("portable-air-condition");
-        GetUnit("Portable Air Conditioners");
-    }
-
-    public void GetDuctlessMiniSplitAC()
-    {
-        ImageLoader("ductless-mini-split-air-conditioning-systems");
-        GetUnit("Ductless Mini Split AC");
-    }
-    public void GetCentralACSystem()
-    {
-        ImageLoader("central-air-conditioning-system");
-        GetUnit("Central AC System");
-    }
-    public void GetElectricFurnace()
-    {
-        ImageLoader("electric-furnace");
-        GetUnit("Electric Furnace");
-    }
-    public void GetGasFurnace()
-    {
-        ImageLoader("gas-furnace");
-        GetUnit("Gas Furnace");
-    }
-    public void GetOilFurnace()
-    {
-        ImageLoader("oil furnace");
-        GetUnit("Oil Furnace");
-    }
-    public void GetGasBoiler()
-    {
-        ImageLoader("gas-boiler");
-        GetUnit("Gas Boiler");
-    }
-    public void GetHeatPump()
-    {
-        ImageLoader("heat-pump");
-        GetUnit("Heat Pump");
-    }
-    public void GetMicroCombinedHeatandPower()
-    {
-        ImageLoader("micro-combined-heat-and-power");
-        GetUnit("Micro Combined Heat and Power");
-    }
-    public void GetElectricRadiantFloorHeating()
-    {
-        ImageLoader("electric-radiant-floor-heating");
-        GetUnit("Electric Radiant Floor Heating");
-    }
-    public void GetGasFiredSpaceHeaters()
-    {
-        ImageLoader("gas-fired-space-heaters");
-        GetUnit("Gas Fired Space Heaters");
-    }
-    public void GetElectricSpaceHeaters()
-    {
-        ImageLoader("electric-space-heaters");
-        GetUnit("Electric Space Heaters");
-    }
-    public void GetWoodBurningStoves()
-    {
-        ImageLoader("wood-burning-stoves");
-        GetUnit("Wood Burning Stoves");
-    }
-    public void GetFireplaces()
-    {
-        ImageLoader("fireplaces");
-        GetUnit("Fireplaces");
-    }
-    public void GetDuctlessMiniSplitSystem()
-    {
-        ImageLoader("ductless-mini-split-air-conditioning-systems");
-        GetUnit("Ductless Mini Split System");
+        ImageLoader(HVACName);
+        //ClimateControlComponent unit = new ClimateControlComponent("Window AC Unit", "Description", "Pros", "Cons", new string[] { "string1", "string2" }, false, false, false, false, 0.0f, 0.0f, 0.0f, 0.0f,
+        //            ClimateControlComponentTypes.Heater, UtilityType.Electric);
+        ClimateControlComponent unit = new ClimateControlComponent("Generic AC", "description", "pros", "cons", ClimateControlComponentTypes.AirConditioner, false, false, true, 0f, 500f, 0f, 0.015f, ClimateControlComponentTypes.AirConditioner, UtilityType.Electric, (10f, 15f));
+        DisplayUnit(unit);
     }
 
     public void ImageLoader(string fileName)
@@ -133,18 +58,14 @@ public class GetDatabase : MonoBehaviour
         block.SetImage(tex);
     }
 
-    public void GetUnit(string HVACUnit)
+    public void DisplayUnit(ClimateControlComponent unit)
     {
-        List<HVACType> ACData = database.findAll();
-        HVACType ACUnit = ACData.Find(n => n.Name == HVACUnit);
-        Debug.Log(ACUnit.Name);
-        HVACName.text = ACUnit.Name;
-        HVACUtilType.text = ACUnit.UtilityType;
-        HVACPrereq.text = ACUnit.Prerequisites;
-        HVACCost.text = ACUnit.ApproximateCost;
-        HVACDescription.text = ACUnit.Description;
-        HVACPros.text = ACUnit.Pros;
-        HVACCons.text = ACUnit.Cons;
+        HVACName.text = unit.componentName;
+        HVACUtilType.text = unit.utilityType.ToString();
+        //HVACPrereq.text = string.Join(", ", unit.PrerequisiteComponents);
+        HVACCost.text = "0";
+        HVACDescription.text = unit.description;
+        HVACPros.text = unit.pros;
+        HVACCons.text = unit.cons;
     }
-
 }
