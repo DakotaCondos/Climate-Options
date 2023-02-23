@@ -5,11 +5,11 @@ using UnityEngine;
 public class ComponentInfoButton : MonoBehaviour
 {
     ComponentInfoPanel componentInfoPanel;
-    public  ClimateControlComponent component;
+    public ClimateControlComponent component;
 
     private void Awake()
     {
-        componentInfoPanel = FindObjectOfType<ComponentInfoPanel>();
+        componentInfoPanel = FindObjectOfType<ComponentInfoPanel>(true);
     }
 
     public void ShowComponentInfo()
