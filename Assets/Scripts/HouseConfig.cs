@@ -27,4 +27,15 @@ public class HouseConfig : MonoBehaviour
         }
         return null;
     }
+
+    public List<ClimateControlComponent> GetAllComponents()
+    {
+        List<ClimateControlComponent> allComponents = new(components);
+        foreach (RoomConfig room in rooms)
+        {
+            allComponents.AddRange(room.components);
+        }
+
+        return allComponents;
+    }
 }

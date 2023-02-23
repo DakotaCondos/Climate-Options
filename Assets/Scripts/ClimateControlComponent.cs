@@ -20,7 +20,7 @@ public class ClimateControlComponent
     public ClimateControlComponentTypes componentType;
     public UtilityType utilityType;
     public (float, float) priceRange;
-
+    public string imagePath = "";
     public ClimateControlComponent()
     {
         this.componentName = "TestComponent";

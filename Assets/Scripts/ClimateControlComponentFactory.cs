@@ -18,20 +18,6 @@ public class ClimateControlComponentFactory : MonoBehaviour
         File.WriteAllText($"{jsonFileLocations}{fileName}.json", json);
     }
 
-    //public void SaveDummyComponent()
-    //{
-    //    ClimateControlComponent component = new("Generic AC", "description", "pros", "cons", new List<ClimateControlComponentTypes>(), false, false, true, 0f, 500f, 0f, 0.015f, ClimateControlComponentTypes.AirConditioner, UtilityType.Electric, (10f, 15f));
-    //    SaveObjectToJsonFile(component, component.componentName);
-    //    components.Add(component);
-    //    print("done");
-    //}
-
-    //public void LoadDummyComponent()
-    //{
-    //    ClimateControlComponent component = LoadComponentFromJson("Generic AC");
-    //    if (component != null) { components.Add(component); }
-    //}
-
     public ClimateControlComponent LoadComponentFromJson(string fileName)
     {
         if (File.Exists(fileName))
