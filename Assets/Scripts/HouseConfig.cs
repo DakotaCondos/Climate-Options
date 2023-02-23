@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
 
-public class HouseConfig
+public class HouseConfig : MonoBehaviour
 {
     public List<RoomConfig> rooms;
     public List<ClimateControlComponent> components;
@@ -25,5 +26,16 @@ public class HouseConfig
                 return roomConfig;
         }
         return null;
+    }
+
+    public List<ClimateControlComponent> GetAllComponents()
+    {
+        List<ClimateControlComponent> allComponents = new(components);
+        foreach (RoomConfig room in rooms)
+        {
+            allComponents.AddRange(room.components);
+        }
+
+        return allComponents;
     }
 }

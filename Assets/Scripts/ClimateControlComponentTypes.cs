@@ -3,8 +3,10 @@
     CentralAirConditioner,
     CentralHeater,
     CentralBoiler,
-    Ducting,
+    CentralDucting,
     Heater,
     AirConditioner,
-    Thermostat
+    Thermostat,
+    None,
+    AirDuct
 }

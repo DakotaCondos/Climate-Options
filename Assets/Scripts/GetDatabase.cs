@@ -36,7 +36,7 @@ public class GetDatabase : MonoBehaviour
         ImageLoader(HVACName);
         //ClimateControlComponent unit = new ClimateControlComponent("Window AC Unit", "Description", "Pros", "Cons", new string[] { "string1", "string2" }, false, false, false, false, 0.0f, 0.0f, 0.0f, 0.0f,
         //            ClimateControlComponentTypes.Heater, UtilityType.Electric);
-        ClimateControlComponent unit = new ClimateControlComponent("Generic AC", "description", "pros", "cons", new ClimateControlComponentTypes[0], false, false, true, 0f, 500f, 0f, 0.015f, ClimateControlComponentTypes.AirConditioner, UtilityType.Electric);
+        ClimateControlComponent unit = new ClimateControlComponent("Generic AC", "description", "pros", "cons", ClimateControlComponentTypes.AirConditioner, false, false, true, 0f, 500f, 0f, 0.015f, ClimateControlComponentTypes.AirConditioner, UtilityType.Electric, (10f, 15f));
         DisplayUnit(unit);
     }
 
@@ -60,12 +60,12 @@ public class GetDatabase : MonoBehaviour
 
     public void DisplayUnit(ClimateControlComponent unit)
     {
-        HVACName.text = unit.Name;
-        HVACUtilType.text = unit.UtilityType.ToString();
+        HVACName.text = unit.componentName;
+        HVACUtilType.text = unit.utilityType.ToString();
         //HVACPrereq.text = string.Join(", ", unit.PrerequisiteComponents);
         HVACCost.text = "0";
-        HVACDescription.text = unit.Description;
-        HVACPros.text = unit.Pros;
-        HVACCons.text = unit.Cons;
+        HVACDescription.text = unit.description;
+        HVACPros.text = unit.pros;
+        HVACCons.text = unit.cons;
     }
 }

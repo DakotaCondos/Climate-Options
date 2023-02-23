@@ -1,48 +1,54 @@
 ﻿using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 [Serializable]
 public class ClimateControlComponent
 {
-    private readonly string name;
-    private readonly string description;
-    private readonly string pros;
-    private readonly string cons;
-    private readonly ClimateControlComponentTypes[] prerequisiteComponentType;
-    private readonly bool isWholeHomeComponent;
-    private readonly bool isHeating;
-    private readonly bool isCooling;
-    private readonly float heatingBTUOutput;
-    private readonly float coolingBTUOutput;
-    private readonly float heatingCostPerBTU;
-    private readonly float coolingCostPerBTU;
-    private readonly ClimateControlComponentTypes componentType;
-    private readonly UtilityType utilityType;
-
-    public string Name => name;
-    public string Description => description;
-    public string Pros => pros;
-    public string Cons => cons;
-    public bool IsWholeHomeComponent => isWholeHomeComponent;
-    public bool IsHeating { get => isHeating; }
-    public bool IsCooling { get => isCooling; }
-    public float HeatingBTUOutput { get => heatingBTUOutput; }
-    public float CoolingBTUOutput { get => coolingBTUOutput; }
-    public float HeatingCostPerBTU { get => heatingCostPerBTU; }
-    public float CoolingCostPerBTU { get => coolingCostPerBTU; }
-    public ClimateControlComponentTypes[] PrerequisiteComponentType { get => prerequisiteComponentType; }
-    public ClimateControlComponentTypes ComponentType => componentType;
-    public UtilityType UtilityType => utilityType;
+    public string componentName;
+    public string description;
+    public string pros;
+    public string cons;
+    public ClimateControlComponentTypes prerequisiteComponentType;
+    public bool isWholeHomeComponent;
+    public bool isHeating;
+    public bool isCooling;
+    public float heatingBTUOutput;
+    public float coolingBTUOutput;
+    public float heatingCostPerBTU;
+    public float coolingCostPerBTU;
+    public ClimateControlComponentTypes componentType;
+    public UtilityType utilityType;
+    public (float, float) priceRange;
+    public string imagePath = "";
+    public ClimateControlComponent()
+    {
+        this.componentName = "TestComponent";
+        this.description = "Description of TestComponent";
+        this.pros = "Pros of TestComponent";
+        this.cons = "Cons of TestComponent";
+        this.prerequisiteComponentType = ClimateControlComponentTypes.None;
+        this.isWholeHomeComponent = false;
+        this.isHeating = false;
+        this.isCooling = false;
+        this.heatingBTUOutput = 0;
+        this.coolingBTUOutput = 0;
+        this.heatingCostPerBTU = 0;
+        this.coolingCostPerBTU = 0;
+        this.componentType = ClimateControlComponentTypes.None;
+        this.utilityType = UtilityType.Electric;
+        this.priceRange = (10.0f, 100.0f);
+    }
 
     public ClimateControlComponent(
         string name, string description, string pros, string cons,
-        ClimateControlComponentTypes[] prerequisiteComponentType,
+        ClimateControlComponentTypes prerequisiteComponentType,
         bool isWholeHomeComponent, bool isHeating, bool isCooling,
         float heatingBTUOutput, float coolingBTUOutput, float heatingCostPerBTU,
         float coolingCostPerBTU, ClimateControlComponentTypes componentType,
-        UtilityType utilityType)
+        UtilityType utilityType, (float, float) priceRange)
     {
-        this.name = name;
+        this.componentName = name;
         this.description = description;
         this.pros = pros;
         this.cons = cons;
@@ -56,5 +62,8 @@ public class ClimateControlComponent
         this.coolingCostPerBTU = coolingCostPerBTU;
         this.componentType = componentType;
         this.utilityType = utilityType;
+        this.priceRange = priceRange;
     }
+
+
 }
