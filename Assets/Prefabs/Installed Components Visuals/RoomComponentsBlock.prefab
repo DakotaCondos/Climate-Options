@@ -696,7 +696,7 @@ MonoBehaviour:
   layout:
     Size:
       X:
-        Raw: 0.98172516
+        Raw: 1
         Type: 1
       Y:
         Raw: 72.284004
@@ -884,7 +884,7 @@ MonoBehaviour:
       Width:
         Raw: 1
         Type: 0
-      Enabled: 1
+      Enabled: 0
       Direction: 2
     Shadow:
       Color: {r: 0, g: 0, b: 0, a: 0.5}
@@ -927,4 +927,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomNameLabel: {fileID: 1888986751140274099}
   components: []
+  displayedPrefabs: []
   prefab: {fileID: 3056437428096406537, guid: a658eade7da2c8c46bae704fd026df8a, type: 3}
