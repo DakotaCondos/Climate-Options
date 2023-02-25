@@ -51,8 +51,8 @@ public class ProgramManager : MonoBehaviour
 
     private void OnLoadingComplete()
     {
-        //sceneController.LoadSceneName("HomeScene"); <= put this back after testing phase is done
-        sceneController.LoadSceneName("ComponentSelectionScene_dakota");
+        sceneController.LoadSceneName("HomeScene"); //  <= put this back after testing phase is done
+        //sceneController.LoadSceneName("ComponentSelectionScene_dakota");
     }
 
     void ProcessJsonFiles()
