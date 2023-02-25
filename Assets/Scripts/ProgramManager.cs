@@ -38,8 +38,7 @@ public class ProgramManager : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
         }
-
-        componentsFilePath = Path.GetDirectoryName(componentsFilePath);
+        componentsFilePath = $"{Application.streamingAssetsPath}/Components/";
         factory = GetComponent<ClimateControlComponentFactory>();
         sceneController = GetComponent<SceneController>();
         ProcessJsonFiles();
