@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class ProgramManager : MonoBehaviour
 {
-    [SerializeField] string componentsFilePath = $"{Application.streamingAssetsPath}/Components/";
+    [SerializeField] string componentsFilePath;
     [SerializeField] TextBlock loadingActionText;
     public List<ClimateControlComponent> components = new List<ClimateControlComponent>();
     public ClimateControlComponentFactory factory;
@@ -39,6 +39,7 @@ public class ProgramManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
 
+        componentsFilePath = Path.GetDirectoryName(componentsFilePath);
         factory = GetComponent<ClimateControlComponentFactory>();
         sceneController = GetComponent<SceneController>();
         ProcessJsonFiles();
