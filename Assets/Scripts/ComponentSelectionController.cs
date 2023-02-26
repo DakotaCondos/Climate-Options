@@ -42,13 +42,13 @@ public class ComponentSelectionController : MonoBehaviour
 
 
         // ---------------- Demo house only DELETE ------------------
-        GameObject g = new();
-        g.AddComponent<HouseConfig>();
-        houseConfig = g.GetComponent<HouseConfig>();
-        for (int i = 0; i < 8; i++)
-        {
-            houseConfig.rooms.Add(new RoomConfig(i, (i > 5)));
-        }
+        //GameObject g = new();
+        //g.AddComponent<HouseConfig>();
+        //houseConfig = g.GetComponent<HouseConfig>();
+        //for (int i = 0; i < 8; i++)
+        //{
+        //    houseConfig.rooms.Add(new RoomConfig(i, (i > 5)));
+        //}
         // ---------------------------------------------------------
 
 

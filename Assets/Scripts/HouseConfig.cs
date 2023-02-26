@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class HouseConfig : MonoBehaviour
+[Serializable]
+public class HouseConfig
 {
     public List<RoomConfig> rooms;
     public List<ClimateControlComponent> components;

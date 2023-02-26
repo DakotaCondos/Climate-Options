@@ -29,19 +29,19 @@ public class FirebaseDataController : MonoBehaviour
 
         InitializeFirebase();
         Debug.Log(auth.CurrentUser.UserId);
-        HouseConfig houseConfig = gameObject.AddComponent<HouseConfig>();
+        HouseConfig houseConfig =new HouseConfig(rooms, components);
         UtilityConfig utilityConfig = new UtilityConfig(new UtilityRates(2, 2, 2, 2), 2);
         ClimateControlSystemConfig climateControlSystemConfig1 = new ClimateControlSystemConfig("Config1", houseConfig, utilityConfig);
         ClimateControlSystemConfig climateControlSystemConfig2 = new ClimateControlSystemConfig("Config2", houseConfig, utilityConfig);
-        //StartCoroutine(SaveConfig(climateControlSystemConfig1));
+        StartCoroutine(SaveConfig(climateControlSystemConfig1));
         //StartCoroutine(SaveConfig(climateControlSystemConfig2));
         //StartCoroutine(GetConfig(climateControlSystemConfig1.name));
-        LoadAllConfigName();
+        //LoadAllConfigName();
     }
     public IEnumerator SaveConfig(ClimateControlSystemConfig climateControlSystemConfig)
     {
-        //var configAsJson = Newtonsoft.Json.JsonConvert.SerializeObject(climateControlSystemConfig);
-        var configAsJson = JsonUtility.ToJson(climateControlSystemConfig);
+        var configAsJson = Newtonsoft.Json.JsonConvert.SerializeObject(climateControlSystemConfig);
+        //var configAsJson = JsonUtility.ToJson(climateControlSystemConfig);
         Debug.Log(configAsJson);
         var DBTask = database.Child(auth.CurrentUser.UserId).Child(climateControlSystemConfig.name).SetRawJsonValueAsync(configAsJson);
         yield return new WaitUntil(predicate: () => DBTask.IsCompleted);

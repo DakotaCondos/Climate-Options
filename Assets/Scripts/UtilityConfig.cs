@@ -1,4 +1,7 @@
-﻿public class UtilityConfig
+﻿using System;
+
+[Serializable]
+public class UtilityConfig
 {
     public UtilityRates utilityrates;
     public int zip;
