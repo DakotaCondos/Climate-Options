@@ -27,6 +27,8 @@ public class ComponentSelectionController : MonoBehaviour
 
     public bool showWholeHomeFilter = true;
 
+    [SerializeField] InstalledComponentsController installedComponentsController;
+
 
 
     public ProgramManager programManager;
@@ -116,6 +118,12 @@ public class ComponentSelectionController : MonoBehaviour
         }
         returnList = ApplyHeatCoolFilter(returnList);
         CreateComponentButtons(returnList);
+        RedrawInstalledComponents();
+    }
+
+    public void RedrawInstalledComponents()
+    {
+        installedComponentsController.RedrawComponents();
     }
 
     private List<ClimateControlComponent> ApplyHeatCoolFilter(List<ClimateControlComponent> returnList)

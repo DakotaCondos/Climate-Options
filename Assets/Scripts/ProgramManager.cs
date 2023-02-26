@@ -6,11 +6,13 @@ using UnityEngine;
 
 public class ProgramManager : MonoBehaviour
 {
-    [SerializeField] string componentsFilePath = $"{Application.streamingAssetsPath}/Components/";
+    [SerializeField] string componentsFilePath;
     [SerializeField] TextBlock loadingActionText;
-    public List<ClimateControlComponent> components = new List<ClimateControlComponent>();
+    public List<ClimateControlComponent> components = new();
     public ClimateControlComponentFactory factory;
     public SceneController sceneController;
+
+    public ClimateControlSystemConfig systemConfig;
 
 
     private static ProgramManager instance;
@@ -38,10 +40,11 @@ public class ProgramManager : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
         }
-
+        componentsFilePath = $"{Application.streamingAssetsPath}/Components/";
         factory = GetComponent<ClimateControlComponentFactory>();
         sceneController = GetComponent<SceneController>();
         ProcessJsonFiles();
+        systemConfig = new();
     }
 
     private void Start()
@@ -51,8 +54,8 @@ public class ProgramManager : MonoBehaviour
 
     private void OnLoadingComplete()
     {
-        //sceneController.LoadSceneName("HomeScene"); <= put this back after testing phase is done
-        sceneController.LoadSceneName("ComponentSelectionScene_dakota");
+        sceneController.LoadSceneName("HomeScene"); //  <= put this back after testing phase is done
+        //sceneController.LoadSceneName("ComponentSelectionScene_dakota");
     }
 
     void ProcessJsonFiles()
@@ -78,4 +81,6 @@ public class ProgramManager : MonoBehaviour
             }
         }
     }
+
+
 }

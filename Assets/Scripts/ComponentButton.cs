@@ -25,6 +25,7 @@ public class ComponentButton : MonoBehaviour
         if (!list.Contains(component))
         {
             list.Add(component);
+            componentSelectionController.RedrawInstalledComponents();
         }
     }
 

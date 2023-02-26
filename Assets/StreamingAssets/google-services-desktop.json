@@ -1,9 +1,10 @@
 {
   "project_info": {
-    "project_number": "154982748260",
-    "project_id": "cscd488-f516a",
-    "storage_bucket": "cscd488-f516a.appspot.com"
-  },
+      "project_number": "154982748260",
+      "firebase_url": "https://cscd488-f516a-default-rtdb.firebaseio.com",
+      "project_id": "cscd488-f516a",
+      "storage_bucket": "cscd488-f516a.appspot.com"
+    },
   "client": [
     {
       "client_info": {
