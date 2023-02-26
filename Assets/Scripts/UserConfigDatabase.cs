@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using Firebase.Database;
 using Firebase.Auth;
-using Newtonsoft.Json.Linq;
 
 
 public class UserConfigDatabase : MonoBehaviour
@@ -24,8 +23,10 @@ public class UserConfigDatabase : MonoBehaviour
     public void seed()
     {
         List<RoomConfig> rooms = new List<RoomConfig>();
-        List<ClimateControlComponent> components = new List<ClimateControlComponent>();
-        components.Add(new ClimateControlComponent("Generic AC", "description", "pros", "cons", new List<ClimateControlComponentTypes>(), false, false, true, 0f, 500f, 0f, 0.015f, ClimateControlComponentTypes.AirConditioner, UtilityType.Electric, (10f, 15f)));
+        List<ClimateControlComponent> components = new List<ClimateControlComponent>
+        {
+            new ClimateControlComponent("Generic AC", "description", "pros", "cons", new List<ClimateControlComponentTypes>(), false, false, true, 0f, 500f, 0f, 0.015f, ClimateControlComponentTypes.AirConditioner, UtilityType.Electric, (10f, 15f))
+        };
 
         rooms.Add(new RoomConfig(components, 1, 1, false));
 
