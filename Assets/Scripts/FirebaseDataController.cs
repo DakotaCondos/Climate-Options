@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using Firebase.Auth;
 using Firebase.Database;
 using UnityEngine;
+using Newtonsoft.Json.Linq;
 
 public class FirebaseDataController : MonoBehaviour
 {
     public DatabaseReference database;
     public FirebaseAuth auth;
+
+    public ClimateControlSystemConfigFactory testConfigFactory;
+    public ClimateControlSystemConfig saveConfig;
 
     void Awake()
     {
@@ -22,8 +26,10 @@ public class FirebaseDataController : MonoBehaviour
     public void seed()
     {
         List<RoomConfig> rooms = new List<RoomConfig>();
-        List<ClimateControlComponent> components = new List<ClimateControlComponent>();
-        components.Add(new ClimateControlComponent("Generic AC", "description", "pros", "cons", ClimateControlComponentTypes.AirConditioner, false, false, true, 0f, 500f, 0f, 0.015f, ClimateControlComponentTypes.AirConditioner, UtilityType.Electric, (10f, 15f)));
+        List<ClimateControlComponent> components = new List<ClimateControlComponent>
+        {
+            new ClimateControlComponent("Generic AC", "description", "pros", "cons", ClimateControlComponentTypes.AirConditioner, false, false, true, 0f, 500f, 0f, 0.015f, ClimateControlComponentTypes.AirConditioner, UtilityType.Electric, (10f, 15f))
+        };
 
         rooms.Add(new RoomConfig(components, 1, 1, false));
 
@@ -33,15 +39,15 @@ public class FirebaseDataController : MonoBehaviour
         UtilityConfig utilityConfig = new UtilityConfig(new UtilityRates(2, 2, 2, 2), 2);
         ClimateControlSystemConfig climateControlSystemConfig1 = new ClimateControlSystemConfig("Config1", houseConfig, utilityConfig);
         ClimateControlSystemConfig climateControlSystemConfig2 = new ClimateControlSystemConfig("Config2", houseConfig, utilityConfig);
-        //StartCoroutine(SaveConfig(climateControlSystemConfig1));
+        StartCoroutine(SaveConfig(climateControlSystemConfig1));
         //StartCoroutine(SaveConfig(climateControlSystemConfig2));
         //StartCoroutine(GetConfig(climateControlSystemConfig1.name));
-        LoadAllConfigName();
+        //LoadAllConfigName();
     }
     public IEnumerator SaveConfig(ClimateControlSystemConfig climateControlSystemConfig)
     {
-        //var configAsJson = Newtonsoft.Json.JsonConvert.SerializeObject(climateControlSystemConfig);
-        var configAsJson = JsonUtility.ToJson(climateControlSystemConfig);
+        var configAsJson = Newtonsoft.Json.JsonConvert.SerializeObject(climateControlSystemConfig);
+        //var configAsJson = JsonUtility.ToJson(climateControlSystemConfig);
         Debug.Log(configAsJson);
         var DBTask = database.Child(auth.CurrentUser.UserId).Child(climateControlSystemConfig.name).SetRawJsonValueAsync(configAsJson);
         yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
@@ -62,8 +68,14 @@ public class FirebaseDataController : MonoBehaviour
         }
         else
         {
-            DataSnapshot dataSnapshot = DBTask.Result;
-            Debug.Log(dataSnapshot.GetRawJsonValue());
+            Debug.Log("Inside of GetConfig. Start of else statement.");
+            var rawSnapShot = DBTask.Result;
+            Debug.Log($"RawSnapShot{rawSnapShot.ToString()}");
+            var dataSnapshot = DBTask.Result.GetRawJsonValue();
+            Debug.Log(dataSnapshot);
+            saveConfig = testConfigFactory.LoadConfigFromJson(dataSnapshot);
+            var test = "test";
+            //Debug.Log(saveConfig.name);
         }
     }
 
