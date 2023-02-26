@@ -15,6 +15,7 @@ public class LoginUIController : MonoBehaviour
     IEnumerator PerformDelayedAction()
     {
         yield return new WaitForSeconds(delayTime);
+        print("reached!");
         LoadNextScene();
     }
 
