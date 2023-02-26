@@ -1200,6 +1200,7 @@ GameObject:
   - component: {fileID: 7261934153903407869}
   - component: {fileID: 7958156262636980308}
   - component: {fileID: 7958156262636980303}
+  - component: {fileID: 4302897252825533257}
   m_Layer: 0
   m_Name: ScriptsObject
   m_TagString: Untagged
@@ -1238,6 +1239,8 @@ MonoBehaviour:
   password1: {fileID: 6083803246841744616}
   password2: {fileID: 7958156261894022733}
   responseTextblock: {fileID: 2511037177930434151}
+  loginUIController: {fileID: 0}
+  registered: 0
 --- !u!114 &7958156262636980303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1251,6 +1254,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   programManager: {fileID: 0}
+--- !u!114 &4302897252825533257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3051477910746467745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af4c6ac3f67d02e4c958097c6016c182, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delayTime: 2
 --- !u!1 &5939243191256188726
 GameObject:
   m_ObjectHideFlags: 0
@@ -2949,7 +2965,7 @@ MonoBehaviour:
     LightingModel: 0
     ShadowCastingMode: 2
     ReceiveShadows: 1
-  PreviewSize: {x: 1920, y: 1115.5916, z: 0}
+  PreviewSize: {x: 1920, y: 1080.6112, z: 0}
   visuals:
     Color: {r: 0.76470596, g: 0.83921576, b: 1, a: 0.5019608}
     CornerRadius:
@@ -3015,7 +3031,7 @@ MonoBehaviour:
         scaleMode: 1
       Mode: 1
     SoftenEdges: 1
-    FillEnabled: 1
+    FillEnabled: 0
   texture: {fileID: 0}
   sprite: {fileID: 0}
 --- !u!114 &5939243191935561809
@@ -4325,13 +4341,16 @@ GameObject:
   m_Component:
   - component: {fileID: 5939243192885390525}
   - component: {fileID: 5939243192885390526}
+  - component: {fileID: 1612297795}
+  - component: {fileID: 1612297793}
+  - component: {fileID: 1612297794}
   m_Layer: 0
   m_Name: Signup_UI_Nova
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5939243192885390525
 Transform:
   m_ObjectHideFlags: 0
@@ -4365,6 +4384,200 @@ MonoBehaviour:
   invertScrolling: 1
   touchEnabled: 1
   cam: {fileID: 0}
+--- !u!114 &1612297795
+MonoBehaviour:
+  m_ObjectHideFlags: 10
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5939243192885390524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9117b6d975111c47b064a4373cc67ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1612297793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5939243192885390524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b2a531bfddefda4e85a827979d250a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  info:
+    SortingOrder: 1
+    RenderQueue: 3000
+    RenderOverOpaqueGeometry: 1
+--- !u!114 &1612297794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5939243192885390524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bed4401130c3b04193ec5a2e02ee773, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sourceID:
+    val: 0
+  layout:
+    Size:
+      X:
+        Raw: 10
+        Type: 0
+      Y:
+        Raw: 10
+        Type: 0
+      Z:
+        Raw: 0
+        Type: 0
+    Position:
+      X:
+        Raw: 0
+        Type: 0
+      Y:
+        Raw: 0
+        Type: 0
+      Z:
+        Raw: 0
+        Type: 0
+    Padding:
+      Left:
+        Raw: 0
+        Type: 0
+      Right:
+        Raw: 0
+        Type: 0
+      Bottom:
+        Raw: 0
+        Type: 0
+      Top:
+        Raw: 0
+        Type: 0
+      Front:
+        Raw: 0
+        Type: 0
+      Back:
+        Raw: 0
+        Type: 0
+    Margin:
+      Left:
+        Raw: 0
+        Type: 0
+      Right:
+        Raw: 0
+        Type: 0
+      Bottom:
+        Raw: 0
+        Type: 0
+      Top:
+        Raw: 0
+        Type: 0
+      Front:
+        Raw: 0
+        Type: 0
+      Back:
+        Raw: 0
+        Type: 0
+    SizeMinMax:
+      X:
+        Min: 0
+        Max: Infinity
+      Y:
+        Min: 0
+        Max: Infinity
+      Z:
+        Min: 0
+        Max: Infinity
+    PositionMinMax:
+      X:
+        Min: -Infinity
+        Max: Infinity
+      Y:
+        Min: -Infinity
+        Max: Infinity
+      Z:
+        Min: -Infinity
+        Max: Infinity
+    PaddingMinMax:
+      Left:
+        Min: 0
+        Max: Infinity
+      Right:
+        Min: 0
+        Max: Infinity
+      Bottom:
+        Min: 0
+        Max: Infinity
+      Top:
+        Min: 0
+        Max: Infinity
+      Front:
+        Min: 0
+        Max: Infinity
+      Back:
+        Min: 0
+        Max: Infinity
+    MarginMinMax:
+      Left:
+        Min: -Infinity
+        Max: Infinity
+      Right:
+        Min: -Infinity
+        Max: Infinity
+      Bottom:
+        Min: -Infinity
+        Max: Infinity
+      Top:
+        Min: -Infinity
+        Max: Infinity
+      Front:
+        Min: -Infinity
+        Max: Infinity
+      Back:
+        Min: -Infinity
+        Max: Infinity
+    Alignment:
+      X: 0
+      Y: 0
+      Z: 0
+    AutoSize:
+      X: 0
+      Y: 0
+      Z: 0
+    RotateSize: 0
+    AspectRatio: {x: 0, y: 0, z: 0}
+    AspectRatioAxis: 0
+  autoLayout:
+    Axis: 0
+    Spacing:
+      Raw: 0
+      Type: 0
+    SpacingMinMax:
+      Min: 0
+      Max: Infinity
+    AutoSpace: 0
+    ReverseOrder: 0
+    alignment: -1
+    Offset: 0
+  visibility:
+    ZIndex: 0
+    BlockType: 0
+    Visible: 1
+  surface:
+    specularColor: {r: 1, g: 1, b: 1, a: 1}
+    param1: 0.5
+    param2: 0.5
+    LightingModel: 0
+    ShadowCastingMode: 2
+    ReceiveShadows: 1
+  PreviewSize: {x: 1, y: 1, z: 0}
 --- !u!1 &5939243193086200058
 GameObject:
   m_ObjectHideFlags: 0

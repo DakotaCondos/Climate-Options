@@ -8,9 +8,11 @@ public class ProgramManager : MonoBehaviour
 {
     [SerializeField] string componentsFilePath;
     [SerializeField] TextBlock loadingActionText;
-    public List<ClimateControlComponent> components = new List<ClimateControlComponent>();
+    public List<ClimateControlComponent> components = new();
     public ClimateControlComponentFactory factory;
     public SceneController sceneController;
+
+    public ClimateControlSystemConfig systemConfig;
 
 
     private static ProgramManager instance;
@@ -42,6 +44,7 @@ public class ProgramManager : MonoBehaviour
         factory = GetComponent<ClimateControlComponentFactory>();
         sceneController = GetComponent<SceneController>();
         ProcessJsonFiles();
+        systemConfig = new();
     }
 
     private void Start()
@@ -78,4 +81,6 @@ public class ProgramManager : MonoBehaviour
             }
         }
     }
+
+
 }

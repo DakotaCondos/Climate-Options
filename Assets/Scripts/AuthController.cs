@@ -21,12 +21,12 @@ public class AuthController : MonoBehaviour
     [SerializeField]
     public TMP_Text responseTextblock;
 
-    LoginUIController loginUIController;
+    [SerializeField] LoginUIController loginUIController;
 
     private void Awake()
     {
-        loginUIController = GetComponent<LoginUIController>();
-        
+        loginUIController = FindObjectOfType<LoginUIController>();
+
     }
 
     public void Login()
@@ -51,6 +51,7 @@ public class AuthController : MonoBehaviour
             {
                 UpdateResponse("Login Successful", Color.green);
                 print("Login Successful");
+                loginUIController.OnSuccess();
             }
         });
     }
@@ -107,6 +108,7 @@ public class AuthController : MonoBehaviour
             {
                 UpdateResponse("Account Created Successfully", Color.green);
                 Debug.Log("ResgisterUser success");
+                loginUIController.OnSuccess();
             }
         });
 
