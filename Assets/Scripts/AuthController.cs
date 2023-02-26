@@ -55,6 +55,30 @@ public class AuthController : MonoBehaviour
             }
         });
     }
+    public void LoginWithoutFeedback()
+    {
+        if (!VerifyFields()) return;
+
+        FirebaseAuth.DefaultInstance.SignInWithEmailAndPasswordAsync(email.text, password1.text).ContinueWithOnMainThread(task =>
+        {
+            if (task.IsCanceled)
+            {
+            }
+            if (task.IsFaulted)
+            {
+                Firebase.FirebaseException e =
+                task.Exception.Flatten().InnerExceptions[0] as Firebase.FirebaseException;
+
+                GetErrorMessage((AuthError)e.ErrorCode);
+
+                return;
+            }
+            if (task.IsCompleted)
+            {
+                loginUIController.OnSuccess();
+            }
+        });
+    }
 
 
     public void LoginAnonymous()
@@ -108,7 +132,7 @@ public class AuthController : MonoBehaviour
             {
                 UpdateResponse("Account Created Successfully", Color.green);
                 Debug.Log("ResgisterUser success");
-                loginUIController.OnSuccess();
+                LoginWithoutFeedback();
             }
         });
 
