@@ -5,16 +5,21 @@ using UnityEngine;
 
 public class LoginUIController : MonoBehaviour
 {
-    public GameObject resetPasswordButton;
+    public float delayTime = 2f;
 
-
-    public void DisablePasswordResetButton()
+    public void OnSuccess()
     {
-        if (resetPasswordButton is null)
-        {
-            throw new MissingReferenceException("resetPasswordButton not linked to a GameObject");
-        }
-        NovaUIBehavior novaUIBehavior = ScriptableObject.CreateInstance<NovaUIBehavior>();
-        novaUIBehavior.DisableNovaInteractableClickBehavior(resetPasswordButton);
+        StartCoroutine(PerformDelayedAction());
+    }
+
+    IEnumerator PerformDelayedAction()
+    {
+        yield return new WaitForSeconds(delayTime);
+        LoadNextScene();
+    }
+
+    public void LoadNextScene()
+    {
+        FindObjectOfType<ProgramManagerController>().LoadSceneName("HouseScene");
     }
 }
