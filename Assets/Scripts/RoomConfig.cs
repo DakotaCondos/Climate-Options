@@ -1,5 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using Newtonsoft.Json;
 
+[Serializable]
 public class RoomConfig
 {
     public List<ClimateControlComponent> components;
@@ -23,6 +26,7 @@ public class RoomConfig
         size = (isBathroom) ? defaultBathroomSize : defaultBedroomSize;
     }
 
+    [JsonConstructor]
     public RoomConfig(List<ClimateControlComponent> components, float size, int roomNumber, bool isBathroom)
     {
         this.components = components;

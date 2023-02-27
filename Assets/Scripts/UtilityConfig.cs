@@ -11,4 +11,5 @@ public class UtilityConfig
         this.utilityrates = utilityrates;
         this.zip = zip;
     }
+
 }

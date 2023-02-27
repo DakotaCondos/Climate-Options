@@ -1,13 +1,17 @@
-﻿
-using System;
+﻿using System;
+using UnityEngine;
 
 [Serializable]
 public class UtilityRates
 {
-    public float electricityPerKWH;
-    public float gasPerTherm;
-    public float oilPerGallon;
-    public float woodPerPound;
+    [SerializeField]
+    private float electricityPerKWH;
+    [SerializeField]
+    private float gasPerTherm;
+    [SerializeField]
+    private float oilPerGallon;
+    [SerializeField]
+    private float woodPerPound;
 
     public float ElectricityPerKWH { get => electricityPerKWH; }
     public float GasPerTherm { get => gasPerTherm; }

@@ -9,6 +9,8 @@ public class FirebaseDataController : MonoBehaviour
 {
     public DatabaseReference database;
     public FirebaseAuth auth;
+    //public ClimateControlSystemConfigFactory systemConfigFactory;
+    UtilRateLookup utilRateLookup = new UtilRateLookup();
 
     void Awake()
     {
@@ -22,6 +24,7 @@ public class FirebaseDataController : MonoBehaviour
 
     public void seed()
     {
+        
         List<RoomConfig> rooms = new List<RoomConfig>();
         List<ClimateControlComponent> components = new List<ClimateControlComponent>();
         components.Add(new ClimateControlComponent("Generic AC", "description", "pros", "cons", ClimateControlComponentTypes.AirConditioner, false, false, true, 0f, 500f, 0f, 0.015f, ClimateControlComponentTypes.AirConditioner, UtilityType.Electric, (10f, 15f)));
@@ -31,11 +34,14 @@ public class FirebaseDataController : MonoBehaviour
         InitializeFirebase();
         Debug.Log(auth.CurrentUser.UserId);
         HouseConfig houseConfig =new HouseConfig(rooms, components);
-        UtilityConfig utilityConfig = new UtilityConfig(new UtilityRates(2, 2, 2, 2), 2);
+        UtilityConfig utilityConfig = utilRateLookup.FindByZipcode(20);
+        //UtilityConfig utilityConfig = new UtilityConfig(new UtilityRates(2, 2, 2, 2), 2);
+        //Debug.Log(Newtonsoft.Json.JsonConvert.SerializeObject(utilityConfig));
         ClimateControlSystemConfig climateControlSystemConfig1 = new ClimateControlSystemConfig("ConfigTEST", houseConfig, utilityConfig);
-        ClimateControlSystemConfig climateControlSystemConfig2 = new ClimateControlSystemConfig("Config2", houseConfig, utilityConfig);
+        //ClimateControlSystemConfig climateControlSystemConfig2 = new ClimateControlSystemConfig("Config2", houseConfig, utilityConfig);
+
         //StartCoroutine(SaveConfig(climateControlSystemConfig1));
-        //StartCoroutine(SaveConfig(climateControlSystemConfig2));
+
         StartCoroutine(GetConfig("ConfigTEST"));
         //LoadAllConfigName();
     }
@@ -60,13 +66,16 @@ public class FirebaseDataController : MonoBehaviour
         if (DBTask.Exception != null)
         {
             Debug.LogWarning(message: "Fail");
+            yield return "FAIL";
         }
         else
         {
             var dataSnapshot = DBTask.Result.GetRawJsonValue();
-            ClimateControlSystemConfig systemConfigs = JsonUtility.FromJson<ClimateControlSystemConfig>(dataSnapshot);
+            ClimateControlSystemConfig systemConfigs = Newtonsoft.Json.JsonConvert.DeserializeObject<ClimateControlSystemConfig>(dataSnapshot);
+            //ClimateControlSystemConfig systemConfigs = systemConfigFactory.LoadConfigFromJson(dataSnapshot);
             Debug.Log(systemConfigs.utilityConfig.utilityrates.ElectricityPerKWH);
             Debug.Log(systemConfigs.houseConfig.components[0].componentName);
+            yield return systemConfigs;
         }
     }
 
