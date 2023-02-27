@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Firebase.Auth;
 using Firebase.Database;
+using Google.MiniJSON;
 using UnityEngine;
 
 public class FirebaseDataController : MonoBehaviour
@@ -31,11 +32,11 @@ public class FirebaseDataController : MonoBehaviour
         Debug.Log(auth.CurrentUser.UserId);
         HouseConfig houseConfig =new HouseConfig(rooms, components);
         UtilityConfig utilityConfig = new UtilityConfig(new UtilityRates(2, 2, 2, 2), 2);
-        ClimateControlSystemConfig climateControlSystemConfig1 = new ClimateControlSystemConfig("Config1", houseConfig, utilityConfig);
+        ClimateControlSystemConfig climateControlSystemConfig1 = new ClimateControlSystemConfig("ConfigTEST", houseConfig, utilityConfig);
         ClimateControlSystemConfig climateControlSystemConfig2 = new ClimateControlSystemConfig("Config2", houseConfig, utilityConfig);
-        StartCoroutine(SaveConfig(climateControlSystemConfig1));
+        //StartCoroutine(SaveConfig(climateControlSystemConfig1));
         //StartCoroutine(SaveConfig(climateControlSystemConfig2));
-        //StartCoroutine(GetConfig(climateControlSystemConfig1.name));
+        StartCoroutine(GetConfig("ConfigTEST"));
         //LoadAllConfigName();
     }
     public IEnumerator SaveConfig(ClimateControlSystemConfig climateControlSystemConfig)
@@ -62,8 +63,10 @@ public class FirebaseDataController : MonoBehaviour
         }
         else
         {
-            DataSnapshot dataSnapshot = DBTask.Result;
-            Debug.Log(dataSnapshot.GetRawJsonValue());
+            var dataSnapshot = DBTask.Result.GetRawJsonValue();
+            ClimateControlSystemConfig systemConfigs = JsonUtility.FromJson<ClimateControlSystemConfig>(dataSnapshot);
+            Debug.Log(systemConfigs.utilityConfig.utilityrates.ElectricityPerKWH);
+            Debug.Log(systemConfigs.houseConfig.components[0].componentName);
         }
     }
 

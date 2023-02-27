@@ -1,9 +1,13 @@
-﻿public class UtilityRates
+﻿
+using System;
+
+[Serializable]
+public class UtilityRates
 {
-    private float electricityPerKWH;
-    private float gasPerTherm;
-    private float oilPerGallon;
-    private float woodPerPound;
+    public float electricityPerKWH;
+    public float gasPerTherm;
+    public float oilPerGallon;
+    public float woodPerPound;
 
     public float ElectricityPerKWH { get => electricityPerKWH; }
     public float GasPerTherm { get => gasPerTherm; }
