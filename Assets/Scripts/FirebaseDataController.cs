@@ -29,7 +29,7 @@ public class FirebaseDataController : MonoBehaviour
 
         InitializeFirebase();
         Debug.Log(auth.CurrentUser.UserId);
-        HouseConfig houseConfig = gameObject.AddComponent<HouseConfig>();
+        HouseConfig houseConfig = new();
         UtilityConfig utilityConfig = new UtilityConfig(new UtilityRates(2, 2, 2, 2), 2);
         ClimateControlSystemConfig climateControlSystemConfig1 = new ClimateControlSystemConfig("Config1", houseConfig, utilityConfig);
         ClimateControlSystemConfig climateControlSystemConfig2 = new ClimateControlSystemConfig("Config2", houseConfig, utilityConfig);
@@ -72,7 +72,7 @@ public class FirebaseDataController : MonoBehaviour
         List<string> savedConfigNames = new List<string>();
         var DBTask = database.Child(auth.CurrentUser.UserId).GetValueAsync();
         DataSnapshot dataSnapshot = DBTask.Result;
-        if(dataSnapshot.Exists)
+        if (dataSnapshot.Exists)
         {
             foreach (var config in dataSnapshot.Children)
             {
@@ -80,7 +80,8 @@ public class FirebaseDataController : MonoBehaviour
                 Debug.Log(config.Key);
             }
         }
-        else {
+        else
+        {
             Debug.LogWarning(message: "Fail");
         }
         return savedConfigNames;
