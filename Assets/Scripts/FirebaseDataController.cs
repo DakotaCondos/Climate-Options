@@ -9,7 +9,6 @@ public class FirebaseDataController : MonoBehaviour
 {
     public DatabaseReference database;
     public FirebaseAuth auth;
-    //public ClimateControlSystemConfigFactory systemConfigFactory;
     UtilRateLookup utilRateLookup = new UtilRateLookup();
 
     void Awake()
@@ -35,20 +34,14 @@ public class FirebaseDataController : MonoBehaviour
         Debug.Log(auth.CurrentUser.UserId);
         HouseConfig houseConfig =new HouseConfig(rooms, components);
         UtilityConfig utilityConfig = utilRateLookup.FindByZipcode(20);
-        //UtilityConfig utilityConfig = new UtilityConfig(new UtilityRates(2, 2, 2, 2), 2);
-        //Debug.Log(Newtonsoft.Json.JsonConvert.SerializeObject(utilityConfig));
         ClimateControlSystemConfig climateControlSystemConfig1 = new ClimateControlSystemConfig("ConfigTEST", houseConfig, utilityConfig);
-        //ClimateControlSystemConfig climateControlSystemConfig2 = new ClimateControlSystemConfig("Config2", houseConfig, utilityConfig);
 
         //StartCoroutine(SaveConfig(climateControlSystemConfig1));
-
         StartCoroutine(GetConfig("ConfigTEST"));
-        //LoadAllConfigName();
     }
     public IEnumerator SaveConfig(ClimateControlSystemConfig climateControlSystemConfig)
     {
-        var configAsJson = Newtonsoft.Json.JsonConvert.SerializeObject(climateControlSystemConfig);
-        //var configAsJson = JsonUtility.ToJson(climateControlSystemConfig);
+        var configAsJson = JsonUtility.ToJson(climateControlSystemConfig);
         Debug.Log(configAsJson);
         var DBTask = database.Child(auth.CurrentUser.UserId).Child(climateControlSystemConfig.name).SetRawJsonValueAsync(configAsJson);
         yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
@@ -71,9 +64,7 @@ public class FirebaseDataController : MonoBehaviour
         else
         {
             var dataSnapshot = DBTask.Result.GetRawJsonValue();
-            ClimateControlSystemConfig systemConfigs = Newtonsoft.Json.JsonConvert.DeserializeObject<ClimateControlSystemConfig>(dataSnapshot);
-            //ClimateControlSystemConfig systemConfigs = systemConfigFactory.LoadConfigFromJson(dataSnapshot);
-            //Debug.Log(systemConfigs.utilityConfig.utilityrates.ElectricityPerKWH);
+            ClimateControlSystemConfig systemConfigs = JsonUtility.FromJson<ClimateControlSystemConfig>(dataSnapshot);
             Debug.Log(systemConfigs.houseConfig.components[0].componentName);
             yield return systemConfigs;
         }

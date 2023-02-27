@@ -26,7 +26,6 @@ public class RoomConfig
         size = (isBathroom) ? defaultBathroomSize : defaultBedroomSize;
     }
 
-    [JsonConstructor]
     public RoomConfig(List<ClimateControlComponent> components, float size, int roomNumber, bool isBathroom)
     {
         this.components = components;
