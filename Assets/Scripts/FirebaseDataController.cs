@@ -73,7 +73,7 @@ public class FirebaseDataController : MonoBehaviour
             var dataSnapshot = DBTask.Result.GetRawJsonValue();
             ClimateControlSystemConfig systemConfigs = Newtonsoft.Json.JsonConvert.DeserializeObject<ClimateControlSystemConfig>(dataSnapshot);
             //ClimateControlSystemConfig systemConfigs = systemConfigFactory.LoadConfigFromJson(dataSnapshot);
-            Debug.Log(systemConfigs.utilityConfig.utilityrates.ElectricityPerKWH);
+            //Debug.Log(systemConfigs.utilityConfig.utilityrates.ElectricityPerKWH);
             Debug.Log(systemConfigs.houseConfig.components[0].componentName);
             yield return systemConfigs;
         }

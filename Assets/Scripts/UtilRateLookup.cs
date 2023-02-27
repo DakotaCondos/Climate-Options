@@ -31,6 +31,5 @@ public class UtilRateLookup
         Debug.Log($"FindByZipcode: {Newtonsoft.Json.JsonConvert.SerializeObject(utilityConfig)}");
         return utilityConfig;
 
-        
     }
 }
