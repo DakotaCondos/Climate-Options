@@ -58,7 +58,7 @@ public class ComponentSelectionController : MonoBehaviour
     private void Start()
     {
         UpdateComponentsDisplay();
-        componentListBeingEdited = houseConfig.components;
+        componentListBeingEdited = houseConfig.components.components;
     }
 
     public void SetHeatColdFilter(int value)
@@ -101,7 +101,7 @@ public class ComponentSelectionController : MonoBehaviour
                 if (searchComponent.prerequisiteComponentType == ClimateControlComponentTypes.None) { continue; }
 
                 bool shouldPrune = true;
-                foreach (var houseLevelComponent in houseConfig.components)
+                foreach (var houseLevelComponent in houseConfig.components.components)
                 {
                     if (searchComponent.prerequisiteComponentType == houseLevelComponent.componentType)
                     {
@@ -171,14 +171,14 @@ public class ComponentSelectionController : MonoBehaviour
     private void CreateRoomButtons()
     {
         //Instantiate and assign buttons for each room
-        roomUIButtons = new GameObject[houseConfig.rooms.Count];
+        roomUIButtons = new GameObject[houseConfig.rooms.rooms.Count];
         int bathroomCountLabel = 1;
         for (int i = 0; i < roomUIButtons.Length; i++)
         {
             GameObject g = Instantiate(buttonPrefab, instantiateRoomButttonLocation.transform);
 
             //set RoomHelper reference to room in house
-            g.GetComponent<RoomHelper>().componentsList = houseConfig.GetRoomByID(i).components;
+            g.GetComponent<RoomHelper>().componentsList = houseConfig.GetRoomByID(i).components.components;
 
             //set TextBlock text
             var textBlock = g.GetComponentInChildren<TextBlock>();

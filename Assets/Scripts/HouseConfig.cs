@@ -5,16 +5,19 @@ using UnityEngine;
 [Serializable]
 public class HouseConfig
 {
-    public List<RoomConfig> rooms;
-    public List<ClimateControlComponent> components;
+    //public List<RoomConfig> rooms;
+    //public List<ClimateControlComponent> components;
+
+    public RoomConfigs rooms;
+    public ClimateControlComponents components;
 
     public HouseConfig()
     {
-        rooms = new List<RoomConfig>();
-        components = new List<ClimateControlComponent>();
+        rooms = new RoomConfigs(new List<RoomConfig>());
+        components = new ClimateControlComponents(new List<ClimateControlComponent>());
     }
 
-    public HouseConfig(List<RoomConfig> rooms, List<ClimateControlComponent> components)
+    public HouseConfig(RoomConfigs rooms, ClimateControlComponents components)
     {
         this.rooms = rooms;
         this.components = components;
@@ -22,7 +25,7 @@ public class HouseConfig
 
     public RoomConfig GetRoomByID(int roomID)
     {
-        foreach (RoomConfig roomConfig in rooms)
+        foreach (RoomConfig roomConfig in rooms.rooms)
         {
             if (roomConfig.roomNumber == roomID)
                 return roomConfig;
@@ -30,12 +33,12 @@ public class HouseConfig
         return null;
     }
 
-    public List<ClimateControlComponent> GetAllComponents()
+    public ClimateControlComponents GetAllComponents()
     {
-        List<ClimateControlComponent> allComponents = new(components);
-        foreach (RoomConfig room in rooms)
+        ClimateControlComponents allComponents = components;
+        foreach (RoomConfig room in rooms.rooms)
         {
-            allComponents.AddRange(room.components);
+            allComponents.components.AddRange(room.components.components);
         }
 
         return allComponents;

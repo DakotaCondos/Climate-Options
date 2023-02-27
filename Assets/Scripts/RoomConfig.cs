@@ -1,8 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
+[Serializable]
 public class RoomConfig
 {
-    public List<ClimateControlComponent> components;
+    public ClimateControlComponents components;
     public int roomNumber;
     public bool isBathroom = false;
 
@@ -16,14 +18,14 @@ public class RoomConfig
 
     public RoomConfig(int roomNumber, bool isBathroom)
     {
-        components = new List<ClimateControlComponent>();
+        components = new ClimateControlComponents(new List<ClimateControlComponent>());
         this.roomNumber = roomNumber;
         this.isBathroom = isBathroom;
 
         size = (isBathroom) ? defaultBathroomSize : defaultBedroomSize;
     }
 
-    public RoomConfig(List<ClimateControlComponent> components, float size, int roomNumber, bool isBathroom)
+    public RoomConfig(ClimateControlComponents components, float size, int roomNumber, bool isBathroom)
     {
         this.components = components;
         this.size = size;

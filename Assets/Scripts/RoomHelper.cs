@@ -18,7 +18,7 @@ public class RoomHelper : MonoBehaviour
     {
         if (isWholeHomeButton)
         {
-            componentsList = componentSelectionController.houseConfig.components;
+            componentsList = componentSelectionController.houseConfig.components.components;
         }
     }
 

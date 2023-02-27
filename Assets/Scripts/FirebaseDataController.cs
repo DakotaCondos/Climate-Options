@@ -1,13 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Firebase.Auth;
 using Firebase.Database;
+using Google.MiniJSON;
+using UnityEditor.VersionControl;
 using UnityEngine;
 
 public class FirebaseDataController : MonoBehaviour
 {
     public DatabaseReference database;
     public FirebaseAuth auth;
+    public ClimateControlSystemConfigFactory configFactory;
 
     void Awake()
     {
@@ -21,22 +25,19 @@ public class FirebaseDataController : MonoBehaviour
 
     public void seed()
     {
-        List<RoomConfig> rooms = new List<RoomConfig>();
-        List<ClimateControlComponent> components = new List<ClimateControlComponent>();
-        components.Add(new ClimateControlComponent("Generic AC", "description", "pros", "cons", ClimateControlComponentTypes.AirConditioner, false, false, true, 0f, 500f, 0f, 0.015f, ClimateControlComponentTypes.AirConditioner, UtilityType.Electric, (10f, 15f)));
+        RoomConfigs rooms = new RoomConfigs(new List<RoomConfig>());
+        ClimateControlComponents components = new ClimateControlComponents(new List<ClimateControlComponent>());
+        components.components.Add(new ClimateControlComponent("Generic AC", "description", "pros", "cons", ClimateControlComponentTypes.AirConditioner, false, false, true, 0f, 500f, 0f, 0.015f, ClimateControlComponentTypes.AirConditioner, UtilityType.Electric, (10f, 15f)));
 
-        rooms.Add(new RoomConfig(components, 1, 1, false));
+        rooms.rooms.Add(new RoomConfig(components, 1, 1, false));
 
-        InitializeFirebase();
-        Debug.Log(auth.CurrentUser.UserId);
         HouseConfig houseConfig =new HouseConfig(rooms, components);
         UtilityConfig utilityConfig = new UtilityConfig(new UtilityRates(2, 2, 2, 2), 2);
-        ClimateControlSystemConfig climateControlSystemConfig1 = new ClimateControlSystemConfig("Config1", houseConfig, utilityConfig);
-        ClimateControlSystemConfig climateControlSystemConfig2 = new ClimateControlSystemConfig("Config2", houseConfig, utilityConfig);
-        StartCoroutine(SaveConfig(climateControlSystemConfig1));
-        //StartCoroutine(SaveConfig(climateControlSystemConfig2));
-        //StartCoroutine(GetConfig(climateControlSystemConfig1.name));
-        //LoadAllConfigName();
+        ClimateControlSystemConfig climateControlSystemConfig1 = new ClimateControlSystemConfig("ConfigTEST", houseConfig, utilityConfig);
+
+        //StartCoroutine(SaveConfig(climateControlSystemConfig1));
+        StartCoroutine(GetConfig("ConfigTEST"));
+
     }
     public IEnumerator SaveConfig(ClimateControlSystemConfig climateControlSystemConfig)
     {
@@ -58,14 +59,41 @@ public class FirebaseDataController : MonoBehaviour
         yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
         if (DBTask.Exception != null)
         {
+
             Debug.LogWarning(message: "Fail");
+            yield return "Fail";
         }
         else
         {
-            DataSnapshot dataSnapshot = DBTask.Result;
-            Debug.Log(dataSnapshot.GetRawJsonValue());
+            Debug.Log("INSIDE OF GETCONFIG");
+            var dataSnapshot = DBTask.Result;
+            Debug.Log($"dataSnapShot: {dataSnapshot.GetRawJsonValue()}");
+            //var climateControlSystemConfig = Newtonsoft.Json.JsonConvert.DeserializeObject<ClimateControlSystemConfig>(dataSnapshot.GetRawJsonValue());
+            var climateControlSystemConfig = JsonUtility.FromJson<ClimateControlSystemConfig>(dataSnapshot.GetRawJsonValue());
+            //HouseConfig houseConfig = configFactory.LoadHouseConfigFromJson(dataSnapshot);
+            Debug.Log($"RESULT TESTTT: {climateControlSystemConfig.utilityConfig.zip}");
+            Debug.Log($"OBJECT Count: {climateControlSystemConfig.houseConfig.components.components.Count}");
+            Debug.Log($"OBJECT utilityRate: {climateControlSystemConfig.utilityConfig.utilityrates.GasPerTherm}");
+
+            var test = "2";
+            //Debug.Log(config.ToString());
+            yield return climateControlSystemConfig;
         }
     }
+    //public ClimateControlSystemConfig ConvertToSystemConfig(string name)
+    //{
+    //    var configs = GetConfig(name).Current.ToString();
+    //    ClimateControlSystemConfig test = configFactory.LoadConfigFromJson(configs);
+    //    Debug.Log(test.name);
+    //    Debug.Log(test.houseConfig.components.ToString());
+
+    //    return test;
+    //}
+    //public void TestReturnObject()
+    //{
+    //    var temp = ConvertToSystemConfig("Config1");
+    //    //Debug.Log(ConvertToSystemConfig("climateControlSystemConfig1"));
+    //}
 
     public List<string> LoadAllConfigName()
     {

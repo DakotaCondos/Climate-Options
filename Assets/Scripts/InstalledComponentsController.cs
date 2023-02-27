@@ -30,16 +30,16 @@ public class InstalledComponentsController : MonoBehaviour
 
         //Instantiate Whole Home Room
         RoomComponentBlockController room = RoomBuilder("Whole Home");
-        room.components = componentSelectionController.houseConfig.components;
+        room.components = componentSelectionController.houseConfig.components.components;
         allRoomComponentBlockControllers.Add(room);
 
         //Instantiate each room, bathrooms are always at the end
         int bathroomCountLabel = 1;
-        for (int i = 0; i < componentSelectionController.houseConfig.rooms.Count; i++)
+        for (int i = 0; i < componentSelectionController.houseConfig.rooms.rooms.Count; i++)
         {
-            string label = (componentSelectionController.houseConfig.rooms.ElementAt(i).isBathroom) ? $"Bathroom {bathroomCountLabel++}" : $"Room {i}";
+            string label = (componentSelectionController.houseConfig.rooms.rooms.ElementAt(i).isBathroom) ? $"Bathroom {bathroomCountLabel++}" : $"Room {i}";
             room = RoomBuilder(label);
-            room.components = componentSelectionController.houseConfig.rooms.ElementAt(i).components;
+            room.components = componentSelectionController.houseConfig.rooms.rooms.ElementAt(i).components.components;
             allRoomComponentBlockControllers.Add(room);
         }
 
