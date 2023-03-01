@@ -92,11 +92,14 @@ public class FirebaseDataController : MonoBehaviour
         var DBTask = await database.Child(auth.CurrentUser.UserId).GetValueAsync();
 
         var dataSnapshot = DBTask.GetRawJsonValue();
-        Dictionary<string, object> dict = JsonConvert.DeserializeObject<Dictionary<string, object>>(dataSnapshot);
-
-        foreach (var item in dict)
+        if (dataSnapshot != null)
         {
-            childNames.Add(item.Key);
+            Dictionary<string, object> dict = JsonConvert.DeserializeObject<Dictionary<string, object>>(dataSnapshot);
+
+            foreach (var item in dict)
+            {
+                childNames.Add(item.Key);
+            }
         }
 
         return childNames;

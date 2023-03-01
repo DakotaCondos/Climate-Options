@@ -114,6 +114,11 @@ public class CCSCFactory : MonoBehaviour
     public async Task PrintAllSavedAsync()
     {
         List<string> systemNames = await firebaseDataController.GetAllChildNames();
+        if (systemNames is null)
+        {
+            print("List is empty");
+            return;
+        }
         foreach (var item in systemNames)
         {
             print(item);
