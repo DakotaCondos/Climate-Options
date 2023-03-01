@@ -2,6 +2,7 @@ using Nova;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ConfigurationDetailsDisplay : MonoBehaviour
@@ -9,9 +10,13 @@ public class ConfigurationDetailsDisplay : MonoBehaviour
     public ClimateControlSystemConfig climateControlSystemConfig;
     public bool isPrimaryDisplay;
 
+    [SerializeField] GameObject partCostRowPrefab;
+    [SerializeField] Transform partCostRowLocation;
+    [SerializeField] NovaExpandableContainer partCostExpandableContainer;
+
     public TextBlock ConfigName;
-    public TextBlock CostsCombined;
-    public TextBlock partsRange;
+    public TextBlock TotalCosts;
+    public TextBlock partsCostRange;
 
     private void Awake()
     {
@@ -19,6 +24,7 @@ public class ConfigurationDetailsDisplay : MonoBehaviour
         //assign climateControlSystemConfig to config from ProgramManger
 
         CreateDummyConfig(); // remove this after testing
+        DisplayConfig();
     }
 
     private void CreateDummyConfig()
@@ -35,11 +41,6 @@ public class ConfigurationDetailsDisplay : MonoBehaviour
         climateControlSystemConfig.utilityConfig = new();
     }
 
-    private void Start()
-    {
-        DisplayConfig();
-    }
-
     private void DisplayConfig()
     {
         if (climateControlSystemConfig == null)
@@ -48,8 +49,29 @@ public class ConfigurationDetailsDisplay : MonoBehaviour
             return;
         }
 
+        PartsCost();
+
         CostCalculation costCalculation = new(climateControlSystemConfig);
         ConfigName.Text = climateControlSystemConfig.name;
-        partsRange.Text = $"Parts: ${costCalculation.partsCostLow} - ${costCalculation.partsCostHigh}";
+        partsCostRange.Text = $"${costCalculation.partsCostLow} - ${costCalculation.partsCostHigh}";
+    }
+
+    private void PartsCost()
+    {
+        List<ClimateControlComponent> allComponents = new();
+        allComponents.AddRange(climateControlSystemConfig.houseConfig.components);
+        foreach (var item in climateControlSystemConfig.houseConfig.rooms)
+        {
+            allComponents.AddRange(item.components);
+        }
+
+        foreach (var item in allComponents)
+        {
+            GameObject g = Instantiate(partCostRowPrefab, partCostRowLocation);
+            PartsCostRow row = g.GetComponent<PartsCostRow>();
+            row.partName.Text = item.componentName;
+            row.partPrice.Text = $"${item.priceRange.Item1} - ${item.priceRange.Item2}";
+        }
+        partCostExpandableContainer.Initialize();
     }
 }

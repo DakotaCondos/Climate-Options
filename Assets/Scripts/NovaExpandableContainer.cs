@@ -10,74 +10,51 @@ public class NovaExpandableContainer : MonoBehaviour
     [SerializeField] UIBlock2D container;
     [SerializeField] UIBlock2D arrowIcon;
     public bool isExpanded = false;
-    public float expandDuration = 0.3f;
-    public float contractedSize = 0f;
-    private Vector3 originalSize;
+    public bool selfInitialize = true;
 
     private void Start()
     {
+        if (selfInitialize) Initialize();
+    }
+
+    public void Initialize()
+    {
         if (container != null && arrowIcon != null)
         {
-            //calculate size as if fully expanded
-            container.AutoSize.Y = AutoSize.Expand;
-            container.CalculateLayout();
-            originalSize = container.Size.Raw;
-
-            //remove AutoSize 
-            container.AutoSize.Y = AutoSize.None;
-
-            //initialize based on isExpanded
-            UpdateExpandedState(false);
+            UpdateExpandedState();
         }
     }
 
-    private void UpdateExpandedState(bool useAnimation)
+    private void UpdateExpandedState()
     {
         if (isExpanded)
         {
-            Expand(useAnimation);
+            Expand();
         }
         else
         {
-            Contract(useAnimation);
+            Contract();
         }
     }
 
-    private void Contract(bool useAnimation)
+    private void Contract()
     {
-        if (useAnimation)
-        {
-            container.ScaleSizeTo(new Vector3(originalSize.x, contractedSize, originalSize.z), expandDuration);
-        }
-        else
-        {
-            container.Size = new Vector3(originalSize.x, contractedSize, originalSize.z);
-        }
         arrowIcon.transform.rotation = Quaternion.identity;
-        container.Visible = false;
-        container.GetComponentsInChildren<UIBlock2D>().ToList().ForEach(e => { e.Visible = false; });
-        container.GetComponentsInChildren<TextBlock>().ToList().ForEach(e => { e.Visible = false; });
+        container.AutoSize.Y = AutoSize.None;
+        container.Size = new Length3(Length.Percentage(100), Length.Zero, Length.Zero);
+        container.GetComponentsInChildren<IVisible>().ToList().ForEach(i => { i.SetVisible(false); });
     }
 
-    private void Expand(bool useAnimation)
+    private void Expand()
     {
-        container.Visible = true;
-        container.GetComponentsInChildren<UIBlock2D>().ToList().ForEach(e => { e.Visible = true; });
-        container.GetComponentsInChildren<TextBlock>().ToList().ForEach(e => { e.Visible = true; });
-        if (useAnimation)
-        {
-            container.ScaleSizeTo(originalSize, expandDuration);
-        }
-        else
-        {
-            container.Size = originalSize;
-        }
         arrowIcon.transform.rotation = Quaternion.Euler(0, 0, 180);
+        container.AutoSize.Y = AutoSize.Shrink;
+        container.GetComponentsInChildren<IVisible>().ToList().ForEach(i => { i.SetVisible(true); });
     }
 
     public void ToggleExpand()
     {
         isExpanded = !isExpanded;
-        UpdateExpandedState(true);
+        UpdateExpandedState();
     }
 }
