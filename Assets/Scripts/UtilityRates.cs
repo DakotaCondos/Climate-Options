@@ -19,9 +19,9 @@ public class UtilityRates
 
     public UtilityRates()
     {
-        electricityPerKWH = 1;
-        gasPerTherm = 1;
-        oilPerGallon = 1;
-        woodPerPound = 1;
+        electricityPerKWH = 0.23f;
+        gasPerTherm = 0.147f;
+        oilPerGallon = 4.231f;
+        woodPerPound = 0.16f;
     }
 }
