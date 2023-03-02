@@ -23,7 +23,6 @@ namespace NovaSamples.UIControls
 
         public void HouseSelectionConfirm()
         {
-
             Debug.Log(bedroom);
             Debug.Log(bathroom);
             responseText.text = "";
@@ -34,18 +33,16 @@ namespace NovaSamples.UIControls
                 block.SetImage(Texture2D.blackTexture);
                 return;
             }
-            
-            //getImageFile($"1floor{bedroom}bed{bathroom}bath");
      
             getImageFile($"{bedroom + 1}bed{bathroom + 1}bath");
             ImageLoader(index);
-            var houseConfigTest = CreateHouseConfig();
+
+            HouseConfig houseConfigTest = CreateHouseConfig();
             foreach(RoomConfig rooms in houseConfigTest.rooms)
             {
                 print("Room: " + rooms.roomNumber);
                 print("Contain bathroom: " + rooms.isBathroom);
             }
-            
         }
 
         public HouseConfig CreateHouseConfig()
@@ -128,19 +125,10 @@ namespace NovaSamples.UIControls
         public void ImageLoader(int n)
         {
 
-            //Converts desired path into byte array
             byte[] pngBytes = System.IO.File.ReadAllBytes(filePaths[n]);
-
-            //Creates texture and loads byte array data to create image
             Texture2D tex = new Texture2D(2, 2);
             tex.LoadImage(pngBytes);
-
-            //Assigns the UI sprite
-            //myNameImage.sprite = fromTex;
             block.SetImage(tex);
         }
-
-
     }
-
 }
