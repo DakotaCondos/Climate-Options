@@ -13,7 +13,7 @@ namespace NovaSamples.UIControls
         public UIBlock2D block;
         [SerializeField]
         TMP_Text responseText;
-        int index = 0;
+        int index;
         string folderPath;
         string[] filePaths;
 
@@ -33,7 +33,8 @@ namespace NovaSamples.UIControls
                 block.SetImage(Texture2D.blackTexture);
                 return;
             }
-     
+
+            index = 0;
             getImageFile($"{bedroom + 1}bed{bathroom + 1}bath");
             ImageLoader(index);
 
