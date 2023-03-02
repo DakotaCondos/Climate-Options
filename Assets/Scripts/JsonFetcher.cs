@@ -1,13 +1,8 @@
-using UnityEngine;
 using System.IO;
 using System.Net;
 using System.Text;
-using System.Threading.Tasks;
-using Newtonsoft.Json.Linq;
-using System;
 
-
-public class JsonFetcher : MonoBehaviour
+public class JsonFetcher
 {
     public async void FetchJsonAsync(string url, AsyncRequestHelper helper)
     {

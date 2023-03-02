@@ -13,8 +13,8 @@ public class ClimateData : MonoBehaviour
 
     private void Awake()
     {
-        fetcher = GetComponent<JsonFetcher>();
         openWeatherMapAPIHelper = GetComponent<OpenWeatherMapAPIHelper>();
+        fetcher = new();
     }
 
 
@@ -22,13 +22,14 @@ public class ClimateData : MonoBehaviour
     {
         isDataReady = false;
         monthsCompleted = 0;
+        for (int i = 0; i < climateDataMonths.Length; i++)
+        {
+            climateDataMonths[i] = null;
+        }
+
         StartCoroutine(FetchYearClimateData(zip));
     }
 
-    public void Testing(string url)
-    {
-        GetMonthsClimateData(url, 0);
-    }
     public void GetMonthsClimateData(string url, int index)
     {
         StartCoroutine(FetchMonthClimateData(url, index));
@@ -54,8 +55,6 @@ public class ClimateData : MonoBehaviour
         ClimateDataMonth climateDataMonth = new(month, averageTemperature);
         climateDataMonths[index] = climateDataMonth;
         monthsCompleted++;
-
-        //print(climateDataMonths[index]);
     }
 
     private IEnumerator FetchYearClimateData(int zip)
@@ -79,11 +78,5 @@ public class ClimateData : MonoBehaviour
             yield return null;
         }
         isDataReady = true;
-
-        //debug show each item
-        foreach (var item in climateDataMonths)
-        {
-            print(item);
-        }
     }
 }

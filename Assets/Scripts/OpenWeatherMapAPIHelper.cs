@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class OpenWeatherMapAPIHelper : MonoBehaviour
 {
-    JsonFetcher fetcher;
+    public JsonFetcher fetcher;
     [SerializeField] private string apiKey;
     public int zip;
 
@@ -21,12 +21,9 @@ public class OpenWeatherMapAPIHelper : MonoBehaviour
         this.zip = zip;
     }
 
-    private void Awake()
-    {
-        fetcher = GetComponent<JsonFetcher>();
-    }
     private void Start()
     {
+        fetcher = new();
         if (InitializeOnStart)
         {
             GetGeographicCoordinates(zip);
@@ -52,6 +49,10 @@ public class OpenWeatherMapAPIHelper : MonoBehaviour
     private IEnumerator FetchGeographicCoordinates(string url, int zip)
     {
         AsyncRequestHelper helper = new();
+        if (fetcher == null)
+        {
+            print("Fetcher Is Null");
+        }
         fetcher.FetchJsonAsync(url, helper);
 
         // Wait for AsyncRequestHelper isProcessing to be false
@@ -68,6 +69,5 @@ public class OpenWeatherMapAPIHelper : MonoBehaviour
         longitude = (double)jsonObject["lon"];
 
         hasCoordinates = true;
-        print($"Lat: {latitude}, Lon: {longitude}"); // debug line
     }
 }

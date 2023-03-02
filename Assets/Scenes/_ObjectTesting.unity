@@ -213,7 +213,7 @@ MonoBehaviour:
         Raw: 1920
         Type: 0
       Y:
-        Raw: 1080.5123
+        Raw: 1081.0222
         Type: 0
       Z:
         Raw: 0
@@ -448,7 +448,7 @@ Transform:
   m_GameObject: {fileID: 236450313}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: -9}
-  m_LocalScale: {x: 0.0010686602, y: 0.0010686602, z: 0.0010686602}
+  m_LocalScale: {x: 0.0010681561, y: 0.0010681561, z: 0.0010681561}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7057266940654893260}
@@ -4144,7 +4144,6 @@ GameObject:
   - component: {fileID: 3443558228319984649}
   - component: {fileID: 3443558228319984662}
   - component: {fileID: 3443558228319984664}
-  - component: {fileID: 3443558228319984665}
   - component: {fileID: 3443558228319984666}
   m_Layer: 0
   m_Name: Button_Modern
@@ -4212,18 +4211,6 @@ MonoBehaviour:
   monthsCompleted: 0
   openWeatherMapAPIHelper: {fileID: 0}
   isDataReady: 0
---- !u!114 &3443558228319984665
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3443558228319984660}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ca9447b25ad3234aa839b70e932bb8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &3443558228319984666
 MonoBehaviour:
   m_ObjectHideFlags: 0
