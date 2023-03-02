@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class JSONParser
 {
-    public List<string> ParseJSON(string jsonString)
+    public static List<string> ParseJSON(string jsonString)
     {
         // List to store individual JSON objects
         List<string> jsonStrings = new List<string>();
