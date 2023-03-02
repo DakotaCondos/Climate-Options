@@ -11,15 +11,14 @@ public class UtilRateLookup : MonoBehaviour
     {
         var csvFile = File.ReadAllLines("state_rates.csv").Skip(1).Where(row => row.Length > 0).Select(Rates.ParseRow).ToList();
         int zip = Convert.ToInt32(Console.ReadLine());
-        double elect = GetElect(zip, csvFile);
-        double electric = Math.Round(elect, 2);
-        double gases = GetGas(zip, csvFile);
-        double gas = Math.Round(gases, 2);
-        double oile = GetOil(zip, csvFile);
-        double oil = Math.Round(gas, 2);
-        double woods = GetWood(zip, csvFile);
-        double wood = Math.Round(woods, 2);
-        Console.WriteLine(electric + ", " + gas + ", " + oil + ", " + wood);
+        
+        float electric = GetElect(zip, csvFile);
+        float gas = GetGas(zip, csvFile);
+        float oil = GetOil(zip, csvFile);
+        float wood = GetWood(zip, csvFile);
+       
+      
+        UtilityRates rate = new(electric, gas, oil, wood);
 
     }
 
