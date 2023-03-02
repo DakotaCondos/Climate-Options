@@ -13,63 +13,68 @@ namespace NovaSamples.UIControls
         public UIBlock2D block;
         [SerializeField]
         TMP_Text responseText;
-        [SerializeField]
-        TMP_Text houseSize;
-        int x = 0;
-
+        int index = 0;
         string folderPath;
         string[] filePaths;
-        int index = -1;
 
         int fileSize;
-        int floor = 1;
-        int bedroom = 1;
-        int bathroom = 1;
+        int bedroom;
+        int bathroom;
 
         public void HouseSelectionConfirm()
         {
 
-            Debug.Log(floor);
             Debug.Log(bedroom);
             Debug.Log(bathroom);
-            Debug.Log(houseSize.text);
             responseText.text = "";
 
-            if (floor == 1 && bedroom == 1 && bathroom == 2)
+            if (bathroom > bedroom)
             {
-                responseText.text = "Option not available.";
-                return;
-            }
-            if(floor == 2 && bedroom == 1 && bathroom == 2)
-            {
-                responseText.text = "Option not available.";
-                return;
-            }
-            if (!int.TryParse(houseSize.text, out x))
-            {
-                Debug.Log("Inside of tryparse");
-                responseText.text = "House size must be a whole number.";
+                responseText.text = "Bathroom cannot exceed bedrooms. Please try again.";
+                block.SetImage(Texture2D.blackTexture);
                 return;
             }
             
-            index = -1;
-            getImageFile($"{floor}floor{bedroom}bed{bathroom}bath");
+            //getImageFile($"1floor{bedroom}bed{bathroom}bath");
+     
+            getImageFile($"{bedroom + 1}bed{bathroom + 1}bath");
+            ImageLoader(index);
+            var houseConfigTest = CreateHouseConfig();
+            foreach(RoomConfig rooms in houseConfigTest.rooms)
+            {
+                print("Room: " + rooms.roomNumber);
+                print("Contain bathroom: " + rooms.isBathroom);
+            }
             
         }
 
-        public void FloorSelect()
+        public HouseConfig CreateHouseConfig()
         {
-            floor = Dropdown.selectedIndex + 1;
-       
-            
+            HouseConfig houseConfig = new HouseConfig();
+            List<RoomConfig> rooms = new();
+
+            for(int i = 0; i <= bedroom; i++)
+            {
+                if(i <= bathroom)
+                {
+                    rooms.Add(new RoomConfig(i, true));
+                }
+                else
+                {
+                    rooms.Add(new RoomConfig(i, false));
+                }
+            }
+            houseConfig.rooms = rooms;
+            return houseConfig;
         }
+
         public void BedroomSelect()
         {
-            bedroom = Dropdown.selectedIndex + 1;
+            bedroom = Dropdown.selectedIndex;
         }
         public void BathroomSelect()
         {
-            bathroom = Dropdown.selectedIndex + 1;
+            bathroom = Dropdown.selectedIndex;
         }
 
         public void RightClick()
@@ -107,9 +112,16 @@ namespace NovaSamples.UIControls
         }
         public int getImageFile(string folder)
         {
-            //Create an array of file paths from which to choose
-            folderPath = Application.streamingAssetsPath + $"/image/{folder}/";  //Get path of folder
-            filePaths = Directory.GetFiles(folderPath, "*.jpg"); // Get all files of type .png in this folder
+            if(Directory.Exists(Application.streamingAssetsPath + $"/image/{folder}/"))
+            {
+                folderPath = Application.streamingAssetsPath + $"/image/{folder}/";
+            }
+            else
+            {
+                folderPath = Application.streamingAssetsPath + $"/image/NotAvailable/";
+            }
+        
+            filePaths = Directory.GetFiles(folderPath, "*.jpg"); 
             fileSize = filePaths.Length;
             return fileSize;
         }

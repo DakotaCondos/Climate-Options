@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net;
 using System.Threading.Tasks;
 using Firebase.Auth;
 using Firebase.Database;
@@ -100,5 +101,11 @@ public class FirebaseDataController : MonoBehaviour
         }
 
         return childNames;
+    }
+
+    public async Task<List<int>> GetWeather(string zip)
+    {
+        WebClient client = new WebClient();
+        return null;
     }
 }
