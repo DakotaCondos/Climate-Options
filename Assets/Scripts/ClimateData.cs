@@ -1,8 +1,6 @@
 using Newtonsoft.Json.Linq;
 using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
-using UnityEditor;
 using UnityEngine;
 
 public class ClimateData : MonoBehaviour
@@ -12,21 +10,19 @@ public class ClimateData : MonoBehaviour
     public int monthsCompleted = 0;
     public OpenWeatherMapAPIHelper openWeatherMapAPIHelper;
     public bool isDataReady = false;
-    public bool initializeOnStart = true;
 
     private void Awake()
     {
         fetcher = GetComponent<JsonFetcher>();
         openWeatherMapAPIHelper = GetComponent<OpenWeatherMapAPIHelper>();
     }
-    private void Start()
-    {
-        if (initializeOnStart) { GetYearClimateData(); }
-    }
 
-    public void GetYearClimateData()
+
+    public void GetYearClimateData(int zip)
     {
-        StartCoroutine(FetchYearClimateData());
+        isDataReady = false;
+        monthsCompleted = 0;
+        StartCoroutine(FetchYearClimateData(zip));
     }
 
     public void Testing(string url)
@@ -49,7 +45,7 @@ public class ClimateData : MonoBehaviour
             yield return null;
         }
 
-        // Once isProcessing is false, update the climateDataMonthList and listSize
+        // Once isProcessing is true, pull result from helper and parse data
         string jsonString = (string)helper.results.First();
         JObject jsonObject = JObject.Parse(jsonString);
 
@@ -57,20 +53,21 @@ public class ClimateData : MonoBehaviour
         double averageTemperature = (double)jsonObject["result"]["temp"]["mean"];
         ClimateDataMonth climateDataMonth = new(month, averageTemperature);
         climateDataMonths[index] = climateDataMonth;
-
-        //debugging
         monthsCompleted++;
-        print(climateDataMonths[index]);
+
+        //print(climateDataMonths[index]);
     }
 
-    private IEnumerator FetchYearClimateData()
+    private IEnumerator FetchYearClimateData(int zip)
     {
+        openWeatherMapAPIHelper.GetGeographicCoordinates(zip);
         // Wait for OpenWeatherMapAPIHelper to have coordinates
         while (!openWeatherMapAPIHelper.hasCoordinates)
         {
             yield return null;
         }
 
+        // start requests for each months data
         for (int i = 0; i < climateDataMonths.Length; i++)
         {
             GetMonthsClimateData(openWeatherMapAPIHelper.BuildMonthlyURL(i + 1), i);
@@ -82,5 +79,11 @@ public class ClimateData : MonoBehaviour
             yield return null;
         }
         isDataReady = true;
+
+        //debug show each item
+        foreach (var item in climateDataMonths)
+        {
+            print(item);
+        }
     }
 }

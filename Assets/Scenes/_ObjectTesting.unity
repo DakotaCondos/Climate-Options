@@ -4170,12 +4170,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 3443558228319984664}
         m_TargetAssemblyTypeName: ClimateData, Assembly-CSharp
-        m_MethodName: Testing
-        m_Mode: 5
+        m_MethodName: GetYearClimateData
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 45431
           m_FloatArgument: 0
           m_StringArgument: https://history.openweathermap.org/data/2.5/aggregated/month?month=2&lat=35&lon=139&appid=359cfddfedfd05916baa21b65c26f4f0
           m_BoolArgument: 0
@@ -4209,8 +4209,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6eaf836dc4682143b6788532d985f8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  haveadded: 0
+  monthsCompleted: 0
   openWeatherMapAPIHelper: {fileID: 0}
+  isDataReady: 0
 --- !u!114 &3443558228319984665
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4236,10 +4237,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   apiKey: 359cfddfedfd05916baa21b65c26f4f0
-  zip: 99208
+  zip: 0
   latitude: 0
   longitude: 0
   hasCoordinates: 0
+  InitializeOnStart: 0
 --- !u!114 &3443558228868331856
 MonoBehaviour:
   m_ObjectHideFlags: 10

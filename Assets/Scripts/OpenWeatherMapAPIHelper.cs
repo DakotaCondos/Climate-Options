@@ -12,6 +12,7 @@ public class OpenWeatherMapAPIHelper : MonoBehaviour
     public double latitude;
     public double longitude;
     public bool hasCoordinates = false;
+    public bool InitializeOnStart = false;
 
 
     public OpenWeatherMapAPIHelper(string apiKey, int zip)
@@ -26,14 +27,15 @@ public class OpenWeatherMapAPIHelper : MonoBehaviour
     }
     private void Start()
     {
-        GetGeographicCoordinates(zip);
+        if (InitializeOnStart)
+        {
+            GetGeographicCoordinates(zip);
+        }
     }
 
     public string BuildMonthlyURL(int month)
     {
-        // https://history.openweathermap.org/data/2.5/aggregated/month?month=2&lat=35&lon=139&appid={API key}
-
-        return $"https://history.openweathermap.org/data/2.5/aggregated/month?month={month}&lat=35&lon=139&appid={apiKey}";
+        return $"https://history.openweathermap.org/data/2.5/aggregated/month?month={month}&lat={latitude}&lon={longitude}&appid={apiKey}";
     }
 
 
@@ -41,7 +43,8 @@ public class OpenWeatherMapAPIHelper : MonoBehaviour
 
     public void GetGeographicCoordinates(int zip)
     {
-        // http://api.openweathermap.org/geo/1.0/zip?zip=99004,US&appid=359cfddfedfd05916baa21b65c26f4f0
+        hasCoordinates = false;
+
         string url = $"http://api.openweathermap.org/geo/1.0/zip?zip={zip},US&appid={apiKey}";
         StartCoroutine(FetchGeographicCoordinates(url, zip));
     }
@@ -57,7 +60,7 @@ public class OpenWeatherMapAPIHelper : MonoBehaviour
             yield return null;
         }
 
-        // Once isProcessing is false, update the climateDataMonthList and listSize
+        // Once isProcessing is true, pull result from helper and parse data
         string jsonString = (string)helper.results.First();
         JObject jsonObject = JObject.Parse(jsonString);
 
@@ -65,6 +68,6 @@ public class OpenWeatherMapAPIHelper : MonoBehaviour
         longitude = (double)jsonObject["lon"];
 
         hasCoordinates = true;
-        print($"Lat: {latitude}, Lon: {longitude}");
+        print($"Lat: {latitude}, Lon: {longitude}"); // debug line
     }
 }
