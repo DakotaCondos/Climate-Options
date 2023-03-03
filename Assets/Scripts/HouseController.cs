@@ -30,7 +30,7 @@ namespace NovaSamples.UIControls
             if (bathroom > bedroom)
             {
                 responseText.text = "Bathroom cannot exceed bedrooms. Please try again.";
-                block.SetImage(Texture2D.blackTexture);
+                block.ClearImage();
                 return;
             }
 
