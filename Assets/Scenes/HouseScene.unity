@@ -888,7 +888,7 @@ MonoBehaviour:
         Type: 0
     Position:
       X:
-        Raw: 295.68
+        Raw: 283.8528
         Type: 0
       Y:
         Raw: 0
@@ -1815,7 +1815,7 @@ MonoBehaviour:
         Raw: 0
         Type: 1
       Y:
-        Raw: 142.56494
+        Raw: 130.60556
         Type: 0
       Z:
         Raw: 0
@@ -3102,7 +3102,7 @@ MonoBehaviour:
         Raw: 0
         Type: 1
       Y:
-        Raw: 15.840546
+        Raw: 14.511749
         Type: 0
       Z:
         Raw: 0
@@ -4383,7 +4383,7 @@ MonoBehaviour:
         Type: 0
     Position:
       X:
-        Raw: 295.68
+        Raw: 283.8528
         Type: 0
       Y:
         Raw: 0
@@ -5653,7 +5653,7 @@ MonoBehaviour:
         Type: 0
     Position:
       X:
-        Raw: -652.8
+        Raw: -626.688
         Type: 0
       Y:
         Raw: 0
@@ -7650,7 +7650,7 @@ GameObject:
   - component: {fileID: 1435636226}
   - component: {fileID: 1435636225}
   m_Layer: 0
-  m_Name: Signup_UI_Nova
+  m_Name: House_UI_Nova
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7752,7 +7752,7 @@ MonoBehaviour:
         Type: 0
     Position:
       X:
-        Raw: 297.59998
+        Raw: 285.69598
         Type: 0
       Y:
         Raw: -0
@@ -8008,7 +8008,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -37.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1529330187
@@ -8130,8 +8130,8 @@ MonoBehaviour:
         Type: 0
     Position:
       X:
-        Raw: -37.5
-        Type: 0
+        Raw: 0
+        Type: 1
       Y:
         Raw: 0
         Type: 0

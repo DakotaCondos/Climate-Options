@@ -20,6 +20,7 @@ namespace NovaSamples.UIControls
         int fileSize;
         int bedroom;
         int bathroom;
+        HouseConfig houseConfig;
 
         public void HouseSelectionConfirm()
         {
@@ -36,10 +37,11 @@ namespace NovaSamples.UIControls
 
             index = 0;
             getImageFile($"{bedroom + 1}bed{bathroom + 1}bath");
+            StartCoroutine(FadeImage(false));
             ImageLoader(index);
 
-            HouseConfig houseConfigTest = CreateHouseConfig();
-            foreach(RoomConfig rooms in houseConfigTest.rooms)
+            houseConfig = CreateHouseConfig();
+            foreach(RoomConfig rooms in houseConfig.rooms)
             {
                 print("Room: " + rooms.roomNumber);
                 print("Contain bathroom: " + rooms.isBathroom);
@@ -88,7 +90,6 @@ namespace NovaSamples.UIControls
             {
                 index = 0;
             }
-
             ImageLoader(index);
         }
 
@@ -105,8 +106,8 @@ namespace NovaSamples.UIControls
             {
                 index = 0;
             }
-
             ImageLoader(index);
+            
         }
         public int getImageFile(string folder)
         {
@@ -130,6 +131,32 @@ namespace NovaSamples.UIControls
             Texture2D tex = new Texture2D(2, 2);
             tex.LoadImage(pngBytes);
             block.SetImage(tex);
+        }
+
+        public IEnumerator FadeImage(bool fadeAway)
+        {
+            // fade from opaque to transparent
+            if (fadeAway)
+            {
+                // loop over 1 second backwards
+                for (float i = 1; i >= 0; i -= Time.deltaTime)
+                {
+                    // set color with i as alpha
+                    block.Color = new Color(1, 1, 1, i);
+                    yield return null;
+                }
+            }
+            // fade from transparent to opaque
+            else
+            {
+                // loop over 1 second
+                for (float i = 0; i <= 1; i += Time.deltaTime)
+                {
+                    // set color with i as alpha
+                    block.Color = new Color(1, 1, 1, i);
+                    yield return null;
+                }
+            }
         }
     }
 }
