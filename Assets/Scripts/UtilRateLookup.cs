@@ -19,7 +19,7 @@ public class UtilRateLookup : MonoBehaviour
        
       
         UtilityRates rate = new(electric, gas, oil, wood);
-
+        utilityConfigs.Add(rate, zip);
     }
 
     // Update is called once per frame
