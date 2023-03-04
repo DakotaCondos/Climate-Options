@@ -69,7 +69,7 @@ namespace NovaSamples.UIControls
                     rooms.Add(new RoomConfig(i, true));
                 }
             }
-            
+                
             houseConfig.rooms = rooms;
             houseConfig.size = int.Parse(houseSize.text);
             return houseConfig;
