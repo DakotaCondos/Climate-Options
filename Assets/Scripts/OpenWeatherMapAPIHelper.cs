@@ -12,31 +12,16 @@ public class OpenWeatherMapAPIHelper : MonoBehaviour
     public double latitude;
     public double longitude;
     public bool hasCoordinates = false;
-    public bool InitializeOnStart = false;
-
-
-    public OpenWeatherMapAPIHelper(string apiKey, int zip)
-    {
-        this.apiKey = apiKey;
-        this.zip = zip;
-    }
 
     private void Start()
     {
         fetcher = new();
-        if (InitializeOnStart)
-        {
-            GetGeographicCoordinates(zip);
-        }
     }
 
     public string BuildMonthlyURL(int month)
     {
         return $"https://history.openweathermap.org/data/2.5/aggregated/month?month={month}&lat={latitude}&lon={longitude}&appid={apiKey}";
     }
-
-
-
 
     public void GetGeographicCoordinates(int zip)
     {

@@ -2,13 +2,13 @@ using Nova;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class ConfigurationDetailsDisplay : MonoBehaviour
 {
     public ClimateControlSystemConfig climateControlSystemConfig;
     public bool isPrimaryDisplay;
+    public ClimateData climateData;
 
     [SerializeField] GameObject partCostRowPrefab;
     [SerializeField] Transform partCostRowLocation;
@@ -22,8 +22,23 @@ public class ConfigurationDetailsDisplay : MonoBehaviour
     {
         //if this is the primary display,
         //assign climateControlSystemConfig to config from ProgramManger
-
         CreateDummyConfig(); // remove this after testing
+
+        climateData = FindObjectOfType<ClimateData>();
+    }
+
+    private void Start()
+    {
+        StartCoroutine(DisplayConfigCoroutine());
+    }
+
+    public IEnumerator DisplayConfigCoroutine()
+    {
+        //wait for climate data to be ready
+        while (!climateData.isDataReady)
+        {
+            yield return null;
+        }
         DisplayConfig();
     }
 
@@ -51,7 +66,7 @@ public class ConfigurationDetailsDisplay : MonoBehaviour
 
         PartsCost();
 
-        CostCalculation costCalculation = new(climateControlSystemConfig);
+        CostCalculation costCalculation = new(climateControlSystemConfig, climateData.climateDataMonths);
         ConfigName.Text = climateControlSystemConfig.name;
         partsCostRange.Text = $"${costCalculation.partsCostLow} - ${costCalculation.partsCostHigh}";
     }

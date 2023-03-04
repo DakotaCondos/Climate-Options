@@ -10,6 +10,8 @@ public class ClimateData : MonoBehaviour
     public int monthsCompleted = 0;
     public OpenWeatherMapAPIHelper openWeatherMapAPIHelper;
     public bool isDataReady = false;
+    public bool initializeOnStart = false;
+    public int zip;
 
     private void Awake()
     {
@@ -17,6 +19,18 @@ public class ClimateData : MonoBehaviour
         fetcher = new();
     }
 
+    private void Start()
+    {
+        if (!initializeOnStart) return;
+        if (zip != 0)
+        {
+            GetYearClimateData(zip);
+        }
+        else
+        {
+            print("Initialize on start failed. Zip Code required in editor");
+        }
+    }
 
     public void GetYearClimateData(int zip)
     {
@@ -28,6 +42,29 @@ public class ClimateData : MonoBehaviour
         }
 
         StartCoroutine(FetchYearClimateData(zip));
+    }
+
+    private IEnumerator FetchYearClimateData(int zip)
+    {
+        openWeatherMapAPIHelper.GetGeographicCoordinates(zip);
+        // Wait for OpenWeatherMapAPIHelper to have coordinates
+        while (!openWeatherMapAPIHelper.hasCoordinates)
+        {
+            yield return null;
+        }
+
+        // start requests for each months data
+        for (int i = 0; i < climateDataMonths.Length; i++)
+        {
+            GetMonthsClimateData(openWeatherMapAPIHelper.BuildMonthlyURL(i + 1), i);
+        }
+
+        //Wait for all months data to be added
+        while (monthsCompleted < 12)
+        {
+            yield return null;
+        }
+        isDataReady = true;
     }
 
     public void GetMonthsClimateData(string url, int index)
@@ -55,28 +92,5 @@ public class ClimateData : MonoBehaviour
         ClimateDataMonth climateDataMonth = new(month, averageTemperature);
         climateDataMonths[index] = climateDataMonth;
         monthsCompleted++;
-    }
-
-    private IEnumerator FetchYearClimateData(int zip)
-    {
-        openWeatherMapAPIHelper.GetGeographicCoordinates(zip);
-        // Wait for OpenWeatherMapAPIHelper to have coordinates
-        while (!openWeatherMapAPIHelper.hasCoordinates)
-        {
-            yield return null;
-        }
-
-        // start requests for each months data
-        for (int i = 0; i < climateDataMonths.Length; i++)
-        {
-            GetMonthsClimateData(openWeatherMapAPIHelper.BuildMonthlyURL(i + 1), i);
-        }
-
-        //Wait for all months data to be added
-        while (monthsCompleted < 12)
-        {
-            yield return null;
-        }
-        isDataReady = true;
     }
 }

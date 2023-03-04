@@ -1,5 +1,3 @@
-using Newtonsoft.Json.Linq;
-
 public class ClimateDataMonth
 {
     public int month;

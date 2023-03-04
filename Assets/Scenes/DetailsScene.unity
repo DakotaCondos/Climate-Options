@@ -315,7 +315,7 @@ MonoBehaviour:
         Raw: 0.9780702
         Type: 1
       Y:
-        Raw: 0.9776047
+        Raw: 0.97761524
         Type: 1
       Z:
         Raw: 0
@@ -591,8 +591,6 @@ GameObject:
   - component: {fileID: 188769790}
   - component: {fileID: 188769789}
   - component: {fileID: 188769791}
-  - component: {fileID: 188769792}
-  - component: {fileID: 188769793}
   m_Layer: 0
   m_Name: DetailDisplay
   m_TagString: Untagged
@@ -888,45 +886,13 @@ MonoBehaviour:
         woodPerPound: 1
       zip: 99004
   isPrimaryDisplay: 1
+  climateData: {fileID: 0}
   partCostRowPrefab: {fileID: 8855128524944142457, guid: a169ea4f1dc118646ae048d67e778f5d, type: 3}
   partCostRowLocation: {fileID: 3431962358897261865}
   partCostExpandableContainer: {fileID: 5021935734355468886}
   ConfigName: {fileID: 2012491990}
   TotalCosts: {fileID: 0}
   partsCostRange: {fileID: 227896958}
---- !u!114 &188769792
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 188769787}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48c8baf8c3ff5e04fa9b602fce99dc8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  apiKey: 359cfddfedfd05916baa21b65c26f4f0
-  zip: 0
-  latitude: 0
-  longitude: 0
-  hasCoordinates: 0
-  InitializeOnStart: 0
---- !u!114 &188769793
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 188769787}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6eaf836dc4682143b6788532d985f8f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  monthsCompleted: 0
-  openWeatherMapAPIHelper: {fileID: 0}
-  isDataReady: 0
 --- !u!1 &227896955
 GameObject:
   m_ObjectHideFlags: 0
@@ -2016,7 +1982,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 321076551}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 11.049683, z: 0}
+  m_LocalPosition: {x: 0, y: 11.2604065, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2927,7 +2893,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 586376127}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 276.04968, z: 0}
+  m_LocalPosition: {x: 0, y: 276.26044, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3796,7 +3762,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 45.653797}
+  m_AnchoredPosition: {x: 0, y: 45.68694}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &754773656
@@ -4072,7 +4038,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 779117303}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 70.23331, z: 0}
+  m_LocalPosition: {x: 0, y: 70.26645, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7995,7 +7961,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -0, y: -35.25712, z: -0, w: -35.25712}
+  m_margin: {x: -0, y: -35.273754, z: -0, w: -35.273754}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   _SortingLayer: 0
@@ -8224,6 +8190,73 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &1709720142
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1709720145}
+  - component: {fileID: 1709720144}
+  - component: {fileID: 1709720143}
+  m_Layer: 0
+  m_Name: Dummy Climate Data
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1709720143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709720142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48c8baf8c3ff5e04fa9b602fce99dc8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  apiKey: '359cfddfedfd05916baa21b65c26f4f0 '
+  zip: 0
+  latitude: 0
+  longitude: 0
+  hasCoordinates: 0
+--- !u!114 &1709720144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709720142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6eaf836dc4682143b6788532d985f8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monthsCompleted: 0
+  openWeatherMapAPIHelper: {fileID: 0}
+  isDataReady: 0
+  initializeOnStart: 1
+  zip: 99004
+--- !u!4 &1709720145
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709720142}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.015475851, y: 1.0124863, z: -8.999662}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1717072004
 GameObject:
   m_ObjectHideFlags: 0
@@ -8251,7 +8284,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1717072004}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -470.02286, z: 0}
+  m_LocalPosition: {x: 0, y: -470.24466, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -8548,7 +8581,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1810457696}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 449.5, y: 396.5217, z: 0}
+  m_LocalPosition: {x: 449.5, y: 396.73242, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9515,7 +9548,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 403.7857}
+  m_AnchoredPosition: {x: 0, y: 403.99643}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2012491989
@@ -10135,7 +10168,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2087257057}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 131.04968, z: 0}
+  m_LocalPosition: {x: 0, y: 131.2604, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10773,7 +10806,7 @@ Transform:
   m_GameObject: {fileID: 2139377410}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: -9}
-  m_LocalScale: {x: 0.0010686602, y: 0.0010686602, z: 0.0010686602}
+  m_LocalScale: {x: 0.0010681561, y: 0.0010681561, z: 0.0010681561}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 779117304}
@@ -10834,7 +10867,7 @@ MonoBehaviour:
         Raw: 1920
         Type: 0
       Y:
-        Raw: 1080.5123
+        Raw: 1081.0222
         Type: 0
       Z:
         Raw: 0
