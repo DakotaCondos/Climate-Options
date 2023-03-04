@@ -13,6 +13,10 @@ namespace NovaSamples.UIControls
         public UIBlock2D block;
         [SerializeField]
         TMP_Text responseText;
+        [SerializeField]
+        TMP_Text houseSize;
+
+        int houseSizeToInt;
         int index;
         string folderPath;
         string[] filePaths;
@@ -27,11 +31,9 @@ namespace NovaSamples.UIControls
             Debug.Log(bedroom);
             Debug.Log(bathroom);
             responseText.text = "";
-
-            if (bathroom > bedroom)
+            
+            if(!HouseSizeValidate(houseSize))
             {
-                responseText.text = "Bathroom cannot exceed bedrooms. Please try again.";
-                block.ClearImage();
                 return;
             }
 
@@ -41,6 +43,8 @@ namespace NovaSamples.UIControls
             ImageLoader(index);
 
             houseConfig = CreateHouseConfig();
+
+            print("House Config Size: " + houseConfig.size);
             foreach(RoomConfig rooms in houseConfig.rooms)
             {
                 print("Room: " + rooms.roomNumber);
@@ -52,19 +56,22 @@ namespace NovaSamples.UIControls
         {
             HouseConfig houseConfig = new HouseConfig();
             List<RoomConfig> rooms = new();
+            int totalRooms = bedroom + bathroom + 1;
 
-            for(int i = 0; i <= bedroom; i++)
+            for(int i = 0; i <= totalRooms; i++)
             {
-                if(i <= bathroom)
-                {
-                    rooms.Add(new RoomConfig(i, true));
-                }
-                else
+                if(i <= bedroom)
                 {
                     rooms.Add(new RoomConfig(i, false));
                 }
+                else
+                {
+                    rooms.Add(new RoomConfig(i, true));
+                }
             }
+            
             houseConfig.rooms = rooms;
+            houseConfig.size = int.Parse(houseSize.text);
             return houseConfig;
         }
 
@@ -157,6 +164,31 @@ namespace NovaSamples.UIControls
                     yield return null;
                 }
             }
+        }
+
+        public bool HouseSizeValidate(TMP_Text houseSize)
+        {
+            if (string.IsNullOrWhiteSpace(houseSize.text))
+            {
+                responseText.text = "House size required";
+                block.ClearImage();
+                return false;
+            }
+            if (!int.TryParse(houseSize.text, out houseSizeToInt))
+            {
+                responseText.text = "House size must be a whole number.";
+                block.ClearImage();
+                return false;
+            }
+            if(int.Parse(houseSize.text) <= 0)
+            {
+                responseText.text = "House size cannot be less than 0.";
+                block.ClearImage();
+                return false;
+            }
+
+            return true;
+
         }
     }
 }
