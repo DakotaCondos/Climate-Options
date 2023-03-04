@@ -73,8 +73,8 @@ public class ComponentCreatorTool : MonoBehaviour
         bool _isCooling = Convert.ToBoolean(isCooling.Text);
         float _heatingBTUOutput = float.Parse(heatingBTUOutput.Text);
         float _coolingBTUOutput = float.Parse(coolingBTUOutput.Text);
-        float _heatingCostPerBTU = float.Parse(heatingCostPerBTU.Text);
-        float _coolingCostPerBTU = float.Parse(coolingCostPerBTU.Text);
+        decimal _heatingCostPerBTU = decimal.Parse(heatingCostPerBTU.Text);
+        decimal _coolingCostPerBTU = decimal.Parse(coolingCostPerBTU.Text);
         if (!Enum.TryParse(componentType.Text, out ClimateControlComponentTypes _componentType))
         {
             Debug.Log("Component Type Not Found");

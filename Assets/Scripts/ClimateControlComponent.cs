@@ -15,8 +15,8 @@ public class ClimateControlComponent
     public bool isCooling;
     public float heatingBTUOutput;
     public float coolingBTUOutput;
-    public float heatingCostPerBTU;
-    public float coolingCostPerBTU;
+    public decimal heatingCostPerBTU;
+    public decimal coolingCostPerBTU;
     public ClimateControlComponentTypes componentType;
     public UtilityType utilityType;
     public (float, float) priceRange;
@@ -44,8 +44,8 @@ public class ClimateControlComponent
         string name, string description, string pros, string cons,
         ClimateControlComponentTypes prerequisiteComponentType,
         bool isWholeHomeComponent, bool isHeating, bool isCooling,
-        float heatingBTUOutput, float coolingBTUOutput, float heatingCostPerBTU,
-        float coolingCostPerBTU, ClimateControlComponentTypes componentType,
+        float heatingBTUOutput, float coolingBTUOutput, decimal heatingCostPerBTU,
+        decimal coolingCostPerBTU, ClimateControlComponentTypes componentType,
         UtilityType utilityType, (float, float) priceRange)
     {
         this.componentName = name;
