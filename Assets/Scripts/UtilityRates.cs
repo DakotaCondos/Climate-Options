@@ -1,15 +1,26 @@
-﻿using System;
-
-[Serializable]
-
-public class UtilityRates
+﻿public class UtilityRates
 {
-    public float electricityPerKWH;
-    public float gasPerTherm;
-    public float oilPerGallon;
-    public float woodPerPound;
+    private int zipCode;
+    private float electricityPerKWH;
+    private float gasPerTherm;
+    private float oilPerGallon;
+    private float woodPerPound;
 
-    public UtilityRates(float electricityPerKWH, float gasPerTherm, float oilPerGallon, float woodPerPound)
+    public int ZipCode { get => zipCode; }
+    public float ElectricityPerKWH { get => electricityPerKWH; }
+    public float GasPerTherm { get => gasPerTherm; }
+    public float OilPerGallon { get => oilPerGallon; }
+    public float WoodPerPound { get => woodPerPound; }
+
+    public UtilityRates(int zipCode, float electricityPerKWH, float gasPerTherm, float oilPerGallon, float woodPerPound)
+    {
+        this.zipCode = zipCode;
+        this.electricityPerKWH = electricityPerKWH;
+        this.gasPerTherm = gasPerTherm;
+        this.oilPerGallon = oilPerGallon;
+        this.woodPerPound = woodPerPound;
+    }
+    public Rates(float electricityPerKWH, float gasPerTherm, float oilPerGallon, float woodPerPound)
     {
         this.electricityPerKWH = electricityPerKWH;
         this.gasPerTherm = gasPerTherm;
@@ -17,11 +28,21 @@ public class UtilityRates
         this.woodPerPound = woodPerPound;
     }
 
-    public UtilityRates()
+    public UtilityRates() { }
+
+    internal static Rates ParseRow(string row)
     {
-        electricityPerKWH = 0.23f;
-        gasPerTherm = 0.147f;
-        oilPerGallon = 4.231f;
-        woodPerPound = 0.16f;
+
+        var columns = row.Split(',');
+        return new Rates()
+        {
+            zipCode = int.Parse(columns[1]),
+            electricityPerKWH = float.Parse(columns[2]),
+            gasPerTherm = float.Parse(columns[3]),
+            oilPerGallon = float.Parse(columns[4]),
+            woodPerPound = float.Parse(columns[5])
+        };
+
     }
+
 }
