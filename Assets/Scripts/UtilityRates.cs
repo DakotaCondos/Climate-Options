@@ -1,4 +1,8 @@
-﻿public class UtilityRates
+﻿using System.Collections;
+using System.Linq;
+using UnityEngine;
+
+public class UtilityRates
 {
     private int zipCode;
     private float electricityPerKWH;
@@ -20,7 +24,7 @@
         this.oilPerGallon = oilPerGallon;
         this.woodPerPound = woodPerPound;
     }
-    public Rates(float electricityPerKWH, float gasPerTherm, float oilPerGallon, float woodPerPound)
+    public UtilityRates(float electricityPerKWH, float gasPerTherm, float oilPerGallon, float woodPerPound)
     {
         this.electricityPerKWH = electricityPerKWH;
         this.gasPerTherm = gasPerTherm;
@@ -30,11 +34,11 @@
 
     public UtilityRates() { }
 
-    internal static Rates ParseRow(string row)
+    internal static UtilityRates ParseRow(string row)
     {
 
         var columns = row.Split(',');
-        return new Rates()
+        return new UtilityRates()
         {
             zipCode = int.Parse(columns[1]),
             electricityPerKWH = float.Parse(columns[2]),
