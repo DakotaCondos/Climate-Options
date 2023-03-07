@@ -7,26 +7,20 @@ using UlitliyRates;
 public class UtilRateLookup : MonoBehaviour
 {
     // Start is called before the first frame update
-    void Start()
+    public UtilityRates GetRates(int zipCode)
     {
         var csvFile = File.ReadAllLines("state_rates.csv").Skip(1).Where(row => row.Length > 0).Select(Rates.ParseRow).ToList();
-        int zip = Convert.ToInt32(Console.ReadLine());
         
-        float electric = GetElect(zip, csvFile);
-        float gas = GetGas(zip, csvFile);
-        float oil = GetOil(zip, csvFile);
-        float wood = GetWood(zip, csvFile);
+        float electric = GetElect(zipCode, csvFile);
+        float gas = GetGas(zipCode, csvFile);
+        float oil = GetOil(zipCode, csvFile);
+        float wood = GetWood(zipCode, csvFile);
        
       
         UtilityRates rate = new(electric, gas, oil, wood);
-        utilityConfigs.Add(rate, zip);
+        return utilityConfigs.Add(rate, zipCode);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        utliRate = new UtililityRates()
-    }
 
     internal static double GetElect(int zip, List<Rates> file)
     {
