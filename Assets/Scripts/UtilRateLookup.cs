@@ -2,8 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Linq;
-using UtilityRates;
+using System.Linq;
+using System.IO;
+using UnityEngine.WSA;
+//using UtilityRates;
 
 
 public class UtilRateLookup : MonoBehaviour
@@ -11,20 +13,21 @@ public class UtilRateLookup : MonoBehaviour
     // Start is called before the first frame update
     public UtilityRates GetRates(int zipCode)
     {
-        var csvFile = File.ReadAllLines("state_rates.csv").Skip(1).Where(row => row.Length > 0).Select(UtilityRates.ParseRow).ToList();
+        var file = UnityEngine.Application.streamingAssetsPath + $"/UtiltyRatesFile/state_rates.csv";
+        var csvFile = File.ReadAllLines(file).Skip(1).Where(row => row.Length > 0).Select(UtilityRates.ParseRow).ToList();
 
         float electric = GetElect(zipCode, csvFile);
         float gas = GetGas(zipCode, csvFile);
         float oil = GetOil(zipCode, csvFile);
         float wood = GetWood(zipCode, csvFile);
 
-
-        UtilityRates rate = new(electric, gas, oil, wood);
-        return UtilityConfigs.Add(rate, zipCode);
+        
+        UtilityRates rate = new(zipCode,electric, gas, oil, wood);
+        return rate;
     }
 
 
-    internal static double GetElect(int zip, List<UtilityRates> file)
+    internal static float GetElect(int zip, List<UtilityRates> file)
     {
         var item = (from r in file
                     where r.ZipCode.Equals(zip)
@@ -32,7 +35,7 @@ public class UtilRateLookup : MonoBehaviour
         return item.Sum();
     }
 
-    internal static double GetGas(int zip, List<UtilityRates> file)
+    internal static float GetGas(int zip, List<UtilityRates> file)
     {
         var item = (from r in file
                     where r.ZipCode.Equals(zip)
@@ -40,14 +43,14 @@ public class UtilRateLookup : MonoBehaviour
         return item.Sum();
     }
 
-    internal static double GetOil(int zip, List<UtilityRates> file)
+    internal static float GetOil(int zip, List<UtilityRates> file)
     {
         var item = (from r in file
                     where r.ZipCode.Equals(zip)
                     select r.OilPerGallon);
         return item.Sum();
     }
-    internal static double GetWood(int zip, List<UtilityRates> file)
+    internal static float GetWood(int zip, List<UtilityRates> file)
     {
         var item = (from r in file
                     where r.ZipCode.Equals(zip)

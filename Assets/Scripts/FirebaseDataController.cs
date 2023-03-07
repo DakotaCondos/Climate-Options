@@ -15,7 +15,7 @@ public class FirebaseDataController : MonoBehaviour
 {
     public DatabaseReference database;
     public FirebaseAuth auth;
-    UtilRateLookup utilRateLookup = new UtilRateLookup();
+    
 
     private void Start()
     {
@@ -30,6 +30,7 @@ public class FirebaseDataController : MonoBehaviour
     public void seed()
     {
         ClimateControlSystemConfig systemConfig = new();
+        
         systemConfig.name = $"TestingConfig";
         systemConfig.houseConfig = new HouseConfig();
         systemConfig.houseConfig.components.Add(new ClimateControlComponent());
