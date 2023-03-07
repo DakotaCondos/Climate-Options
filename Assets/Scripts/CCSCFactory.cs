@@ -1,11 +1,13 @@
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
 using UnityEngine;
 using static UnityEditor.Progress;
 
 public class CCSCFactory : MonoBehaviour
 {
-
+    FirebaseDataController firebaseDataController;
     readonly string fileLocation = $"{Application.streamingAssetsPath}/Systems/";
     public List<ClimateControlSystemConfig> systems;
 
@@ -13,6 +15,7 @@ public class CCSCFactory : MonoBehaviour
     private void Awake()
     {
         systems = new List<ClimateControlSystemConfig>();
+        firebaseDataController = GetComponent<FirebaseDataController>();
     }
 
     public void SaveObjectToJsonFile(object objectToSave, string fileName)
@@ -66,7 +69,7 @@ public class CCSCFactory : MonoBehaviour
     public void CreateDummyCCSC()
     {
         ClimateControlSystemConfig systemConfig = new();
-        systemConfig.name = $"{Time.time}";
+        systemConfig.name = GenerateValidString(10);
         systemConfig.houseConfig = new HouseConfig();
         systemConfig.houseConfig.components.Add(new ClimateControlComponent());
         systemConfig.houseConfig.rooms.Add(new RoomConfig(0, false));
@@ -78,6 +81,52 @@ public class CCSCFactory : MonoBehaviour
         systemConfig.utilityConfig = new();
 
         systems.Add(systemConfig);
+    }
+
+    public void SaveToDatabase()
+    {
+        foreach (ClimateControlSystemConfig item in systems)
+        {
+            firebaseDataController.SaveClimateControlSystemConfig(item);
+        }
+    }
+
+    public void LoadAllFromDatabase()
+    {
+        firebaseDataController.AddSystemsToList(systems);
+    }
+
+    public string GenerateValidString(int length)
+    {
+        const string validChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+        char[] chars = new char[length];
+        System.Random random = new System.Random();
+
+        for (int i = 0; i < length; i++)
+        {
+            chars[i] = validChars[random.Next(validChars.Length)];
+        }
+
+        return new string(chars);
+    }
+
+    public async Task PrintAllSavedAsync()
+    {
+        List<string> systemNames = await firebaseDataController.GetAllChildNames();
+        if (systemNames is null)
+        {
+            print("List is empty");
+            return;
+        }
+        foreach (var item in systemNames)
+        {
+            print(item);
+        }
+    }
+    public async void PrintData()
+    {
+        await PrintAllSavedAsync();
     }
 }
 

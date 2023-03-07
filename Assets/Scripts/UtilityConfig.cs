@@ -1,7 +1,6 @@
 ﻿using System;
 
 [Serializable]
-
 public class UtilityConfig
 {
     public UtilityRates utilityrates;
@@ -10,7 +9,7 @@ public class UtilityConfig
     public UtilityConfig()
     {
         utilityrates = new UtilityRates();
-        zip = 0;
+        zip = 99004;
     }
 
     public UtilityConfig(UtilityRates utilityrates, int zip)
@@ -18,5 +17,7 @@ public class UtilityConfig
         this.utilityrates = utilityrates;
         this.zip = zip;
     }
+
+
 
 }

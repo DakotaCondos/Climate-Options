@@ -32,6 +32,7 @@
 
     internal static Rates ParseRow(string row)
     {
+
         var columns = row.Split(',');
         return new Rates()
         {
@@ -41,6 +42,7 @@
             oilPerGallon = float.Parse(columns[4]),
             woodPerPound = float.Parse(columns[5])
         };
+
     }
 
 }

@@ -1,15 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net;
+using System.Threading.Tasks;
 using Firebase.Auth;
 using Firebase.Database;
+using Google.MiniJSON;
+using Newtonsoft.Json;
+using Unity.VisualScripting;
+using UnityEditor.VersionControl;
 using UnityEngine;
+using UnityEngine.Rendering.VirtualTexturing;
 
 public class FirebaseDataController : MonoBehaviour
 {
     public DatabaseReference database;
     public FirebaseAuth auth;
+    UtilRateLookup utilRateLookup = new UtilRateLookup();
 
-    void Awake()
+    private void Start()
     {
         InitializeFirebase();
     }
@@ -21,28 +29,35 @@ public class FirebaseDataController : MonoBehaviour
 
     public void seed()
     {
-        List<RoomConfig> rooms = new List<RoomConfig>();
-        List<ClimateControlComponent> components = new List<ClimateControlComponent>();
-        components.Add(new ClimateControlComponent("Generic AC", "description", "pros", "cons", ClimateControlComponentTypes.AirConditioner, false, false, true, 0f, 500f, 0f, 0.015f, ClimateControlComponentTypes.AirConditioner, UtilityType.Electric, (10f, 15f)));
+        ClimateControlSystemConfig systemConfig = new();
+        systemConfig.name = $"TestingConfig";
+        systemConfig.houseConfig = new HouseConfig();
+        systemConfig.houseConfig.components.Add(new ClimateControlComponent());
+        systemConfig.houseConfig.rooms.Add(new RoomConfig(0, false));
+        systemConfig.houseConfig.rooms.Add(new RoomConfig(1, false));
+        systemConfig.houseConfig.rooms.Add(new RoomConfig(2, false));
+        systemConfig.houseConfig.rooms.Add(new RoomConfig(3, true));
+        systemConfig.houseConfig.rooms.ForEach(r => { r.components.Add(new ClimateControlComponent()); });
 
-        rooms.Add(new RoomConfig(components, 1, 1, false));
-
-        InitializeFirebase();
-        Debug.Log(auth.CurrentUser.UserId);
-        HouseConfig houseConfig = new();
-        UtilityConfig utilityConfig = new UtilityConfig(new UtilityRates(2, 2, 2, 2), 2);
-        ClimateControlSystemConfig climateControlSystemConfig1 = new ClimateControlSystemConfig("Config1", houseConfig, utilityConfig);
-        ClimateControlSystemConfig climateControlSystemConfig2 = new ClimateControlSystemConfig("Config2", houseConfig, utilityConfig);
-        //StartCoroutine(SaveConfig(climateControlSystemConfig1));
-        //StartCoroutine(SaveConfig(climateControlSystemConfig2));
-        //StartCoroutine(GetConfig(climateControlSystemConfig1.name));
-        LoadAllConfigName();
+        systemConfig.utilityConfig = new();
+        StartCoroutine(SaveConfig(systemConfig));
+        print("Reached end");
     }
+
+    public void ShowDetails()
+    {
+        print($"Current user: {auth.CurrentUser.UserId}");
+        print($"Database is null: {database is null}");
+    }
+
+    public void SaveClimateControlSystemConfig(ClimateControlSystemConfig climateControlSystemConfig)
+    {
+        StartCoroutine(SaveConfig(climateControlSystemConfig));
+    }
+
     public IEnumerator SaveConfig(ClimateControlSystemConfig climateControlSystemConfig)
     {
-        //var configAsJson = Newtonsoft.Json.JsonConvert.SerializeObject(climateControlSystemConfig);
         var configAsJson = JsonUtility.ToJson(climateControlSystemConfig);
-        Debug.Log(configAsJson);
         var DBTask = database.Child(auth.CurrentUser.UserId).Child(climateControlSystemConfig.name).SetRawJsonValueAsync(configAsJson);
         yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
 
@@ -52,38 +67,42 @@ public class FirebaseDataController : MonoBehaviour
         }
     }
 
-    public IEnumerator GetConfig(string name)
+    public async Task<ClimateControlSystemConfig> GetConfig(string name)
     {
-        var DBTask = database.Child(auth.CurrentUser.UserId).Child(name).GetValueAsync();
-        yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
-        if (DBTask.Exception != null)
-        {
-            Debug.LogWarning(message: "Fail");
-        }
-        else
-        {
-            DataSnapshot dataSnapshot = DBTask.Result;
-            Debug.Log(dataSnapshot.GetRawJsonValue());
-        }
+        var DBTask = await database.Child(auth.CurrentUser.UserId).Child(name).GetValueAsync();
+
+        var dataSnapshot = DBTask.GetRawJsonValue();
+        ClimateControlSystemConfig systemConfigs = JsonUtility.FromJson<ClimateControlSystemConfig>(dataSnapshot);
+        return systemConfigs;
     }
 
-    public List<string> LoadAllConfigName()
+    public async void AddSystemsToList(List<ClimateControlSystemConfig> list)
     {
-        List<string> savedConfigNames = new List<string>();
-        var DBTask = database.Child(auth.CurrentUser.UserId).GetValueAsync();
-        DataSnapshot dataSnapshot = DBTask.Result;
-        if (dataSnapshot.Exists)
+        List<string> systemNames = await GetAllChildNames();
+        foreach (var item in systemNames)
         {
-            foreach (var config in dataSnapshot.Children)
+            ClimateControlSystemConfig climateControlSystemConfig = await GetConfig(item);
+            if (climateControlSystemConfig != null) list.Add(climateControlSystemConfig);
+        }
+        print("Done with AddSystemsToList");
+    }
+
+    public async Task<List<string>> GetAllChildNames()
+    {
+        List<string> childNames = new();
+        var DBTask = await database.Child(auth.CurrentUser.UserId).GetValueAsync();
+
+        var dataSnapshot = DBTask.GetRawJsonValue();
+        if (dataSnapshot != null)
+        {
+            Dictionary<string, object> dict = JsonConvert.DeserializeObject<Dictionary<string, object>>(dataSnapshot);
+
+            foreach (var item in dict)
             {
-                savedConfigNames.Add(config.Key);
-                Debug.Log(config.Key);
+                childNames.Add(item.Key);
             }
         }
-        else
-        {
-            Debug.LogWarning(message: "Fail");
-        }
-        return savedConfigNames;
+
+        return childNames;
     }
 }

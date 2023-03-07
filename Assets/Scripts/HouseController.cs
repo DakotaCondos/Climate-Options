@@ -15,61 +15,73 @@ namespace NovaSamples.UIControls
         TMP_Text responseText;
         [SerializeField]
         TMP_Text houseSize;
-        int x = 0;
 
+        int houseSizeToInt;
+        int index;
         string folderPath;
         string[] filePaths;
-        int index = -1;
 
         int fileSize;
-        int floor = 1;
-        int bedroom = 1;
-        int bathroom = 1;
+        int bedroom;
+        int bathroom;
+        HouseConfig houseConfig;
 
         public void HouseSelectionConfirm()
         {
-
-            Debug.Log(floor);
             Debug.Log(bedroom);
             Debug.Log(bathroom);
-            Debug.Log(houseSize.text);
             responseText.text = "";
+            
+            if(!HouseSizeValidate(houseSize))
+            {
+                return;
+            }
 
-            if (floor == 1 && bedroom == 1 && bathroom == 2)
+            index = 0;
+            getImageFile($"{bedroom + 1}bed{bathroom + 1}bath");
+            StartCoroutine(FadeImage(false));
+            ImageLoader(index);
+
+            houseConfig = CreateHouseConfig();
+
+            print("House Config Size: " + houseConfig.size);
+            foreach(RoomConfig rooms in houseConfig.rooms)
             {
-                responseText.text = "Option not available.";
-                return;
+                print("Room: " + rooms.roomNumber);
+                print("Contain bathroom: " + rooms.isBathroom);
             }
-            if(floor == 2 && bedroom == 1 && bathroom == 2)
-            {
-                responseText.text = "Option not available.";
-                return;
-            }
-            if (!int.TryParse(houseSize.text, out x))
-            {
-                Debug.Log("Inside of tryparse");
-                responseText.text = "House size must be a whole number.";
-                return;
-            }
-            
-            index = -1;
-            getImageFile($"{floor}floor{bedroom}bed{bathroom}bath");
-            
         }
 
-        public void FloorSelect()
+        public HouseConfig CreateHouseConfig()
         {
-            floor = Dropdown.selectedIndex + 1;
-       
-            
+            HouseConfig houseConfig = new HouseConfig();
+            List<RoomConfig> rooms = new();
+            int totalRooms = bedroom + bathroom + 1;
+
+            for(int i = 0; i <= totalRooms; i++)
+            {
+                if(i <= bedroom)
+                {
+                    rooms.Add(new RoomConfig(i, false));
+                }
+                else
+                {
+                    rooms.Add(new RoomConfig(i, true));
+                }
+            }
+                
+            houseConfig.rooms = rooms;
+            houseConfig.size = int.Parse(houseSize.text);
+            return houseConfig;
         }
+
         public void BedroomSelect()
         {
-            bedroom = Dropdown.selectedIndex + 1;
+            bedroom = Dropdown.selectedIndex;
         }
         public void BathroomSelect()
         {
-            bathroom = Dropdown.selectedIndex + 1;
+            bathroom = Dropdown.selectedIndex;
         }
 
         public void RightClick()
@@ -85,7 +97,6 @@ namespace NovaSamples.UIControls
             {
                 index = 0;
             }
-
             ImageLoader(index);
         }
 
@@ -102,33 +113,82 @@ namespace NovaSamples.UIControls
             {
                 index = 0;
             }
-
             ImageLoader(index);
+            
         }
         public int getImageFile(string folder)
         {
-            //Create an array of file paths from which to choose
-            folderPath = Application.streamingAssetsPath + $"/image/{folder}/";  //Get path of folder
-            filePaths = Directory.GetFiles(folderPath, "*.jpg"); // Get all files of type .png in this folder
+            if(Directory.Exists(Application.streamingAssetsPath + $"/image/{folder}/"))
+            {
+                folderPath = Application.streamingAssetsPath + $"/image/{folder}/";
+            }
+            else
+            {
+                folderPath = Application.streamingAssetsPath + $"/image/NotAvailable/";
+            }
+        
+            filePaths = Directory.GetFiles(folderPath, "*.jpg"); 
             fileSize = filePaths.Length;
             return fileSize;
         }
         public void ImageLoader(int n)
         {
 
-            //Converts desired path into byte array
             byte[] pngBytes = System.IO.File.ReadAllBytes(filePaths[n]);
-
-            //Creates texture and loads byte array data to create image
             Texture2D tex = new Texture2D(2, 2);
             tex.LoadImage(pngBytes);
-
-            //Assigns the UI sprite
-            //myNameImage.sprite = fromTex;
             block.SetImage(tex);
         }
 
+        public IEnumerator FadeImage(bool fadeAway)
+        {
+            // fade from opaque to transparent
+            if (fadeAway)
+            {
+                // loop over 1 second backwards
+                for (float i = 1; i >= 0; i -= Time.deltaTime)
+                {
+                    // set color with i as alpha
+                    block.Color = new Color(1, 1, 1, i);
+                    yield return null;
+                }
+            }
+            // fade from transparent to opaque
+            else
+            {
+                // loop over 1 second
+                for (float i = 0; i <= 1; i += Time.deltaTime)
+                {
+                    // set color with i as alpha
+                    block.Color = new Color(1, 1, 1, i);
+                    yield return null;
+                }
+            }
+        }
 
+        public bool HouseSizeValidate(TMP_Text houseSize)
+        {
+            if (string.IsNullOrWhiteSpace(houseSize.text))
+            {
+                responseText.text = "House size required";
+                block.ClearImage();
+                return false;
+            }
+            if (!int.TryParse(houseSize.text, out houseSizeToInt))
+            {
+                responseText.text = "House size must be a whole number.";
+                block.ClearImage();
+                return false;
+            }
+            if(int.Parse(houseSize.text) <= 0)
+            {
+                responseText.text = "House size cannot be less than 0.";
+                block.ClearImage();
+                return false;
+            }
+
+            return true;
+
+        }
     }
-
 }

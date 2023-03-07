@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-
 public class HouseConfig
 {
     public List<RoomConfig> rooms;
     public List<ClimateControlComponent> components;
+    public int size;
 
     public HouseConfig()
     {
