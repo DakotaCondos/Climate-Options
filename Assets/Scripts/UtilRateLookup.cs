@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Linq;
-using UlitliyRates;
+using UtilityRates;
 
 
 public class UtilRateLookup : MonoBehaviour
@@ -24,7 +24,7 @@ public class UtilRateLookup : MonoBehaviour
     }
 
 
-    internal static double GetElect(int zip, List<Rates> file)
+    internal static double GetElect(int zip, List<UtilityRates> file)
     {
         var item = (from r in file
                     where r.ZipCode.Equals(zip)
@@ -32,7 +32,7 @@ public class UtilRateLookup : MonoBehaviour
         return item.Sum();
     }
 
-    internal static double GetGas(int zip, List<Rates> file)
+    internal static double GetGas(int zip, List<UtilityRates> file)
     {
         var item = (from r in file
                     where r.ZipCode.Equals(zip)
@@ -40,14 +40,14 @@ public class UtilRateLookup : MonoBehaviour
         return item.Sum();
     }
 
-    internal static double GetOil(int zip, List<Rates> file)
+    internal static double GetOil(int zip, List<UtilityRates> file)
     {
         var item = (from r in file
                     where r.ZipCode.Equals(zip)
                     select r.OilPerGallon);
         return item.Sum();
     }
-    internal static double GetWood(int zip, List<Rates> file)
+    internal static double GetWood(int zip, List<UtilityRates> file)
     {
         var item = (from r in file
                     where r.ZipCode.Equals(zip)
