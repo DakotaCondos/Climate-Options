@@ -11,7 +11,7 @@ public class UtilRateLookup : MonoBehaviour
     // Start is called before the first frame update
     public UtilityRates GetRates(int zipCode)
     {
-        var csvFile = File.ReadAllLines("state_rates.csv").Skip(1).Where(row => row.Length > 0).Select(Rates.ParseRow).ToList();
+        var csvFile = File.ReadAllLines("state_rates.csv").Skip(1).Where(row => row.Length > 0).Select(UtilityRates.ParseRow).ToList();
         
         float electric = GetElect(zipCode, csvFile);
         float gas = GetGas(zipCode, csvFile);
