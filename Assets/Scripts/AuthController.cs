@@ -56,6 +56,32 @@ public class AuthController : MonoBehaviour
         });
     }
 
+    public void LoginAndKeepCurrentScene()
+    {
+        if (!VerifyFields()) return;
+
+        FirebaseAuth.DefaultInstance.SignInWithEmailAndPasswordAsync(email.text, password1.text).ContinueWithOnMainThread(task =>
+        {
+            if (task.IsCanceled)
+            {
+            }
+            if (task.IsFaulted)
+            {
+                Firebase.FirebaseException e =
+                task.Exception.Flatten().InnerExceptions[0] as Firebase.FirebaseException;
+
+                GetErrorMessage((AuthError)e.ErrorCode);
+
+                return;
+            }
+            if (task.IsCompleted)
+            {
+                UpdateResponse("Login Successful", Color.green);
+                print("Login Successful");
+            }
+        });
+    }
+
 
     public void LoginAnonymous()
     {

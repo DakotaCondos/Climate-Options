@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ComponentSelectionScene_hieu.unity
     guid: f94f3e5fa0212b747814aa73be0792de
+  - enabled: 1
+    path: Assets/Scenes/_ObjectTesting.unity
+    guid: e16fb0bce206faa4098214465247ccd4
   m_configObjects: {}
