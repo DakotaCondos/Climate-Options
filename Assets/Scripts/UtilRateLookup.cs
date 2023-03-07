@@ -20,7 +20,7 @@ public class UtilRateLookup : MonoBehaviour
        
       
         UtilityRates rate = new(electric, gas, oil, wood);
-        return utilityConfigs.Add(rate, zipCode);
+        return UtilityConfigs.Add(rate, zipCode);
     }
 
 
