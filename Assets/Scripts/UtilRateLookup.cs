@@ -12,13 +12,13 @@ public class UtilRateLookup : MonoBehaviour
     public UtilityRates GetRates(int zipCode)
     {
         var csvFile = File.ReadAllLines("state_rates.csv").Skip(1).Where(row => row.Length > 0).Select(UtilityRates.ParseRow).ToList();
-        
+
         float electric = GetElect(zipCode, csvFile);
         float gas = GetGas(zipCode, csvFile);
         float oil = GetOil(zipCode, csvFile);
         float wood = GetWood(zipCode, csvFile);
-       
-      
+
+
         UtilityRates rate = new(electric, gas, oil, wood);
         return UtilityConfigs.Add(rate, zipCode);
     }
@@ -54,4 +54,4 @@ public class UtilRateLookup : MonoBehaviour
                     select r.WoodPerPound);
         return item.Sum();
     }
-
+}
