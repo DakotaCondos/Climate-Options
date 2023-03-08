@@ -1154,7 +1154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e29865b6cfc15e4ebebc946446e8183, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadingBlock: {fileID: 942201532}
+  loadingBlock: {fileID: 942201530}
   climateControlSystemConfig:
     name: 
     houseConfig:
