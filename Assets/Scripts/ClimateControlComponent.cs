@@ -23,21 +23,21 @@ public class ClimateControlComponent
     public string imagePath = "";
     public ClimateControlComponent()
     {
-        this.componentName = "TestComponent";
-        this.description = "Description of TestComponent";
-        this.pros = "Pros of TestComponent";
-        this.cons = "Cons of TestComponent";
-        this.prerequisiteComponentType = ClimateControlComponentTypes.None;
-        this.isWholeHomeComponent = false;
-        this.isHeating = false;
-        this.isCooling = false;
-        this.heatingBTUOutput = 0;
-        this.coolingBTUOutput = 0;
-        this.heatingCostPerBTU = 0;
-        this.coolingCostPerBTU = 0;
-        this.componentType = ClimateControlComponentTypes.None;
-        this.utilityType = UtilityType.Electric;
-        this.priceRange = (10.0f, 100.0f);
+        componentName = "TestComponent";
+        description = "Description of TestComponent";
+        pros = "Pros of TestComponent";
+        cons = "Cons of TestComponent";
+        prerequisiteComponentType = ClimateControlComponentTypes.None;
+        isWholeHomeComponent = false;
+        isHeating = true;
+        isCooling = true;
+        heatingBTUOutput = 500;
+        coolingBTUOutput = 500;
+        heatingCostPerBTU = 0.000293m;
+        coolingCostPerBTU = 0.000293m;
+        componentType = ClimateControlComponentTypes.None;
+        utilityType = UtilityType.Electric;
+        priceRange = (10.0f, 100.0f);
     }
 
     public ClimateControlComponent(

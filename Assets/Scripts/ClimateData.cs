@@ -64,6 +64,7 @@ public class ClimateData : MonoBehaviour
         {
             yield return null;
         }
+
         isDataReady = true;
     }
 

@@ -37,7 +37,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 210.74738, y: 0}
+  m_AnchoredPosition: {x: -234.75261, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &8855128524772245990
@@ -565,7 +565,7 @@ MonoBehaviour:
     LightingModel: 0
     ShadowCastingMode: 2
     ReceiveShadows: 1
-  PreviewSize: {x: 1, y: 1, z: 0}
+  PreviewSize: {x: 1, y: 40.920002, z: 0}
   visuals:
     Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     CornerRadius:
@@ -646,8 +646,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4624fbd28dbbc446bbf0923f2c48ac4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  partName: {fileID: 8855128526271436309}
-  partPrice: {fileID: 8855128524772245988}
+  textBlocks:
+  - {fileID: 8855128526271436309}
+  - {fileID: 8855128524772245988}
 --- !u!1 &8855128526271436304
 GameObject:
   m_ObjectHideFlags: 0
@@ -685,7 +686,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -342.6901, y: 0}
+  m_AnchoredPosition: {x: 102.8099, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &8855128526271436311

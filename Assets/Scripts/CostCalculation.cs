@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 public class CostCalculation
 {
     public ClimateControlSystemConfig climateControlSystemConfig;
-    ClimateDataMonth[] climateDataMonths;
+    public ClimateDataMonth[] climateDataMonths;
 
     public float partsCostLow = 0;
     public float partsCostHigh = 0;
@@ -20,13 +21,26 @@ public class CostCalculation
     public decimal averageCoolingCostPerBTU = 0;
 
 
+    public CostCalculation()
+    {
+    }
 
 
     public CostCalculation(ClimateControlSystemConfig climateControlSystemConfig, ClimateDataMonth[] climateDataMonths)
     {
         this.climateControlSystemConfig = climateControlSystemConfig;
+        this.climateDataMonths = climateDataMonths;
         ExtractPartInformation();
         CalculateMonthlyOperationCosts();
+    }
+
+    public void Initialize()
+    {
+        if (climateControlSystemConfig != null && climateDataMonths != null)
+        {
+            ExtractPartInformation();
+            CalculateMonthlyOperationCosts();
+        }
     }
 
 
@@ -44,11 +58,11 @@ public class CostCalculation
             totalCoolingBTUOutput += item.coolingBTUOutput;
             if (item.isHeating)
             {
-                totalHeatingCostsPerBTU += item.heatingCostPerBTU;
+                totalHeatingCostsPerBTU += item.heatingCostPerBTU * GetUtilRate(item);
             }
             if (item.isCooling)
             {
-                totalCoolingCostsPerBTU += item.coolingCostPerBTU;
+                totalCoolingCostsPerBTU += item.coolingCostPerBTU * GetUtilRate(item);
             }
         }
 
@@ -65,11 +79,11 @@ public class CostCalculation
                 totalCoolingBTUOutput += item.coolingBTUOutput;
                 if (item.isHeating)
                 {
-                    totalHeatingCostsPerBTU += item.heatingCostPerBTU;
+                    totalHeatingCostsPerBTU += item.heatingCostPerBTU * GetUtilRate(item);
                 }
                 if (item.isCooling)
                 {
-                    totalCoolingCostsPerBTU += item.coolingCostPerBTU;
+                    totalCoolingCostsPerBTU += item.coolingCostPerBTU * GetUtilRate(item);
                 }
             }
         }
@@ -77,6 +91,20 @@ public class CostCalculation
         averageHeatingCostPerBTU = (decimal)(totalHeatingCostsPerBTU / masterComponentsList.Select(x => x.isHeating == true).Count());
         averageCoolingCostPerBTU = (decimal)(totalCoolingCostsPerBTU / masterComponentsList.Select(x => x.isCooling == true).Count());
     }
+
+    private decimal GetUtilRate(ClimateControlComponent component)
+    {
+        UtilityRates rates = climateControlSystemConfig.utilityConfig.utilityrates;
+        return component.utilityType switch
+        {
+            UtilityType.Electric => (decimal)rates.ElectricityPerKWH,
+            UtilityType.Gas => (decimal)rates.GasPerTherm,
+            UtilityType.Oil => (decimal)rates.OilPerGallon,
+            UtilityType.WoodPellet => (decimal)rates.WoodPerPound,
+            _ => 0,
+        };
+    }
+
     private void CalculateMonthlyOperationCosts()
     {
         /* Calculating Operational Costs 
@@ -87,26 +115,29 @@ public class CostCalculation
          * 
          * heat loss =  Surface Heat Loss(wall loss + ceiling loss) + Air Infiltration Heat Loss
          * Surface Heat Loss in British Thermal Units per Hour (BTUH) = U value x surface area x Delta T
-         * U value for home walls with code approved insulation = 0.7
-         * U value for home ceiling with code approved insulation = 0.53
+         * U value for home walls with code approved insulation = 0.07
+         * U value for home ceiling with code approved insulation = 0.053
          * 
-         * ceiling area estimate = 1.3 * total square footage
-         * wall area is estimated from total sq footage:
-         * squareRT(total square footage)*8 -> gives perfect square house, multiply by 1.3 for irregularity in home shape
+         * ceiling area estimate = house square footage
+         * 
+         * wall area is estimated from house square footage:
+         *      squareRT(total square footage) -> gives 1 side length for a perfect square house, 
+         *      then multiply side length by 4 to get all sides of perfect square house
+         *      then multiply by 1.3 for irregularity in homes shape
          * 
          * Air Infiltration Heat Loss in BTUH = Room volume x Delta T x Air Changes per Hour (ACH) x .018.
          * typical ACH rate is 4
          */
 
         // One BTU will raise temperature 1 degree per 55 cubic feet
-        // Initial temperature change = (house volume * temperature delta) / 55
-        // apply this every month to deal with non-calculated losses like appliance use, opening/closing doors & windows etc..
+        // Initial temperature change BTU required = (house volume * temperature delta) / 55
+        // apply this every month to estimate non-calculated losses like appliance use, opening/closing doors & windows etc..
 
         // establish house calculation values
-        double ceilingArea = (houseVolume / 9) * 1.3; // update this after the merge
-        double wallArea = 1.3 * MathF.Sqrt(houseVolume / 9);
-        double uValueWall = 0.7;
-        double uValueCeiling = 0.7;
+        double ceilingArea = climateControlSystemConfig.houseConfig.size; // update this after the merge
+        double wallArea = MathF.Sqrt((float)climateControlSystemConfig.houseConfig.size) * 4 * 1.3;
+        double uValueWall = 0.07;
+        double uValueCeiling = 0.053;
         double desiredTemperature = 70;
         double ACH = 4;
         double cubicFeetPerBTU = 55;
@@ -123,8 +154,9 @@ public class CostCalculation
             double airInfiltrationLoss = houseVolume * temperatureDelta * ACH * 0.18;
             double BTUHLoss = surfaceLossWall + surfaceLossCeiling + airInfiltrationLoss;
             double initialChangeBTU = (houseVolume * temperatureDelta) / cubicFeetPerBTU;
-
             int avgHrsPerMonth = (365 * 24) / 12;
+
+            //print($"[{i}]: {temperatureDelta} = {desiredTemperature} - KelvinToFahrenheit({climateDataMonths[i].averageTemperature}) ->{KelvinToFahrenheit(climateDataMonths[i].averageTemperature)}");
 
             if (temperatureDelta > 0)
             {
@@ -138,11 +170,14 @@ public class CostCalculation
                 monthlyOperationCosts[i].Item2 += averageCoolingCostPerBTU * (decimal)initialChangeBTU;
                 monthlyOperationCosts[i].Item2 += averageCoolingCostPerBTU * (decimal)(avgHrsPerMonth * BTUHLoss);
             }
+
+            //flip negative cooling cost
+            monthlyOperationCosts[i].Item2 *= -1;
         }
     }
 
     private double KelvinToFahrenheit(double kelvin)
     {
-        return (kelvin - 273.15) * (9 / 5) + 32;
+        return (kelvin - 273.15) * 9.0 / 5.0 + 32.0;
     }
 }
