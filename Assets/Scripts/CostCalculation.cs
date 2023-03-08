@@ -20,6 +20,9 @@ public class CostCalculation
     public decimal averageHeatingCostPerBTU = 0;
     public decimal averageCoolingCostPerBTU = 0;
 
+    //debug component
+    public List<string> messages = new List<string>();
+
 
     public CostCalculation()
     {
@@ -68,8 +71,6 @@ public class CostCalculation
 
         foreach (RoomConfig room in climateControlSystemConfig.houseConfig.rooms)
         {
-            houseVolume += room.size;
-
             foreach (ClimateControlComponent item in room.components)
             {
                 masterComponentsList.Add(item);
@@ -123,9 +124,10 @@ public class CostCalculation
          * wall area is estimated from house square footage:
          *      squareRT(total square footage) -> gives 1 side length for a perfect square house, 
          *      then multiply side length by 4 to get all sides of perfect square house
+         *      then multiply by 9 for the height of the wall
          *      then multiply by 1.3 for irregularity in homes shape
          * 
-         * Air Infiltration Heat Loss in BTUH = Room volume x Delta T x Air Changes per Hour (ACH) x .018.
+         * Air Infiltration Heat Loss in BTUH = Room volume x Delta T x Air Changes per Hour (ACH) x 0.018.
          * typical ACH rate is 4
          */
 
@@ -134,13 +136,23 @@ public class CostCalculation
         // apply this every month to estimate non-calculated losses like appliance use, opening/closing doors & windows etc..
 
         // establish house calculation values
-        double ceilingArea = climateControlSystemConfig.houseConfig.size; // update this after the merge
-        double wallArea = MathF.Sqrt((float)climateControlSystemConfig.houseConfig.size) * 4 * 1.3;
+        double ceilingArea = climateControlSystemConfig.houseConfig.size;
+        double wallArea = MathF.Sqrt((float)climateControlSystemConfig.houseConfig.size) * 4.0 * 9.0 * 1.3;
         double uValueWall = 0.07;
         double uValueCeiling = 0.053;
-        double desiredTemperature = 70;
-        double ACH = 4;
-        double cubicFeetPerBTU = 55;
+        double desiredTemperature = 70.0;
+        double ACH = 4.0;
+        double cubicFeetPerBTU = 55.0;
+        double houseVolume = climateControlSystemConfig.houseConfig.size * 9.0;
+
+        // log debug messages
+        messages.Add($"ceilingArea:{ceilingArea}");
+        messages.Add($"wallArea:{wallArea}");
+        messages.Add($"houseVolume:{houseVolume}");
+        messages.Add($"averageHeatingCostPerBTU:{averageHeatingCostPerBTU}");
+        messages.Add($"averageCoolingCostPerBTU:{averageCoolingCostPerBTU}");
+        messages.Add($"Heating BTU's per Dollar:{Decimal.Truncate(1m / averageHeatingCostPerBTU)}");
+        messages.Add($"Cooling BTU's per Dollar:{Decimal.Truncate(1m / averageCoolingCostPerBTU)}");
 
 
         for (int i = 0; i < monthlyOperationCosts.Length; i++)
@@ -151,12 +163,11 @@ public class CostCalculation
             double temperatureDelta = desiredTemperature - KelvinToFahrenheit(climateDataMonths[i].averageTemperature);
             double surfaceLossWall = uValueWall * wallArea * temperatureDelta;
             double surfaceLossCeiling = uValueCeiling * ceilingArea * temperatureDelta;
-            double airInfiltrationLoss = houseVolume * temperatureDelta * ACH * 0.18;
+            double airInfiltrationLoss = houseVolume * temperatureDelta * ACH * 0.018;
             double BTUHLoss = surfaceLossWall + surfaceLossCeiling + airInfiltrationLoss;
             double initialChangeBTU = (houseVolume * temperatureDelta) / cubicFeetPerBTU;
             int avgHrsPerMonth = (365 * 24) / 12;
 
-            //print($"[{i}]: {temperatureDelta} = {desiredTemperature} - KelvinToFahrenheit({climateDataMonths[i].averageTemperature}) ->{KelvinToFahrenheit(climateDataMonths[i].averageTemperature)}");
 
             if (temperatureDelta > 0)
             {
@@ -173,6 +184,18 @@ public class CostCalculation
 
             //flip negative cooling cost
             monthlyOperationCosts[i].Item2 *= -1;
+
+
+            //debug log month data
+            messages.Add($"Month[{i}]:\n" +
+                $"temperatureDelta:{temperatureDelta}\n" +
+                $"KelvinAvg:{climateDataMonths[i].averageTemperature}\n" +
+                $"KelvinToFahrenheit:{KelvinToFahrenheit(climateDataMonths[i].averageTemperature)}\n" +
+                $"surfaceLossWall:{surfaceLossWall}\n" +
+                $"surfaceLossCeiling:{surfaceLossCeiling}\n" +
+                $"airInfiltrationLoss:{airInfiltrationLoss}\n" +
+                $"BTUHLoss:{BTUHLoss}\n" +
+                $"initialChangeBTU:{initialChangeBTU}");
         }
     }
 

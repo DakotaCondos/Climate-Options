@@ -1170,7 +1170,7 @@ MonoBehaviour:
   operationCostRowLocation: {fileID: 1415728653}
   operationCostExpandableContainer: {fileID: 743438452}
   ConfigName: {fileID: 2012491990}
-  TotalCosts: {fileID: 0}
+  TotalCosts: {fileID: 1161700753}
   partsCostRange: {fileID: 227896958}
   OperationCostTotal: {fileID: 497704786}
 --- !u!1 &227896955
@@ -4606,7 +4606,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &942201531
 Transform:
   m_ObjectHideFlags: 0
@@ -9086,7 +9086,7 @@ MonoBehaviour:
   openWeatherMapAPIHelper: {fileID: 0}
   isDataReady: 0
   initializeOnStart: 1
-  zip: 88310
+  zip: 99004
 --- !u!4 &1709720145
 Transform:
   m_ObjectHideFlags: 0

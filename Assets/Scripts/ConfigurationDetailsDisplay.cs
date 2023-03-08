@@ -52,6 +52,12 @@ public class ConfigurationDetailsDisplay : MonoBehaviour
         }
         DisplayConfig();
         loadingBlock.SetActive(false);
+
+        //print debug logs
+        foreach (var item in costCalculation.messages)
+        {
+            print(item);
+        }
     }
 
     private void CreateDummyConfig()
@@ -97,6 +103,8 @@ public class ConfigurationDetailsDisplay : MonoBehaviour
             opCost += month.Item1 + month.Item2;
         }
         OperationCostTotal.Text = $"${Decimal.Truncate(opCost)}";
+        TotalCosts.Text = $"${Decimal.Truncate(opCost + (decimal)costCalculation.partsCostLow)} - " +
+            $"${Decimal.Truncate(opCost + (decimal)costCalculation.partsCostHigh)}";
 
     }
 
