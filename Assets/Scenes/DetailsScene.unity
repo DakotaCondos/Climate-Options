@@ -870,7 +870,6 @@ GameObject:
   - component: {fileID: 188769790}
   - component: {fileID: 188769789}
   - component: {fileID: 188769791}
-  - component: {fileID: 188769792}
   m_Layer: 0
   m_Name: DetailDisplay
   m_TagString: Untagged
@@ -1174,22 +1173,6 @@ MonoBehaviour:
   TotalCosts: {fileID: 0}
   partsCostRange: {fileID: 227896958}
   OperationCostTotal: {fileID: 497704786}
---- !u!114 &188769792
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 188769787}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 388f1fceb3d2beb408ed2d18963ab884, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  info:
-    Color: {r: 1, g: 1, b: 1, a: 1}
-    Clip: 1
-  maskTexture: {fileID: 0}
 --- !u!1 &227896955
 GameObject:
   m_ObjectHideFlags: 0
@@ -7240,7 +7223,6 @@ GameObject:
   - component: {fileID: 1415728653}
   - component: {fileID: 1415728656}
   - component: {fileID: 1415728655}
-  - component: {fileID: 1415728654}
   m_Layer: 0
   m_Name: ExpandingContainer
   m_TagString: Untagged
@@ -7263,22 +7245,6 @@ Transform:
   m_Father: {fileID: 743438451}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1415728654
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1415728652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 388f1fceb3d2beb408ed2d18963ab884, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  info:
-    Color: {r: 1, g: 1, b: 1, a: 1}
-    Clip: 1
-  maskTexture: {fileID: 0}
 --- !u!114 &1415728655
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12928,22 +12894,6 @@ Transform:
   m_Father: {fileID: 5021935734355468885}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3431962358897261866
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3431962358897261878}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 388f1fceb3d2beb408ed2d18963ab884, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  info:
-    Color: {r: 1, g: 1, b: 1, a: 1}
-    Clip: 1
-  maskTexture: {fileID: 0}
 --- !u!114 &3431962358897261867
 MonoBehaviour:
   m_ObjectHideFlags: 10
@@ -12967,7 +12917,6 @@ GameObject:
   - component: {fileID: 3431962358897261865}
   - component: {fileID: 3431962358897261867}
   - component: {fileID: 3431962358897261864}
-  - component: {fileID: 3431962358897261866}
   m_Layer: 0
   m_Name: ExpandingContainer
   m_TagString: Untagged
