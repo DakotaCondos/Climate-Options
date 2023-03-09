@@ -854,7 +854,7 @@ MonoBehaviour:
         Type: 0
     Position:
       X:
-        Raw: 433.2
+        Raw: 456
         Type: 0
       Y:
         Raw: 0
@@ -8111,7 +8111,7 @@ MonoBehaviour:
   layout:
     Size:
       X:
-        Raw: 0.9780702
+        Raw: 0.97691596
         Type: 1
       Y:
         Raw: 0.97761524
