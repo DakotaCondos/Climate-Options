@@ -27,6 +27,11 @@ public class ConfigurationDetailsDisplay : MonoBehaviour
 
     public TextBlock OperationCostTotal;
 
+    public TextBlock utilityElectricRate;
+    public TextBlock utilityGasRate;
+    public TextBlock utilityOilRate;
+    public TextBlock utilityWoodRate;
+
     private void Awake()
     {
         //if this is the primary display,
@@ -106,6 +111,15 @@ public class ConfigurationDetailsDisplay : MonoBehaviour
         TotalCosts.Text = $"${Decimal.Truncate(opCost + (decimal)costCalculation.partsCostLow)} - " +
             $"${Decimal.Truncate(opCost + (decimal)costCalculation.partsCostHigh)}";
 
+        UtilInfo();
+    }
+
+    private void UtilInfo()
+    {
+        utilityElectricRate.Text = $"${climateControlSystemConfig.utilityConfig.utilityrates.ElectricityPerKWH}/KWH";
+        utilityGasRate.Text = $"${climateControlSystemConfig.utilityConfig.utilityrates.GasPerTherm}/Therm";
+        utilityOilRate.Text = $"${climateControlSystemConfig.utilityConfig.utilityrates.OilPerGallon}/Gallon";
+        utilityWoodRate.Text = $"${climateControlSystemConfig.utilityConfig.utilityrates.WoodPerPound}/Pound";
     }
 
     public static string GetMonthName(int monthNumber)
