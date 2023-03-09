@@ -72,7 +72,7 @@ public class ConfigurationDetailsDisplay : MonoBehaviour
         climateControlSystemConfig.houseConfig.rooms.Add(new RoomConfig(2, false));
         climateControlSystemConfig.houseConfig.rooms.Add(new RoomConfig(3, true));
         climateControlSystemConfig.houseConfig.rooms.ForEach(r => { r.components.Add(new ClimateControlComponent()); });
-        climateControlSystemConfig.utilityConfig = new(new UtilityRates(0.23f, 0.147f, 4.231f, 0.16f), 99004);
+        climateControlSystemConfig.utilityConfig = new(new UtilityRates(0.16f, 0.147f, 4.231f, 0.16f), 99004);
 
     }
 
