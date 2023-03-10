@@ -13,7 +13,6 @@ using TMPro;
 
 public class FirebaseStorageController : MonoBehaviour
 {
-    //public UIBlock2D imageBlock;
     FirebaseStorage storage;
     StorageReference storageReference;
 
@@ -36,8 +35,6 @@ public class FirebaseStorageController : MonoBehaviour
         storageReference = storage.GetReferenceFromUrl("gs://cscd488-f516a.appspot.com");
 
         FileBrowser.SetFilters(false, new FileBrowser.Filter("Images", ".jpg", ".png", ".jpeg"));
-
-        //FileBrowser.SetDefaultFilter(".jpg");
 
         FileBrowser.SetExcludedExtensions(".lnk", ".tmp", ".zip", ".rar", ".exe");
 
@@ -77,26 +74,6 @@ public class FirebaseStorageController : MonoBehaviour
         }
     }
 
-    //public async void Test()
-    //{
-    //    await GetAllImages();
-    //    print("TOTAL COUNT: " + totalImagesIndex);
-    //    print("FirebaseImage Count: " + firebaseImages.Count);
-    //    print("REsult list Count: " + totalImagesSave.Count);
-    //    Texture2D tex = new Texture2D(2, 2);
-    //    tex.LoadImage(totalImagesSave[0]);
-    //    imageBlock.SetImage(tex);
-
-
-    //}
-
-    //public void ImageLoader(int index)
-    //{
-    //    byte[] jpgBytes = totalImagesSave[index];
-    //    Texture2D tex = new Texture2D(2, 2);
-    //    tex.LoadImage(jpgBytes);
-    //    imageBlock.SetImage(tex);
-    //}
 
     public async Task<List<byte[]>> GetAllImages()
     {
@@ -155,57 +132,6 @@ public class FirebaseStorageController : MonoBehaviour
     {
         return totalImagesIndex;
     }   
-
-    //public IEnumerator FadeImage(bool fadeAway)
-    //{
-    //    if (fadeAway)
-    //    {
-    //        for (float i = 1; i >= 0; i -= Time.deltaTime)
-    //        {
-    //            imageBlock.Color = new Color(1, 1, 1, i);
-    //            yield return null;
-    //        }
-    //    }
-    //    else
-    //    {
-    //        for (float i = 0; i <= 1; i += Time.deltaTime)
-    //        {
-    //            imageBlock.Color = new Color(1, 1, 1, i);
-    //            yield return null;
-    //        }
-    //    }  
-    //}
-
-    //public void RightClick()
-    //{
-
-    //    imageIndex += 1;
-    //    Debug.Log(imageIndex);
-    //    if (imageIndex >= totalImagesIndex - 1)
-    //    {
-    //        imageIndex = totalImagesIndex - 1;
-    //    }
-    //    if (imageIndex < 0)
-    //    {
-    //        imageIndex = 0;
-    //    }
-    //    ImageLoader(imageIndex);
-    //}
-
-    //public void LeftClick()
-    //{
-    //    imageIndex -= 1;
-    //    Debug.Log(imageIndex);
-    //    if (imageIndex >= totalImagesIndex - 1)
-    //    {
-    //        imageIndex = totalImagesIndex - 1;
-    //    }
-    //    if (imageIndex < 0)
-    //    {
-    //        imageIndex = 0;
-    //    }
-    //    ImageLoader(imageIndex);
-    //}
 }
 
 
