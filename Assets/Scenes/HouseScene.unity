@@ -434,8 +434,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b7fcfe45450f404ea00f56984a64912, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  block: {fileID: 0}
   responseText: {fileID: 1191605962}
   houseSize: {fileID: 1987574012}
+  houseConfig:
+    rooms: []
+    components: []
+    size: 0
 --- !u!224 &45192999
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5822,6 +5827,7 @@ GameObject:
   - component: {fileID: 561387203}
   - component: {fileID: 561387202}
   - component: {fileID: 561387201}
+  - component: {fileID: 561387206}
   m_Layer: 0
   m_Name: Button_Modern (1)
   m_TagString: Untagged
@@ -5861,9 +5867,9 @@ MonoBehaviour:
   OnClicked:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SetupController, Assembly-CSharp
-        m_MethodName: CollectUtilityData
+      - m_Target: {fileID: 561387206}
+        m_TargetAssemblyTypeName: HouseSelectionAdvancement, Assembly-CSharp
+        m_MethodName: OnNextSceneAdvance
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6162,6 +6168,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c9117b6d975111c47b064a4373cc67ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &561387206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 561387199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b2fb49e3cdd1844aa57d05a131b1a04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &596641152
