@@ -35,13 +35,18 @@ public class SetupController : MonoBehaviour
     private float electric = 0;
     private float gas = 0;
     private float oil = 0;
-    private float woodPellet = 0;
+    private float wood = 0;
+
+    UtilityRatesAndZip utilityRatesAndZip;
+    ProgramManager programManager;
 
 
     private void Awake()
     {
         toggle = novaToggle.GetComponent<Toggle>();
         UpdateToggle();
+        utilityRatesAndZip = FindObjectOfType<UtilityRatesAndZip>();
+        programManager = FindObjectOfType<ProgramManager>();
     }
 
     public void UpdateToggle()
@@ -109,14 +114,60 @@ public class SetupController : MonoBehaviour
 
     public void CollectUtilityData()
     {
+        UtilityRates utilityRates;
+
         //error check input fields
         if (!IsZipInputValid())
             return;
-        if (!autoCalculateUtilityRate && !IsUtilityInputValid())
-            return;
 
-        // Call 
-        UpdateResponse("Input is valid", Color.green);
+        if (!autoCalculateUtilityRate)
+        {
+            //using manual input
+            if (!IsUtilityInputValid()) return;
+
+            utilityRates = new(Single.Parse(electrictyTMP.text), Single.Parse(gasTMP.text), Single.Parse(oilTMP.text), Single.Parse(woodPelletTMP.text));
+            if (Int32.TryParse(zipTMP.text, out int zip))
+            {
+                programManager.climateControlSystemConfig.utilityConfig = new(utilityRates, zip);
+                programManager.sceneController.LoadSceneName("ComponentSelectionScene_dakota");
+            }
+            else
+            {
+                UpdateResponse("Invalid Zip Code", Color.red);
+                Debug.Log($"zipTMP.text: {zipTMP.text}");
+            }
+        }
+        else
+        {
+            //using auto rates
+            if (Int32.TryParse(zipTMP.text, out int zip))
+            {
+                if (utilityRatesAndZip.zipToState.TryGetValue(zip, out string state))
+                {
+                    if (utilityRatesAndZip.stateRates.TryGetValue(state, out utilityRates))
+                    {
+                        programManager.climateControlSystemConfig.utilityConfig = new(utilityRates, zip);
+                        programManager.sceneController.LoadSceneName("ComponentSelectionScene_dakota");
+                    }
+                    else
+                    {
+                        UpdateResponse("State Rate Data Not Found", Color.red);
+                        Debug.Log($"state: {state}");
+                    }
+                }
+                else
+                {
+                    UpdateResponse("Zip Code Data Not Found", Color.red);
+                    Debug.Log($"zip: {zip}");
+                }
+
+            }
+            else
+            {
+                UpdateResponse("Invalid Zip Code", Color.red);
+                Debug.Log($"zipTMP.text: {zipTMP.text}");
+            }
+        }
     }
 
     private bool IsZipInputValid()
@@ -163,7 +214,7 @@ public class SetupController : MonoBehaviour
             return false;
         }
 
-        if (!Single.TryParse(woodPelletTMP.text, out woodPellet))
+        if (!Single.TryParse(woodPelletTMP.text, out wood))
         {
             UpdateResponse("Wood Pellet must be a numerical value", Color.red);
             return false;

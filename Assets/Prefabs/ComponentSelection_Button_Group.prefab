@@ -111,10 +111,10 @@ MonoBehaviour:
   layout:
     Size:
       X:
-        Raw: 211.75348
+        Raw: 171.75348
         Type: 0
       Y:
-        Raw: 74.100006
+        Raw: 34.100006
         Type: 0
       Z:
         Raw: 0
@@ -367,6 +367,7 @@ GameObject:
   - component: {fileID: 8316016973940838487}
   - component: {fileID: 8316016973940838480}
   - component: {fileID: 8316016973940838491}
+  - component: {fileID: 1547218439466325905}
   m_Layer: 0
   m_Name: Button_Modern (1)
   m_TagString: Untagged
@@ -708,6 +709,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1547218439466325905}
+        m_TargetAssemblyTypeName: DisplaySwitcherHelper, Assembly-CSharp
+        m_MethodName: Activate
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &8316016973940838491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -725,17 +738,28 @@ MonoBehaviour:
     description: 
     pros: 
     cons: 
-    prerequisiteComponentType: 
+    prerequisiteComponentType: 0
     isWholeHomeComponent: 0
     isHeating: 0
     isCooling: 0
     heatingBTUOutput: 0
     coolingBTUOutput: 0
-    heatingCostPerBTU: 0
-    coolingCostPerBTU: 0
     componentType: 0
     utilityType: 0
+    imagePath: 
   textblockLabel: {fileID: 8316016973229056879}
+--- !u!114 &1547218439466325905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8316016973940838482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f34de4fb959bfee46879c0bf8dcfffa7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8316016974083187354
 GameObject:
   m_ObjectHideFlags: 0
@@ -1103,6 +1127,7 @@ GameObject:
   - component: {fileID: 8316016974150473525}
   - component: {fileID: 8316016974150473526}
   - component: {fileID: 8316016974150473529}
+  - component: {fileID: 3469764259805401224}
   m_Layer: 0
   m_Name: Info_Button
   m_TagString: Untagged
@@ -1444,6 +1469,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 3469764259805401224}
+        m_TargetAssemblyTypeName: DisplaySwitcherHelper, Assembly-CSharp
+        m_MethodName: Activate
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &8316016974150473529
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1461,16 +1498,27 @@ MonoBehaviour:
     description: 
     pros: 
     cons: 
-    prerequisiteComponentType: 
+    prerequisiteComponentType: 0
     isWholeHomeComponent: 0
     isHeating: 0
     isCooling: 0
     heatingBTUOutput: 0
     coolingBTUOutput: 0
-    heatingCostPerBTU: 0
-    coolingCostPerBTU: 0
     componentType: 0
     utilityType: 0
+    imagePath: 
+--- !u!114 &3469764259805401224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8316016974150473520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f34de4fb959bfee46879c0bf8dcfffa7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8316016975235273458
 GameObject:
   m_ObjectHideFlags: 0

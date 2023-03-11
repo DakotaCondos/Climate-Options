@@ -591,6 +591,7 @@ GameObject:
   - component: {fileID: 1029302100}
   - component: {fileID: 1029302099}
   - component: {fileID: 1029302098}
+  - component: {fileID: 1029302102}
   m_Layer: 0
   m_Name: ProgramManager
   m_TagString: Untagged
@@ -640,6 +641,16 @@ MonoBehaviour:
   components: []
   factory: {fileID: 0}
   sceneController: {fileID: 0}
+  climateControlSystemConfig:
+    name: 
+    houseConfig:
+      rooms: []
+      components: []
+      size: 0
+    utilityConfig:
+      zip: 99004
+  utilityRatesAndZip: {fileID: 0}
+  isComponentsReady: 0
 --- !u!4 &1029302101
 Transform:
   m_ObjectHideFlags: 0
@@ -655,6 +666,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1029302102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1029302097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5500652de372fe94598841015fe2a8bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isReady: 0
 --- !u!224 &1076796519 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 22400024, guid: 4396a831358f4fe49bb64502f4535264, type: 3}
@@ -697,7 +721,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 287.43488}
+  m_AnchoredPosition: {x: 0, y: 250.65065}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1309524727
@@ -1102,7 +1126,7 @@ MonoBehaviour:
         Raw: 1920
         Type: 0
       Y:
-        Raw: 1203.6364
+        Raw: 1081.0222
         Type: 0
       Z:
         Raw: 0
@@ -1337,7 +1361,7 @@ Transform:
   m_GameObject: {fileID: 1537936559}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: -9}
-  m_LocalScale: {x: 0.00095934334, y: 0.00095934334, z: 0.00095934334}
+  m_LocalScale: {x: 0.0010681561, y: 0.0010681561, z: 0.0010681561}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1309524726}
@@ -1695,6 +1719,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 58.954224}
+  m_AnchoredPosition: {x: 0, y: 52.823517}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}

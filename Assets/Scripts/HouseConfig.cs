@@ -13,12 +13,19 @@ public class HouseConfig
     {
         rooms = new List<RoomConfig>();
         components = new List<ClimateControlComponent>();
+        size = 0;
     }
 
     public HouseConfig(List<RoomConfig> rooms, List<ClimateControlComponent> components)
     {
         this.rooms = rooms;
         this.components = components;
+    }
+    public HouseConfig(List<RoomConfig> rooms, List<ClimateControlComponent> components, int size)
+    {
+        this.rooms = rooms;
+        this.components = components;
+        this.size = size;
     }
 
     public RoomConfig GetRoomByID(int roomID)
