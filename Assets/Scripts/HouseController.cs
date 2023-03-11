@@ -22,7 +22,7 @@ namespace NovaSamples.UIControls
         int fileSize;
         int bedroom;
         int bathroom;
-        HouseConfig houseConfig;
+        public HouseConfig houseConfig;
 
         public void Awake()
         {
