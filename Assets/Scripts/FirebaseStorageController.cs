@@ -24,6 +24,7 @@ public class FirebaseStorageController : MonoBehaviour
     public UIBlock2D progressPanel;
     UIBlock2D prefab;
 
+    public TMP_Text maxSizeError;
     List<Task<byte[]>> firebaseImages = new();
     List<byte[]> totalImagesSave;
     int imageIndex;
@@ -51,7 +52,15 @@ public class FirebaseStorageController : MonoBehaviour
     }
     public void ClickUploadButton()
     {
-        StartCoroutine(ShowLoadDialogCoroutine());
+        print("imageIndex: " + totalImagesIndex);
+        if (totalImagesIndex < 3)
+        {
+            StartCoroutine(ShowLoadDialogCoroutine());
+        }
+        else
+        {
+            maxSizeError.text = "Maximum Limit Upload Reached: 3";
+        }
     }
 
 

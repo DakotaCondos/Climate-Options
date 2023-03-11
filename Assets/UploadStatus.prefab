@@ -67,7 +67,7 @@ MonoBehaviour:
         Raw: 1
         Type: 1
       Y:
-        Raw: 0.15
+        Raw: 0.2
         Type: 1
       Z:
         Raw: 0
@@ -212,7 +212,7 @@ MonoBehaviour:
     LightingModel: 0
     ShadowCastingMode: 2
     ReceiveShadows: 1
-  PreviewSize: {x: 10, y: 1.5, z: 0}
+  PreviewSize: {x: 10, y: 1.9999999, z: 0}
   visuals:
     Color: {r: 1, g: 1, b: 1, a: 1}
     CornerRadius:
@@ -294,7 +294,6 @@ GameObject:
   - component: {fileID: 3291007886601562456}
   - component: {fileID: 8848053813092199167}
   - component: {fileID: 4334977991410840365}
-  - component: {fileID: 7974822678721008182}
   m_Layer: 0
   m_Name: TextBlock
   m_TagString: Untagged
@@ -589,8 +588,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 300
-  m_fontSizeBase: 300
+  m_fontSize: 250
+  m_fontSizeBase: 250
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -625,7 +624,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -4, y: -0.75, z: -4, w: -0.75}
+  m_margin: {x: -4, y: -0.99999994, z: -4, w: -0.99999994}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   _SortingLayer: 0
@@ -634,28 +633,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 3710179671090465674}
   m_maskType: 0
---- !u!114 &7974822678721008182
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4560409770905027103}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2541297f90fa9c14eab33d90c1489959, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ObstructDrags: 0
-  DragThreshold: 1
-  LowAccuracyDragThreshold: 30
-  ClickBehavior: 2
-  OverscrollEffect: 0
-  VectorScrollMultiplier: 1
-  dragScrolling: 1
-  vectorScrolling: 1
-  scrollbarVisual: {fileID: 0}
-  draggableScrollbar: 0
 --- !u!1 &5217927996919823879
 GameObject:
   m_ObjectHideFlags: 0

@@ -28,7 +28,7 @@ public class AuthController : MonoBehaviour
         loginUIController = FindObjectOfType<LoginUIController>();
 
     }
-
+    
     public void Login()
     {
         if (!VerifyFields()) return;
@@ -236,7 +236,7 @@ public class AuthController : MonoBehaviour
     private bool IsValidPassword()
     {
         //if not null, passwords are matching and length < 7
-        if (password1.text == null || password2.text == null)
+        if (string.IsNullOrEmpty(password1.text) || password2.text == null)
         {
             Debug.Log("Password Field is null");
             UpdateResponse("Password Field is null", Color.red);

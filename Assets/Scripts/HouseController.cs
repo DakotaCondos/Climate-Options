@@ -88,19 +88,16 @@ namespace NovaSamples.UIControls
             if (string.IsNullOrWhiteSpace(houseSize.text))
             {
                 responseText.text = "House size required";
-                //block.ClearImage();
                 return false;
             }
             if (!int.TryParse(houseSize.text, out houseSizeToInt))
             {
                 responseText.text = "House size must be a whole number.";
-                //block.ClearImage();
                 return false;
             }
             if(int.Parse(houseSize.text) <= 0)
             {
                 responseText.text = "House size cannot be less than 0.";
-                //block.ClearImage();
                 return false;
             }
             return true;

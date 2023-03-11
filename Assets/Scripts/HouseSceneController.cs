@@ -21,7 +21,7 @@ public class HouseSceneController : MonoBehaviour
                 panels[i].SetActive(false);
             }
         }
-        if (panelNumber == 3)
+        if (panelNumber > 0)
         {
             panels[4].SetActive(true);
         }
