@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class BorderActiveButton : MonoBehaviour
 {
-    [SerializeField] BorderActiveGroup borderActiveGroup;
+    public BorderActiveGroup borderActiveGroup;
 
     public void Activated()
     {

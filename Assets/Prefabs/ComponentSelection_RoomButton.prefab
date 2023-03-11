@@ -367,6 +367,8 @@ GameObject:
   - component: {fileID: 3587869902484767}
   - component: {fileID: 3587869902484764}
   - component: {fileID: 5169603821690657007}
+  - component: {fileID: 7456377532860755099}
+  - component: {fileID: 1181017708241570057}
   m_Layer: 0
   m_Name: ComponentSelection_RoomButton
   m_TagString: Untagged
@@ -604,12 +606,12 @@ MonoBehaviour:
       Rotation: 0
       Enabled: 1
     Border:
-      Color: {r: 0, g: 0, b: 0, a: 1}
+      Color: {r: 0.90196085, g: 0.49411768, b: 0.13333334, a: 1}
       Width:
-        Raw: 1
-        Type: 0
+        Raw: 0.15
+        Type: 1
       Enabled: 0
-      Direction: 2
+      Direction: 1
     Shadow:
       Color: {r: 0.39999998, g: 0.60588235, b: 1, a: 1}
       Width:
@@ -709,6 +711,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 7456377532860755099}
+        m_TargetAssemblyTypeName: BorderActiveButton, Assembly-CSharp
+        m_MethodName: Activated
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1181017708241570057}
+        m_TargetAssemblyTypeName: DisplaySwitcherHelper, Assembly-CSharp
+        m_MethodName: Activate
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &5169603821690657007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -722,6 +748,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   componentsList: []
+  isWholeHomeButton: 0
+  areaDisplayName: 
+--- !u!114 &7456377532860755099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3587869902484762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd147a1584340b349888bb89904f008d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  borderActiveGroup: {fileID: 0}
+--- !u!114 &1181017708241570057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3587869902484762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f34de4fb959bfee46879c0bf8dcfffa7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3587871288673334
 GameObject:
   m_ObjectHideFlags: 0

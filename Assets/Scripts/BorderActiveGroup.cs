@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using static Unity.Collections.AllocatorManager;
 
 public class BorderActiveGroup : MonoBehaviour
 {
@@ -18,6 +19,14 @@ public class BorderActiveGroup : MonoBehaviour
         foreach (UIBlock2D item in blocks)
         {
             item.Border.Enabled = (item.Equals(block));
+        }
+    }
+
+    public void SetActiveBorder(int index)
+    {
+        foreach (UIBlock2D item in blocks)
+        {
+            item.Border.Enabled = (item.Equals(blocks.ElementAt(index)));
         }
     }
 }
