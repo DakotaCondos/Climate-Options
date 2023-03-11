@@ -7,7 +7,7 @@ public class HouseImageController : MonoBehaviour
 {
 
     public UIBlock2D imageBlock;
-    List<byte[]> totalImagesSave;
+    List<byte[]> totalImagesSave = new List<byte[]>();
     int imageIndex;
     int totalImagesIndex;
 
@@ -25,6 +25,7 @@ public class HouseImageController : MonoBehaviour
     {
         houseSceneController.CurrentPanel(3);
         totalImagesSave = await firebaseStorageController.GetAllImages();
+        print("---totalImageSaveCount in DisplayAllimages()---" + totalImagesSave.Count);
         totalImagesIndex = firebaseStorageController.GetTotalImageIndex();
 
         if (totalImagesSave.Count > 0)

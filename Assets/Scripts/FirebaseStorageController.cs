@@ -26,7 +26,7 @@ public class FirebaseStorageController : MonoBehaviour
 
     public TMP_Text maxSizeError;
     List<Task<byte[]>> firebaseImages = new();
-    List<byte[]> totalImagesSave;
+    List<byte[]> totalImagesSave = new();
     int imageIndex;
 
     int totalImagesIndex = 0;
@@ -89,9 +89,9 @@ public class FirebaseStorageController : MonoBehaviour
 
     public async Task<List<byte[]>> GetAllImages()
     {
-        
+     
         print("Before for loop: " + totalImagesIndex);
-        for(int i = 0; i < totalImagesIndex; i++)
+        for (int i = 0; i < 3; i++)
         {
             var task = GetImage(i);
             if (task.IsFaulted || task.IsCanceled)
@@ -102,19 +102,29 @@ public class FirebaseStorageController : MonoBehaviour
             {
                 print("Inside of GetAllImages Else");
                 firebaseImages.Add(GetImage(i));
-                
             }
         }
-        totalImagesSave = (await Task.WhenAll(firebaseImages)).ToList(); ;
+        totalImagesSave = (await Task.WhenAll(firebaseImages)).ToList();
         print("Test FirebaseCountL " + totalImagesSave.Count);
-        return totalImagesSave;
+        return totalImagesSave.Where(x => x is not null).ToList();
+      
+        
     }
 
-    public Task<byte[]> GetImage(int i)
+    public async Task<byte[]> GetImage(int i)
     {
-        const long maxAllowedSize = 5 * 1024 * 1024;
-        StorageReference image = storageReference.Child($"/{auth.CurrentUser.UserId}/{i}");
-        return image.GetBytesAsync(maxAllowedSize);
+        try
+        {
+            print("GetImage() try block");
+            const long maxAllowedSize = 5 * 1024 * 1024;
+            StorageReference image = storageReference.Child($"/{auth.CurrentUser.UserId}/{i}");
+            return await image.GetBytesAsync(maxAllowedSize);
+        }
+        catch (Exception)
+        {
+            print("Getimage() catch block");
+            return null;
+        }
     }
 
 
