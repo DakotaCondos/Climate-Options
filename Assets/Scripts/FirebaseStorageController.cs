@@ -10,11 +10,13 @@ using System.Threading.Tasks;
 using System;
 using System.Linq;
 using TMPro;
+using Firebase.Auth;
 
 public class FirebaseStorageController : MonoBehaviour
 {
     FirebaseStorage storage;
     StorageReference storageReference;
+    FirebaseAuth auth;
 
     HouseSceneController houseSceneController;
 
@@ -30,6 +32,7 @@ public class FirebaseStorageController : MonoBehaviour
 
     private void Start()
     {
+        auth = FirebaseAuth.DefaultInstance;
         houseSceneController = FindObjectOfType<HouseSceneController>();
         storage = FirebaseStorage.DefaultInstance;
         storageReference = storage.GetReferenceFromUrl("gs://cscd488-f516a.appspot.com");
@@ -100,15 +103,15 @@ public class FirebaseStorageController : MonoBehaviour
 
     public Task<byte[]> GetImage(int i)
     {
-        const long maxAllowedSize = 1 * 1024 * 1024;
-        StorageReference image = storageReference.Child($"/uploads/{i}");
+        const long maxAllowedSize = 5 * 1024 * 1024;
+        StorageReference image = storageReference.Child($"/{auth.CurrentUser.UserId}/{i}");
         return image.GetBytesAsync(maxAllowedSize);
     }
 
 
     public void SaveImage(byte[] bytes, MetadataChange metadataChange, string fileName)
     {
-        StorageReference uploadReference = storageReference.Child($"uploads/{totalImagesIndex}");
+        StorageReference uploadReference = storageReference.Child($"{auth.CurrentUser.UserId}/{totalImagesIndex}");
         uploadReference.PutBytesAsync(bytes, metadataChange).ContinueWithOnMainThread((Action<Task<StorageMetadata>>)((task) =>
         {
             if (task.IsFaulted || task.IsCanceled)

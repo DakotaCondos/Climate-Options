@@ -46,6 +46,9 @@ namespace NovaSamples.UIControls
             houseConfig = CreateHouseConfig();
             houseSceneController.CurrentPanel(1);
 
+            Debug.Log("House Size: " + houseConfig.size);
+            Debug.Log("Number of rooms: " + houseConfig.rooms.Count);
+
         }
 
         public HouseConfig CreateHouseConfig()
