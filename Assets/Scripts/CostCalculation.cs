@@ -99,10 +99,10 @@ public class CostCalculation
         UtilityRates rates = climateControlSystemConfig.utilityConfig.utilityrates;
         return component.utilityType switch
         {
-            UtilityType.Electric => (decimal)rates.ElectricityPerKWH,
-            UtilityType.Gas => (decimal)rates.GasPerTherm,
-            UtilityType.Oil => (decimal)rates.OilPerGallon,
-            UtilityType.WoodPellet => (decimal)rates.WoodPerPound,
+            UtilityType.Electric => (decimal)rates.electricityPerKWH,
+            UtilityType.Gas => (decimal)rates.gasPerTherm,
+            UtilityType.Oil => (decimal)rates.oilPerGallon,
+            UtilityType.WoodPellet => (decimal)rates.woodPerPound,
             _ => 0,
         };
     }

@@ -1,5 +1,6 @@
 using Nova;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
@@ -11,8 +12,10 @@ public class ProgramManager : MonoBehaviour
     public List<ClimateControlComponent> components = new();
     public ClimateControlComponentFactory factory;
     public SceneController sceneController;
+    public ClimateControlSystemConfig climateControlSystemConfig;
+    public UtilityRatesAndZip utilityRatesAndZip;
 
-    public ClimateControlSystemConfig systemConfig;
+    public bool isComponentsReady = false;
 
 
     private static ProgramManager instance;
@@ -43,19 +46,26 @@ public class ProgramManager : MonoBehaviour
         componentsFilePath = $"{Application.streamingAssetsPath}/Components/";
         factory = GetComponent<ClimateControlComponentFactory>();
         sceneController = GetComponent<SceneController>();
-        ProcessJsonFiles();
-        systemConfig = new();
+        utilityRatesAndZip = GetComponent<UtilityRatesAndZip>();
+        climateControlSystemConfig = new();
+        StartCoroutine(LoadingSequence());
     }
 
-    private void Start()
+    public IEnumerator LoadingSequence()
     {
+        ProcessJsonFiles();
+        while (!isComponentsReady || !utilityRatesAndZip.isReady)
+        {
+            yield return null;
+        }
+
+
         OnLoadingComplete();
     }
 
     private void OnLoadingComplete()
     {
-        sceneController.LoadSceneName("HomeScene"); //  <= put this back after testing phase is done
-        //sceneController.LoadSceneName("ComponentSelectionScene_dakota");
+        sceneController.LoadSceneName("HomeScene");
     }
 
     void ProcessJsonFiles()
@@ -80,6 +90,8 @@ public class ProgramManager : MonoBehaviour
 
             }
         }
+
+        isComponentsReady = true;
     }
 
 

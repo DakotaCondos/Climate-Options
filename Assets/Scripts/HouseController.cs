@@ -24,15 +24,15 @@ namespace NovaSamples.UIControls
         int fileSize;
         int bedroom;
         int bathroom;
-        HouseConfig houseConfig;
+        public HouseConfig houseConfig;
 
         public void HouseSelectionConfirm()
         {
             Debug.Log(bedroom);
             Debug.Log(bathroom);
             responseText.text = "";
-            
-            if(!HouseSizeValidate(houseSize))
+
+            if (!HouseSizeValidate(houseSize))
             {
                 return;
             }
@@ -45,7 +45,7 @@ namespace NovaSamples.UIControls
             houseConfig = CreateHouseConfig();
 
             print("House Config Size: " + houseConfig.size);
-            foreach(RoomConfig rooms in houseConfig.rooms)
+            foreach (RoomConfig rooms in houseConfig.rooms)
             {
                 print("Room: " + rooms.roomNumber);
                 print("Contain bathroom: " + rooms.isBathroom);
@@ -58,9 +58,9 @@ namespace NovaSamples.UIControls
             List<RoomConfig> rooms = new();
             int totalRooms = bedroom + bathroom + 1;
 
-            for(int i = 0; i <= totalRooms; i++)
+            for (int i = 0; i <= totalRooms; i++)
             {
-                if(i <= bedroom)
+                if (i <= bedroom)
                 {
                     rooms.Add(new RoomConfig(i, false));
                 }
@@ -69,7 +69,7 @@ namespace NovaSamples.UIControls
                     rooms.Add(new RoomConfig(i, true));
                 }
             }
-                
+
             houseConfig.rooms = rooms;
             houseConfig.size = int.Parse(houseSize.text);
             return houseConfig;
@@ -86,7 +86,7 @@ namespace NovaSamples.UIControls
 
         public void RightClick()
         {
-            
+
             index += 1;
             Debug.Log(index);
             if (index >= fileSize - 1)
@@ -102,7 +102,7 @@ namespace NovaSamples.UIControls
 
         public void LeftClick()
         {
-            
+
             index -= 1;
             Debug.Log(index);
             if (index >= fileSize - 1)
@@ -114,11 +114,11 @@ namespace NovaSamples.UIControls
                 index = 0;
             }
             ImageLoader(index);
-            
+
         }
         public int getImageFile(string folder)
         {
-            if(Directory.Exists(Application.streamingAssetsPath + $"/image/{folder}/"))
+            if (Directory.Exists(Application.streamingAssetsPath + $"/image/{folder}/"))
             {
                 folderPath = Application.streamingAssetsPath + $"/image/{folder}/";
             }
@@ -126,8 +126,8 @@ namespace NovaSamples.UIControls
             {
                 folderPath = Application.streamingAssetsPath + $"/image/NotAvailable/";
             }
-        
-            filePaths = Directory.GetFiles(folderPath, "*.jpg"); 
+
+            filePaths = Directory.GetFiles(folderPath, "*.jpg");
             fileSize = filePaths.Length;
             return fileSize;
         }
@@ -180,7 +180,7 @@ namespace NovaSamples.UIControls
                 block.ClearImage();
                 return false;
             }
-            if(int.Parse(houseSize.text) <= 0)
+            if (int.Parse(houseSize.text) <= 0)
             {
                 responseText.text = "House size cannot be less than 0.";
                 block.ClearImage();

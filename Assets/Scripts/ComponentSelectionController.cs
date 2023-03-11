@@ -4,6 +4,7 @@ using UnityEngine;
 using Nova;
 using System;
 using System.Linq;
+using static Unity.Collections.AllocatorManager;
 
 public class ComponentSelectionController : MonoBehaviour
 {
@@ -42,13 +43,14 @@ public class ComponentSelectionController : MonoBehaviour
 
 
         // ---------------- Demo house only DELETE ------------------
-        houseConfig = new();
-        for (int i = 0; i < 8; i++)
-        {
-            houseConfig.rooms.Add(new RoomConfig(i, (i > 5)));
-        }
+        //houseConfig = new();
+        //for (int i = 0; i < 8; i++)
+        //{
+        //    houseConfig.rooms.Add(new RoomConfig(i, (i > 5)));
+        //}
         // ---------------------------------------------------------
 
+        houseConfig = programManager.climateControlSystemConfig.houseConfig;
 
         CreateRoomButtons();
     }
@@ -168,6 +170,12 @@ public class ComponentSelectionController : MonoBehaviour
 
     private void CreateRoomButtons()
     {
+        //clear border active group objects
+        BorderActiveGroup borderActiveGroup = instantiateRoomButttonLocation.GetComponent<BorderActiveGroup>();
+        UIBlock2D first = borderActiveGroup.blocks.FirstOrDefault();
+        borderActiveGroup.blocks.Clear();
+        borderActiveGroup.blocks.Add(first);
+
         //Instantiate and assign buttons for each room
         roomUIButtons = new GameObject[houseConfig.rooms.Count];
         int bathroomCountLabel = 1;
@@ -177,6 +185,10 @@ public class ComponentSelectionController : MonoBehaviour
 
             //set RoomHelper reference to room in house
             g.GetComponent<RoomHelper>().componentsList = houseConfig.GetRoomByID(i).components;
+
+            //set border active group references
+            g.GetComponent<BorderActiveButton>().borderActiveGroup = borderActiveGroup;
+            borderActiveGroup.blocks.Add(g.GetComponent<UIBlock2D>());
 
             //set TextBlock text
             var textBlock = g.GetComponentInChildren<TextBlock>();
