@@ -72,6 +72,10 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
 # Firebase assets
-/[Aa]ssets/[Ff]irebase
-/[Aa]ssets/[Pl]ugins/iOS/[Ff]irebase/*
-Assets/Plugins/iOS/Firebase/
+/[Aa]ssets/Editor Default Resources/
+/[Aa]ssets/ExternalDependencyManager/
+/[Aa]ssets/Firebase/
+/[Aa]ssets/Parse/
+
+#general
+/[Aa]ssets/Plugins/
