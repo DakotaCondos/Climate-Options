@@ -42,43 +42,53 @@ public class ConfigurationDetailsDisplay : MonoBehaviour
         climateData = FindObjectOfType<ClimateData>();
     }
 
-    private void Start()
+    public void Initialize(ClimateControlSystemConfig climateControlSystemConfig)
     {
+        this.climateControlSystemConfig = climateControlSystemConfig;
         StartCoroutine(DisplayConfigCoroutine());
     }
+
+    public void DevInitialize()
+    {
+        Initialize(CreateDummyConfig());
+    }
+
+
 
     public IEnumerator DisplayConfigCoroutine()
     {
         loadingBlock.SetActive(true);
+
         //wait for climate data to be ready
         while (!climateData.isDataReady)
         {
             yield return null;
         }
         DisplayConfig();
+
         loadingBlock.SetActive(false);
 
         //print debug logs
-        foreach (var item in costCalculation.messages)
-        {
-            print(item);
-        }
+        //foreach (var item in costCalculation.messages)
+        //{
+        //    print(item);
+        //}
     }
 
-    private void CreateDummyConfig()
+    private ClimateControlSystemConfig CreateDummyConfig()
     {
-        climateControlSystemConfig = new();
-        climateControlSystemConfig.name = Guid.NewGuid().ToString();
-        climateControlSystemConfig.houseConfig = new HouseConfig();
-        climateControlSystemConfig.houseConfig.size = 1500;
-        climateControlSystemConfig.houseConfig.components.Add(new ClimateControlComponent());
-        climateControlSystemConfig.houseConfig.rooms.Add(new RoomConfig(0, false));
-        climateControlSystemConfig.houseConfig.rooms.Add(new RoomConfig(1, false));
-        climateControlSystemConfig.houseConfig.rooms.Add(new RoomConfig(2, false));
-        climateControlSystemConfig.houseConfig.rooms.Add(new RoomConfig(3, true));
-        climateControlSystemConfig.houseConfig.rooms.ForEach(r => { r.components.Add(new ClimateControlComponent()); });
-        climateControlSystemConfig.utilityConfig = new(new UtilityRates(0.16f, 0.147f, 4.231f, 0.16f), 99004);
-
+        ClimateControlSystemConfig cl = new();
+        cl.name = Guid.NewGuid().ToString();
+        cl.houseConfig = new HouseConfig();
+        cl.houseConfig.size = 1500;
+        cl.houseConfig.components.Add(new ClimateControlComponent());
+        cl.houseConfig.rooms.Add(new RoomConfig(0, false));
+        cl.houseConfig.rooms.Add(new RoomConfig(1, false));
+        cl.houseConfig.rooms.Add(new RoomConfig(2, false));
+        cl.houseConfig.rooms.Add(new RoomConfig(3, true));
+        cl.houseConfig.rooms.ForEach(r => { r.components.Add(new ClimateControlComponent()); });
+        cl.utilityConfig = new(new UtilityRates(0.16f, 0.147f, 4.231f, 0.16f), 99004);
+        return cl;
     }
 
     private void DisplayConfig()
