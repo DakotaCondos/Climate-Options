@@ -19,6 +19,7 @@ public class FirebaseStorageController : MonoBehaviour
     FirebaseAuth auth;
 
     HouseSceneController houseSceneController;
+    ClimateControlSystemConfig climateControlSystemConfig = new();
 
     public UIBlock2D successfulUpload;
     public UIBlock2D progressPanel;
@@ -27,7 +28,7 @@ public class FirebaseStorageController : MonoBehaviour
     public TMP_Text maxSizeError;
     List<Task<byte[]>> firebaseImages = new();
     List<byte[]> totalImagesSave = new();
-    List<Guid> guidValues = new();
+    public List<string> guidValues = new();
 
     int imageIndex;
 
@@ -35,6 +36,7 @@ public class FirebaseStorageController : MonoBehaviour
 
     private void Start()
     {
+        climateControlSystemConfig.pictureNames = guidValues;
         auth = FirebaseAuth.DefaultInstance;
         houseSceneController = FindObjectOfType<HouseSceneController>();
         storage = FirebaseStorage.DefaultInstance;
@@ -91,7 +93,7 @@ public class FirebaseStorageController : MonoBehaviour
 
     public async Task<List<byte[]>> GetAllImages()
     {
-        foreach (Guid guid in guidValues)
+        foreach (string guid in guidValues)
         {
             firebaseImages.Add(GetImage(guid));
         }
@@ -103,7 +105,7 @@ public class FirebaseStorageController : MonoBehaviour
         
     }
 
-    public async Task<byte[]> GetImage(Guid guid)
+    public async Task<byte[]> GetImage(string guid)
     {
         try
         {
@@ -138,10 +140,10 @@ public class FirebaseStorageController : MonoBehaviour
                 textBlock.text = fileName;
                 print(textBlock.text);
                 totalImagesIndex++;
-                guidValues.Add(guid);
-                foreach (Guid guid in guidValues)
+                guidValues.Add(guid.ToString());
+                foreach (var guid in guidValues)
                 {
-                    print("Current Guid Values in List: " + guid.ToString());
+                    print("Current Guid Values in List: " + guid);
                 }
             }
         }));
