@@ -7,10 +7,12 @@ public class HouseSelectionAdvancement : MonoBehaviour
 {
     ProgramManager programManager;
     HouseController houseController;
+    FirebaseStorageController firebaseStorageController;
     private void Awake()
     {
         programManager = FindObjectOfType<ProgramManager>();
         houseController = FindObjectOfType<HouseController>();
+        firebaseStorageController = FindObjectOfType<FirebaseStorageController>();
 
         if (houseController == null) Debug.LogError("HouseController could not be found");
         if (programManager == null) Debug.LogError("ProgramManager could not be found");
@@ -21,6 +23,7 @@ public class HouseSelectionAdvancement : MonoBehaviour
     public void OnNextSceneAdvance()
     {
         HouseConfig houseConfig = houseController.houseConfig;
+        List<string> guidValues = firebaseStorageController.guidValues;
 
         if (houseConfig == null)
         {
@@ -34,6 +37,7 @@ public class HouseSelectionAdvancement : MonoBehaviour
         }
 
         programManager.climateControlSystemConfig.houseConfig = houseConfig;
+        programManager.climateControlSystemConfig.pictureNames = guidValues;
         programManager.sceneController.LoadSceneName("SetupScene");
     }
 }

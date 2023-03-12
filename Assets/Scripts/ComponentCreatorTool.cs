@@ -102,7 +102,8 @@ public class ComponentCreatorTool : MonoBehaviour
                 _coolingCostPerBTU,
                 _componentType,
                 _utilityType,
-                _priceRange
+                _priceRange.Item1,
+                _priceRange.Item2
                 );
         }
         catch (Exception e)

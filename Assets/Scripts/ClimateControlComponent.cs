@@ -19,7 +19,8 @@ public class ClimateControlComponent
     public decimal coolingCostPerBTU;
     public ClimateControlComponentTypes componentType;
     public UtilityType utilityType;
-    public (float, float) priceRange;
+    public float priceLow;
+    public float priceHigh;
     public string imagePath = "";
     public ClimateControlComponent()
     {
@@ -37,7 +38,8 @@ public class ClimateControlComponent
         coolingCostPerBTU = 0.000293m;
         componentType = ClimateControlComponentTypes.None;
         utilityType = UtilityType.Electric;
-        priceRange = (10.0f, 100.0f);
+        priceLow = 10;
+        priceHigh = 100;
     }
 
     public ClimateControlComponent(
@@ -46,7 +48,7 @@ public class ClimateControlComponent
         bool isWholeHomeComponent, bool isHeating, bool isCooling,
         float heatingBTUOutput, float coolingBTUOutput, decimal heatingCostPerBTU,
         decimal coolingCostPerBTU, ClimateControlComponentTypes componentType,
-        UtilityType utilityType, (float, float) priceRange)
+        UtilityType utilityType, float priceLow, float priceHigh)
     {
         this.componentName = name;
         this.description = description;
@@ -62,7 +64,8 @@ public class ClimateControlComponent
         this.coolingCostPerBTU = coolingCostPerBTU;
         this.componentType = componentType;
         this.utilityType = utilityType;
-        this.priceRange = priceRange;
+        this.priceLow = priceLow;
+        this.priceHigh = priceHigh;
     }
 
 

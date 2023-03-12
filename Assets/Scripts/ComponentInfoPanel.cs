@@ -28,7 +28,7 @@ public class ComponentInfoPanel : MonoBehaviour
         description.Text = component.description;
         utilType.Text = "Utility Type: " + component.utilityType.ToString();
         preReq.Text = "Required Components: " + ConvertEnumListToString(component);
-        cost.Text = $"Price: ${component.priceRange.Item1} - ${component.priceRange.Item2}";
+        cost.Text = $"Price: ${component.priceLow} - ${component.priceHigh}";
         pros.Text = "Pros: " + component.pros;
         cons.Text = "Pros: " + component.cons;
         //picture block goes here

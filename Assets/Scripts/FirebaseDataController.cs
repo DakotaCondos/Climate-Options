@@ -27,11 +27,14 @@ public class FirebaseDataController : MonoBehaviour
         database = FirebaseDatabase.DefaultInstance.RootReference;
     }
 
-    public void seed()
+    public async void seed()
     {
         ClimateControlSystemConfig systemConfig = new();
         
         systemConfig.name = $"TestingConfig";
+        systemConfig.pictureNames.Add("testStringValue_1");
+        systemConfig.pictureNames.Add("testStringValue_2");
+        systemConfig.pictureNames.Add("testStringValue_3");
         systemConfig.houseConfig = new HouseConfig();
         systemConfig.houseConfig.components.Add(new ClimateControlComponent());
         systemConfig.houseConfig.rooms.Add(new RoomConfig(0, false));
@@ -41,8 +44,13 @@ public class FirebaseDataController : MonoBehaviour
         systemConfig.houseConfig.rooms.ForEach(r => { r.components.Add(new ClimateControlComponent()); });
 
         systemConfig.utilityConfig = new();
-        StartCoroutine(SaveConfig(systemConfig));
-        print("Reached end");
+        //StartCoroutine(SaveConfig(systemConfig));
+        var objectReturnValues = await GetConfig("TestingConfig");
+        foreach (string name in objectReturnValues.pictureNames)
+        {
+            print(name);
+        }
+        print("----Reached end----");
     }
 
     public void ShowDetails()
