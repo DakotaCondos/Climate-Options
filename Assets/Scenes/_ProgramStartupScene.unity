@@ -592,6 +592,8 @@ GameObject:
   - component: {fileID: 1029302099}
   - component: {fileID: 1029302098}
   - component: {fileID: 1029302102}
+  - component: {fileID: 1029302104}
+  - component: {fileID: 1029302103}
   m_Layer: 0
   m_Name: ProgramManager
   m_TagString: Untagged
@@ -648,6 +650,11 @@ MonoBehaviour:
       components: []
       size: 0
     utilityConfig:
+      utilityrates:
+        electricityPerKWH: 0
+        gasPerTherm: 0
+        oilPerGallon: 0
+        woodPerPound: 0
       zip: 99004
   utilityRatesAndZip: {fileID: 0}
   isComponentsReady: 0
@@ -679,6 +686,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isReady: 0
+--- !u!114 &1029302103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1029302097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48c8baf8c3ff5e04fa9b602fce99dc8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  apiKey: 359cfddfedfd05916baa21b65c26f4f0
+  zip: 0
+  latitude: 0
+  longitude: 0
+  hasCoordinates: 0
+--- !u!114 &1029302104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1029302097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6eaf836dc4682143b6788532d985f8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monthsCompleted: 0
+  openWeatherMapAPIHelper: {fileID: 0}
+  isDataReady: 0
+  initializeOnStart: 0
+  zip: 0
 --- !u!224 &1076796519 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 22400024, guid: 4396a831358f4fe49bb64502f4535264, type: 3}

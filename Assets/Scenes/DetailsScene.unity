@@ -772,7 +772,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &66179855
 Transform:
   m_ObjectHideFlags: 0
@@ -811,8 +811,12 @@ MonoBehaviour:
       components: []
       size: 0
     utilityConfig:
+      utilityrates:
+        electricityPerKWH: 0
+        gasPerTherm: 0
+        oilPerGallon: 0
+        woodPerPound: 0
       zip: 99004
-  isPrimaryDisplay: 1
   climateData: {fileID: 0}
   partCostRowPrefab: {fileID: 8855128524944142457, guid: a169ea4f1dc118646ae048d67e778f5d, type: 3}
   partCostRowLocation: {fileID: 616722293}
@@ -3658,7 +3662,7 @@ MonoBehaviour:
   layout:
     Size:
       X:
-        Raw: 0.9780702
+        Raw: 0.97691596
         Type: 1
       Y:
         Raw: 0.97761524
@@ -4304,7 +4308,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 188769787}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -455.99997, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4580,8 +4584,12 @@ MonoBehaviour:
       components: []
       size: 0
     utilityConfig:
+      utilityrates:
+        electricityPerKWH: 0
+        gasPerTherm: 0
+        oilPerGallon: 0
+        woodPerPound: 0
       zip: 99004
-  isPrimaryDisplay: 1
   climateData: {fileID: 0}
   partCostRowPrefab: {fileID: 8855128524944142457, guid: a169ea4f1dc118646ae048d67e778f5d, type: 3}
   partCostRowLocation: {fileID: 3431962358897261865}
@@ -17809,6 +17817,56 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9117b6d975111c47b064a4373cc67ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1122948848
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1122948850}
+  - component: {fileID: 1122948849}
+  m_Layer: 0
+  m_Name: ConfigurationDetailsController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1122948849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1122948848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d37e5e89666d6b4badf72604af36fc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  configurationDetailsDisplays:
+  - {fileID: 188769791}
+  - {fileID: 66179856}
+  climateData: {fileID: 0}
+  isInitializingDisplay: 0
+  programManager: {fileID: 0}
+--- !u!4 &1122948850
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1122948848}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1125713156
 GameObject:
   m_ObjectHideFlags: 0
@@ -24049,73 +24107,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9117b6d975111c47b064a4373cc67ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1709720142
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1709720145}
-  - component: {fileID: 1709720144}
-  - component: {fileID: 1709720143}
-  m_Layer: 0
-  m_Name: Dummy Climate Data
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1709720143
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1709720142}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48c8baf8c3ff5e04fa9b602fce99dc8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  apiKey: '359cfddfedfd05916baa21b65c26f4f0 '
-  zip: 0
-  latitude: 0
-  longitude: 0
-  hasCoordinates: 0
---- !u!114 &1709720144
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1709720142}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6eaf836dc4682143b6788532d985f8f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  monthsCompleted: 0
-  openWeatherMapAPIHelper: {fileID: 0}
-  isDataReady: 0
-  initializeOnStart: 1
-  zip: 99004
---- !u!4 &1709720145
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1709720142}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.015475851, y: 1.0124863, z: -8.999662}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1717072004
 GameObject:
   m_ObjectHideFlags: 0

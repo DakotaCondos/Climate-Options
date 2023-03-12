@@ -10,7 +10,6 @@ public class ConfigurationDetailsDisplay : MonoBehaviour
     public GameObject loadingBlock;
 
     public ClimateControlSystemConfig climateControlSystemConfig;
-    public bool isPrimaryDisplay;
     public ClimateData climateData;
     public CostCalculation costCalculation;
 

@@ -216,6 +216,7 @@ public class ComponentSelectionController : MonoBehaviour
 
     public void OnNext()
     {
-        //grab all component Lists for various rooms and add them to the House.
+        //advance to next scene. changes are saved directly to program manager
+        programManager.sceneController.LoadSceneName("DetailsScene");
     }
 }

@@ -5,14 +5,21 @@ using UnityEngine;
 
 public class ConfigurationDetailsController : MonoBehaviour
 {
-    public ConfigurationDetailsDisplay[] ConfigurationDetailsDisplays;
-    ClimateData climateData;
-    bool isInitializingDisplay = false;
+    public ConfigurationDetailsDisplay[] configurationDetailsDisplays;
+    public ClimateData climateData;
+    public bool isInitializingDisplay = false;
+    public ProgramManager programManager;
 
 
     private void Awake()
     {
         climateData = FindObjectOfType<ClimateData>();
+        programManager = FindObjectOfType<ProgramManager>();
+    }
+
+    private void Start()
+    {
+        InitailizeDisplay(configurationDetailsDisplays[0], programManager.climateControlSystemConfig);
     }
 
     public void InitailizeDisplay(ConfigurationDetailsDisplay configurationDetailsDisplay, ClimateControlSystemConfig climateControlSystemConfig)
