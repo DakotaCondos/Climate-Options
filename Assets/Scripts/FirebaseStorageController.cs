@@ -27,6 +27,8 @@ public class FirebaseStorageController : MonoBehaviour
     public TMP_Text maxSizeError;
     List<Task<byte[]>> firebaseImages = new();
     List<byte[]> totalImagesSave = new();
+    List<Guid> guidValues = new();
+
     int imageIndex;
 
     int totalImagesIndex = 0;
@@ -89,21 +91,11 @@ public class FirebaseStorageController : MonoBehaviour
 
     public async Task<List<byte[]>> GetAllImages()
     {
-     
-        print("Before for loop: " + totalImagesIndex);
-        for (int i = 0; i < 3; i++)
+        foreach (Guid guid in guidValues)
         {
-            var task = GetImage(i);
-            if (task.IsFaulted || task.IsCanceled)
-            {
-                Debug.LogException(task.Exception);
-            }
-            else
-            {
-                print("Inside of GetAllImages Else");
-                firebaseImages.Add(GetImage(i));
-            }
+            firebaseImages.Add(GetImage(guid));
         }
+
         totalImagesSave = (await Task.WhenAll(firebaseImages)).ToList();
         print("Test FirebaseCountL " + totalImagesSave.Count);
         return totalImagesSave.Where(x => x is not null).ToList();
@@ -111,13 +103,13 @@ public class FirebaseStorageController : MonoBehaviour
         
     }
 
-    public async Task<byte[]> GetImage(int i)
+    public async Task<byte[]> GetImage(Guid guid)
     {
         try
         {
             print("GetImage() try block");
             const long maxAllowedSize = 5 * 1024 * 1024;
-            StorageReference image = storageReference.Child($"/{auth.CurrentUser.UserId}/{i}");
+            StorageReference image = storageReference.Child($"/{auth.CurrentUser.UserId}/{guid}");
             return await image.GetBytesAsync(maxAllowedSize);
         }
         catch (Exception)
@@ -130,7 +122,8 @@ public class FirebaseStorageController : MonoBehaviour
 
     public void SaveImage(byte[] bytes, MetadataChange metadataChange, string fileName)
     {
-        StorageReference uploadReference = storageReference.Child($"{auth.CurrentUser.UserId}/{totalImagesIndex}");
+        Guid guid = Guid.NewGuid();
+        StorageReference uploadReference = storageReference.Child($"{auth.CurrentUser.UserId}/{guid}");
         uploadReference.PutBytesAsync(bytes, metadataChange).ContinueWithOnMainThread((Action<Task<StorageMetadata>>)((task) =>
         {
             if (task.IsFaulted || task.IsCanceled)
@@ -140,12 +133,16 @@ public class FirebaseStorageController : MonoBehaviour
             else
             {
                 Debug.Log("File uploaded successfully!");
-                print("Filename: " + fileName);
                 prefab = Instantiate(successfulUpload, progressPanel.transform);
                 TMP_Text textBlock = prefab.GetComponentInChildren<TMP_Text>();
                 textBlock.text = fileName;
                 print(textBlock.text);
                 totalImagesIndex++;
+                guidValues.Add(guid);
+                foreach (Guid guid in guidValues)
+                {
+                    print("Current Guid Values in List: " + guid.ToString());
+                }
             }
         }));
     }

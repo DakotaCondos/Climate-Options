@@ -15,10 +15,15 @@ public class HouseImageController : MonoBehaviour
     HouseSceneController houseSceneController;
     FirebaseStorageController firebaseStorageController;
 
+
     public void Start()
     {
         houseSceneController = FindObjectOfType<HouseSceneController>();
         firebaseStorageController = FindObjectOfType<FirebaseStorageController>();
+    }
+    public void ReturnToHouseSelectionPanel()
+    {
+        houseSceneController.CurrentPanel(0);
     }
 
     public async void DisplayAllImages()
