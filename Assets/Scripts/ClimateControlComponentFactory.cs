@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class ClimateControlComponentFactory : MonoBehaviour
 {
-    readonly string jsonFileLocations = $"{Application.streamingAssetsPath}/Components/";
+    public string jsonFileLocations;
     public List<ClimateControlComponent> components;
 
     private void Awake()
     {
+        jsonFileLocations = $"{Application.streamingAssetsPath}/Components/";
         components = new List<ClimateControlComponent>();
     }
 

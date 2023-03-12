@@ -151,7 +151,7 @@ public class ConfigurationDetailsDisplay : MonoBehaviour
             GameObject g = Instantiate(partCostRowPrefab, partCostRowLocation);
             TextRowHelper row = g.GetComponent<TextRowHelper>();
             row.textBlocks.ElementAt(0).Text = item.componentName;
-            row.textBlocks.ElementAt(1).Text = $"${item.priceRange.Item1} - ${item.priceRange.Item2}";
+            row.textBlocks.ElementAt(1).Text = $"${item.priceLow} - ${item.priceHigh}";
         }
         partCostExpandableContainer.Initialize();
     }

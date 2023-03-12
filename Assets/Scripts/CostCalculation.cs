@@ -56,8 +56,8 @@ public class CostCalculation
         foreach (ClimateControlComponent item in climateControlSystemConfig.houseConfig.components)
         {
             masterComponentsList.Add(item);
-            partsCostLow += item.priceRange.Item1;
-            partsCostHigh += item.priceRange.Item2;
+            partsCostLow += item.priceLow;
+            partsCostHigh += item.priceHigh;
             totalHeatingBTUOutput += item.heatingBTUOutput;
             totalCoolingBTUOutput += item.coolingBTUOutput;
             if (item.isHeating)
@@ -75,8 +75,8 @@ public class CostCalculation
             foreach (ClimateControlComponent item in room.components)
             {
                 masterComponentsList.Add(item);
-                partsCostLow += item.priceRange.Item1;
-                partsCostHigh += item.priceRange.Item2;
+                partsCostLow += item.priceLow;
+                partsCostHigh += item.priceHigh;
                 totalHeatingBTUOutput += item.heatingBTUOutput;
                 totalCoolingBTUOutput += item.coolingBTUOutput;
                 if (item.isHeating)
