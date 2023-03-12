@@ -196,27 +196,27 @@ public class SetupController : MonoBehaviour
 
     private bool IsUtilityInputValid()
     {
-        if (!Single.TryParse(electrictyTMP.text, out electric))
+        if ((!Single.TryParse(electrictyTMP.text, out electric)) || Single.Parse(electrictyTMP.text) <= 0)
         {
-            UpdateResponse("Electricity must be a numerical value", Color.red);
+            UpdateResponse("Electricity must be a positive numerical value", Color.red);
             return false;
         }
 
-        if (!Single.TryParse(gasTMP.text, out gas))
+        if ((!Single.TryParse(gasTMP.text, out gas)) || Single.Parse(gasTMP.text) <= 0)
         {
-            UpdateResponse("Gas must be a numerical value", Color.red);
+            UpdateResponse("Gas must be a positive numerical value", Color.red);
             return false;
         }
 
-        if (!Single.TryParse(oilTMP.text, out oil))
+        if ((!Single.TryParse(oilTMP.text, out oil)) || Single.Parse(oilTMP.text) <= 0)
         {
-            UpdateResponse("Oil must be a numerical value", Color.red);
+            UpdateResponse("Oil must be a positive numerical value", Color.red);
             return false;
         }
 
-        if (!Single.TryParse(woodPelletTMP.text, out wood))
+        if ((!Single.TryParse(woodPelletTMP.text, out wood)) || Single.Parse(woodPelletTMP.text) <= 0)
         {
-            UpdateResponse("Wood Pellet must be a numerical value", Color.red);
+            UpdateResponse("Wood Pellet must be a positive numerical value", Color.red);
             return false;
         }
 

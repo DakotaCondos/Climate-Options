@@ -236,10 +236,10 @@ public class AuthController : MonoBehaviour
     private bool IsValidPassword()
     {
         //if not null, passwords are matching and length < 7
-        if (string.IsNullOrEmpty(password1.text) || password2.text == null)
+        if (string.IsNullOrEmpty(password1.text) || string.IsNullOrEmpty(password2.text))
         {
-            Debug.Log("Password Field is null");
-            UpdateResponse("Password Field is null", Color.red);
+            Debug.Log("One or More Password Field is empty");
+            UpdateResponse("One or More Password Field is empty", Color.red);
             return false;
         }
         if (!String.Equals(password1.text, password2.text))
@@ -248,10 +248,10 @@ public class AuthController : MonoBehaviour
             UpdateResponse("Passwords do not match", Color.red);
             return false;
         }
-        if (password1.text.Length < 8)
+        if (password1.text.Length < 8 || password1.text.Length > 24)
         {
-            Debug.Log("Password must be 8 characters or more");
-            UpdateResponse("Password must be 8 characters or more", Color.red);
+            Debug.Log("Password must be between 8 to 24 characters");
+            UpdateResponse("Password must be between 8 to 24 characters", Color.red);
             return false;
         }
         return true;
