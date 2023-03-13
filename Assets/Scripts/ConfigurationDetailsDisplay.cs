@@ -68,10 +68,10 @@ public class ConfigurationDetailsDisplay : MonoBehaviour
         loadingBlock.SetActive(false);
 
         //print debug logs
-        foreach (var item in costCalculation.messages)
-        {
-            print(item);
-        }
+        //foreach (var item in costCalculation.messages)
+        //{
+        //    print(item);
+        //}
     }
 
     private ClimateControlSystemConfig CreateDummyConfig()
