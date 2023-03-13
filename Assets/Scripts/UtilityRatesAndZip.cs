@@ -60,7 +60,6 @@ public class UtilityRatesAndZip : MonoBehaviour
                 }
                 lineNumber++;
             }
-            print($"zipToState Count: {zipToState.Count}");
         }
 
 

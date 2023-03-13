@@ -28,31 +28,31 @@ public class ComparisonOverlayControls : MonoBehaviour
         panels.Add(loadPanel);
         panels.Add(detailsPanel);
 
-        activePanel = controlsPanel;
+        ClosePanel();
     }
 
-    public void Save()
+    public void ClosePanel()
+    {
+        activePanel = controlsPanel;
+        SetActivePanel();
+    }
+    public void SavePanel()
     {
         activePanel = savePanel;
         SetActivePanel();
     }
 
-    public void Load()
+    public void LoadPanel()
     {
         activePanel = loadPanel;
         SetActivePanel();
     }
 
-    public void Close()
-    {
-        activePanel = controlsPanel;
-        SetActivePanel();
-    }
-
-    public void DetailDisplay()
+    public void DetailDisplayPanel(ClimateControlSystemConfig climateControlSystemConfig)
     {
         activePanel = detailsPanel;
         SetActivePanel();
+        configurationDetailsController.InitailizeDisplay(configurationDetailsController.configurationDetailsDisplays[1],climateControlSystemConfig);
     }
 
     private void SetActivePanel()

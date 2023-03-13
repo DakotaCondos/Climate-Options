@@ -12,6 +12,7 @@ public class ClimateControlSystemConfig
     public ClimateControlSystemConfig()
     {
         pictureNames = new List<string>();
+        name = "Default";
     }
 
     public ClimateControlSystemConfig(string name, HouseConfig houseConfig, UtilityConfig utilityConfig)

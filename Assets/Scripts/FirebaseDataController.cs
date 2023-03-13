@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Net;
@@ -15,7 +16,7 @@ public class FirebaseDataController : MonoBehaviour
 {
     public DatabaseReference database;
     public FirebaseAuth auth;
-    
+
 
     private void Start()
     {
@@ -30,7 +31,7 @@ public class FirebaseDataController : MonoBehaviour
     public async void seed()
     {
         ClimateControlSystemConfig systemConfig = new();
-        
+
         systemConfig.name = $"TestingConfig";
         systemConfig.pictureNames.Add("testStringValue_1");
         systemConfig.pictureNames.Add("testStringValue_2");
@@ -63,6 +64,23 @@ public class FirebaseDataController : MonoBehaviour
     {
         StartCoroutine(SaveConfig(climateControlSystemConfig));
     }
+    public void SaveClimateControlSystemConfig(ClimateControlSystemConfig climateControlSystemConfig, AsyncRequestHelper helper)
+    {
+        StartCoroutine(SaveConfig(climateControlSystemConfig, helper));
+    }
+
+    private IEnumerator SaveConfig(ClimateControlSystemConfig climateControlSystemConfig, AsyncRequestHelper helper)
+    {
+        var configAsJson = JsonUtility.ToJson(climateControlSystemConfig);
+        var DBTask = database.Child(auth.CurrentUser.UserId).Child(climateControlSystemConfig.name).SetRawJsonValueAsync(configAsJson);
+        yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
+
+        if (DBTask.Exception != null)
+        {
+            Debug.LogWarning(message: $"Failed to save data with {DBTask.Exception}");
+        }
+        helper.isProcessing = false;
+    }
 
     public IEnumerator SaveConfig(ClimateControlSystemConfig climateControlSystemConfig)
     {
@@ -94,6 +112,18 @@ public class FirebaseDataController : MonoBehaviour
             if (climateControlSystemConfig != null) list.Add(climateControlSystemConfig);
         }
         print("Done with AddSystemsToList");
+    }
+
+    public async void AddSystemsToList(List<ClimateControlSystemConfig> list, AsyncRequestHelper helper)
+    {
+        List<string> systemNames = await GetAllChildNames();
+        foreach (var item in systemNames)
+        {
+            ClimateControlSystemConfig climateControlSystemConfig = await GetConfig(item);
+            if (climateControlSystemConfig != null) list.Add(climateControlSystemConfig);
+        }
+        print("Done with AddSystemsToList");
+        helper.isProcessing = false;
     }
 
     public async Task<List<string>> GetAllChildNames()
