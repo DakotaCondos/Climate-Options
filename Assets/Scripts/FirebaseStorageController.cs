@@ -105,6 +105,17 @@ public class FirebaseStorageController : MonoBehaviour
         
     }
 
+    public async Task<List<byte[]>> GetAllImages(List<string> imageNames)
+    {
+        foreach (string guid in imageNames)
+        {
+            firebaseImages.Add(GetImage(guid));
+        }
+        totalImagesSave = (await Task.WhenAll(firebaseImages)).ToList();
+        print("Test FirebaseCountL " + totalImagesSave.Count);
+        return totalImagesSave.Where(x => x is not null).ToList();
+    }
+
     public async Task<byte[]> GetImage(string guid)
     {
         try
@@ -120,7 +131,6 @@ public class FirebaseStorageController : MonoBehaviour
             return null;
         }
     }
-
 
     public void SaveImage(byte[] bytes, MetadataChange metadataChange, string fileName)
     {
