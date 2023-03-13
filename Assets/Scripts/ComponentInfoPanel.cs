@@ -30,7 +30,7 @@ public class ComponentInfoPanel : MonoBehaviour
         preReq.Text = "Required Components: " + ConvertEnumListToString(component);
         cost.Text = $"Price: ${component.priceLow} - ${component.priceHigh}";
         pros.Text = "Pros: " + component.pros;
-        cons.Text = "Pros: " + component.cons;
+        cons.Text = "Cons: " + component.cons;
         //picture block goes here
 
 

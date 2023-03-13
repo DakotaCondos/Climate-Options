@@ -68,10 +68,10 @@ public class ConfigurationDetailsDisplay : MonoBehaviour
         loadingBlock.SetActive(false);
 
         //print debug logs
-        //foreach (var item in costCalculation.messages)
-        //{
-        //    print(item);
-        //}
+        foreach (var item in costCalculation.messages)
+        {
+            print(item);
+        }
     }
 
     private ClimateControlSystemConfig CreateDummyConfig()
@@ -163,11 +163,11 @@ public class ConfigurationDetailsDisplay : MonoBehaviour
         {
             GameObject heatingRow = Instantiate(partCostRowPrefab, operationCostRowLocation);
             heatingRow.GetComponent<TextRowHelper>().textBlocks.ElementAt(0).Text = $"{GetMonthName(currentMonth)} Heating Costs";
-            heatingRow.GetComponent<TextRowHelper>().textBlocks.ElementAt(1).Text = $"${Decimal.Truncate(item.Item1)}";
+            heatingRow.GetComponent<TextRowHelper>().textBlocks.ElementAt(1).Text = $"${(int)item.Item1}";
 
             GameObject coolingRow = Instantiate(partCostRowPrefab, operationCostRowLocation);
             coolingRow.GetComponent<TextRowHelper>().textBlocks.ElementAt(0).Text = $"{GetMonthName(currentMonth)} Cooling Costs";
-            coolingRow.GetComponent<TextRowHelper>().textBlocks.ElementAt(1).Text = $"${Decimal.Truncate(item.Item2)}";
+            coolingRow.GetComponent<TextRowHelper>().textBlocks.ElementAt(1).Text = $"${(int)item.Item2}";
 
             currentMonth++;
         }

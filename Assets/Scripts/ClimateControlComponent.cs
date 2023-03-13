@@ -15,8 +15,8 @@ public class ClimateControlComponent
     public bool isCooling;
     public float heatingBTUOutput;
     public float coolingBTUOutput;
-    public decimal heatingCostPerBTU;
-    public decimal coolingCostPerBTU;
+    public double heatingCostPerBTU;
+    public double coolingCostPerBTU;
     public ClimateControlComponentTypes componentType;
     public UtilityType utilityType;
     public float priceLow;
@@ -34,8 +34,8 @@ public class ClimateControlComponent
         isCooling = true;
         heatingBTUOutput = 500;
         coolingBTUOutput = 500;
-        heatingCostPerBTU = 0.000293m;
-        coolingCostPerBTU = 0.000293m;
+        heatingCostPerBTU = 0.000293f;
+        coolingCostPerBTU = 0.000293f;
         componentType = ClimateControlComponentTypes.None;
         utilityType = UtilityType.Electric;
         priceLow = 10;
@@ -46,8 +46,8 @@ public class ClimateControlComponent
         string name, string description, string pros, string cons,
         ClimateControlComponentTypes prerequisiteComponentType,
         bool isWholeHomeComponent, bool isHeating, bool isCooling,
-        float heatingBTUOutput, float coolingBTUOutput, decimal heatingCostPerBTU,
-        decimal coolingCostPerBTU, ClimateControlComponentTypes componentType,
+        float heatingBTUOutput, float coolingBTUOutput, double heatingCostPerBTU,
+        double coolingCostPerBTU, ClimateControlComponentTypes componentType,
         UtilityType utilityType, float priceLow, float priceHigh)
     {
         this.componentName = name;

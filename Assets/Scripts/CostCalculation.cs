@@ -13,13 +13,13 @@ public class CostCalculation
     public float partsCostHigh = 0;
     public float operationCost = 0;
     //(HeatingCost, CoolingCost)[]
-    public (decimal, decimal)[] monthlyOperationCosts = new (decimal, decimal)[12];
+    public (double, double)[] monthlyOperationCosts = new (double, double)[12];
     public List<ClimateControlComponent> masterComponentsList = new();
     public float houseVolume = 0;
     public float totalHeatingBTUOutput = 0;
     public float totalCoolingBTUOutput = 0;
-    public decimal averageHeatingCostPerBTU = 0;
-    public decimal averageCoolingCostPerBTU = 0;
+    public double averageHeatingCostPerBTU = 0;
+    public double averageCoolingCostPerBTU = 0;
 
     //debug component
     public List<string> messages = new List<string>();
@@ -50,8 +50,8 @@ public class CostCalculation
 
     private void ExtractPartInformation()
     {
-        decimal totalHeatingCostsPerBTU = 0;
-        decimal totalCoolingCostsPerBTU = 0;
+        double totalHeatingCostsPerBTU = 0;
+        double totalCoolingCostsPerBTU = 0;
 
         foreach (ClimateControlComponent item in climateControlSystemConfig.houseConfig.components)
         {
@@ -63,6 +63,9 @@ public class CostCalculation
             if (item.isHeating)
             {
                 totalHeatingCostsPerBTU += item.heatingCostPerBTU * GetUtilRate(item);
+                messages.Add($"{item.componentName} heatingCostPerBTU: {item.heatingCostPerBTU * GetUtilRate(item)}\n" +
+                    $"item.heatingCostPerBTU: {item.heatingCostPerBTU}\n" +
+                    $"GetUtilRate(item): {GetUtilRate(item)}");
             }
             if (item.isCooling)
             {
@@ -90,19 +93,35 @@ public class CostCalculation
             }
         }
 
-        averageHeatingCostPerBTU = (decimal)(totalHeatingCostsPerBTU / masterComponentsList.Select(x => x.isHeating == true).Count());
-        averageCoolingCostPerBTU = (decimal)(totalCoolingCostsPerBTU / masterComponentsList.Select(x => x.isCooling == true).Count());
+        int totalHeating = 0;
+        int totalCooling = 0;
+
+        foreach (var item in masterComponentsList)
+        {
+            if (item.isHeating) totalHeating++;
+            if (item.isCooling) totalCooling++;
+        }
+
+        averageHeatingCostPerBTU = (totalHeating > 0) ? (totalHeatingCostsPerBTU / totalHeating) : 0;
+        averageCoolingCostPerBTU = (totalCooling > 0) ? (totalCoolingCostsPerBTU / totalCooling) : 0;
+
+        messages.Add($"totalHeatingCostsPerBTU: {totalHeatingCostsPerBTU}\n" +
+            $"totalCoolingCostsPerBTU: {totalCoolingCostsPerBTU}\n" +
+            $"averageHeatingCostPerBTU: {averageHeatingCostPerBTU}\n" +
+            $"averageCoolingCostPerBTU: {averageCoolingCostPerBTU}\n" +
+            $"total heating components: {totalHeating}\n" +
+            $"total cooling components: {totalCooling}");
     }
 
-    private decimal GetUtilRate(ClimateControlComponent component)
+    private float GetUtilRate(ClimateControlComponent component)
     {
         UtilityRates rates = climateControlSystemConfig.utilityConfig.utilityrates;
         return component.utilityType switch
         {
-            UtilityType.Electric => (decimal)rates.electricityPerKWH,
-            UtilityType.Gas => (decimal)rates.gasPerTherm,
-            UtilityType.Oil => (decimal)rates.oilPerGallon,
-            UtilityType.WoodPellet => (decimal)rates.woodPerPound,
+            UtilityType.Electric => rates.electricityPerKWH,
+            UtilityType.Gas => rates.gasPerTherm,
+            UtilityType.Oil => rates.oilPerGallon,
+            UtilityType.WoodPellet => rates.woodPerPound,
             _ => 0,
         };
     }
@@ -146,13 +165,13 @@ public class CostCalculation
         double houseVolume = climateControlSystemConfig.houseConfig.size * 9.0;
 
         // log debug messages
-        messages.Add($"ceilingArea:{ceilingArea}");
-        messages.Add($"wallArea:{wallArea}");
-        messages.Add($"houseVolume:{houseVolume}");
-        messages.Add($"averageHeatingCostPerBTU:{averageHeatingCostPerBTU}");
-        messages.Add($"averageCoolingCostPerBTU:{averageCoolingCostPerBTU}");
-        messages.Add($"Heating BTU's per Dollar:{Decimal.Truncate(1m / averageHeatingCostPerBTU)}");
-        messages.Add($"Cooling BTU's per Dollar:{Decimal.Truncate(1m / averageCoolingCostPerBTU)}");
+        //messages.Add($"ceilingArea:{ceilingArea}");
+        //messages.Add($"wallArea:{wallArea}");
+        //messages.Add($"houseVolume:{houseVolume}");
+        //messages.Add($"averageHeatingCostPerBTU:{averageHeatingCostPerBTU}");
+        //messages.Add($"averageCoolingCostPerBTU:{averageCoolingCostPerBTU}");
+        //messages.Add($"Heating BTU's per Dollar:{Decimal.Truncate(1m / averageHeatingCostPerBTU)}");
+        //messages.Add($"Cooling BTU's per Dollar:{Decimal.Truncate(1m / averageCoolingCostPerBTU)}");
 
 
         for (int i = 0; i < monthlyOperationCosts.Length; i++)
@@ -168,19 +187,21 @@ public class CostCalculation
             double dailyChangeBTU = (houseVolume * temperatureDelta) / cubicFeetPerBTU;
             double daysPerMonth = 365.0 / 12.0;
             int avgHrsPerMonth = (365 * 24) / 12;
-            decimal BTUHLossWindow = UsageNormalization(temperatureDelta);
+            double BTUHLossWindow = UsageNormalization(temperatureDelta);
 
             if (temperatureDelta > 0)
             {
                 //use heating
-                monthlyOperationCosts[i].Item1 += averageHeatingCostPerBTU * (decimal)(dailyChangeBTU * daysPerMonth);
-                monthlyOperationCosts[i].Item1 += averageHeatingCostPerBTU * (decimal)(avgHrsPerMonth * BTUHLoss) * BTUHLossWindow;
+                monthlyOperationCosts[i].Item1 += averageHeatingCostPerBTU * (dailyChangeBTU * daysPerMonth);
+                monthlyOperationCosts[i].Item1 += averageHeatingCostPerBTU * (avgHrsPerMonth * BTUHLoss) * BTUHLossWindow;
+                //monthlyOperationCosts[i].Item1 += averageHeatingCostPerBTU * (avgHrsPerMonth * BTUHLoss);
             }
             else
             {
                 //use cooling
-                monthlyOperationCosts[i].Item2 += averageCoolingCostPerBTU * (decimal)(dailyChangeBTU * daysPerMonth);
-                monthlyOperationCosts[i].Item2 += averageCoolingCostPerBTU * (decimal)(avgHrsPerMonth * BTUHLoss) * BTUHLossWindow;
+                monthlyOperationCosts[i].Item2 += averageCoolingCostPerBTU * (dailyChangeBTU * daysPerMonth);
+                monthlyOperationCosts[i].Item2 += averageCoolingCostPerBTU * (avgHrsPerMonth * BTUHLoss) * BTUHLossWindow;
+                //monthlyOperationCosts[i].Item2 += averageCoolingCostPerBTU * (avgHrsPerMonth * BTUHLoss);
             }
 
             //flip negative cooling cost
@@ -188,40 +209,38 @@ public class CostCalculation
 
 
             //debug log month data
-            messages.Add($"Month[{i}]:\n" +
-                $"temperatureDelta:{temperatureDelta}\n" +
-                $"KelvinAvg:{climateDataMonths[i].averageTemperature}\n" +
-                $"KelvinToFahrenheit:{KelvinToFahrenheit(climateDataMonths[i].averageTemperature)}\n" +
-                $"surfaceLossWall:{surfaceLossWall}\n" +
-                $"surfaceLossCeiling:{surfaceLossCeiling}\n" +
-                $"airInfiltrationLoss:{airInfiltrationLoss}\n" +
-                $"BTUHLoss:{BTUHLoss}\n" +
-                $"initialChangeBTU:{dailyChangeBTU}");
+            //messages.Add($"Month[{i}]:\n" +
+            //    $"temperatureDelta:{temperatureDelta}\n" +
+            //    $"KelvinAvg:{climateDataMonths[i].averageTemperature}\n" +
+            //    $"KelvinToFahrenheit:{KelvinToFahrenheit(climateDataMonths[i].averageTemperature)}\n" +
+            //    $"surfaceLossWall:{surfaceLossWall}\n" +
+            //    $"surfaceLossCeiling:{surfaceLossCeiling}\n" +
+            //    $"airInfiltrationLoss:{airInfiltrationLoss}\n" +
+            //    $"BTUHLoss:{BTUHLoss}\n" +
+            //    $"initialChangeBTU:{dailyChangeBTU}");
         }
     }
 
-    private decimal UsageNormalization(double temperatureDelta)
+    private double UsageNormalization(double temperatureDelta)
     {
         // non technical normalization for factors like sun exposure, elevation, humidity, slab temperature loss etc..
-
-        if (temperatureDelta < 0)
-        {
-            temperatureDelta = -1.5 * temperatureDelta;
-        }
 
         switch (temperatureDelta)
         {
             case double n when (n >= 30):
-                return .45m;
+                return .85;
 
             case double n when (n < 30 && n >= 20):
-                return .65m;
+                return .95;
 
             case double n when (n < 20 && n >= 10):
-                return .85m;
+                return 1;
+
+            case double n when (n < 10 && n >= 0):
+                return 1.15;
 
             default:
-                return 1m;
+                return 1.3;
         }
     }
 
