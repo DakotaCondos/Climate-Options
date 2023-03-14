@@ -9,12 +9,14 @@ public class ConfigurationDetailsController : MonoBehaviour
     public ClimateData climateData;
     public bool isInitializingDisplay = false;
     public ProgramManager programManager;
+    public GameObject SecondPanel;
 
 
     private void Awake()
     {
         climateData = FindObjectOfType<ClimateData>();
         programManager = FindObjectOfType<ProgramManager>();
+        SecondPanel.SetActive(false);
     }
 
     private void Start()
@@ -33,11 +35,21 @@ public class ConfigurationDetailsController : MonoBehaviour
         configurationDetailsDisplay.Initialize(climateControlSystemConfig);
 
         StartCoroutine(InitializeTracker(configurationDetailsDisplay));
+        StartCoroutine(WaitForInitialDisplayLoadComplete());
     }
 
     private IEnumerator InitializeTracker(ConfigurationDetailsDisplay configurationDetailsDisplay)
     {
         while (configurationDetailsDisplay.loadingBlock.activeInHierarchy == true) { yield return null; }
         isInitializingDisplay = false;
+    }
+
+    private IEnumerator WaitForInitialDisplayLoadComplete()
+    {
+        while (isInitializingDisplay)
+        {
+            yield return null;
+        }
+        SecondPanel.SetActive(true);
     }
 }

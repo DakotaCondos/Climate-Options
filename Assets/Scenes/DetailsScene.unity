@@ -3224,7 +3224,7 @@ MonoBehaviour:
         Raw: 0.9756335
         Type: 1
       Y:
-        Raw: 0.9775782
+        Raw: 0.97759855
         Type: 1
       Z:
         Raw: 0
@@ -5094,6 +5094,7 @@ MonoBehaviour:
   utilityGasRate: {fileID: 182608412}
   utilityOilRate: {fileID: 1410982382}
   utilityWoodRate: {fileID: 206572697}
+  isLoading: 0
 --- !u!1 &206572694
 GameObject:
   m_ObjectHideFlags: 0
@@ -7160,6 +7161,7 @@ MonoBehaviour:
   utilityGasRate: {fileID: 158192111}
   utilityOilRate: {fileID: 1935990864}
   utilityWoodRate: {fileID: 710790451}
+  isLoading: 0
 --- !u!114 &302008095
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18018,10 +18020,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   configurationDetailsDisplays:
   - {fileID: 188769791}
-  - {fileID: 0}
+  - {fileID: 302008094}
   climateData: {fileID: 0}
   isInitializingDisplay: 0
   programManager: {fileID: 0}
+  SecondPanel: {fileID: 20692337}
 --- !u!4 &1122948850
 Transform:
   m_ObjectHideFlags: 0

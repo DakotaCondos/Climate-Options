@@ -26,6 +26,13 @@ public class LoadCCSCPanel : MonoBehaviour
 
     private IEnumerator LoadConfigsCoroutine()
     {
+        Transform[] transforms = instantiateLocation.GetComponentsInChildren<Transform>();
+        foreach (Transform t in transforms)
+        {
+            if (t.gameObject != instantiateLocation)
+                Destroy(t.gameObject);
+        }
+        climateControlSystemConfigs.Clear();
         AsyncRequestHelper helper = new();
         loadingBlock.SetActive(true);
         firebaseDataController.AddSystemsToList(climateControlSystemConfigs, helper);

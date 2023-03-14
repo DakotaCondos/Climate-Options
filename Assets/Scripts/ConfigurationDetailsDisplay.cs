@@ -31,19 +31,24 @@ public class ConfigurationDetailsDisplay : MonoBehaviour
     public TextBlock utilityOilRate;
     public TextBlock utilityWoodRate;
 
+    public bool isLoading = true;
+
     private void Awake()
     {
         //if this is the primary display,
         //assign climateControlSystemConfig to config from ProgramManger
 
-        CreateDummyConfig(); // remove this after testing
+        //CreateDummyConfig(); // remove this after testing
 
         climateData = FindObjectOfType<ClimateData>();
     }
 
     public void Initialize(ClimateControlSystemConfig climateControlSystemConfig)
     {
+        isLoading = true;
         this.climateControlSystemConfig = climateControlSystemConfig;
+        DestroyChildren(partCostRowLocation.transform);
+        DestroyChildren(operationCostRowLocation.transform);
         StartCoroutine(DisplayConfigCoroutine());
     }
 
@@ -66,6 +71,7 @@ public class ConfigurationDetailsDisplay : MonoBehaviour
         DisplayConfig();
 
         loadingBlock.SetActive(false);
+        isLoading = false;
 
         //print debug logs
         //foreach (var item in costCalculation.messages)
@@ -172,5 +178,15 @@ public class ConfigurationDetailsDisplay : MonoBehaviour
             currentMonth++;
         }
         operationCostExpandableContainer.Initialize();
+    }
+
+    public void DestroyChildren(Transform location)
+    {
+        Transform[] transforms = location.GetComponentsInChildren<Transform>();
+        foreach (Transform t in transforms)
+        {
+            if (t != location)
+                Destroy(t.gameObject);
+        }
     }
 }
