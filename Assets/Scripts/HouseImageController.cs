@@ -28,6 +28,7 @@ public class HouseImageController : MonoBehaviour
 
     public async void DisplayAllImages()
     {
+        imageBlock.ClearImage();
         houseSceneController.CurrentPanel(3);
         totalImagesSave = await firebaseStorageController.GetAllImages();
         print("---totalImageSaveCount in DisplayAllimages()---" + totalImagesSave.Count);
