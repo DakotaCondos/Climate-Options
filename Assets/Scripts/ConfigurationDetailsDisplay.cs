@@ -1,4 +1,5 @@
 using Nova;
+using NUnit.Framework;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -33,6 +34,10 @@ public class ConfigurationDetailsDisplay : MonoBehaviour
 
     public bool isLoading = true;
 
+    public ImageLoader imageLoader;
+    public List<Texture2D> imageTextures;
+    public UIBlock2D imageBlock;
+
     private void Awake()
     {
         //if this is the primary display,
@@ -41,15 +46,40 @@ public class ConfigurationDetailsDisplay : MonoBehaviour
         //CreateDummyConfig(); // remove this after testing
 
         climateData = FindObjectOfType<ClimateData>();
+        imageLoader = FindObjectOfType<ImageLoader>();
     }
 
     public void Initialize(ClimateControlSystemConfig climateControlSystemConfig)
     {
+        imageTextures = new();
+        imageBlock.Color = Color.clear;
         isLoading = true;
         this.climateControlSystemConfig = climateControlSystemConfig;
         DestroyChildren(partCostRowLocation.transform);
         DestroyChildren(operationCostRowLocation.transform);
         StartCoroutine(DisplayConfigCoroutine());
+        StartCoroutine(RetrieveImagesCoroutine(climateControlSystemConfig.pictureNames));
+    }
+
+    private IEnumerator RetrieveImagesCoroutine(List<string> pictureNames)
+    {
+        if (pictureNames != null && pictureNames.Count > 0)
+        {
+            imageLoader.LoadAllTextures(pictureNames);
+
+            while (imageLoader.isLoading)
+            {
+                yield return null;
+            }
+            imageTextures = imageLoader.imageTextures;
+            if (imageTextures.Count != pictureNames.Count)
+            {
+                Debug.LogError($"RetrieveImagesCoroutine produced less results than expected\n" +
+                    $"Expected:{pictureNames.Count}\n" +
+                    $"Received: {imageTextures.Count}");
+            }
+            CycleImage(true);
+        }
     }
 
     public void DevInitialize()
@@ -188,5 +218,41 @@ public class ConfigurationDetailsDisplay : MonoBehaviour
             if (t != location)
                 Destroy(t.gameObject);
         }
+    }
+
+    public void CycleImage(bool value)
+    {
+        if (imageTextures.Count == 0) return;
+        if (imageBlock.Texture == null)
+        {
+            imageBlock.SetImage(imageTextures.ElementAt(0));
+            imageBlock.Color = Color.white;
+        }
+        Texture2D textureToSet;
+        int index = imageTextures.IndexOf(imageBlock.Texture);
+        print($"Current Image Index: {index}");
+        if (value)
+        {
+            if (index == imageTextures.Count - 1)
+            {
+                textureToSet = imageTextures[0];
+            }
+            else
+            {
+                textureToSet = imageTextures[index + 1];
+            }
+        }
+        else
+        {
+            if (index == 0)
+            {
+                textureToSet = imageTextures[imageTextures.Count - 1];
+            }
+            else
+            {
+                textureToSet = imageTextures[index - 1];
+            }
+        }
+        imageBlock.SetImage(textureToSet);
     }
 }

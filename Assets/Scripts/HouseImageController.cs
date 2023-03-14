@@ -29,16 +29,16 @@ public class HouseImageController : MonoBehaviour
     public async void DisplayAllImages()
     {
         imageBlock.ClearImage();
-        houseSceneController.CurrentPanel(3);
         totalImagesSave = await firebaseStorageController.GetAllImages();
         print("---totalImageSaveCount in DisplayAllimages()---" + totalImagesSave.Count);
         totalImagesIndex = firebaseStorageController.GetTotalImageIndex();
 
         if (totalImagesSave.Count > 0)
         {
+            houseSceneController.CurrentPanel(3);
             StartCoroutine(FadeImage(false));
             ImageLoader(0);
-        } 
+        }
     }
 
     public void ImageLoader(int index)

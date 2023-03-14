@@ -21,6 +21,9 @@ public class ImageLoader : MonoBehaviour
     public UIBlock2D imageBlock;
     public UIBlock2D singleImage;
     UIBlock2D prefab;
+    public List<Texture2D> imageTextures = new List<Texture2D>();
+
+    public bool isLoading = false;
 
     public void Start()
     {
@@ -29,6 +32,7 @@ public class ImageLoader : MonoBehaviour
         storageReference = storage.GetReferenceFromUrl("gs://cscd488-f516a.appspot.com");
     }
 
+    //debug method only
     public void StartLoadImage()
     {
         List<string> testList = new();
@@ -38,6 +42,8 @@ public class ImageLoader : MonoBehaviour
 
         LoadAllImages(testList);
     }
+
+    //debug method only
     public async void LoadAllImages(List<string> images)
     {
         totalImagesSave = await GetAllImages(images);
@@ -49,6 +55,19 @@ public class ImageLoader : MonoBehaviour
             tex.LoadImage(imageByte);
             prefab.SetImage(tex);
         }
+    }
+
+    public async void LoadAllTextures(List<string> images)
+    {
+        isLoading = true;
+        totalImagesSave = await GetAllImages(images);
+        foreach (var imageByte in totalImagesSave)
+        {
+            Texture2D tex = new Texture2D(2, 2);
+            tex.LoadImage(imageByte);
+            imageTextures.Add(tex);
+        }
+        isLoading = false;
     }
 
     public async Task<List<byte[]>> GetAllImages(List<string> imageNames)
