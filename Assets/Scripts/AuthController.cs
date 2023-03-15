@@ -23,12 +23,13 @@ public class AuthController : MonoBehaviour
 
     [SerializeField] LoginUIController loginUIController;
 
+    public Color successColor = new(0.2039216f, 0.6588235f, 0.3254902f);
+
     private void Awake()
     {
         loginUIController = FindObjectOfType<LoginUIController>();
-
     }
-    
+
     public void Login()
     {
         if (!VerifyFields()) return;
@@ -49,7 +50,7 @@ public class AuthController : MonoBehaviour
             }
             if (task.IsCompleted)
             {
-                UpdateResponse("Login Successful", Color.green);
+                UpdateResponse("Login Successful", successColor);
                 print("Login Successful");
                 loginUIController.OnSuccess();
             }
@@ -100,7 +101,7 @@ public class AuthController : MonoBehaviour
             }
             if (task.IsCompleted)
             {
-                UpdateResponse("Login Successful", Color.green);
+                UpdateResponse("Login Successful", successColor);
                 print("Login Successful");
             }
         });
@@ -156,7 +157,7 @@ public class AuthController : MonoBehaviour
             }
             if (task.IsCompleted)
             {
-                UpdateResponse("Account Created Successfully", Color.green);
+                UpdateResponse("Account Created Successfully", successColor);
                 Debug.Log("ResgisterUser success");
                 LoginWithoutFeedback();
             }
@@ -203,7 +204,7 @@ public class AuthController : MonoBehaviour
             }
             if (task.IsCompleted)
             {
-                UpdateResponse("Password Reset Sent Successfully", Color.green);
+                UpdateResponse("Password Reset Sent Successfully", successColor);
                 Debug.Log("Password Reset Sent Successfully");
 
                 if (loginUIController == null)
@@ -318,6 +319,10 @@ public class AuthController : MonoBehaviour
 
     public void UpdateResponse(string msg, Color color)
     {
+        if (color.Compare(Color.green))
+        {
+            color = new Color(0, 190, 0);
+        }
         responseTextblock.color = color;
         responseTextblock.text = msg;
     }

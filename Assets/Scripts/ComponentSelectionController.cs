@@ -41,15 +41,6 @@ public class ComponentSelectionController : MonoBehaviour
         programManager = FindObjectOfType<ProgramManager>();
         selectedComponentIndex = -1;
 
-
-        // ---------------- Demo house only DELETE ------------------
-        //houseConfig = new();
-        //for (int i = 0; i < 8; i++)
-        //{
-        //    houseConfig.rooms.Add(new RoomConfig(i, (i > 5)));
-        //}
-        // ---------------------------------------------------------
-
         houseConfig = programManager.climateControlSystemConfig.houseConfig;
 
         CreateRoomButtons();
@@ -201,7 +192,7 @@ public class ComponentSelectionController : MonoBehaviour
                 }
                 else
                 {
-                    labelText = $"Room {i}";
+                    labelText = $"Room {i + 1}";
                 }
                 textBlock.Text = labelText;
                 g.GetComponent<RoomHelper>().areaDisplayName = labelText;

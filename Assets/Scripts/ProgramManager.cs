@@ -94,5 +94,10 @@ public class ProgramManager : MonoBehaviour
         isComponentsReady = true;
     }
 
+    public void ResetClimateControlSystemConfig()
+    {
+        this.climateControlSystemConfig = new();
+    }
+
 
 }

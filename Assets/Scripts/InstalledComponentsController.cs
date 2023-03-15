@@ -37,7 +37,7 @@ public class InstalledComponentsController : MonoBehaviour
         int bathroomCountLabel = 1;
         for (int i = 0; i < componentSelectionController.houseConfig.rooms.Count; i++)
         {
-            string label = (componentSelectionController.houseConfig.rooms.ElementAt(i).isBathroom) ? $"Bathroom {bathroomCountLabel++}" : $"Room {i}";
+            string label = (componentSelectionController.houseConfig.rooms.ElementAt(i).isBathroom) ? $"Bathroom {bathroomCountLabel++}" : $"Room {i + 1}";
             room = RoomBuilder(label);
             room.components = componentSelectionController.houseConfig.rooms.ElementAt(i).components;
             allRoomComponentBlockControllers.Add(room);
