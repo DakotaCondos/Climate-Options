@@ -594,7 +594,6 @@ GameObject:
   - component: {fileID: 1029302102}
   - component: {fileID: 1029302104}
   - component: {fileID: 1029302103}
-  - component: {fileID: 1029302105}
   m_Layer: 0
   m_Name: ProgramManager
   m_TagString: Untagged
@@ -723,22 +722,6 @@ MonoBehaviour:
   isDataReady: 0
   initializeOnStart: 0
   zip: 0
---- !u!114 &1029302105
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1029302097}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fee86d03548ab43628dfc2e7c46e3b4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  imageBlock: {fileID: 0}
-  singleImage: {fileID: 0}
-  imageTextures: []
-  isLoading: 0
 --- !u!224 &1076796519 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 22400024, guid: 4396a831358f4fe49bb64502f4535264, type: 3}

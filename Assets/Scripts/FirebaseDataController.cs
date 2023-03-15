@@ -111,7 +111,6 @@ public class FirebaseDataController : MonoBehaviour
             ClimateControlSystemConfig climateControlSystemConfig = await GetConfig(item);
             if (climateControlSystemConfig != null) list.Add(climateControlSystemConfig);
         }
-        print("Done with AddSystemsToList");
     }
 
     public async void AddSystemsToList(List<ClimateControlSystemConfig> list, AsyncRequestHelper helper)
@@ -122,7 +121,6 @@ public class FirebaseDataController : MonoBehaviour
             ClimateControlSystemConfig climateControlSystemConfig = await GetConfig(item);
             if (climateControlSystemConfig != null) list.Add(climateControlSystemConfig);
         }
-        print("Done with AddSystemsToList");
         helper.isProcessing = false;
     }
 

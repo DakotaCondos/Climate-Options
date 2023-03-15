@@ -30,7 +30,6 @@ public class HouseImageController : MonoBehaviour
     {
         imageBlock.ClearImage();
         totalImagesSave = await firebaseStorageController.GetAllImages();
-        print("---totalImageSaveCount in DisplayAllimages()---" + totalImagesSave.Count);
         totalImagesIndex = firebaseStorageController.GetTotalImageIndex();
 
         if (totalImagesSave.Count > 0)
@@ -73,7 +72,6 @@ public class HouseImageController : MonoBehaviour
     {
 
         imageIndex += 1;
-        Debug.Log(imageIndex);
         if (imageIndex >= totalImagesIndex - 1)
         {
             imageIndex = totalImagesIndex - 1;
@@ -88,7 +86,6 @@ public class HouseImageController : MonoBehaviour
     public void LeftClick()
     {
         imageIndex -= 1;
-        Debug.Log(imageIndex);
         if (imageIndex >= totalImagesIndex - 1)
         {
             imageIndex = totalImagesIndex - 1;

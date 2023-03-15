@@ -42,7 +42,6 @@ public class LoadCCSCPanel : MonoBehaviour
             yield return null;
         }
 
-        print($"Size of climateControlSystemConfigs: {climateControlSystemConfigs.Count}");
 
         foreach (ClimateControlSystemConfig item in climateControlSystemConfigs)
         {

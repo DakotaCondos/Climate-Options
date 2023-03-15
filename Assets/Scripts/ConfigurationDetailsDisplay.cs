@@ -46,7 +46,7 @@ public class ConfigurationDetailsDisplay : MonoBehaviour
         //CreateDummyConfig(); // remove this after testing
 
         climateData = FindObjectOfType<ClimateData>();
-        imageLoader = FindObjectOfType<ImageLoader>();
+        imageLoader = GetComponent<ImageLoader>();
     }
 
     public void Initialize(ClimateControlSystemConfig climateControlSystemConfig)
@@ -67,14 +67,16 @@ public class ConfigurationDetailsDisplay : MonoBehaviour
         {
             imageLoader.LoadAllTextures(pictureNames);
 
-            while (imageLoader.isLoading)
+            while (imageLoader.isLoadingImages)
             {
                 yield return null;
             }
+
             imageTextures = imageLoader.imageTextures;
+
             if (imageTextures.Count != pictureNames.Count)
             {
-                Debug.LogError($"RetrieveImagesCoroutine produced less results than expected\n" +
+                Debug.LogError($"RetrieveImagesCoroutine produced results different than expected\n" +
                     $"Expected:{pictureNames.Count}\n" +
                     $"Received: {imageTextures.Count}");
             }
@@ -230,7 +232,6 @@ public class ConfigurationDetailsDisplay : MonoBehaviour
         }
         Texture2D textureToSet;
         int index = imageTextures.IndexOf(imageBlock.Texture);
-        print($"Current Image Index: {index}");
         if (value)
         {
             if (index == imageTextures.Count - 1)

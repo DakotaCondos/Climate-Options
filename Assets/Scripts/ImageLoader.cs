@@ -23,7 +23,7 @@ public class ImageLoader : MonoBehaviour
     UIBlock2D prefab;
     public List<Texture2D> imageTextures = new List<Texture2D>();
 
-    public bool isLoading = false;
+    public bool isLoadingImages = false;
 
     public void Start()
     {
@@ -49,7 +49,6 @@ public class ImageLoader : MonoBehaviour
         totalImagesSave = await GetAllImages(images);
         foreach (var imageByte in totalImagesSave)
         {
-            print("inside for loop");
             prefab = Instantiate(singleImage, imageBlock.transform);
             Texture2D tex = new Texture2D(2, 2);
             tex.LoadImage(imageByte);
@@ -59,7 +58,8 @@ public class ImageLoader : MonoBehaviour
 
     public async void LoadAllTextures(List<string> images)
     {
-        isLoading = true;
+        isLoadingImages = true;
+        ClearCurrentInfo();
         totalImagesSave = await GetAllImages(images);
         foreach (var imageByte in totalImagesSave)
         {
@@ -67,7 +67,14 @@ public class ImageLoader : MonoBehaviour
             tex.LoadImage(imageByte);
             imageTextures.Add(tex);
         }
-        isLoading = false;
+        isLoadingImages = false;
+    }
+
+    private void ClearCurrentInfo()
+    {
+        imageTextures.Clear();
+        totalImagesSave.Clear();
+        imageTextures.Clear();
     }
 
     public async Task<List<byte[]>> GetAllImages(List<string> imageNames)
@@ -77,7 +84,6 @@ public class ImageLoader : MonoBehaviour
             firebaseImages.Add(GetImage(guid));
         }
         totalImagesSave = (await Task.WhenAll(firebaseImages)).ToList();
-        print("Test FirebaseCountL " + totalImagesSave.Count);
         return totalImagesSave.Where(x => x is not null).ToList();
     }
 
@@ -85,14 +91,12 @@ public class ImageLoader : MonoBehaviour
     {
         try
         {
-            print("GetImage() try block");
             const long maxAllowedSize = 5 * 1024 * 1024;
             StorageReference image = storageReference.Child($"/{auth.CurrentUser.UserId}/{guid}");
             return await image.GetBytesAsync(maxAllowedSize);
         }
         catch (Exception)
         {
-            print("Getimage() catch block");
             return null;
         }
     }

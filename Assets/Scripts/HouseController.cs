@@ -34,8 +34,6 @@ namespace NovaSamples.UIControls
         }
         public void HouseSelectionConfirm()
         {
-            Debug.Log(bedroom);
-            Debug.Log(bathroom);
             responseText.text = "";
             
             if(!HouseSizeValidate(houseSize))
@@ -46,8 +44,6 @@ namespace NovaSamples.UIControls
             houseConfig = CreateHouseConfig();
             houseSceneController.CurrentPanel(1);
 
-            Debug.Log("House Size: " + houseConfig.size);
-            Debug.Log("Number of rooms: " + houseConfig.rooms.Count);
 
         }
 

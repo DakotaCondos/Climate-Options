@@ -56,7 +56,6 @@ public class FirebaseStorageController : MonoBehaviour
     }
     public void ClickUploadButton()
     {
-        print("imageIndex: " + totalImagesIndex);
         if (totalImagesIndex < 3)
         {
             StartCoroutine(ShowLoadDialogCoroutine());
@@ -71,14 +70,9 @@ public class FirebaseStorageController : MonoBehaviour
     public IEnumerator ShowLoadDialogCoroutine()
     {
         yield return FileBrowser.WaitForLoadDialog(FileBrowser.PickMode.Files, false, null, null, "Load Files", "Load");
-        Debug.Log(FileBrowser.Success);
 
         if (FileBrowser.Success)
         {
-            for (int i = 0; i < FileBrowser.Result.Length; i++)
-            {
-                Debug.Log("FILESS: " + FileBrowser.Result[i]);
-            }
 
             byte[] bytes = FileBrowserHelpers.ReadBytesFromFile(FileBrowser.Result[0]);
             var newMetaData = new MetadataChange
@@ -99,7 +93,6 @@ public class FirebaseStorageController : MonoBehaviour
         }
 
         totalImagesSave = (await Task.WhenAll(firebaseImages)).ToList();
-        print("Test FirebaseCountL " + totalImagesSave.Count);
         return totalImagesSave.Where(x => x is not null).ToList();
       
         
@@ -112,7 +105,6 @@ public class FirebaseStorageController : MonoBehaviour
             firebaseImages.Add(GetImage(guid));
         }
         totalImagesSave = (await Task.WhenAll(firebaseImages)).ToList();
-        print("Test FirebaseCountL " + totalImagesSave.Count);
         return totalImagesSave.Where(x => x is not null).ToList();
     }
 
@@ -120,14 +112,12 @@ public class FirebaseStorageController : MonoBehaviour
     {
         try
         {
-            print("GetImage() try block");
             const long maxAllowedSize = 5 * 1024 * 1024;
             StorageReference image = storageReference.Child($"/{auth.CurrentUser.UserId}/{guid}");
             return await image.GetBytesAsync(maxAllowedSize);
         }
         catch (Exception)
         {
-            print("Getimage() catch block");
             return null;
         }
     }
@@ -144,17 +134,11 @@ public class FirebaseStorageController : MonoBehaviour
             }
             else
             {
-                Debug.Log("File uploaded successfully!");
                 prefab = Instantiate(successfulUpload, progressPanel.transform);
                 TMP_Text textBlock = prefab.GetComponentInChildren<TMP_Text>();
                 textBlock.text = fileName;
-                print(textBlock.text);
                 totalImagesIndex++;
                 guidValues.Add(guid.ToString());
-                foreach (var guid in guidValues)
-                {
-                    print("Current Guid Values in List: " + guid);
-                }
             }
         }));
     }
