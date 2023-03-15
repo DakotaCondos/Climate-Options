@@ -21,13 +21,13 @@ public class ComparisonOverlayControls : MonoBehaviour
     {
         programManager = FindObjectOfType<ProgramManager>();
         configurationDetailsController = FindObjectOfType<ConfigurationDetailsController>();
-        panels = new List<GameObject>();
-
-        panels.Add(controlsPanel);
-        panels.Add(savePanel);
-        panels.Add(loadPanel);
-        panels.Add(detailsPanel);
-
+        panels = new List<GameObject>
+        {
+            controlsPanel,
+            savePanel,
+            loadPanel
+        };
+        detailsPanel.SetActive(true);
         ClosePanel();
     }
 
@@ -52,7 +52,7 @@ public class ComparisonOverlayControls : MonoBehaviour
     {
         activePanel = detailsPanel;
         SetActivePanel();
-        configurationDetailsController.InitailizeDisplay(configurationDetailsController.configurationDetailsDisplays[1],climateControlSystemConfig);
+        configurationDetailsController.InitailizeDisplay(configurationDetailsController.configurationDetailsDisplays[1], climateControlSystemConfig);
     }
 
     private void SetActivePanel()

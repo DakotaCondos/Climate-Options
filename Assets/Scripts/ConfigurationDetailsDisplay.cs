@@ -65,6 +65,7 @@ public class ConfigurationDetailsDisplay : MonoBehaviour
     {
         if (pictureNames != null && pictureNames.Count > 0)
         {
+            imageLoader.imageTextures.Clear();
             imageLoader.LoadAllTextures(pictureNames);
 
             while (imageLoader.isLoadingImages)
@@ -225,10 +226,10 @@ public class ConfigurationDetailsDisplay : MonoBehaviour
     public void CycleImage(bool value)
     {
         if (imageTextures.Count == 0) return;
+        imageBlock.Color = Color.white;
         if (imageBlock.Texture == null)
         {
             imageBlock.SetImage(imageTextures.ElementAt(0));
-            imageBlock.Color = Color.white;
         }
         Texture2D textureToSet;
         int index = imageTextures.IndexOf(imageBlock.Texture);

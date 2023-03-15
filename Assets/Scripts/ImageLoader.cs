@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 using Firebase.Auth;
 using Firebase.Storage;
 using Nova;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.Networking;
 
 public class ImageLoader : MonoBehaviour
 {
@@ -23,9 +25,10 @@ public class ImageLoader : MonoBehaviour
     UIBlock2D prefab;
     public List<Texture2D> imageTextures = new List<Texture2D>();
 
+    public bool isActivelyDownloading = false;
     public bool isLoadingImages = false;
 
-    public void Start()
+    public void Awake()
     {
         auth = FirebaseAuth.DefaultInstance;
         storage = FirebaseStorage.DefaultInstance;
@@ -56,17 +59,48 @@ public class ImageLoader : MonoBehaviour
         }
     }
 
-    public async void LoadAllTextures(List<string> images)
+    public async void LoadAllTextures(List<string> imageNames)
     {
         isLoadingImages = true;
         ClearCurrentInfo();
-        totalImagesSave = await GetAllImages(images);
+
+        //this is not waiting correctly
+        totalImagesSave = await GetAllImages(imageNames);
+        if (totalImagesSave.Count != imageNames.Count)
+        {
+            Debug.LogError("totalImagesSave.Count != images.Count");
+        }
+
         foreach (var imageByte in totalImagesSave)
         {
             Texture2D tex = new Texture2D(2, 2);
             tex.LoadImage(imageByte);
             imageTextures.Add(tex);
         }
+
+        if (imageTextures.Count != imageNames.Count)
+        {
+            Debug.LogError("imageTextures.Count != images.Count");
+        }
+
+        isLoadingImages = false;
+    }
+
+    public void LoadAllTexturesV2(List<string> imageNames)
+    {
+        isLoadingImages = true;
+        ClearCurrentInfo();
+
+        foreach (var item in imageNames)
+        {
+            isActivelyDownloading = true;
+            DownloadImage(item);
+            while (isActivelyDownloading)
+            {
+                //wait
+            }
+        }
+
         isLoadingImages = false;
     }
 
@@ -74,7 +108,7 @@ public class ImageLoader : MonoBehaviour
     {
         imageTextures.Clear();
         totalImagesSave.Clear();
-        imageTextures.Clear();
+        firebaseImages.Clear();
     }
 
     public async Task<List<byte[]>> GetAllImages(List<string> imageNames)
@@ -100,4 +134,49 @@ public class ImageLoader : MonoBehaviour
             return null;
         }
     }
+
+
+    // Download the image and add it to the list
+    public void DownloadImage(string imageName)
+    {
+        print($"imageName: {imageName}");
+        StorageReference imageRef = storageReference.Child($"/{auth.CurrentUser.UserId}/{imageName}");
+        print($"imageRef: {imageRef}");
+        imageRef.GetDownloadUrlAsync().ContinueWith(task =>
+        {
+            if (task.IsFaulted || task.IsCanceled)
+            {
+                Debug.LogError(task.Exception.ToString());
+                return;
+            }
+
+            // Download the image and convert it to a Texture2D
+            UnityWebRequest www = UnityWebRequestTexture.GetTexture(task.Result.ToString());
+            www.SendWebRequest();
+
+            while (!www.isDone)
+            {
+                // Wait for the download to complete
+            }
+
+            if (www.result == UnityWebRequest.Result.ConnectionError || www.result == UnityWebRequest.Result.ProtocolError)
+            {
+                Debug.LogError(www.error);
+            }
+            else
+            {
+                Texture2D texture = DownloadHandlerTexture.GetContent(www);
+
+                // Add the image to the list
+                imageTextures.Add(texture);
+
+                Debug.Log("Image downloaded and added to list");
+                isActivelyDownloading = false;
+            }
+
+            www.Dispose();
+            isActivelyDownloading = false;
+        });
+    }
+
 }
