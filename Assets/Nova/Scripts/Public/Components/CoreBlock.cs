@@ -43,18 +43,9 @@ namespace Nova
         [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
         internal bool InternalProperty_25 => InternalField_48;
 
-        [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
-        internal new string name
-        {
-            get { return base.name; }
-            set
-            {
-                base.name = value;
-            }
-        }
 
         [NonSerialized, HideInInspector]
-        [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+[System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
         private CoreBlock InternalField_40 = null;
         [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
         private CoreBlock InternalProperty_26

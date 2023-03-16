@@ -163,7 +163,7 @@ namespace Nova.InternalNamespace_17.InternalNamespace_18
 
         public static void InternalMethod_569(InternalType_610 InternalParameter_3106, LightingModel InternalParameter_3107)
         {
-            InternalType_266 InternalVar_1;
+            InternalType_266 InternalVar_1 = InternalType_266.InternalField_785;
             switch (InternalParameter_3106.InternalProperty_954.serializedObject.targetObject)
             {
                 case UIBlock2D uIBlock2D:
@@ -175,12 +175,10 @@ namespace Nova.InternalNamespace_17.InternalNamespace_18
                 case UIBlock3D uIBlock3D:
                     InternalVar_1 = InternalType_266.InternalField_787;
                     break;
-                default:
-                    return;
             }
 
             InternalNamespace_0.InternalType_104 InternalVar_2 = (InternalNamespace_0.InternalType_104)InternalParameter_3107;
-            if (!InternalType_409.InternalMethod_1925(InternalVar_1, InternalVar_2))
+            if (InternalVar_1 != InternalType_266.InternalField_785 && !InternalType_409.InternalMethod_1925(InternalVar_1, InternalVar_2))
             {
                 bool InternalVar_3 = EditorUtility.DisplayDialog("Lighting Model Not Included", $"The {InternalVar_2.InternalMethod_1922()} lighting model is not marked to be included in builds for {InternalVar_1.InternalMethod_1923()}s. Would you like to include it?", "Yes", "No");
 

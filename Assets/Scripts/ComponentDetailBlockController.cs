@@ -1,6 +1,5 @@
+#if UNITY_EDITOR
 using Nova;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ComponentDetailBlockController : MonoBehaviour
@@ -18,3 +17,5 @@ public class ComponentDetailBlockController : MonoBehaviour
 
     }
 }
+// current file contents
+#endif

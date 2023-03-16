@@ -76,7 +76,7 @@ Shader "Hidden/Nova/NovaDropShadowStandardSpecularTransparent"
 
             #define NOVA_STANDARDSPECULAR_LIGHTING
             
-            #pragma multi_compile_local __ NOVA_COLOR_MODIFIER NOVA_CLIP_RECT NOVA_CLIP_MASK            #pragma multi_compile_local __ NOVA_RADIAL_FILL            #include "../DropShadow.cginc"
+            #pragma multi_compile_local __ NOVA_CLIP_RECT NOVA_CLIP_MASK            #pragma multi_compile_local __ NOVA_RADIAL_FILL            #include "../DropShadow.cginc"
 
 
             NOVA_DUMMY_INSTANCE_SETUP
@@ -128,7 +128,7 @@ Shader "Hidden/Nova/NovaDropShadowStandardSpecularTransparent"
 
             #define NOVA_STANDARDSPECULAR_LIGHTING
             
-            #pragma multi_compile_local __ NOVA_COLOR_MODIFIER NOVA_CLIP_RECT NOVA_CLIP_MASK            #pragma multi_compile_local __ NOVA_RADIAL_FILL            #include "../DropShadow.cginc"
+            #pragma multi_compile_local __ NOVA_CLIP_RECT NOVA_CLIP_MASK            #pragma multi_compile_local __ NOVA_RADIAL_FILL            #include "../DropShadow.cginc"
 
             
             NOVA_DUMMY_INSTANCE_SETUP
@@ -174,7 +174,7 @@ Shader "Hidden/Nova/NovaDropShadowStandardSpecularTransparent"
 
             #define NOVA_STANDARDSPECULAR_LIGHTING
             
-            #pragma multi_compile_local __ NOVA_COLOR_MODIFIER NOVA_CLIP_RECT NOVA_CLIP_MASK            #pragma multi_compile_local __ NOVA_RADIAL_FILL            #include "../DropShadow.cginc"
+            #pragma multi_compile_local __ NOVA_CLIP_RECT NOVA_CLIP_MASK            #pragma multi_compile_local __ NOVA_RADIAL_FILL            #include "../DropShadow.cginc"
 
 
             NOVA_DUMMY_INSTANCE_SETUP

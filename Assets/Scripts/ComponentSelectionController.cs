@@ -1,4 +1,4 @@
-using System.Collections;
+#if UNITY_EDITOR
 using System.Collections.Generic;
 using UnityEngine;
 using Nova;
@@ -211,3 +211,5 @@ public class ComponentSelectionController : MonoBehaviour
         programManager.sceneController.LoadSceneName("DetailsScene");
     }
 }
+// current file contents
+#endif

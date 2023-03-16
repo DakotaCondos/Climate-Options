@@ -109,13 +109,12 @@ v2f NovaVert(NovaQuadVert v, uint instanceID : SV_InstanceID, uint vid : SV_VERT
     
     #if defined(NOVA_IMAGE)
         float2 uv = SafeDividePositive(blockPos, halfBlockSize);
-        float2 imageUV = uv * shaderData.UVZoom + shaderData.CenterUV;
+        float2 imageUV = uv * vert.UVZoom + vert.CenterUV;
         SetImageUV(o, imageUV);
     #endif
 
     #if defined(NOVA_CLIPPING)
-        float2 nClipRectPos = NClipRectPosFromWorld(worldPos);
-        SetNClipRectPos(o, nClipRectPos);
+        SetRootPos(o, rootSpace);
     #endif
 
     #if defined(NOVA_STATIC_IMAGE)
@@ -186,20 +185,11 @@ fixed4 NovaFrag(v2f i) : SV_Target
         color = ApplyColorTint(color, texColor);
     #endif
 
-    #if defined(NOVA_CLIPPING)
-        half4 nPositions = half4(GetNPos(i), GetNClipRectPos(i));
-        half4 clampedCornerSpace;
-        half2 distanceOutsideBounds = DistanceFromCircleEdge2(nPositions, half4(GetNCornerOrigin(i), ClipRectNCornerOrigin), half2(GetNCornerRadius(i), ClipRectNRadius), clampedCornerSpace);
-        half2 softenWidth = GetSoftenWidth2(nPositions);
-        half2 softenInverse = 1.0 / softenWidth;
-        half2 clipWeights = GetClipWeight10(distanceOutsideBounds, softenInverse);
-    #else
-        half2 clampedCornerSpace;
-        half distanceOutsideBounds = DistanceFromCircleEdge(GetNPos(i), GetNCornerOrigin(i), GetNCornerRadius(i), clampedCornerSpace);
-        half softenWidth = GetSoftenWidth(GetNPos(i));
-        half softenInverse = 1.0 / softenWidth;
-        half clipWeights = GetClipWeight10(distanceOutsideBounds, softenInverse);
-    #endif
+    half2 clampedCornerSpace;
+    half distanceOutsideBounds = DistanceFromCircleEdge(GetNPos(i), GetNCornerOrigin(i), GetNCornerRadius(i), clampedCornerSpace);
+    half softenWidth = GetSoftenWidth(GetNPos(i));
+    half softenInverse = 1.0 / softenWidth;
+    half clipWeight = GetClipWeight10(distanceOutsideBounds, softenInverse);
 
     #if defined(NOVA_INNER_SHADOW)
         half distFromShadowOrigin = Q1Distance(GetNShadowOrigin(i), abs(GetNShadowSpacePos(i)));
@@ -231,11 +221,11 @@ fixed4 NovaFrag(v2f i) : SV_Target
         // Transition to border color
         color = lerp(borderColor, color, borderWeights.y);
         // Replace clipweight with outer edge clip
-        clipWeights.x = borderWeights.x;
+        clipWeight = borderWeights.x;
 
     #elif defined(NOVA_CENTER_BORDER)
         // Apply the clip weight to the body, since the border may be transparent
-        color = ApplyClipWeight(color, clipWeights.x);
+        color = ApplyClipWeight(color, clipWeight);
 
         // We want the border to have a sharp corner when the body does
         // x => inner edge
@@ -248,7 +238,7 @@ fixed4 NovaFrag(v2f i) : SV_Target
 
         borderColor *= borderWeights.x;
         color = BlendPremul(color, borderColor);
-        clipWeights.x = borderWeights.y;
+        clipWeight = borderWeights.y;
 
     #elif defined(NOVA_INNER_BORDER)
         half distanceOutsideInnerBorderEdge = distanceOutsideBounds.x + GetBorderNWidth(i);
@@ -257,10 +247,10 @@ fixed4 NovaFrag(v2f i) : SV_Target
         color = lerp(color, blended, borderWeight);
     #endif
 
-    #if defined(NOVA_CLIPPING)
-        color = ApplyClipColorModification(color, nPositions.zw);
-    #elif defined(NOVA_COLOR_MODIFIER)
-        color = ApplyClipColorModification(color);
+    #if defined(NOVA_CLIP_RECT)
+        color = ApplyGlobalColorModification(color);
+    #elif defined(NOVA_CLIP_MASK)
+        color = ApplyClipMaskAndColorModifiers(color, GetRootPos(i));
     #endif
 
     #if defined(NOVA_LIT)
@@ -273,8 +263,8 @@ fixed4 NovaFrag(v2f i) : SV_Target
         #endif
     #endif
 
-    clipWeights.x *= step(GetEdgeSoftenDisabled(i), clipWeights.x);
-    color = ApplyClipWeight(color, clipWeights.x);
+    clipWeight *= step(GetEdgeSoftenDisabled(i), clipWeight);
+    color = ApplyClipWeight(color, clipWeight);
 
     #if defined(NOVA_RADIAL_FILL)
         float radialFillClipWeight = GetRadialFillClipWeight(GetRadialFillSpacePos(i), GetRadialFillSinCos(i), softenWidth.x, softenInverse.x);
@@ -282,7 +272,7 @@ fixed4 NovaFrag(v2f i) : SV_Target
     #endif
 
     #if defined(NOVA_CLIPPING)
-        color = ApplyClipWeight(color, clipWeights.y);
+        color = ApplyVisualModiferClipping(color, GetRootPos(i));
     #endif
 
     #if defined(NOVA_LIT)

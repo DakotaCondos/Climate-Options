@@ -268,18 +268,18 @@ namespace Nova
             return InternalProperty_51 == 0 ? base.InternalMethod_2062() : InternalProperty_49.InternalProperty_182;
         }
 
-        private protected override bool InternalMethod_225(int InternalParameter_170, out InternalType_66 InternalParameter_171)
+        private protected override bool InternalMethod_919(int InternalParameter_855, out InternalType_5 InternalParameter_2352)
         {
-            InternalParameter_171 = null;
+            InternalParameter_2352 = null;
 
-            if (!TryGetItemView(InternalParameter_170, out ItemView InternalVar_1))
+            if (!TryGetItemView(InternalParameter_855, out ItemView InternalVar_1))
             {
                 return false;
             }
 
-            InternalParameter_171 = InternalType_253.InternalProperty_190.InternalMethod_1158(InternalVar_1.UIBlock.InternalProperty_29) as InternalType_66;
+            InternalParameter_2352 = InternalType_253.InternalProperty_190.InternalMethod_1158(InternalVar_1.UIBlock.InternalProperty_29) as InternalType_5;
 
-            return InternalParameter_171 != null;
+            return InternalParameter_2352 != null;
         }
 
         private protected override void InternalMethod_2060(bool firstSibling)

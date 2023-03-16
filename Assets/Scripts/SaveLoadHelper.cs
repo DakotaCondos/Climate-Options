@@ -1,6 +1,5 @@
+#if UNITY_EDITOR
 using Nova;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SaveLoadHelper : MonoBehaviour
@@ -24,3 +23,5 @@ public class SaveLoadHelper : MonoBehaviour
         comparisonOverlayControls.DetailDisplayPanel(climateControlSystemConfig);
     }
 }
+// current file contents
+#endif

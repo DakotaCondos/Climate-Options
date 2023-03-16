@@ -215,6 +215,17 @@ MonoBehaviour:
     CornerRadius:
       Raw: 6
       Type: 0
+    RadialFill:
+      Center:
+        X:
+          Raw: 0
+          Type: 1
+        Y:
+          Raw: 0
+          Type: 1
+      Rotation: 0
+      FillAngle: 90
+      Enabled: 0
     Gradient:
       Color: {r: 1, g: 1, b: 1, a: 1}
       Center:
@@ -261,6 +272,7 @@ MonoBehaviour:
       Adjustment:
         CenterUV: {x: 0, y: 0}
         UVScale: {x: 1, y: 1}
+        PixelsPerUnitMultiplier: 1
         scaleMode: 1
       Mode: 1
     SoftenEdges: 1
@@ -482,6 +494,17 @@ MonoBehaviour:
     CornerRadius:
       Raw: 0
       Type: 0
+    RadialFill:
+      Center:
+        X:
+          Raw: 0
+          Type: 1
+        Y:
+          Raw: 0
+          Type: 1
+      Rotation: 0
+      FillAngle: 90
+      Enabled: 0
     Gradient:
       Color: {r: 1, g: 1, b: 1, a: 1}
       Center:
@@ -528,6 +551,7 @@ MonoBehaviour:
       Adjustment:
         CenterUV: {x: 0, y: 0}
         UVScale: {x: 1, y: 1}
+        PixelsPerUnitMultiplier: 1
         scaleMode: 1
       Mode: 1
     SoftenEdges: 1
@@ -747,12 +771,23 @@ MonoBehaviour:
     LightingModel: 0
     ShadowCastingMode: 2
     ReceiveShadows: 1
-  PreviewSize: {x: 60.183334, y: 30, z: 0}
+  PreviewSize: {x: 180, y: 90, z: 0}
   visuals:
     Color: {r: 0.9, g: 0.9, b: 0.9, a: 1}
     CornerRadius:
       Raw: 6
       Type: 0
+    RadialFill:
+      Center:
+        X:
+          Raw: 0
+          Type: 1
+        Y:
+          Raw: 0
+          Type: 1
+      Rotation: 0
+      FillAngle: 90
+      Enabled: 0
     Gradient:
       Color: {r: 1, g: 1, b: 1, a: 1}
       Center:
@@ -799,6 +834,7 @@ MonoBehaviour:
       Adjustment:
         CenterUV: {x: 0, y: 0}
         UVScale: {x: 1, y: 1}
+        PixelsPerUnitMultiplier: 1
         scaleMode: 1
       Mode: 1
     SoftenEdges: 1
@@ -824,9 +860,19 @@ MonoBehaviour:
     00000000:
       type: {class: ToggleVisuals, ns: NovaSamples.UIControls, asm: Nova.UIControls}
       data:
+        TransitionType: 1
+        transitionTarget: {fileID: 6516097741629618969}
         DefaultColor: {r: 0.02745098, g: 0.14901961, b: 0.14901961, a: 1}
         HoveredColor: {r: 0.08, g: 0.4, b: 0.4, a: 1}
         PressedColor: {r: 0, g: 0.25, b: 0.25, a: 1}
+        Sprites:
+          DefaultSprite: {fileID: 0}
+          HoveredSprite: {fileID: 0}
+          PressedSprite: {fileID: 0}
+        Animations:
+          DefaultAnimation: Normal
+          HoveredAnimation: Highlighted
+          PressedAnimation: Pressed
         Background: {fileID: 6516097741629618969}
         Label: {fileID: 6516097741509197433}
         IsOnIndicator: {fileID: 6516097740538779057}
@@ -1415,6 +1461,17 @@ MonoBehaviour:
     CornerRadius:
       Raw: 6
       Type: 0
+    RadialFill:
+      Center:
+        X:
+          Raw: 0
+          Type: 1
+        Y:
+          Raw: 0
+          Type: 1
+      Rotation: 0
+      FillAngle: 90
+      Enabled: 0
     Gradient:
       Color: {r: 0, g: 0, b: 0, a: 1}
       Center:
@@ -1461,6 +1518,7 @@ MonoBehaviour:
       Adjustment:
         CenterUV: {x: 0, y: 0}
         UVScale: {x: 1, y: 1}
+        PixelsPerUnitMultiplier: 1
         scaleMode: 1
       Mode: 1
     SoftenEdges: 1
@@ -1483,6 +1541,34 @@ MonoBehaviour:
   DragThreshold: 1
   LowAccuracyDragThreshold: 30
   ClickBehavior: 0
+  navigable: 1
+  onSelect: 0
+  autoSelect: 0
+  Navigation:
+    Left:
+      Type: 0
+      Fallback: 0
+      Target: {fileID: 0}
+    Right:
+      Type: 0
+      Fallback: 0
+      Target: {fileID: 0}
+    Down:
+      Type: 0
+      Fallback: 0
+      Target: {fileID: 0}
+    Up:
+      Type: 0
+      Fallback: 0
+      Target: {fileID: 0}
+    Forward:
+      Type: 1
+      Fallback: 1
+      Target: {fileID: 0}
+    Back:
+      Type: 1
+      Fallback: 1
+      Target: {fileID: 0}
   draggable:
     X: 0
     Y: 0

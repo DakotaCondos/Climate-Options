@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+#if UNITY_EDITOR
 using UnityEngine;
 
 public class ClimateControlSystemConfigFactory : MonoBehaviour
@@ -27,3 +26,5 @@ public class ClimateControlSystemConfigFactory : MonoBehaviour
         }
     }
 }
+// current file contents
+#endif

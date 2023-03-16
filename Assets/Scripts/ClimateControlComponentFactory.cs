@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
@@ -34,3 +35,5 @@ public class ClimateControlComponentFactory : MonoBehaviour
         }
     }
 }
+// current file contents
+#endif

@@ -1,4 +1,5 @@
-﻿namespace Nova
+﻿#if UNITY_EDITOR
+namespace Nova
 {
     using System.Collections;
     using UnityEngine;
@@ -31,3 +32,5 @@
         }
     }
 }
+// current file contents
+#endif

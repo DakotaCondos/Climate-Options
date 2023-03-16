@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
+#if UNITY_EDITOR
 using UnityEngine;
-using TMPro;
-using UnityEngine.UI;
 using Nova;
 
 public class NovaUIBehavior : MonoBehaviour
@@ -27,3 +24,5 @@ public class NovaUIBehavior : MonoBehaviour
         uIBlock2D.Border.Enabled = value;
     }
 }
+// current file contents
+#endif

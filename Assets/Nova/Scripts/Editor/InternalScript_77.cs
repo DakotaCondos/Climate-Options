@@ -260,23 +260,31 @@ namespace Nova.InternalNamespace_17.InternalNamespace_18
                 {
                     case InternalType_550.InternalField_2440:
                         {
+                            InternalType_609 InternalVar_6 = InternalParameter_2744.InternalProperty_611.InternalProperty_647;
+                            if (InternalVar_6.InternalProperty_655 == ImageScaleMode.Sliced && !InternalVar_6.InternalProperty_656.hasMultipleDifferentValues)
+                            {
+                                Rect InternalVar_7 = InternalVar_5;
+                                InternalVar_7.xMin += EditorGUIUtility.labelWidth;
+                                InternalType_573.InternalMethod_3639(InternalVar_7, InternalType_554.InternalType_569.InternalField_3635);
+                            }
+
                             EditorGUI.BeginChangeCheck();
-                            GUIContent InternalVar_6 = EditorGUI.BeginProperty(InternalVar_5, InternalType_554.InternalType_569.InternalField_2530, InternalVar_2);
-                            Texture InternalVar_7 = EditorGUI.ObjectField(InternalVar_5, InternalVar_6, InternalVar_2.objectReferenceValue, typeof(Texture), false) as Texture;
+                            GUIContent InternalVar_8 = EditorGUI.BeginProperty(InternalVar_5, InternalType_554.InternalType_569.InternalField_2530, InternalVar_2);
+                            Texture InternalVar_9 = EditorGUI.ObjectField(InternalVar_5, InternalVar_8, InternalVar_2.objectReferenceValue, typeof(Texture), false) as Texture;
                             EditorGUI.EndProperty();
-                            bool InternalVar_8 = EditorGUI.EndChangeCheck();
-                            if (!InternalVar_8)
+                            bool InternalVar_10 = EditorGUI.EndChangeCheck();
+                            if (!InternalVar_10)
                             {
                                 break;
                             }
 
-                            if (InternalVar_7 == null)
+                            if (InternalVar_9 == null)
                             {
                                 InternalVar_2.objectReferenceValue = null;
                             }
-                            else if (InternalVar_7 is Texture2D || InternalVar_7 is RenderTexture)
+                            else if (InternalVar_9 is Texture2D || InternalVar_9 is RenderTexture)
                             {
-                                InternalVar_2.objectReferenceValue = InternalVar_7;
+                                InternalVar_2.objectReferenceValue = InternalVar_9;
                             }
                             else
                             {
@@ -308,63 +316,67 @@ namespace Nova.InternalNamespace_17.InternalNamespace_18
                         }
                 }
 
-                Rect InternalVar_9 = InternalVar_5;
-                InternalVar_9.x = InternalVar_9.xMax + InternalType_573.InternalField_2557;
-                InternalVar_9.width = InternalType_573.InternalField_2559;
+                Rect InternalVar_11 = InternalVar_5;
+                InternalVar_11.x = InternalVar_11.xMax + InternalType_573.InternalField_2557;
+                InternalVar_11.width = InternalType_573.InternalField_2559;
                 EditorGUI.BeginChangeCheck();
-                Rect InternalVar_10 = InternalVar_9;
-                InternalVar_10.width += InternalType_573.InternalField_2550;
-                InternalType_550 InternalVar_11 = InternalType_573.InternalMethod_2254(InternalVar_9, InternalParameter_2745, InternalType_554.InternalType_569.InternalField_2535);
-                bool InternalVar_12 = EditorGUI.EndChangeCheck() && InternalVar_11 != InternalParameter_2745;
+                Rect InternalVar_12 = InternalVar_11;
+                InternalVar_12.width += InternalType_573.InternalField_2550;
+                InternalType_550 InternalVar_13 = InternalType_573.InternalMethod_2254(InternalVar_11, InternalParameter_2745, InternalType_554.InternalType_569.InternalField_2535);
+                bool InternalVar_14 = EditorGUI.EndChangeCheck() && InternalVar_13 != InternalParameter_2745;
                 InternalType_573.InternalType_575.InternalMethod_2307();
                 InternalType_573.InternalType_575.InternalMethod_2310();
 
-                if (InternalVar_12)
+                if (InternalVar_14)
                 {
                     InternalVar_2.objectReferenceValue = null;
                     InternalVar_3.objectReferenceValue = null;
                     InternalParameter_2744.InternalProperty_611.InternalProperty_647.InternalProperty_653 = Vector2.one;
                     InternalParameter_2744.InternalProperty_611.InternalProperty_647.InternalProperty_651 = Vector2.zero;
-                    InternalParameter_2745 = InternalVar_11;
+                    InternalParameter_2745 = InternalVar_13;
                 }
 
                 if (InternalVar_4)
                 {
                     EditorGUILayout.Space(1);
-                    InternalType_573.InternalType_574.InternalMethod_2291(GUILayoutUtility.GetLastRect());
+                    InternalType_573.InternalType_574.InternalMethod_3438(GUILayoutUtility.GetLastRect());
                     InternalType_573.InternalType_575.InternalMethod_2306(InternalType_573.InternalType_574.InternalProperty_475);
                     InternalType_573.InternalMethod_2236(1.5f);
                     InternalType_573.InternalType_575.InternalMethod_2308();
 
-                    Rect InternalVar_13 = InternalType_573.InternalType_575.InternalMethod_2302();
+                    Rect InternalVar_15 = InternalType_573.InternalType_575.InternalMethod_2302();
                     EditorGUI.BeginChangeCheck();
-                    GUIContent InternalVar_14 = EditorGUI.BeginProperty(InternalVar_13, InternalType_554.InternalType_569.InternalField_2532, InternalParameter_2744.InternalProperty_611.InternalProperty_647.InternalProperty_656);
-                    ImageScaleMode InternalVar_15 = (ImageScaleMode)EditorGUI.EnumPopup(InternalVar_13, InternalVar_14, InternalParameter_2744.InternalProperty_611.InternalProperty_647.InternalProperty_655);
+                    GUIContent InternalVar_16 = EditorGUI.BeginProperty(InternalVar_15, InternalType_554.InternalType_569.InternalField_2532, InternalParameter_2744.InternalProperty_611.InternalProperty_647.InternalProperty_656);
+                    ImageScaleMode InternalVar_17 = (ImageScaleMode)EditorGUI.EnumPopup(InternalVar_15, InternalVar_16, InternalParameter_2744.InternalProperty_611.InternalProperty_647.InternalProperty_655);
                     EditorGUI.EndProperty();
                     if (EditorGUI.EndChangeCheck())
                     {
                         InternalParameter_2744.InternalProperty_611.InternalProperty_647.InternalProperty_653 = Vector2.one;
                         InternalParameter_2744.InternalProperty_611.InternalProperty_647.InternalProperty_651 = Vector2.zero;
-                        InternalParameter_2744.InternalProperty_611.InternalProperty_647.InternalProperty_655 = InternalVar_15;
+                        InternalParameter_2744.InternalProperty_611.InternalProperty_647.InternalProperty_655 = InternalVar_17;
                     }
 
-                    if (InternalVar_15 == ImageScaleMode.Manual)
+                    if (InternalVar_17 == ImageScaleMode.Manual)
                     {
                         InternalType_573.InternalMethod_2241(InternalType_554.InternalType_569.InternalField_2533, InternalParameter_2744.InternalProperty_611.InternalProperty_647.InternalProperty_652);
                         InternalType_573.InternalMethod_2241(InternalType_554.InternalType_569.InternalField_2534, InternalParameter_2744.InternalProperty_611.InternalProperty_647.InternalProperty_654);
                     }
+                    else if (InternalVar_17 == ImageScaleMode.Sliced || InternalVar_17 == ImageScaleMode.Tiled)
+                    {
+                        InternalType_573.InternalMethod_3004(InternalType_554.InternalType_569.InternalField_1333, InternalParameter_2744.InternalProperty_611.InternalProperty_647.InternalProperty_1068, .01f, float.MaxValue);
+                    }
 
                     if (NovaSettings.PackedImagesEnabled)
                     {
-                        Rect InternalVar_16 = InternalType_573.InternalType_575.InternalMethod_2302();
+                        Rect InternalVar_18 = InternalType_573.InternalType_575.InternalMethod_2302();
                         EditorGUI.BeginChangeCheck();
-                        GUIContent InternalVar_17 = EditorGUI.BeginProperty(InternalVar_16, InternalType_554.InternalType_569.InternalField_2531, InternalParameter_2744.InternalProperty_611.InternalProperty_650);
-                        ImagePackMode InternalVar_18 = InternalParameter_2744.InternalProperty_611.InternalProperty_649;
-                        ImagePackMode InternalVar_19 = (ImagePackMode)EditorGUI.EnumPopup(InternalVar_16, InternalVar_17, InternalVar_18);
+                        GUIContent InternalVar_19 = EditorGUI.BeginProperty(InternalVar_18, InternalType_554.InternalType_569.InternalField_2531, InternalParameter_2744.InternalProperty_611.InternalProperty_650);
+                        ImagePackMode InternalVar_20 = InternalParameter_2744.InternalProperty_611.InternalProperty_649;
+                        ImagePackMode InternalVar_21 = (ImagePackMode)EditorGUI.EnumPopup(InternalVar_18, InternalVar_19, InternalVar_20);
                         EditorGUI.EndProperty();
-                        if (EditorGUI.EndChangeCheck() && InternalVar_18 != InternalVar_19)
+                        if (EditorGUI.EndChangeCheck() && InternalVar_20 != InternalVar_21)
                         {
-                            InternalParameter_2744.InternalProperty_611.InternalProperty_649 = InternalVar_19;
+                            InternalParameter_2744.InternalProperty_611.InternalProperty_649 = InternalVar_21;
                         }
                     }
 
@@ -514,22 +526,21 @@ namespace Nova.InternalNamespace_17.InternalNamespace_18
             EditorGUI.BeginChangeCheck();
 
             Rect InternalVar_2 = InternalType_573.InternalType_575.InternalMethod_2302();
-            InternalVar_2.width *= 0.5f;
-
             Rect InternalVar_3 = InternalVar_2;
-            InternalVar_3.width -= InternalType_573.InternalField_2551;
-            InternalVar_3.x += InternalVar_2.width + InternalType_573.InternalField_2551;
+            InternalVar_3.width = InternalType_573.InternalProperty_472;
+            InternalVar_3.width += InternalType_573.InternalField_2551;
+            InternalVar_3.x -= InternalType_573.InternalField_2558 + InternalType_573.InternalField_2557;
 
-            InternalVar_2.width -= InternalType_573.InternalField_2551;
-            InternalVar_2.x -= InternalType_573.InternalField_2551 + InternalType_573.InternalField_2557;
+            Rect InternalVar_4 = InternalVar_2;
+            InternalVar_4.xMin = InternalVar_3.xMax;
 
-            GUIContent InternalVar_4 = EditorGUI.BeginProperty(InternalVar_2, InternalType_554.InternalType_568.InternalField_2525, InternalParameter_119.InternalProperty_626);
-            InternalParameter_119.InternalProperty_625 = EditorGUI.Toggle(InternalVar_2, InternalVar_4, InternalParameter_119.InternalProperty_625);
+            GUIContent InternalVar_5 = EditorGUI.BeginProperty(InternalVar_3, InternalType_554.InternalType_568.InternalField_2525, InternalParameter_119.InternalProperty_626);
+            InternalParameter_119.InternalProperty_625 = EditorGUI.Toggle(InternalVar_3, InternalVar_5, InternalParameter_119.InternalProperty_625);
             EditorGUI.EndProperty();
 
             EditorGUI.BeginDisabledGroup(!InternalParameter_119.InternalProperty_625);
 
-            InternalType_573.InternalMethod_2232(InternalVar_3, InternalType_554.InternalType_568.InternalField_2526, InternalParameter_119.InternalProperty_618);
+            InternalType_573.InternalMethod_2232(InternalVar_4, InternalType_554.InternalType_568.InternalField_2526, InternalParameter_119.InternalProperty_618);
             EditorGUI.EndDisabledGroup();
 
             if (EditorGUI.EndChangeCheck() && InternalParameter_119.InternalProperty_625)
@@ -542,7 +553,8 @@ namespace Nova.InternalNamespace_17.InternalNamespace_18
 
             if (InternalVar_1)
             {
-                InternalType_573.InternalType_574.InternalMethod_2291(InternalVar_3);
+                InternalType_573.InternalMethod_2236(2 / InternalType_573.InternalField_2558);
+                InternalType_573.InternalType_574.InternalMethod_3438(GUILayoutUtility.GetLastRect());
                 InternalType_573.InternalType_575.InternalMethod_2306(InternalType_573.InternalType_574.InternalProperty_475);
                 InternalType_573.InternalMethod_2236(2.5f);
                 InternalType_573.InternalType_575.InternalMethod_2308();
@@ -591,7 +603,7 @@ namespace Nova.InternalNamespace_17.InternalNamespace_18
             InternalType_573.InternalType_575.InternalMethod_2307();
             if (InternalVar_1)
             {
-                InternalType_573.InternalType_574.InternalMethod_2291(GUILayoutUtility.GetLastRect());
+                InternalType_573.InternalType_574.InternalMethod_3438(GUILayoutUtility.GetLastRect());
                 InternalType_573.InternalType_575.InternalMethod_2306(InternalType_573.InternalType_574.InternalProperty_475);
                 InternalType_573.InternalMethod_2236(1.5f);
                 InternalType_573.InternalType_575.InternalMethod_2308();
@@ -615,11 +627,7 @@ namespace Nova.InternalNamespace_17.InternalNamespace_18
 
                 EditorGUI.BeginChangeCheck();
                 Rect InternalVar_8 = InternalType_573.InternalType_575.InternalMethod_2302();
-                Color InternalVar_9;
-                using (var scope = InternalParameter_2750.InternalField_2433 ? InternalType_719.InternalMethod_3246() : default)
-                {
-                    InternalVar_9 = EditorGUI.ColorField(InternalVar_8, InternalType_554.InternalType_572.InternalField_2546, InternalParameter_2750.InternalProperty_461);
-                }
+                Color InternalVar_9 = InternalType_573.InternalMethod_2250(InternalVar_8, InternalType_554.InternalType_572.InternalField_2546, InternalParameter_2750.InternalProperty_461, InternalParameter_2750.InternalField_2433);
                 if (EditorGUI.EndChangeCheck())
                 {
                     InternalParameter_2750.InternalProperty_461 = InternalVar_9;

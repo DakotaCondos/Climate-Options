@@ -369,7 +369,7 @@ namespace Nova
                 return true;
             }
 
-            return InternalField_3274.InternalMethod_503<InternalType_95<Vector3>>(controlID, out receiverHit);
+            return InternalField_3274.InternalMethod_503<InternalType_755<Vector3>>(controlID, out receiverHit);
         }
 
         /// <summary>
@@ -533,7 +533,7 @@ namespace Nova
                         UIBlock InternalVar_14 = InternalVar_5.UIBlock.Root;
 
                         Bounds InternalVar_15 = new Bounds(InternalVar_14.InternalProperty_21, InternalVar_14.InternalProperty_20 + (Vector3.one * 2 * InternalType_187.InternalField_494));
-                        Vector3 InternalVar_16 = InternalType_187.InternalMethod_881(InternalVar_14.transform.InverseTransformPoint(InternalVar_12));
+                        Vector3 InternalVar_16 = InternalType_187.InternalMethod_3642(InternalVar_14.transform.InverseTransformPoint(InternalVar_12));
 
                         if (InternalVar_15.Contains(InternalVar_16))
                         {
@@ -583,10 +583,10 @@ namespace Nova
         /// <seealso cref="Cancel(Update)"/>
         public static void Point(Update update, bool pointerDown, bool allowDrag = true, float maxDistance = float.PositiveInfinity, int layerMask = AllLayers, InputAccuracy accuracy = InputAccuracy.High)
         {
-            InternalType_85 InternalVar_1 = pointerDown ? InternalType_85.InternalField_283 : InternalType_85.InternalField_284;
+            InternalType_85 InternalVar_1 = pointerDown ? InternalType_85.InternalField_1162 : InternalType_85.InternalField_284;
             InternalMethod_3008<bool>(update, maxDistance, layerMask, InternalField_3272, InternalVar_1);
 
-            InternalType_85 InternalVar_2 = allowDrag ? InternalType_85.InternalField_285 : InternalType_85.InternalField_283;
+            InternalType_85 InternalVar_2 = allowDrag ? InternalType_85.InternalField_285 : InternalType_85.InternalField_1162;
             InternalMethod_3007(ref update, InternalField_3272, pointerDown, InternalVar_2, InternalParameter_2420: accuracy == InputAccuracy.Low);
         }
 
@@ -601,8 +601,8 @@ namespace Nova
         /// <param name="accuracy">The accuracy of the input source, defaults to <see cref="InputAccuracy.High"/>.</param>
         public static void Scroll(Update update, Vector3 scroll, float maxDistance = float.PositiveInfinity, int layerMask = AllLayers, InputAccuracy accuracy = InputAccuracy.High)
         {
-            InternalMethod_3008<InternalType_95<Vector3>>(update, maxDistance, layerMask, InternalField_3272, InternalType_85.InternalField_284);
-            InternalMethod_3007(ref update, InternalField_3272, new InternalType_95<Vector3>(ref scroll), InternalType_85.InternalField_284, InternalParameter_2420: accuracy == InputAccuracy.Low);
+            InternalMethod_3008<InternalType_755<Vector3>>(update, maxDistance, layerMask, InternalField_3272, InternalType_85.InternalField_284);
+            InternalMethod_3007(ref update, InternalField_3272, new InternalType_755<Vector3>(ref scroll), InternalType_85.InternalField_284, InternalParameter_2420: accuracy == InputAccuracy.Low);
         }
 
         /// <summary>
@@ -724,15 +724,11 @@ namespace Nova
 
                 if (InternalVar_2 < InternalParameter_2419.Count - 1)
                 {
-                    InternalType_521<InternalType_75> InternalVar_4 = InternalVar_3.UIBlock.InternalProperty_23.InternalProperty_164;
+                    InternalType_75 InternalVar_4 = InternalVar_3.UIBlock.InternalProperty_23.InternalProperty_1149;
 
-                    for (int InternalVar_5 = 0; InternalVar_5 < InternalVar_4.InternalProperty_433; ++InternalVar_5)
+                    if (InternalVar_4 != null && InternalVar_4.InternalProperty_741)
                     {
-                        if (InternalVar_4[InternalVar_5].InternalProperty_741)
-                        {
-                            InternalParameter_2419.RemoveRange(InternalVar_2 + 1, InternalParameter_2419.Count - InternalVar_2 - 1);
-                            break;
-                        }
+                        InternalParameter_2419.RemoveRange(InternalVar_2 + 1, InternalParameter_2419.Count - InternalVar_2 - 1);
                     }
                 }
             }
@@ -764,10 +760,6 @@ namespace Nova
 
             return InternalParameter_2417.InternalMethod_2043();
         }
-
-#region 
-#endregion
-
-#endregion
+        #endregion
     }
 }

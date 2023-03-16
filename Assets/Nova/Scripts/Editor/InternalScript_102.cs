@@ -623,7 +623,7 @@ namespace Nova.InternalNamespace_17.InternalNamespace_21
             {
                 UIBlock InternalVar_4 = InternalProperty_981[InternalVar_3];
 
-                InternalType_5 InternalVar_5 = InternalVar_4.InternalMethod_1034();
+                InternalType_5 InternalVar_5 = InternalVar_4.InternalMethod_3592();
                 bool InternalVar_6 = InternalVar_5 != null;
                 Vector3 InternalVar_7 = InternalType_44.InternalMethod_3206(InternalVar_4);
                 Vector3 InternalVar_8 = InternalVar_6 ? (Vector3)InternalVar_5.InternalProperty_146.InternalProperty_139 : Vector3.zero;

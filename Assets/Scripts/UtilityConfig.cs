@@ -1,4 +1,5 @@
-﻿using System;
+﻿#if UNITY_EDITOR
+using System;
 
 [Serializable]
 public class UtilityConfig
@@ -21,3 +22,5 @@ public class UtilityConfig
 
 
 }
+// current file contents
+#endif

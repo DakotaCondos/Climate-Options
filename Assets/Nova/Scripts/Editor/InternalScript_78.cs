@@ -144,7 +144,7 @@ namespace Nova.InternalNamespace_17.InternalNamespace_21
 
         private void InternalMethod_3025(UIBlock InternalParameter_2776, Bounds InternalParameter_2777, Vector3 InternalParameter_2778, ref Matrix4x4 InternalParameter_2779, Vector3 InternalParameter_2780 = default)
         {
-            InternalType_5 InternalVar_1 = InternalParameter_2776.InternalMethod_1034();
+            InternalType_5 InternalVar_1 = InternalParameter_2776.InternalMethod_3592();
             bool InternalVar_2 = InternalVar_1 != null;
             Vector3 InternalVar_3 = InternalType_44.InternalMethod_3206(InternalParameter_2776);
             Vector3 InternalVar_4 = InternalVar_2 ? (Vector3)InternalVar_1.InternalProperty_146.InternalProperty_139 : Vector3.zero;
@@ -283,7 +283,7 @@ namespace Nova.InternalNamespace_17.InternalNamespace_21
                 Vector3 InternalVar_3 = InternalVar_1.InternalMethod_2655();
                 Vector3 InternalVar_4 = InternalVar_1.InternalMethod_1039();
 
-                InternalType_5 InternalVar_5 = InternalVar_1.InternalMethod_1034();
+                InternalType_5 InternalVar_5 = InternalVar_1.InternalMethod_3592();
                 bool InternalVar_6 = InternalVar_5 != null;
 
                 Vector3 InternalVar_7 = InternalVar_6 ? InternalVar_5.InternalProperty_148 : Vector3.zero;

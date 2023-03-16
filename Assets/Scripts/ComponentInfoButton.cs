@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+#if UNITY_EDITOR
 using UnityEngine;
 
 public class ComponentInfoButton : MonoBehaviour
@@ -17,3 +16,5 @@ public class ComponentInfoButton : MonoBehaviour
         componentInfoPanel.UpdateComponentInfoPanel(component);
     }
 }
+// current file contents
+#endif

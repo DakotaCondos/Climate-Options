@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+#if UNITY_EDITOR
 using UnityEngine;
 
 public class ResetConfig : MonoBehaviour
@@ -16,3 +15,5 @@ public class ResetConfig : MonoBehaviour
         programManager.ResetClimateControlSystemConfig();
     }
 }
+// current file contents
+#endif

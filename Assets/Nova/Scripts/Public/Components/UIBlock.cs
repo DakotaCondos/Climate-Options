@@ -1,4 +1,3 @@
-using Nova.Compat;
 using Nova.InternalNamespace_16;
 using Nova.InternalNamespace_0;
 using Nova.InternalNamespace_0.InternalNamespace_2;
@@ -11,6 +10,8 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
+
+using InputModule = Nova.InternalNamespace_0.InternalType_759<Nova.UIBlock>;
 
 namespace Nova
 {
@@ -877,7 +878,7 @@ namespace Nova
 
         [HideInInspector, NonSerialized]
         [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
-        private InternalType_727 InternalField_36 = null;
+        private InputModule InternalField_36 = null;
         [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
         internal InternalType_74 InternalProperty_23
         {
@@ -885,7 +886,7 @@ namespace Nova
             {
                 if (InternalField_36 == null)
                 {
-                    InternalField_36 = new InternalType_727(InternalProperty_24, this);
+                    InternalField_36 = new InputModule(this);
                 }
 
                 return InternalField_36;

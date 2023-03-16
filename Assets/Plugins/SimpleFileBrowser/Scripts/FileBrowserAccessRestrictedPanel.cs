@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 #if ENABLE_INPUT_SYSTEM && !ENABLE_LEGACY_INPUT_MANAGER
 using UnityEngine.InputSystem;
@@ -7,7 +6,7 @@ using UnityEngine.InputSystem;
 
 namespace SimpleFileBrowser
 {
-	public class FileBrowserAccessRestrictedPanel : MonoBehaviour
+    public class FileBrowserAccessRestrictedPanel : MonoBehaviour
 	{
 #pragma warning disable 0649
 		[SerializeField]

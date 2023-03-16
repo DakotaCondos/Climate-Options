@@ -96,7 +96,7 @@ Shader "Hidden/Nova/NovaTextBlockUnlit"
             #pragma multi_compile_local __ OUTLINE_ON
             #pragma multi_compile_local __ UNDERLAY_ON UNDERLAY_INNER
 
-            #pragma multi_compile_local __ NOVA_COLOR_MODIFIER NOVA_CLIP_RECT NOVA_CLIP_MASK
+            #pragma multi_compile_local __ NOVA_CLIP_RECT NOVA_CLIP_MASK
             #pragma multi_compile_local __ NOVA_SUPER_SAMPLE
             #pragma multi_compile __ UNITY_UI_ALPHACLIP
             #include "../TextBlock.cginc"

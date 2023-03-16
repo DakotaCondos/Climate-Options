@@ -30,7 +30,7 @@ namespace NovaSamples.UIControls
 
                     if (!(view.Visuals is T))
                     {
-                        Debug.LogError($"Attached {nameof(ItemView)} expected to have a Visuals of Type {typeof(T).Name}");
+                        Debug.LogError($"Attached {nameof(ItemView)} expected to have a Visuals of Type {typeof(T).Name}", this);
                     }
                 }
 

@@ -1,9 +1,8 @@
-using System.Collections;
+#if UNITY_EDITOR
 using System.Collections.Generic;
 using UnityEngine;
 using Nova;
 using System;
-using System.Linq;
 using UnityEngine.SceneManagement;
 
 public class ComponentCreatorTool : MonoBehaviour
@@ -119,3 +118,5 @@ public class ComponentCreatorTool : MonoBehaviour
         factory.SaveObjectToJsonFile(component, component.componentName);
     }
 }
+// current file contents
+#endif

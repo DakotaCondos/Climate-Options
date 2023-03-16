@@ -34,7 +34,8 @@ namespace Nova
         Vector3 InternalProperty_5 { get; }
         [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
         Vector3 InternalProperty_6 { get; }
-
+        [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+        int InternalProperty_1081 { get; }
         [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
         Vector3 InternalProperty_549 { get; }
         [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
@@ -43,11 +44,15 @@ namespace Nova
         float OutOfViewDistance { get; }
 
         void Scroll(float delta);
+        void JumpToIndex(int index);
         float JumpToIndexPage(int index);
         void InternalMethod_42();
         InternalType_66 InternalMethod_43(bool InternalParameter_36, float InternalParameter_37);
         bool InternalMethod_2317(bool InternalParameter_2723);
         bool InternalMethod_45(float InternalParameter_39);
+        bool InternalMethod_867(int InternalParameter_171, out InternalType_5 InternalParameter_170);
+        bool InternalMethod_868(InternalType_5 InternalParameter_764, out int InternalParameter_751);
+        bool InternalMethod_881(int InternalParameter_752, out InternalType_5 InternalParameter_767);
 
         [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
         InternalType_521<InternalType_131> InternalProperty_9 { get; }

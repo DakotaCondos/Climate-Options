@@ -11,6 +11,7 @@ namespace NovaSamples.UIControls
     [MovedFrom(false, null, "Assembly-CSharp")]
     public class ToggleVisuals : ButtonVisuals
     {
+        [Header("Toggle Fields")]
         [Tooltip("The UIBlock used to indicate the underlying \"Toggled On\" or \"Toggled Off\" state.")]
         public UIBlock IsOnIndicator;
     }

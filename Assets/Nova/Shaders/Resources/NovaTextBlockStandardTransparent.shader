@@ -146,7 +146,7 @@ Shader "Hidden/Nova/NovaTextBlockStandardTransparent"
 
             #define NOVA_STANDARD_LIGHTING
             
-            #pragma multi_compile_local __ OUTLINE_ON            #pragma multi_compile_local __ UNDERLAY_ON UNDERLAY_INNER            #pragma multi_compile_local __ NOVA_COLOR_MODIFIER NOVA_CLIP_RECT NOVA_CLIP_MASK            #pragma multi_compile_local __ NOVA_SUPER_SAMPLE            #include "../TextBlock.cginc"
+            #pragma multi_compile_local __ OUTLINE_ON            #pragma multi_compile_local __ UNDERLAY_ON UNDERLAY_INNER            #pragma multi_compile_local __ NOVA_CLIP_RECT NOVA_CLIP_MASK            #pragma multi_compile_local __ NOVA_SUPER_SAMPLE            #include "../TextBlock.cginc"
 
 
             NOVA_DUMMY_INSTANCE_SETUP
@@ -198,7 +198,7 @@ Shader "Hidden/Nova/NovaTextBlockStandardTransparent"
 
             #define NOVA_STANDARD_LIGHTING
             
-            #pragma multi_compile_local __ OUTLINE_ON            #pragma multi_compile_local __ UNDERLAY_ON UNDERLAY_INNER            #pragma multi_compile_local __ NOVA_COLOR_MODIFIER NOVA_CLIP_RECT NOVA_CLIP_MASK            #pragma multi_compile_local __ NOVA_SUPER_SAMPLE            #include "../TextBlock.cginc"
+            #pragma multi_compile_local __ OUTLINE_ON            #pragma multi_compile_local __ UNDERLAY_ON UNDERLAY_INNER            #pragma multi_compile_local __ NOVA_CLIP_RECT NOVA_CLIP_MASK            #pragma multi_compile_local __ NOVA_SUPER_SAMPLE            #include "../TextBlock.cginc"
 
             
             NOVA_DUMMY_INSTANCE_SETUP
@@ -244,7 +244,7 @@ Shader "Hidden/Nova/NovaTextBlockStandardTransparent"
 
             #define NOVA_STANDARD_LIGHTING
             
-            #pragma multi_compile_local __ OUTLINE_ON            #pragma multi_compile_local __ UNDERLAY_ON UNDERLAY_INNER            #pragma multi_compile_local __ NOVA_COLOR_MODIFIER NOVA_CLIP_RECT NOVA_CLIP_MASK            #pragma multi_compile_local __ NOVA_SUPER_SAMPLE            #include "../TextBlock.cginc"
+            #pragma multi_compile_local __ OUTLINE_ON            #pragma multi_compile_local __ UNDERLAY_ON UNDERLAY_INNER            #pragma multi_compile_local __ NOVA_CLIP_RECT NOVA_CLIP_MASK            #pragma multi_compile_local __ NOVA_SUPER_SAMPLE            #include "../TextBlock.cginc"
 
 
             NOVA_DUMMY_INSTANCE_SETUP

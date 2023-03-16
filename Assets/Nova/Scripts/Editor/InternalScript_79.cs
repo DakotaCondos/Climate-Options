@@ -1,7 +1,5 @@
 using Nova.InternalNamespace_17.InternalNamespace_18;
 using Nova.InternalNamespace_17.InternalNamespace_22;
-using Nova.InternalNamespace_0.InternalNamespace_12;
-using Nova.InternalNamespace_0.InternalNamespace_5.InternalNamespace_6;
 using UnityEditor;
 using UnityEngine;
 
@@ -9,9 +7,6 @@ namespace Nova.InternalNamespace_17.InternalNamespace_21
 {
     internal static class InternalType_712
     {
-        [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
-        private static readonly Color InternalField_3340 = new Color(1, 0.4f, 0);
-
         [DrawGizmo(GizmoType.Pickable | GizmoType.Active | GizmoType.InSelectionHierarchy | GizmoType.NonSelected | GizmoType.NotInSelectionHierarchy, typeof(UIBlock))]
         public static void InternalMethod_3194(UIBlock InternalParameter_2885, GizmoType InternalParameter_2886)
         {
@@ -43,6 +38,5 @@ namespace Nova.InternalNamespace_17.InternalNamespace_21
                 InternalType_718.InternalMethod_3315(Vector3.zero, InternalParameter_3108.CalculatedSize.Value, 2, InternalParameter_3113: false);
             }
         }
-
     }
 }

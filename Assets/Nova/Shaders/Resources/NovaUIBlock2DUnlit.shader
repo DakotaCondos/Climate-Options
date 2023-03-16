@@ -45,7 +45,7 @@ Shader "Hidden/Nova/NovaUIBlock2DUnlit"
             #pragma instancing_options nolodfade
             #pragma skip_variants FOG_LINEAR FOG_EXP FOG_EXP2
 
-            #pragma multi_compile_local __ NOVA_COLOR_MODIFIER NOVA_CLIP_RECT NOVA_CLIP_MASK
+            #pragma multi_compile_local __ NOVA_CLIP_RECT NOVA_CLIP_MASK
             #pragma multi_compile_local __ NOVA_DYNAMIC_IMAGE NOVA_STATIC_IMAGE
             #pragma multi_compile_local __ NOVA_INNER_SHADOW
             #pragma multi_compile_local __ NOVA_OUTER_BORDER NOVA_INNER_BORDER NOVA_CENTER_BORDER

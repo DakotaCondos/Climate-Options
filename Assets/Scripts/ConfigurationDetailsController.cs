@@ -1,6 +1,5 @@
-using System;
+#if UNITY_EDITOR
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ConfigurationDetailsController : MonoBehaviour
@@ -53,3 +52,5 @@ public class ConfigurationDetailsController : MonoBehaviour
         SecondPanel.SetActive(true);
     }
 }
+// current file contents
+#endif

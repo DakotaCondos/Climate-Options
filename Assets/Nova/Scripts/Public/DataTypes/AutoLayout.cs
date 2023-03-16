@@ -1,4 +1,3 @@
-using Nova.Compat;
 using Nova.InternalNamespace_0.InternalNamespace_5;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
@@ -255,7 +254,7 @@ namespace Nova
                 return "Disabled";
             }
 
-            string InternalVar_1 = ReverseOrder ? "Default" : "Reverse";
+            string InternalVar_1 = ReverseOrder ? "Reverse" : "Default";
             string InternalVar_2 = Axis == Axis.X ? ((HorizontalAlignment)Alignment).ToString() :
                            Axis == Axis.Y ? ((VerticalAlignment)Alignment).ToString() :
                            ((DepthAlignment)Alignment).ToString();

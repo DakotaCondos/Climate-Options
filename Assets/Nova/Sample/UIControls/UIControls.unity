@@ -143,7 +143,7 @@ PrefabInstance:
     - target: {fileID: 2905764967384224458, guid: 79897eec998755242b9000eb8b1ecabe,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.000045776367
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2905764967384224458, guid: 79897eec998755242b9000eb8b1ecabe,
         type: 3}
@@ -198,6 +198,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 23258600}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &23258602 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2905764967384224457, guid: 79897eec998755242b9000eb8b1ecabe,
+    type: 3}
+  m_PrefabInstance: {fileID: 23258600}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd0e5f112b0a05b43b4ba50233a47743, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &292879717
 GameObject:
   m_ObjectHideFlags: 0
@@ -227,10 +239,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5da66ad707f865b42af2bec2bfe3f63b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cam: {fileID: 580265105}
   mouseEnabled: 1
   invertScrolling: 1
   touchEnabled: 1
-  cam: {fileID: 580265105}
+  navigationEnabled: 1
+  startNavigationFrom: {fileID: 23258602}
+  NavigationIndicator: {fileID: 0}
+  updateNavigationEveryXSeconds: 0.25
+  UpKey: 273
+  DownKey: 274
+  LeftKey: 276
+  RightKey: 275
+  SelectKey: 13
+  DeselectKey: 27
 --- !u!4 &292879719
 Transform:
   m_ObjectHideFlags: 0
@@ -453,6 +475,17 @@ MonoBehaviour:
     CornerRadius:
       Raw: 0
       Type: 0
+    RadialFill:
+      Center:
+        X:
+          Raw: 0
+          Type: 1
+        Y:
+          Raw: 0
+          Type: 1
+      Rotation: 0
+      FillAngle: 90
+      Enabled: 0
     Gradient:
       Color: {r: 1, g: 1, b: 1, a: 1}
       Center:
@@ -537,7 +570,7 @@ PrefabInstance:
     - target: {fileID: 6650393286554710470, guid: 6e34ec878d5f38b4d93f2e3f6a99a0e5,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.000045776367
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6650393286554710470, guid: 6e34ec878d5f38b4d93f2e3f6a99a0e5,
         type: 3}
@@ -875,6 +908,17 @@ MonoBehaviour:
     CornerRadius:
       Raw: 0
       Type: 0
+    RadialFill:
+      Center:
+        X:
+          Raw: 0
+          Type: 1
+        Y:
+          Raw: 0
+          Type: 1
+      Rotation: 0
+      FillAngle: 90
+      Enabled: 0
     Gradient:
       Color: {r: 1, g: 1, b: 1, a: 1}
       Center:
@@ -1117,7 +1161,7 @@ PrefabInstance:
     - target: {fileID: 6650393286554710470, guid: 40139ea3249dda74b81e401b43966bca,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.000045776367
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6650393286554710470, guid: 40139ea3249dda74b81e401b43966bca,
         type: 3}
@@ -1197,7 +1241,7 @@ PrefabInstance:
     - target: {fileID: 433028253456703508, guid: ee2240fac0cb3c245a9aa2e5e0e5c4a7,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.000045776367
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 433028253456703508, guid: ee2240fac0cb3c245a9aa2e5e0e5c4a7,
         type: 3}
@@ -1455,6 +1499,17 @@ MonoBehaviour:
     CornerRadius:
       Raw: 0
       Type: 0
+    RadialFill:
+      Center:
+        X:
+          Raw: 0
+          Type: 1
+        Y:
+          Raw: 0
+          Type: 1
+      Rotation: 0
+      FillAngle: 90
+      Enabled: 0
     Gradient:
       Color: {r: 1, g: 1, b: 1, a: 1}
       Center:
@@ -1707,7 +1762,7 @@ PrefabInstance:
     - target: {fileID: 5760967405154365187, guid: 739a520fdec1df546aee616fd8cfeb34,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.000045776367
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5760967405154365187, guid: 739a520fdec1df546aee616fd8cfeb34,
         type: 3}
@@ -1782,7 +1837,7 @@ PrefabInstance:
     - target: {fileID: 5760967405154365187, guid: 815b44b1e49d37f428ed62d4c207292e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.000045776367
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5760967405154365187, guid: 815b44b1e49d37f428ed62d4c207292e,
         type: 3}
@@ -2007,7 +2062,7 @@ PrefabInstance:
     - target: {fileID: 2905764967384224458, guid: 9d72a4a786651b34997e7a4235802c83,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.000045776367
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2905764967384224458, guid: 9d72a4a786651b34997e7a4235802c83,
         type: 3}
@@ -2087,7 +2142,7 @@ PrefabInstance:
     - target: {fileID: 6516097741255810377, guid: 7e7ee15a8ef7efc4eacb3a1cd16c4a9e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.000045776367
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6516097741255810377, guid: 7e7ee15a8ef7efc4eacb3a1cd16c4a9e,
         type: 3}
@@ -2162,7 +2217,7 @@ PrefabInstance:
     - target: {fileID: 6516097741255810377, guid: 4f30892cc0dab1a4c96a8d0246be6b73,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.000045776367
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6516097741255810377, guid: 4f30892cc0dab1a4c96a8d0246be6b73,
         type: 3}
@@ -2495,6 +2550,17 @@ MonoBehaviour:
     CornerRadius:
       Raw: 0
       Type: 0
+    RadialFill:
+      Center:
+        X:
+          Raw: 0
+          Type: 1
+        Y:
+          Raw: 0
+          Type: 1
+      Rotation: 0
+      FillAngle: 90
+      Enabled: 0
     Gradient:
       Color: {r: 1, g: 1, b: 1, a: 1}
       Center:
@@ -3133,7 +3199,7 @@ PrefabInstance:
     - target: {fileID: 433028253456703508, guid: 441238961a3d0b241919a3e525b092b9,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.000045776367
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 433028253456703508, guid: 441238961a3d0b241919a3e525b092b9,
         type: 3}

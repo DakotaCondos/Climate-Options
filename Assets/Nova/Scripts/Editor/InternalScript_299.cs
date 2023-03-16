@@ -1,11 +1,12 @@
 using Nova.InternalNamespace_0.InternalNamespace_1;
+using Nova.InternalNamespace_0.InternalNamespace_10;
 
 namespace Nova.InternalNamespace_17.InternalNamespace_22
 {
-    internal static class InternalType_102
+    internal static class InternalType_766
     {
         [UnityEditor.InitializeOnLoadMethod]
-        private static void InternalMethod_3314()
+        private static void InternalMethod_3650()
         {
             UnityEditor.EditorApplication.playModeStateChanged += (state) =>
             {
@@ -15,6 +16,8 @@ namespace Nova.InternalNamespace_17.InternalNamespace_22
                 {
                     InternalType_120.InternalField_406.Dispose();
                 }
+
+                InternalType_274.InternalProperty_190.InternalMethod_3651();
             };
         }
     }

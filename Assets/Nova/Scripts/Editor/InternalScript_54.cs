@@ -43,7 +43,7 @@ namespace Nova.InternalNamespace_17.InternalNamespace_18
                     Rect InternalVar_1 = GUILayoutUtility.GetLastRect();
                     InternalVar_1.yMax -= 1;
 
-                    InternalType_573.InternalType_574.InternalMethod_2291(InternalVar_1, InternalParameter_2669: false);
+                    InternalType_573.InternalType_574.InternalMethod_3438(InternalVar_1, InternalParameter_3218: false);
                 }
             }
         }
@@ -163,7 +163,7 @@ namespace Nova.InternalNamespace_17.InternalNamespace_18
                 }
             }
 
-            InternalType_573.InternalType_574.InternalMethod_2291(InternalParameter_2506);
+            InternalType_573.InternalType_574.InternalMethod_3438(InternalParameter_2506);
 
             return InternalParameter_2508;
         }

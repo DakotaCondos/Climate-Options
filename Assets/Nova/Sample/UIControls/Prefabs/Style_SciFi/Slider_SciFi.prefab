@@ -216,6 +216,17 @@ MonoBehaviour:
     CornerRadius:
       Raw: 3
       Type: 0
+    RadialFill:
+      Center:
+        X:
+          Raw: 0
+          Type: 1
+        Y:
+          Raw: 0
+          Type: 1
+      Rotation: 0
+      FillAngle: 90
+      Enabled: 0
     Gradient:
       Color: {r: 1, g: 1, b: 1, a: 1}
       Center:
@@ -262,6 +273,7 @@ MonoBehaviour:
       Adjustment:
         CenterUV: {x: 0, y: 0}
         UVScale: {x: 1, y: 1}
+        PixelsPerUnitMultiplier: 1
         scaleMode: 1
       Mode: 1
     SoftenEdges: 1
@@ -483,6 +495,17 @@ MonoBehaviour:
     CornerRadius:
       Raw: 3
       Type: 0
+    RadialFill:
+      Center:
+        X:
+          Raw: 0
+          Type: 1
+        Y:
+          Raw: 0
+          Type: 1
+      Rotation: 0
+      FillAngle: 90
+      Enabled: 0
     Gradient:
       Color: {r: 1, g: 1, b: 1, a: 1}
       Center:
@@ -529,6 +552,7 @@ MonoBehaviour:
       Adjustment:
         CenterUV: {x: 0, y: 0}
         UVScale: {x: 1, y: 1}
+        PixelsPerUnitMultiplier: 1
         scaleMode: 1
       Mode: 1
     SoftenEdges: 1
@@ -751,6 +775,17 @@ MonoBehaviour:
     CornerRadius:
       Raw: 3
       Type: 0
+    RadialFill:
+      Center:
+        X:
+          Raw: 0
+          Type: 1
+        Y:
+          Raw: 0
+          Type: 1
+      Rotation: 0
+      FillAngle: 90
+      Enabled: 0
     Gradient:
       Color: {r: 1, g: 1, b: 1, a: 1}
       Center:
@@ -797,6 +832,7 @@ MonoBehaviour:
       Adjustment:
         CenterUV: {x: 0, y: 0}
         UVScale: {x: 1, y: 1}
+        PixelsPerUnitMultiplier: 1
         scaleMode: 1
       Mode: 1
     SoftenEdges: 1
@@ -1021,6 +1057,17 @@ MonoBehaviour:
     CornerRadius:
       Raw: 0
       Type: 0
+    RadialFill:
+      Center:
+        X:
+          Raw: 0
+          Type: 1
+        Y:
+          Raw: 0
+          Type: 1
+      Rotation: 0
+      FillAngle: 90
+      Enabled: 0
     Gradient:
       Color: {r: 1, g: 1, b: 1, a: 1}
       Center:
@@ -1067,6 +1114,7 @@ MonoBehaviour:
       Adjustment:
         CenterUV: {x: 0, y: 0}
         UVScale: {x: 1, y: 1}
+        PixelsPerUnitMultiplier: 1
         scaleMode: 1
       Mode: 1
     SoftenEdges: 1
@@ -1089,6 +1137,34 @@ MonoBehaviour:
   DragThreshold: 1
   LowAccuracyDragThreshold: 30
   ClickBehavior: 2
+  navigable: 1
+  onSelect: 1
+  autoSelect: 0
+  Navigation:
+    Left:
+      Type: 0
+      Fallback: 0
+      Target: {fileID: 0}
+    Right:
+      Type: 0
+      Fallback: 0
+      Target: {fileID: 0}
+    Down:
+      Type: 0
+      Fallback: 0
+      Target: {fileID: 0}
+    Up:
+      Type: 0
+      Fallback: 0
+      Target: {fileID: 0}
+    Forward:
+      Type: 1
+      Fallback: 1
+      Target: {fileID: 0}
+    Back:
+      Type: 1
+      Fallback: 1
+      Target: {fileID: 0}
   draggable:
     X: 1
     Y: 0
@@ -1308,6 +1384,17 @@ MonoBehaviour:
     CornerRadius:
       Raw: 3
       Type: 0
+    RadialFill:
+      Center:
+        X:
+          Raw: 0
+          Type: 1
+        Y:
+          Raw: 0
+          Type: 1
+      Rotation: 0
+      FillAngle: 90
+      Enabled: 0
     Gradient:
       Color: {r: 0, g: 0, b: 0, a: 1}
       Center:
@@ -1354,6 +1441,7 @@ MonoBehaviour:
       Adjustment:
         CenterUV: {x: 0, y: 0}
         UVScale: {x: 1, y: 1}
+        PixelsPerUnitMultiplier: 1
         scaleMode: 1
       Mode: 1
     SoftenEdges: 1
@@ -1479,7 +1567,7 @@ MonoBehaviour:
         Type: 0
     Position:
       X:
-        Raw: 256.62918
+        Raw: 256.62915
         Type: 0
       Y:
         Raw: 0
@@ -1924,12 +2012,23 @@ MonoBehaviour:
     LightingModel: 0
     ShadowCastingMode: 2
     ReceiveShadows: 1
-  PreviewSize: {x: 115, y: 30.000002, z: 0}
+  PreviewSize: {x: 360, y: 90.00001, z: 0}
   visuals:
     Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     CornerRadius:
       Raw: 0
       Type: 0
+    RadialFill:
+      Center:
+        X:
+          Raw: 0
+          Type: 1
+        Y:
+          Raw: 0
+          Type: 1
+      Rotation: 0
+      FillAngle: 90
+      Enabled: 0
     Gradient:
       Color: {r: 1, g: 1, b: 1, a: 1}
       Center:
@@ -1976,6 +2075,7 @@ MonoBehaviour:
       Adjustment:
         CenterUV: {x: 0, y: 0}
         UVScale: {x: 1, y: 1}
+        PixelsPerUnitMultiplier: 1
         scaleMode: 1
       Mode: 1
     SoftenEdges: 1
@@ -2001,13 +2101,23 @@ MonoBehaviour:
     00000000:
       type: {class: SliderVisuals, ns: NovaSamples.UIControls, asm: Nova.UIControls}
       data:
+        TransitionType: 1
+        transitionTarget: {fileID: 6650393285430913776}
+        DefaultColor: {r: 0.02745098, g: 0.14901961, b: 0.14901961, a: 1}
+        HoveredColor: {r: 0.078431375, g: 0.4, b: 0.4, a: 1}
+        PressedColor: {r: 0, g: 0.2509804, b: 0.2509804, a: 1}
+        Sprites:
+          DefaultSprite: {fileID: 0}
+          HoveredSprite: {fileID: 0}
+          PressedSprite: {fileID: 0}
+        Animations:
+          DefaultAnimation: Normal
+          HoveredAnimation: Highlighted
+          PressedAnimation: Pressed
         DraggableRange: {fileID: 6650393285251883228}
         FillBar: {fileID: 6650393285175560494}
         Knob: {fileID: 6650393285430913776}
         Units: {fileID: 6650393285795507488}
-        DefaultColor: {r: 0.02745098, g: 0.14901961, b: 0.14901961, a: 1}
-        HoveredColor: {r: 0.078431375, g: 0.4, b: 0.4, a: 1}
-        PressedColor: {r: 0, g: 0.2509804, b: 0.2509804, a: 1}
 --- !u!114 &6650393286554710490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2025,6 +2135,7 @@ MonoBehaviour:
       m_Calls: []
   UpdateOnPress: 1
   value: 0
+  DPadPercentAdjustment: 0.1
   Min: 0
   Max: 100
   unitsFormat: '{0:0.00}'

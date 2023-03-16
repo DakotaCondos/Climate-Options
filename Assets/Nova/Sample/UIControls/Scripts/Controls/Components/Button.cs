@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using Nova;
 using UnityEngine;
 using UnityEngine.Events;
@@ -14,6 +15,12 @@ namespace NovaSamples.UIControls
 
         private void OnEnable()
         {
+            if (View.TryGetVisuals(out ButtonVisuals visuals))
+            {
+                // Set default state
+                visuals.UpdateVisualState(VisualState.Default);
+            }
+
             // Subscribe to desired events
             View.UIBlock.AddGestureHandler<Gesture.OnClick, ButtonVisuals>(HandleClicked);
             View.UIBlock.AddGestureHandler<Gesture.OnHover, ButtonVisuals>(ButtonVisuals.HandleHovered);
@@ -42,3 +49,5 @@ namespace NovaSamples.UIControls
         private void HandleClicked(Gesture.OnClick evt, ButtonVisuals visuals) => OnClicked?.Invoke();
     }
 }
+// current file contents
+#endif

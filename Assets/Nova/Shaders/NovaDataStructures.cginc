@@ -21,6 +21,9 @@ fixed4 UnpackColor(NovaColor novaColor)
         float2 Pos;
         uint BlockDataIndex;
         float EdgeSoftenMask;
+
+        float2 UVZoom;
+        float2 CenterUV;
     };
 
     struct NovaQuadVert
@@ -38,9 +41,6 @@ fixed4 UnpackColor(NovaColor novaColor)
         float2 GradientRotationSinCos;
 
         float2 ShadowOffset;
-        float2 CenterUV;
-
-        float2 UVZoom;
         NovaColor PrimaryColor;
         NovaColor GradientColor;
 

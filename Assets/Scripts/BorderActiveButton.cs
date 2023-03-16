@@ -1,6 +1,5 @@
+#if UNITY_EDITOR
 using Nova;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BorderActiveButton : MonoBehaviour
@@ -12,3 +11,5 @@ public class BorderActiveButton : MonoBehaviour
         borderActiveGroup.SetActiveBorder(gameObject.GetComponent<UIBlock2D>());
     }
 }
+// current file contents
+#endif

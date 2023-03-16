@@ -215,12 +215,23 @@ MonoBehaviour:
     LightingModel: 0
     ShadowCastingMode: 2
     ReceiveShadows: 1
-  PreviewSize: {x: 80, y: 20, z: 0}
+  PreviewSize: {x: 240, y: 60, z: 0}
   visuals:
     Color: {r: 1, g: 1, b: 1, a: 1}
     CornerRadius:
       Raw: 6
       Type: 0
+    RadialFill:
+      Center:
+        X:
+          Raw: 0
+          Type: 1
+        Y:
+          Raw: 0
+          Type: 1
+      Rotation: 0
+      FillAngle: 90
+      Enabled: 0
     Gradient:
       Color: {r: 1, g: 1, b: 1, a: 1}
       Center:
@@ -267,6 +278,7 @@ MonoBehaviour:
       Adjustment:
         CenterUV: {x: 0, y: 0}
         UVScale: {x: 1, y: 1}
+        PixelsPerUnitMultiplier: 1
         scaleMode: 1
       Mode: 1
     SoftenEdges: 1
@@ -292,15 +304,25 @@ MonoBehaviour:
     00000000:
       type: {class: DropdownVisuals, ns: NovaSamples.UIControls, asm: Nova.UIControls}
       data:
+        TransitionType: 1
+        transitionTarget: {fileID: 5760967405154365189}
+        DefaultColor: {r: 1, g: 1, b: 1, a: 1}
+        HoveredColor: {r: 0.75, g: 0.75, b: 0.75, a: 1}
+        PressedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+        Sprites:
+          DefaultSprite: {fileID: 0}
+          HoveredSprite: {fileID: 0}
+          PressedSprite: {fileID: 0}
+        Animations:
+          DefaultAnimation: Normal
+          HoveredAnimation: Highlighted
+          PressedAnimation: Pressed
         SelectionLabel: {fileID: 5760967405427205327}
         Background: {fileID: 5760967405154365189}
         DropdownArrow: {fileID: 5760967405996457121}
         ExpandedViewRoot: {fileID: 5760967405382532179}
         OptionsView: {fileID: 5760967405533317290}
         ExpandDown: 1
-        DefaultColor: {r: 1, g: 1, b: 1, a: 1}
-        PressedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-        HoveredColor: {r: 0.75, g: 0.75, b: 0.75, a: 1}
         DefaultRowColor: {r: 1, g: 1, b: 1, a: 1}
         AlternatingRowColor: {r: 0.85, g: 0.85, b: 0.85, a: 1}
 --- !u!114 &5760967405154365214
@@ -319,6 +341,34 @@ MonoBehaviour:
   DragThreshold: 1
   LowAccuracyDragThreshold: 30
   ClickBehavior: 0
+  navigable: 1
+  onSelect: 0
+  autoSelect: 0
+  Navigation:
+    Left:
+      Type: 0
+      Fallback: 0
+      Target: {fileID: 0}
+    Right:
+      Type: 0
+      Fallback: 0
+      Target: {fileID: 0}
+    Down:
+      Type: 0
+      Fallback: 0
+      Target: {fileID: 0}
+    Up:
+      Type: 0
+      Fallback: 0
+      Target: {fileID: 0}
+    Forward:
+      Type: 1
+      Fallback: 1
+      Target: {fileID: 0}
+    Back:
+      Type: 1
+      Fallback: 1
+      Target: {fileID: 0}
   draggable:
     X: 0
     Y: 0
@@ -562,6 +612,17 @@ MonoBehaviour:
     CornerRadius:
       Raw: 6
       Type: 0
+    RadialFill:
+      Center:
+        X:
+          Raw: 0
+          Type: 1
+        Y:
+          Raw: 0
+          Type: 1
+      Rotation: 0
+      FillAngle: 90
+      Enabled: 0
     Gradient:
       Color: {r: 1, g: 1, b: 1, a: 1}
       Center:
@@ -608,6 +669,7 @@ MonoBehaviour:
       Adjustment:
         CenterUV: {x: 0, y: 0}
         UVScale: {x: 1, y: 1}
+        PixelsPerUnitMultiplier: 1
         scaleMode: 1
       Mode: 1
     SoftenEdges: 1
@@ -1197,6 +1259,17 @@ MonoBehaviour:
     CornerRadius:
       Raw: 6
       Type: 0
+    RadialFill:
+      Center:
+        X:
+          Raw: 0
+          Type: 1
+        Y:
+          Raw: 0
+          Type: 1
+      Rotation: 0
+      FillAngle: 90
+      Enabled: 0
     Gradient:
       Color: {r: 1, g: 1, b: 1, a: 1}
       Center:
@@ -1243,6 +1316,7 @@ MonoBehaviour:
       Adjustment:
         CenterUV: {x: 0, y: 0}
         UVScale: {x: 1, y: 1}
+        PixelsPerUnitMultiplier: 1
         scaleMode: 1
       Mode: 1
     SoftenEdges: 1
@@ -1496,6 +1570,17 @@ MonoBehaviour:
     CornerRadius:
       Raw: 0
       Type: 0
+    RadialFill:
+      Center:
+        X:
+          Raw: 0
+          Type: 1
+        Y:
+          Raw: 0
+          Type: 1
+      Rotation: 0
+      FillAngle: 90
+      Enabled: 0
     Gradient:
       Color: {r: 1, g: 1, b: 1, a: 1}
       Center:
@@ -1542,6 +1627,7 @@ MonoBehaviour:
       Adjustment:
         CenterUV: {x: 0, y: 0}
         UVScale: {x: 1, y: 1}
+        PixelsPerUnitMultiplier: 1
         scaleMode: 1
       Mode: 1
     SoftenEdges: 1

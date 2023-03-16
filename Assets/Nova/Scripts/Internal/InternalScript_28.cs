@@ -20,6 +20,7 @@ namespace Nova.InternalNamespace_0.InternalNamespace_2
             InternalType_64.InternalMethod_718();
 
             Nova.Interaction.InternalMethod_3196();
+            Navigation.InternalMethod_3015();
         }
     }
 }

@@ -10,6 +10,7 @@ namespace Nova.InternalNamespace_17.InternalNamespace_22
         {
             InternalType_140.InternalMethod_675();
             InternalType_537.InternalMethod_652();
+            InternalType_742.InternalMethod_652();
         }
     }
 }

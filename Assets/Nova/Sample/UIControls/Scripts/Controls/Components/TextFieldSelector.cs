@@ -63,6 +63,8 @@ namespace NovaSamples.UIControls
             uiBlock.AddGestureHandler<Gesture.OnClick>(HandleClick);
             uiBlock.AddGestureHandler<Gesture.OnPress>(HandlePress);
             uiBlock.AddGestureHandler<Gesture.OnDrag>(HandleDrag);
+            uiBlock.AddGestureHandler<Navigate.OnSelect>(HandleSelect);
+            uiBlock.AddGestureHandler<Navigate.OnDeselect>(HandleDeselect);
             InputManager.OnPostClick += HandlePostClick;
         }
 
@@ -71,6 +73,8 @@ namespace NovaSamples.UIControls
             uiBlock.RemoveGestureHandler<Gesture.OnClick>(HandleClick);
             uiBlock.RemoveGestureHandler<Gesture.OnPress>(HandlePress);
             uiBlock.RemoveGestureHandler<Gesture.OnDrag>(HandleDrag);
+            uiBlock.RemoveGestureHandler<Navigate.OnSelect>(HandleSelect);
+            uiBlock.RemoveGestureHandler<Navigate.OnDeselect>(HandleDeselect);
             InputManager.OnPostClick -= HandlePostClick;
         }
 
@@ -112,6 +116,29 @@ namespace NovaSamples.UIControls
 #endif
                 inputField.MoveCursor(pos, shiftHeldDown);
             }
+        }
+
+        /// <summary>
+        /// Remap the select event to a click event and handle as if it were a click
+        /// </summary>
+        private void HandleSelect(Navigate.OnSelect evt)
+        {
+            Gesture.OnClick click = new Gesture.OnClick()
+            {
+                Target = evt.Target,
+                Receiver = evt.Receiver,
+                Interaction = evt.Interaction,
+            };
+
+            HandleClick(click);
+        }
+
+        /// <summary>
+        /// Remove focus on deselect
+        /// </summary>
+        private void HandleDeselect(Navigate.OnDeselect evt)
+        {
+            RemoveFocus();
         }
 
         private void HandleClick(Gesture.OnClick evt)

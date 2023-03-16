@@ -102,8 +102,7 @@ v2f NovaVert(uint vertexID : SV_VertexID, uint instanceID : SV_InstanceID)
     #endif
 
     #if defined(NOVA_CLIPPING)
-        float2 nClipRectPos = NClipRectPosFromWorld(worldPos);
-        SetNClipRectPos(o, nClipRectPos);
+        SetRootPos(o, rootSpace);
     #endif
 
     #if defined(NOVA_LIT)
@@ -163,17 +162,14 @@ fixed4 NovaFrag(v2f i) : SV_Target
         c *= GetUnderlayAlpha(i);
     #endif
 
-    #if defined(NOVA_CLIPPING)
-        c = ApplyClipColorModification(c, GetNClipRectPos(i));
-    #elif defined(NOVA_COLOR_MODIFIER)
-        c = ApplyClipColorModification(c);
+    #if defined(NOVA_CLIP_RECT)
+        c = ApplyGlobalColorModification(c);
+    #elif defined(NOVA_CLIP_MASK)
+        c = ApplyClipMaskAndColorModifiers(c, GetRootPos(i));
     #endif
 
     #if defined(NOVA_CLIPPING)
-        half distanceOutsideBounds = DistanceFromCircleEdge(GetNClipRectPos(i), ClipRectNCornerOrigin, ClipRectNRadius);
-        half softenInverse = GetSoftenWidthInverse(GetNClipRectPos(i));
-        half weight = GetClipWeight10(distanceOutsideBounds, softenInverse);
-        c = ApplyClipWeight(c, weight);
+        c = ApplyVisualModiferClipping(c, GetRootPos(i));
     #endif
 
     #if defined(NOVA_LIT)

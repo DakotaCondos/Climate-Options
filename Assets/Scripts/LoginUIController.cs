@@ -1,6 +1,5 @@
-using System;
+#if UNITY_EDITOR
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class LoginUIController : MonoBehaviour
@@ -23,3 +22,5 @@ public class LoginUIController : MonoBehaviour
         FindObjectOfType<ProgramManagerController>().LoadSceneName("HouseScene");
     }
 }
+// current file contents
+#endif

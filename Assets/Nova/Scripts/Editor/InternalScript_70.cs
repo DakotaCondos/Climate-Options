@@ -263,6 +263,52 @@ namespace Nova.InternalNamespace_17
             }
         }
 
+
+        [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+        public const string InternalField_3439 = "NavigationShowZAxisKey";
+        [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+        public static bool InternalProperty_1088
+        {
+            get
+            {
+                return InternalMethod_1937(InternalField_3439, false);
+            }
+            set
+            {
+                InternalMethod_1936(InternalField_3439, value);
+            }
+        }
+
+        [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+        public const string InternalField_3440 = "NavigationDebugViewKey";
+        [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+        public static bool InternalProperty_1089
+        {
+            get
+            {
+                return InternalMethod_1937(InternalField_3440, false);
+            }
+            set
+            {
+                InternalMethod_1936(InternalField_3440, value);
+            }
+        }
+
+        [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+        public const string InternalField_3441 = "NavigationDebugViewSelectedOnlyKey";
+        [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+        public static bool InternalProperty_1090
+        {
+            get
+            {
+                return InternalMethod_1937(InternalField_3441, false);
+            }
+            set
+            {
+                InternalMethod_1936(InternalField_3441, value);
+            }
+        }
+
         [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
         private static bool? InternalField_2226;
         [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
@@ -307,6 +353,15 @@ namespace Nova.InternalNamespace_17
                 InternalField_2225 = value;
                 InternalMethod_1936(InternalField_2220, value);
             }
+        }
+
+        [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+        private const string InternalField_3641 = "HelpDialogShown";
+        [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+        public static bool InternalProperty_1157
+        {
+            get => InternalMethod_1937(InternalField_3641, false);
+            set => InternalMethod_1936(InternalField_3641, value);
         }
 
         public static bool InternalMethod_1937(string InternalParameter_2188, bool InternalParameter_2187)

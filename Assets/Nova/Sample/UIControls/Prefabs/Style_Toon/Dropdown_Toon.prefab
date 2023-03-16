@@ -215,6 +215,17 @@ MonoBehaviour:
     CornerRadius:
       Raw: 12
       Type: 0
+    RadialFill:
+      Center:
+        X:
+          Raw: 0
+          Type: 1
+        Y:
+          Raw: 0
+          Type: 1
+      Rotation: 0
+      FillAngle: 90
+      Enabled: 0
     Gradient:
       Color: {r: 1, g: 1, b: 1, a: 1}
       Center:
@@ -261,6 +272,7 @@ MonoBehaviour:
       Adjustment:
         CenterUV: {x: 0, y: 0}
         UVScale: {x: 1, y: 1}
+        PixelsPerUnitMultiplier: 1
         scaleMode: 1
       Mode: 1
     SoftenEdges: 1
@@ -466,7 +478,7 @@ MonoBehaviour:
     alignment: -1
     Offset: 0
   visibility:
-    ZIndex: 2
+    ZIndex: 0
     BlockType: 1
     Visible: 1
   surface:
@@ -482,6 +494,17 @@ MonoBehaviour:
     CornerRadius:
       Raw: 6
       Type: 0
+    RadialFill:
+      Center:
+        X:
+          Raw: 0
+          Type: 1
+        Y:
+          Raw: 0
+          Type: 1
+      Rotation: 0
+      FillAngle: 90
+      Enabled: 0
     Gradient:
       Color: {r: 0.6392157, g: 0.47843137, b: 0.8, a: 1}
       Center:
@@ -528,6 +551,7 @@ MonoBehaviour:
       Adjustment:
         CenterUV: {x: 0, y: 0}
         UVScale: {x: 1, y: 1}
+        PixelsPerUnitMultiplier: 1
         scaleMode: 1
       Mode: 1
     SoftenEdges: 1
@@ -741,7 +765,7 @@ MonoBehaviour:
     alignment: -1
     Offset: 0
   visibility:
-    ZIndex: 2
+    ZIndex: 0
     BlockType: 1
     Visible: 1
   surface:
@@ -751,12 +775,23 @@ MonoBehaviour:
     LightingModel: 0
     ShadowCastingMode: 2
     ReceiveShadows: 1
-  PreviewSize: {x: 80, y: 25, z: 0}
+  PreviewSize: {x: 240, y: 75, z: 0}
   visuals:
     Color: {r: 0.403, g: 0.26866668, b: 0, a: 1}
     CornerRadius:
       Raw: 12
       Type: 0
+    RadialFill:
+      Center:
+        X:
+          Raw: 0
+          Type: 1
+        Y:
+          Raw: 0
+          Type: 1
+      Rotation: 0
+      FillAngle: 90
+      Enabled: 0
     Gradient:
       Color: {r: 1, g: 0.8333334, b: 0, a: 1}
       Center:
@@ -803,6 +838,7 @@ MonoBehaviour:
       Adjustment:
         CenterUV: {x: 0, y: 0}
         UVScale: {x: 1, y: 1}
+        PixelsPerUnitMultiplier: 1
         scaleMode: 1
       Mode: 1
     SoftenEdges: 1
@@ -828,15 +864,25 @@ MonoBehaviour:
     00000000:
       type: {class: DropdownVisuals, ns: NovaSamples.UIControls, asm: Nova.UIControls}
       data:
+        TransitionType: 1
+        transitionTarget: {fileID: 4201797646371434593}
+        DefaultColor: {r: 0.4, g: 0, b: 0.8, a: 1}
+        HoveredColor: {r: 0.64, g: 0.48, b: 0.8, a: 1}
+        PressedColor: {r: 0.40392157, g: 0.27058825, b: 0, a: 1}
+        Sprites:
+          DefaultSprite: {fileID: 0}
+          HoveredSprite: {fileID: 0}
+          PressedSprite: {fileID: 0}
+        Animations:
+          DefaultAnimation: Normal
+          HoveredAnimation: Highlighted
+          PressedAnimation: Pressed
         SelectionLabel: {fileID: 5760967405427205327}
         Background: {fileID: 4201797646371434593}
         DropdownArrow: {fileID: 5760967405996457121}
         ExpandedViewRoot: {fileID: 5760967405382532179}
         OptionsView: {fileID: 5760967405533317290}
         ExpandDown: 0
-        DefaultColor: {r: 0.4, g: 0, b: 0.8, a: 1}
-        PressedColor: {r: 0.40392157, g: 0.27058825, b: 0, a: 1}
-        HoveredColor: {r: 0.64, g: 0.48, b: 0.8, a: 1}
         DefaultRowColor: {r: 0.8, g: 0.68222135, b: 0.44320002, a: 1}
         AlternatingRowColor: {r: 0.601, g: 0.51261765, b: 0.33290687, a: 1}
 --- !u!114 &5760967405154365214
@@ -855,6 +901,34 @@ MonoBehaviour:
   DragThreshold: 1
   LowAccuracyDragThreshold: 30
   ClickBehavior: 0
+  navigable: 1
+  onSelect: 0
+  autoSelect: 0
+  Navigation:
+    Left:
+      Type: 0
+      Fallback: 0
+      Target: {fileID: 0}
+    Right:
+      Type: 0
+      Fallback: 0
+      Target: {fileID: 0}
+    Down:
+      Type: 0
+      Fallback: 0
+      Target: {fileID: 0}
+    Up:
+      Type: 0
+      Fallback: 0
+      Target: {fileID: 0}
+    Forward:
+      Type: 1
+      Fallback: 1
+      Target: {fileID: 0}
+    Back:
+      Type: 1
+      Fallback: 1
+      Target: {fileID: 0}
   draggable:
     X: 0
     Y: 0
@@ -1098,6 +1172,17 @@ MonoBehaviour:
     CornerRadius:
       Raw: 6
       Type: 0
+    RadialFill:
+      Center:
+        X:
+          Raw: 0
+          Type: 1
+        Y:
+          Raw: 0
+          Type: 1
+      Rotation: 0
+      FillAngle: 90
+      Enabled: 0
     Gradient:
       Color: {r: 1, g: 1, b: 1, a: 1}
       Center:
@@ -1144,6 +1229,7 @@ MonoBehaviour:
       Adjustment:
         CenterUV: {x: 0, y: 0}
         UVScale: {x: 1, y: 1}
+        PixelsPerUnitMultiplier: 1
         scaleMode: 1
       Mode: 1
     SoftenEdges: 1
@@ -1413,7 +1499,7 @@ MonoBehaviour:
     alignment: -1
     Offset: 0
   visibility:
-    ZIndex: 2
+    ZIndex: 0
     BlockType: 2
     Visible: 1
   surface:
@@ -1734,6 +1820,17 @@ MonoBehaviour:
     CornerRadius:
       Raw: 6
       Type: 0
+    RadialFill:
+      Center:
+        X:
+          Raw: 0
+          Type: 1
+        Y:
+          Raw: 0
+          Type: 1
+      Rotation: 0
+      FillAngle: 90
+      Enabled: 0
     Gradient:
       Color: {r: 1, g: 1, b: 1, a: 1}
       Center:
@@ -1780,6 +1877,7 @@ MonoBehaviour:
       Adjustment:
         CenterUV: {x: 0, y: 0}
         UVScale: {x: 1, y: 1}
+        PixelsPerUnitMultiplier: 1
         scaleMode: 1
       Mode: 1
     SoftenEdges: 1
@@ -2017,7 +2115,7 @@ MonoBehaviour:
     alignment: -1
     Offset: 0
   visibility:
-    ZIndex: 2
+    ZIndex: 0
     BlockType: 1
     Visible: 1
   surface:
@@ -2033,6 +2131,17 @@ MonoBehaviour:
     CornerRadius:
       Raw: 0
       Type: 0
+    RadialFill:
+      Center:
+        X:
+          Raw: 0
+          Type: 1
+        Y:
+          Raw: 0
+          Type: 1
+      Rotation: 0
+      FillAngle: 90
+      Enabled: 0
     Gradient:
       Color: {r: 1, g: 1, b: 1, a: 1}
       Center:
@@ -2079,6 +2188,7 @@ MonoBehaviour:
       Adjustment:
         CenterUV: {x: 0, y: 0}
         UVScale: {x: 1, y: 1}
+        PixelsPerUnitMultiplier: 1
         scaleMode: 1
       Mode: 1
     SoftenEdges: 1

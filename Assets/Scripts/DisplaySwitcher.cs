@@ -1,9 +1,7 @@
-using Nova;
-using System.Collections;
+#if UNITY_EDITOR
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using static Unity.Collections.AllocatorManager;
 
 public class DisplaySwitcher : MonoBehaviour
 {
@@ -35,3 +33,5 @@ public class DisplaySwitcher : MonoBehaviour
         }
     }
 }
+// current file contents
+#endif

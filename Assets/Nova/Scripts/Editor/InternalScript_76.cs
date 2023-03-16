@@ -5,7 +5,6 @@ using Nova.InternalNamespace_25;
 using Nova.InternalNamespace_0;
 using Nova.InternalNamespace_0.InternalNamespace_4;
 using Nova.InternalNamespace_0.InternalNamespace_2;
-using Nova.InternalNamespace_0.InternalNamespace_5.InternalNamespace_6;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
@@ -158,7 +157,7 @@ namespace Nova.InternalNamespace_17.InternalNamespace_18
 
                 EditorGUI.BeginDisabledGroup(InternalMethod_3000(InternalParameter_2688));
 
-                InternalType_5 InternalVar_1 = InternalParameter_2688.InternalMethod_1034();
+                InternalType_5 InternalVar_1 = InternalParameter_2688.InternalMethod_3592();
 
                 int InternalVar_2 = InternalVar_1 != null && InternalVar_1.InternalProperty_143.InternalProperty_155 ? InternalVar_1.InternalProperty_143.InternalField_225.InternalMethod_508() : -1;
                 ThreeD<bool> InternalVar_3 = new ThreeD<bool>(InternalVar_2 == Axis.X.Index(),
@@ -515,7 +514,7 @@ namespace Nova.InternalNamespace_17.InternalNamespace_18
                 if (InternalParameter_2716)
                 {
                     EditorGUILayout.Space(1);
-                    InternalType_573.InternalType_574.InternalMethod_2291(GUILayoutUtility.GetLastRect());
+                    InternalType_573.InternalType_574.InternalMethod_3438(GUILayoutUtility.GetLastRect());
                     InternalType_573.InternalType_575.InternalMethod_2306(InternalType_573.InternalType_574.InternalProperty_475);
                     InternalType_573.InternalProperty_472 = InternalType_573.InternalProperty_469 + InternalVar_15 + InternalType_573.InternalField_2551 - InternalType_573.InternalField_2557;
                     InternalType_573.InternalMethod_2382(GUIContent.none, InternalParameter_2715.InternalProperty_589, InternalParameter_2715.InternalProperty_591, InternalParameter_2714.CalculatedSpacing, InternalParameter_2715.InternalProperty_589.InternalProperty_508 == LengthType.Value);

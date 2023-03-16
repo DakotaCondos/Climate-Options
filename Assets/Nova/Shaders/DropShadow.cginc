@@ -22,8 +22,7 @@ v2f NovaVert(NovaQuadVert v, uint instanceID : SV_InstanceID)
     o.pos = UnityWorldToClipPos(worldPos);
 
     #if defined(NOVA_CLIPPING)
-        float2 nClipRectPos = NClipRectPosFromWorld(worldPos);
-        SetNClipRectPos(o, nClipRectPos);
+        SetRootPos(o, rootSpace);
     #endif
     
     NovaColorToV2F(Color, o, perBlockData.Color);
@@ -94,26 +93,19 @@ fixed4 NovaFrag(v2f i) : SV_Target
     half2 radii = half2(GetNBlockRadius(i), GetNShadowRadius(i));
     half2 distancesOutside = DistanceFromCircleEdge2(positions, origins, radii);
 
-    #if defined(NOVA_CLIPPING)
-        half2 softenWidth = GetSoftenWidth2(half4(positions.xy, GetNClipRectPos(i)));
-        half2 softenInverse = 1.0 / softenWidth;
-        half distanceOutsideClipBounds = DistanceFromCircleEdge(GetNClipRectPos(i), ClipRectNCornerOrigin, ClipRectNRadius);
-        half2 clipWeights = GetClipWeight10(half2(distancesOutside.x, distanceOutsideClipBounds), softenInverse);
-    #else
-        half softenWidth = GetSoftenWidth(positions.xy);
-        half softenInverse = 1.0 / softenWidth;
-        half clipWeights = GetClipWeight10(distancesOutside.x, softenInverse);
-    #endif
+    half softenWidth = GetSoftenWidth(positions.xy);
+    half softenInverse = 1.0 / softenWidth;
+    half clipWeight = GetClipWeight10(distancesOutside.x, softenInverse);
 
     fixed4 color = GetColor(i);
 
     half gradientLerpVal = smoothstep(-GetNShadowBlur(i), GetNShadowBlur(i), distancesOutside.y);
     color = lerp(color, fixed4(color.xyz, 0), gradientLerpVal);
 
-    #if defined(NOVA_CLIPPING)
-        color = ApplyClipColorModification(color, GetNClipRectPos(i));
-    #elif defined(NOVA_COLOR_MODIFIER)
-        color = ApplyClipColorModification(color);
+    #if defined(NOVA_CLIP_RECT)
+        color = ApplyGlobalColorModification(color);
+    #elif defined(NOVA_CLIP_MASK)
+        color = ApplyClipMaskAndColorModifiers(color, GetRootPos(i));
     #endif
 
     #if defined(NOVA_LIT)
@@ -126,10 +118,10 @@ fixed4 NovaFrag(v2f i) : SV_Target
         #endif
     #endif
 
-    clipWeights.x *= step(GetEdgeSoftenDisabled(i), clipWeights.x);
+    clipWeight *= step(GetEdgeSoftenDisabled(i), clipWeight);
     
     // Flip clip weight
-    color = ApplyClipWeight(color, -clipWeights.x + 1.0);
+    color = ApplyClipWeight(color, -clipWeight + 1.0);
 
     #if defined(NOVA_RADIAL_FILL)
         float radialFillClipWeight = GetRadialFillClipWeight(GetRadialFillSpacePos(i), GetRadialFillSinCos(i), softenWidth.x, softenInverse.x);
@@ -137,7 +129,7 @@ fixed4 NovaFrag(v2f i) : SV_Target
     #endif
 
     #if defined(NOVA_CLIPPING)
-        color = ApplyClipWeight(color, clipWeights.y);
+        color = ApplyVisualModiferClipping(color, GetRootPos(i));
     #endif
 
     #if defined(NOVA_LIT)

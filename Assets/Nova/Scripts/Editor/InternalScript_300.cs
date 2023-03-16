@@ -65,9 +65,12 @@ namespace Nova.InternalNamespace_17.InternalNamespace_22
 
                 if (InternalVar_6 != InternalVar_5)
                 {
-                    Undo.RecordObject(InternalVar_2, Undo.GetCurrentGroupName());
-
-                    InternalVar_3.InternalProperty_142.InternalField_214.InternalProperty_115 = InternalVar_6;
+                    SerializedObject InternalVar_7 = new SerializedObject(InternalVar_2);
+                    InternalType_595 InternalVar_8 = new InternalType_595() { InternalProperty_954 = InternalVar_7.FindProperty("layout.Position") };
+                    InternalVar_8.InternalProperty_510.InternalProperty_506 = InternalVar_6.x;
+                    InternalVar_8.InternalProperty_512.InternalProperty_506 = InternalVar_6.y;
+                    InternalVar_8.InternalProperty_514.InternalProperty_506 = InternalVar_6.z;
+                    InternalVar_7.ApplyModifiedProperties();
                 }
             }
         }
@@ -106,7 +109,7 @@ namespace Nova.InternalNamespace_17.InternalNamespace_22
             {
                 Vector3 InternalVar_4 = InternalMethod_3206(InternalParameter_1313);
 
-                InternalType_5 InternalVar_5 = InternalParameter_1313.InternalMethod_1034();
+                InternalType_5 InternalVar_5 = InternalParameter_1313.InternalMethod_3592();
                 Vector3 InternalVar_6 = InternalVar_5 != null ? (Vector3)InternalVar_5.InternalProperty_146.InternalProperty_139 : Vector3.zero;
 
                 Vector3 InternalVar_7 = InternalType_182.InternalMethod_852(InternalVar_1, InternalParameter_1313.LayoutSize, InternalParameter_1313.CalculatedMargin.Offset, InternalVar_4, InternalVar_6, (Vector3)InternalParameter_1313.Alignment);
@@ -135,7 +138,7 @@ namespace Nova.InternalNamespace_17.InternalNamespace_22
         {
             Vector3 InternalVar_1 = InternalMethod_3206(InternalParameter_1667);
 
-            InternalType_5 InternalVar_2 = InternalParameter_1667.InternalMethod_1034();
+            InternalType_5 InternalVar_2 = InternalParameter_1667.InternalMethod_3592();
             Vector3 InternalVar_3 = InternalVar_2 != null ? (Vector3)InternalVar_2.InternalProperty_146.InternalProperty_139 : Vector3.zero;
 
             Vector3 InternalVar_4 = InternalType_182.InternalMethod_852(InternalParameter_1668, InternalParameter_1667.LayoutSize, InternalParameter_1667.CalculatedMargin.Offset, InternalVar_1, InternalVar_3, (Vector3)InternalParameter_1667.Alignment);
@@ -147,7 +150,7 @@ namespace Nova.InternalNamespace_17.InternalNamespace_22
         
         public static Vector3 InternalMethod_3206(UIBlock InternalParameter_2318)
         {
-            InternalType_5 InternalVar_1 = InternalParameter_2318.InternalMethod_1034();
+            InternalType_5 InternalVar_1 = InternalParameter_2318.InternalMethod_3592();
             bool InternalVar_2 = InternalVar_1 != null;
 
             if (!InternalVar_2)

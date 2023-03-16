@@ -17,9 +17,9 @@ namespace Nova.InternalNamespace_17.InternalNamespace_18
         }
 
         [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
-        private SerializedProperty InternalField_2601 = null;
+        private static SerializedProperty InternalField_2601 = null;
         [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
-        private InternalType_581 InternalField_3311 = null;
+        private static InternalType_581 InternalField_3311 = null;
 
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
@@ -28,14 +28,19 @@ namespace Nova.InternalNamespace_17.InternalNamespace_18
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            label = EditorGUI.BeginProperty(position, label, property);
-            this.InternalField_2601 = property;
-            InternalMethod_2345(position, label);
-            EditorGUI.PropertyField(position, property, true);
+            InternalMethod_3314(position, property, label);
+        }
+
+        public static void InternalMethod_3314(Rect InternalParameter_3447, SerializedProperty InternalParameter_3448, GUIContent InternalParameter_3449)
+        {
+            InternalParameter_3449 = EditorGUI.BeginProperty(InternalParameter_3447, InternalParameter_3449, InternalParameter_3448);
+            InternalType_579.InternalField_2601 = InternalParameter_3448;
+            InternalMethod_2345(InternalParameter_3447, InternalParameter_3449);
+            EditorGUI.PropertyField(InternalParameter_3447, InternalParameter_3448, includeChildren: true);
             EditorGUI.EndProperty();
         }
 
-        public void InternalMethod_2345(Rect InternalParameter_2757, GUIContent InternalParameter_2758)
+        private static void InternalMethod_2345(Rect InternalParameter_2757, GUIContent InternalParameter_2758)
         {
             Rect InternalVar_1 = InternalParameter_2757;
 
@@ -76,7 +81,7 @@ namespace Nova.InternalNamespace_17.InternalNamespace_18
             }
         }
 
-        private void InternalMethod_566(Type InternalParameter_79)
+        private static void InternalMethod_566(Type InternalParameter_79)
         {
             if (InternalParameter_79 != null)
             {

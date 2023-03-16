@@ -1,5 +1,4 @@
 using UnityEngine;
-using Nova.InternalNamespace_0.InternalNamespace_5;
 #if UNITY_EDITOR
 using UnityEngine.SceneManagement;
 #if UNITY_2021_2_OR_NEWER

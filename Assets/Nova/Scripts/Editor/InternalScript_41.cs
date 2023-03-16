@@ -1,6 +1,5 @@
 using Nova.InternalNamespace_17.InternalNamespace_20;
 using Nova.InternalNamespace_25;
-using Nova;
 using UnityEditor;
 using UnityEngine;
 
@@ -13,9 +12,6 @@ namespace Nova.InternalNamespace_17.InternalNamespace_18
         private static GUIContent InternalField_2390 = new GUIContent("Drag");
         [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
         private static GUIContent InternalField_2391 = new GUIContent("Click");
-
-        [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
-        private static readonly GUIContent InternalField_2395 = new GUIContent("Draggable", "Acts as a bit - mask indicating which axes can trigger drag events once a \"drag threshold\" is surpassed.");
 
         [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
         SerializedProperty InternalField_2215 = null;
@@ -46,13 +42,13 @@ namespace Nova.InternalNamespace_17.InternalNamespace_18
             EditorGUI.BeginChangeCheck();
 
             EditorGUILayout.LabelField(InternalField_2391, EditorStyles.boldLabel);
-            EditorGUILayout.PropertyField(InternalField_2398, InternalField_2924);
+            EditorGUILayout.PropertyField(InternalField_2398, InternalType_554.InternalType_743.InternalField_3457);
 
             EditorGUILayout.Separator();
             EditorGUILayout.LabelField(InternalField_2390, EditorStyles.boldLabel);
 
             EditorGUI.BeginChangeCheck();
-            InternalType_573.InternalMethod_2234(InternalField_2399, InternalField_2395);
+            InternalType_573.InternalMethod_2234(InternalField_2399, InternalType_554.InternalType_744.InternalField_3466);
             if (EditorGUI.EndChangeCheck() && Application.isPlaying)
             {
                 InternalMethod_1220();
@@ -60,13 +56,16 @@ namespace Nova.InternalNamespace_17.InternalNamespace_18
 
             if (InternalType_728.InternalMethod_3278(InternalField_2385[0].Draggable))
             {
-                InternalType_573.InternalMethod_2233(InternalField_2217, InternalField_2400, 0, InternalField_3344);
-                InternalType_573.InternalMethod_2233(InternalField_2216, InternalField_2401, 0, InternalField_3344);
+                InternalType_573.InternalMethod_2233(InternalType_554.InternalType_743.InternalField_3455, InternalField_2400, 0, InternalField_3344);
+                InternalType_573.InternalMethod_2233(InternalType_554.InternalType_743.InternalField_3456, InternalField_2401, 0, InternalField_3344);
             }
 
             EditorGUILayout.Separator();
             EditorGUILayout.Separator();
-            EditorGUILayout.PropertyField(InternalField_2215, InternalField_2218);
+            EditorGUILayout.PropertyField(InternalField_2215, InternalType_554.InternalType_743.InternalField_3454);
+
+            EditorGUILayout.Separator();
+            InternalMethod_3433();
 
             if (EditorGUI.EndChangeCheck())
             {

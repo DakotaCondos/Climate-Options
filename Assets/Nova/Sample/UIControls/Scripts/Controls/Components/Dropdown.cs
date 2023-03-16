@@ -16,8 +16,6 @@ namespace NovaSamples.UIControls
         [Tooltip("The data used to populate the list of selectable items in the dropdown.")]
         private DropdownData DropdownOptions = new DropdownData();
 
-        public static int selectedIndex;
-
         /// <summary>
         /// The visuals associated with this dropdown control
         /// </summary>
@@ -39,6 +37,12 @@ namespace NovaSamples.UIControls
 
         private void OnEnable()
         {
+            if (View.TryGetVisuals(out DropdownVisuals visuals))
+            {
+                // Set default state
+                visuals.UpdateVisualState(VisualState.Default);
+            }
+
             // Subscribe to desired events
             View.UIBlock.AddGestureHandler<Gesture.OnHover, DropdownVisuals>(DropdownVisuals.HandleHovered);
             View.UIBlock.AddGestureHandler<Gesture.OnUnhover, DropdownVisuals>(DropdownVisuals.HandleUnhovered);
@@ -74,9 +78,7 @@ namespace NovaSamples.UIControls
         /// <param name="value">The string in the list of selectable options.</param>
         private void HandleValueChanged(string value)
         {
-            selectedIndex = DropdownOptions.SelectedIndex;
             OnValueChanged?.Invoke(value);
-            
         }
 
         /// <summary>
@@ -87,7 +89,6 @@ namespace NovaSamples.UIControls
         /// <param name="dropdownControl">The <see cref="ItemVisuals"/> object which was clicked.</param>
         private void HandleDropdownClicked(Gesture.OnClick evt, DropdownVisuals dropdownControl)
         {
-
             if (evt.Receiver.transform.IsChildOf(dropdownControl.OptionsView.transform))
             {
                 // The clicked object was not the dropdown itself but rather a list item within the dropdown.

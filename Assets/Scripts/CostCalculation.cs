@@ -1,8 +1,6 @@
-﻿using System;
+﻿#if UNITY_EDITOR
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using Unity.Mathematics;
-using UnityEngine;
 
 public class CostCalculation
 {
@@ -249,3 +247,5 @@ public class CostCalculation
         return (kelvin - 273.15) * 9.0 / 5.0 + 32.0;
     }
 }
+// current file contents
+#endif

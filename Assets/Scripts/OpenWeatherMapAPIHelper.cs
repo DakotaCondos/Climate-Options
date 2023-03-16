@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿#if UNITY_EDITOR
+using Newtonsoft.Json.Linq;
 using System.Collections;
 using System.Linq;
 using UnityEngine;
@@ -56,3 +57,5 @@ public class OpenWeatherMapAPIHelper : MonoBehaviour
         hasCoordinates = true;
     }
 }
+// current file contents
+#endif

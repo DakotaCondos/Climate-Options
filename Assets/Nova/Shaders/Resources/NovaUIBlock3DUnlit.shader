@@ -40,7 +40,7 @@ Shader "Hidden/Nova/NovaUIBlock3DUnlit"
             #pragma instancing_options nolodfade
             #pragma skip_variants FOG_LINEAR FOG_EXP FOG_EXP2
             
-            #pragma multi_compile_local __ NOVA_COLOR_MODIFIER NOVA_CLIP_RECT NOVA_CLIP_MASK
+            #pragma multi_compile_local __ NOVA_CLIP_RECT NOVA_CLIP_MASK
             
             #include "../UIBlock3D.cginc"
 

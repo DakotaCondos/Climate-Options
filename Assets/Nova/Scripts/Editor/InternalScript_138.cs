@@ -601,7 +601,7 @@ namespace Nova.InternalNamespace_17.InternalNamespace_20
             {
                 get
                 {
-                    return this.InternalProperty_698.objectReferenceValue;
+                    return ((UnityEngine.Object)(this.InternalProperty_698.objectReferenceValue));
                 }
                 set
                 {
@@ -786,6 +786,9 @@ namespace Nova.InternalNamespace_17.InternalNamespace_20
                         private UnityEditor.SerializedProperty InternalField_2836;
             
             [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+                        private UnityEditor.SerializedProperty InternalField_3484;
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
             public UnityEditor.SerializedProperty InternalProperty_954
             {
                 get
@@ -826,15 +829,28 @@ namespace Nova.InternalNamespace_17.InternalNamespace_20
             }
             
             [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
-            public UnityEngine.Object InternalProperty_774
+            public UnityEngine.Texture InternalProperty_774
             {
                 get
                 {
-                    return this.InternalField_2834.FindPropertyRelative("maskTexture").objectReferenceValue;
+                    return ((UnityEngine.Texture)(this.InternalProperty_1098.objectReferenceValue));
                 }
                 set
                 {
-                    this.InternalField_2834.FindPropertyRelative("maskTexture").objectReferenceValue = value;
+                    this.InternalProperty_1098.objectReferenceValue = value;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public UnityEditor.SerializedProperty InternalProperty_1098
+            {
+                get
+                {
+                    if ((InternalField_3484 == null))
+                    {
+                        InternalField_3484 = this.InternalField_2834.FindPropertyRelative("maskTexture");
+                    }
+                    return InternalField_3484;
                 }
             }
             
@@ -1045,6 +1061,21 @@ namespace Nova.InternalNamespace_17.InternalNamespace_20
                         private UnityEditor.SerializedProperty InternalField_2396;
             
             [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+                        private UnityEditor.SerializedProperty InternalField_3485;
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+                        private UnityEditor.SerializedProperty InternalField_3486;
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+                        private UnityEditor.SerializedProperty InternalField_3487;
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+                        private InternalType_751 InternalField_3488;
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+                        private UnityEditor.SerializedProperty InternalField_3489;
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
             public UnityEditor.SerializedProperty InternalProperty_954
             {
                 get
@@ -1161,6 +1192,111 @@ namespace Nova.InternalNamespace_17.InternalNamespace_20
                 }
             }
             
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public bool InternalProperty_1099
+            {
+                get
+                {
+                    return this.InternalProperty_1100.boolValue;
+                }
+                set
+                {
+                    this.InternalProperty_1100.boolValue = value;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public UnityEditor.SerializedProperty InternalProperty_1100
+            {
+                get
+                {
+                    if ((InternalField_3485 == null))
+                    {
+                        InternalField_3485 = this.InternalField_2917.FindPropertyRelative("navigable");
+                    }
+                    return InternalField_3485;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public Nova.SelectBehavior InternalProperty_1101
+            {
+                get
+                {
+                    return ((Nova.SelectBehavior)(this.InternalProperty_1102.intValue));
+                }
+                set
+                {
+                    this.InternalProperty_1102.intValue = ((int)(value));
+                }
+            }
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public UnityEditor.SerializedProperty InternalProperty_1102
+            {
+                get
+                {
+                    if ((InternalField_3486 == null))
+                    {
+                        InternalField_3486 = this.InternalField_2917.FindPropertyRelative("onSelect");
+                    }
+                    return InternalField_3486;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public bool InternalProperty_1103
+            {
+                get
+                {
+                    return this.InternalProperty_1104.boolValue;
+                }
+                set
+                {
+                    this.InternalProperty_1104.boolValue = value;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public UnityEditor.SerializedProperty InternalProperty_1104
+            {
+                get
+                {
+                    if ((InternalField_3487 == null))
+                    {
+                        InternalField_3487 = this.InternalField_2917.FindPropertyRelative("autoSelect");
+                    }
+                    return InternalField_3487;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public InternalType_751 InternalProperty_1105
+            {
+                get
+                {
+                    if ((InternalField_3488 == null))
+                    {
+                        InternalField_3488 = new InternalType_751();
+                        InternalField_3488.InternalProperty_954 = this.InternalProperty_1106;
+                    }
+                    return InternalField_3488;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public UnityEditor.SerializedProperty InternalProperty_1106
+            {
+                get
+                {
+                    if ((InternalField_3489 == null))
+                    {
+                        InternalField_3489 = this.InternalField_2917.FindPropertyRelative("Navigation");
+                    }
+                    return InternalField_3489;
+                }
+            }
+            
             public void InternalMethod_2958()
             {
                 this.InternalField_2917.serializedObject.ApplyModifiedProperties();
@@ -1203,7 +1339,7 @@ namespace Nova.InternalNamespace_17.InternalNamespace_20
             {
                 get
                 {
-                    return this.InternalProperty_701.objectReferenceValue;
+                    return ((UnityEngine.Object)(this.InternalProperty_701.objectReferenceValue));
                 }
                 set
                 {
@@ -1241,6 +1377,9 @@ namespace Nova.InternalNamespace_17.InternalNamespace_20
             
             [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
                         private UnityEditor.SerializedProperty InternalField_2825;
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+                        private UnityEditor.SerializedProperty InternalField_3503;
             
             [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
             public UnityEditor.SerializedProperty InternalProperty_954
@@ -1308,15 +1447,28 @@ namespace Nova.InternalNamespace_17.InternalNamespace_20
             }
             
             [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
-            public UnityEngine.Object InternalProperty_759
+            public Nova.InternalNamespace_0.InternalType_118 InternalProperty_759
             {
                 get
                 {
-                    return this.InternalField_2823.FindPropertyRelative("virtualBlockSerializer").objectReferenceValue;
+                    return ((Nova.InternalNamespace_0.InternalType_118)(this.InternalProperty_1119.objectReferenceValue));
                 }
                 set
                 {
-                    this.InternalField_2823.FindPropertyRelative("virtualBlockSerializer").objectReferenceValue = value;
+                    this.InternalProperty_1119.objectReferenceValue = value;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public UnityEditor.SerializedProperty InternalProperty_1119
+            {
+                get
+                {
+                    if ((InternalField_3503 == null))
+                    {
+                        InternalField_3503 = this.InternalField_2823.FindPropertyRelative("virtualBlockSerializer");
+                    }
+                    return InternalField_3503;
                 }
             }
             
@@ -1337,6 +1489,9 @@ namespace Nova.InternalNamespace_17.InternalNamespace_20
             
             [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
                         private UnityEditor.SerializedProperty InternalField_2746;
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+                        private UnityEditor.SerializedProperty InternalField_1332;
             
             [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
                         private UnityEditor.SerializedProperty InternalField_2747;
@@ -1403,6 +1558,32 @@ namespace Nova.InternalNamespace_17.InternalNamespace_20
                         InternalField_2746 = this.InternalField_2744.FindPropertyRelative("UVScale");
                     }
                     return InternalField_2746;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public float InternalProperty_1067
+            {
+                get
+                {
+                    return this.InternalProperty_1068.floatValue;
+                }
+                set
+                {
+                    this.InternalProperty_1068.floatValue = value;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public UnityEditor.SerializedProperty InternalProperty_1068
+            {
+                get
+                {
+                    if ((InternalField_1332 == null))
+                    {
+                        InternalField_1332 = this.InternalField_2744.FindPropertyRelative("PixelsPerUnitMultiplier");
+                    }
+                    return InternalField_1332;
                 }
             }
             
@@ -1547,6 +1728,18 @@ namespace Nova.InternalNamespace_17.InternalNamespace_20
                         private UnityEditor.SerializedProperty InternalField_2922;
             
             [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+                        private UnityEditor.SerializedProperty InternalField_3504;
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+                        private UnityEditor.SerializedProperty InternalField_3505;
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+                        private InternalType_751 InternalField_3506;
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+                        private UnityEditor.SerializedProperty InternalField_3507;
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
             public UnityEditor.SerializedProperty InternalProperty_954
             {
                 get
@@ -1673,6 +1866,85 @@ namespace Nova.InternalNamespace_17.InternalNamespace_20
                         InternalField_2922 = this.InternalField_2921.FindPropertyRelative("ClickBehavior");
                     }
                     return InternalField_2922;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public Nova.SelectBehavior InternalProperty_1120
+            {
+                get
+                {
+                    return ((Nova.SelectBehavior)(this.InternalProperty_1121.intValue));
+                }
+                set
+                {
+                    this.InternalProperty_1121.intValue = ((int)(value));
+                }
+            }
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public UnityEditor.SerializedProperty InternalProperty_1121
+            {
+                get
+                {
+                    if ((InternalField_3504 == null))
+                    {
+                        InternalField_3504 = this.InternalField_2921.FindPropertyRelative("onSelect");
+                    }
+                    return InternalField_3504;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public bool InternalProperty_1122
+            {
+                get
+                {
+                    return this.InternalProperty_1123.boolValue;
+                }
+                set
+                {
+                    this.InternalProperty_1123.boolValue = value;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public UnityEditor.SerializedProperty InternalProperty_1123
+            {
+                get
+                {
+                    if ((InternalField_3505 == null))
+                    {
+                        InternalField_3505 = this.InternalField_2921.FindPropertyRelative("autoSelect");
+                    }
+                    return InternalField_3505;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public InternalType_751 InternalProperty_1124
+            {
+                get
+                {
+                    if ((InternalField_3506 == null))
+                    {
+                        InternalField_3506 = new InternalType_751();
+                        InternalField_3506.InternalProperty_954 = this.InternalProperty_1125;
+                    }
+                    return InternalField_3506;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public UnityEditor.SerializedProperty InternalProperty_1125
+            {
+                get
+                {
+                    if ((InternalField_3507 == null))
+                    {
+                        InternalField_3507 = this.InternalField_2921.FindPropertyRelative("Navigation");
+                    }
+                    return InternalField_3507;
                 }
             }
             
@@ -2688,6 +2960,9 @@ namespace Nova.InternalNamespace_17.InternalNamespace_20
                         private UnityEditor.SerializedProperty InternalField_2833;
             
             [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+                        private UnityEditor.SerializedProperty InternalField_3508;
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
             public UnityEditor.SerializedProperty InternalProperty_954
             {
                 get
@@ -2736,15 +3011,28 @@ namespace Nova.InternalNamespace_17.InternalNamespace_20
             }
             
             [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
-            public UnityEngine.Object InternalProperty_39
+            public Nova.UIBlock InternalProperty_39
             {
                 get
                 {
-                    return this.InternalField_2832.FindPropertyRelative("_uiBlock").objectReferenceValue;
+                    return ((Nova.UIBlock)(this.InternalProperty_1126.objectReferenceValue));
                 }
                 set
                 {
-                    this.InternalField_2832.FindPropertyRelative("_uiBlock").objectReferenceValue = value;
+                    this.InternalProperty_1126.objectReferenceValue = value;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public UnityEditor.SerializedProperty InternalProperty_1126
+            {
+                get
+                {
+                    if ((InternalField_3508 == null))
+                    {
+                        InternalField_3508 = this.InternalField_2832.FindPropertyRelative("_uiBlock");
+                    }
+                    return InternalField_3508;
                 }
             }
             
@@ -3184,6 +3472,398 @@ namespace Nova.InternalNamespace_17.InternalNamespace_20
             }
         }
         
+        public class InternalType_750 : Nova.InternalNamespace_17.InternalNamespace_20.InternalType_645
+        {
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+                        private UnityEditor.SerializedProperty InternalField_3480;
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+                        private UnityEditor.SerializedProperty InternalField_3481;
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+                        private UnityEditor.SerializedProperty InternalField_3482;
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+                        private UnityEditor.SerializedProperty InternalField_3483;
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public UnityEditor.SerializedProperty InternalProperty_954
+            {
+                get
+                {
+                    return this.InternalField_3480;
+                }
+                set
+                {
+                    this.InternalField_3480 = value;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public Nova.NavLinkType InternalProperty_1092
+            {
+                get
+                {
+                    return ((Nova.NavLinkType)(this.InternalProperty_1093.intValue));
+                }
+                set
+                {
+                    this.InternalProperty_1093.intValue = ((int)(value));
+                }
+            }
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public UnityEditor.SerializedProperty InternalProperty_1093
+            {
+                get
+                {
+                    if ((InternalField_3481 == null))
+                    {
+                        InternalField_3481 = this.InternalField_3480.FindPropertyRelative("Type");
+                    }
+                    return InternalField_3481;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public Nova.NavLinkFallback InternalProperty_1094
+            {
+                get
+                {
+                    return ((Nova.NavLinkFallback)(this.InternalProperty_1095.intValue));
+                }
+                set
+                {
+                    this.InternalProperty_1095.intValue = ((int)(value));
+                }
+            }
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public UnityEditor.SerializedProperty InternalProperty_1095
+            {
+                get
+                {
+                    if ((InternalField_3482 == null))
+                    {
+                        InternalField_3482 = this.InternalField_3480.FindPropertyRelative("Fallback");
+                    }
+                    return InternalField_3482;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public Nova.GestureRecognizer InternalProperty_1096
+            {
+                get
+                {
+                    return ((Nova.GestureRecognizer)(this.InternalProperty_1097.objectReferenceValue));
+                }
+                set
+                {
+                    this.InternalProperty_1097.objectReferenceValue = value;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public UnityEditor.SerializedProperty InternalProperty_1097
+            {
+                get
+                {
+                    if ((InternalField_3483 == null))
+                    {
+                        InternalField_3483 = this.InternalField_3480.FindPropertyRelative("Target");
+                    }
+                    return InternalField_3483;
+                }
+            }
+            
+            public void InternalMethod_3454()
+            {
+                this.InternalField_3480.serializedObject.ApplyModifiedProperties();
+            }
+        }
+        
+        public class InternalType_751 : Nova.InternalNamespace_17.InternalNamespace_20.InternalType_645
+        {
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+                        private UnityEditor.SerializedProperty InternalField_3490;
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+                        private InternalType_750 InternalField_3491;
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+                        private UnityEditor.SerializedProperty InternalField_3492;
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+                        private InternalType_750 InternalField_3493;
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+                        private UnityEditor.SerializedProperty InternalField_3494;
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+                        private InternalType_750 InternalField_3495;
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+                        private UnityEditor.SerializedProperty InternalField_3496;
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+                        private InternalType_750 InternalField_3497;
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+                        private UnityEditor.SerializedProperty InternalField_3498;
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+                        private InternalType_750 InternalField_3499;
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+                        private UnityEditor.SerializedProperty InternalField_3500;
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+                        private InternalType_750 InternalField_3501;
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+                        private UnityEditor.SerializedProperty InternalField_3502;
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public UnityEditor.SerializedProperty InternalProperty_954
+            {
+                get
+                {
+                    return this.InternalField_3490;
+                }
+                set
+                {
+                    this.InternalField_3490 = value;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public InternalType_750 InternalProperty_1107
+            {
+                get
+                {
+                    if ((InternalField_3491 == null))
+                    {
+                        InternalField_3491 = new InternalType_750();
+                        InternalField_3491.InternalProperty_954 = this.InternalProperty_1108;
+                    }
+                    return InternalField_3491;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public UnityEditor.SerializedProperty InternalProperty_1108
+            {
+                get
+                {
+                    if ((InternalField_3492 == null))
+                    {
+                        InternalField_3492 = this.InternalField_3490.FindPropertyRelative("Left");
+                    }
+                    return InternalField_3492;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public InternalType_750 InternalProperty_1109
+            {
+                get
+                {
+                    if ((InternalField_3493 == null))
+                    {
+                        InternalField_3493 = new InternalType_750();
+                        InternalField_3493.InternalProperty_954 = this.InternalProperty_1110;
+                    }
+                    return InternalField_3493;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public UnityEditor.SerializedProperty InternalProperty_1110
+            {
+                get
+                {
+                    if ((InternalField_3494 == null))
+                    {
+                        InternalField_3494 = this.InternalField_3490.FindPropertyRelative("Right");
+                    }
+                    return InternalField_3494;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public InternalType_750 InternalProperty_1111
+            {
+                get
+                {
+                    if ((InternalField_3495 == null))
+                    {
+                        InternalField_3495 = new InternalType_750();
+                        InternalField_3495.InternalProperty_954 = this.InternalProperty_1112;
+                    }
+                    return InternalField_3495;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public UnityEditor.SerializedProperty InternalProperty_1112
+            {
+                get
+                {
+                    if ((InternalField_3496 == null))
+                    {
+                        InternalField_3496 = this.InternalField_3490.FindPropertyRelative("Down");
+                    }
+                    return InternalField_3496;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public InternalType_750 InternalProperty_1113
+            {
+                get
+                {
+                    if ((InternalField_3497 == null))
+                    {
+                        InternalField_3497 = new InternalType_750();
+                        InternalField_3497.InternalProperty_954 = this.InternalProperty_1114;
+                    }
+                    return InternalField_3497;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public UnityEditor.SerializedProperty InternalProperty_1114
+            {
+                get
+                {
+                    if ((InternalField_3498 == null))
+                    {
+                        InternalField_3498 = this.InternalField_3490.FindPropertyRelative("Up");
+                    }
+                    return InternalField_3498;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public InternalType_750 InternalProperty_1115
+            {
+                get
+                {
+                    if ((InternalField_3499 == null))
+                    {
+                        InternalField_3499 = new InternalType_750();
+                        InternalField_3499.InternalProperty_954 = this.InternalProperty_1116;
+                    }
+                    return InternalField_3499;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public UnityEditor.SerializedProperty InternalProperty_1116
+            {
+                get
+                {
+                    if ((InternalField_3500 == null))
+                    {
+                        InternalField_3500 = this.InternalField_3490.FindPropertyRelative("Forward");
+                    }
+                    return InternalField_3500;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public InternalType_750 InternalProperty_1117
+            {
+                get
+                {
+                    if ((InternalField_3501 == null))
+                    {
+                        InternalField_3501 = new InternalType_750();
+                        InternalField_3501.InternalProperty_954 = this.InternalProperty_1118;
+                    }
+                    return InternalField_3501;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public UnityEditor.SerializedProperty InternalProperty_1118
+            {
+                get
+                {
+                    if ((InternalField_3502 == null))
+                    {
+                        InternalField_3502 = this.InternalField_3490.FindPropertyRelative("Back");
+                    }
+                    return InternalField_3502;
+                }
+            }
+            
+            public void InternalMethod_3481()
+            {
+                this.InternalField_3490.serializedObject.ApplyModifiedProperties();
+            }
+        }
+        
+        public class InternalType_768 : Nova.InternalNamespace_17.InternalNamespace_20.InternalType_645
+        {
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+                        private UnityEditor.SerializedProperty InternalField_3654;
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+                        private UnityEditor.SerializedProperty InternalField_3655;
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+                        private UnityEditor.SerializedProperty InternalField_3656;
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public UnityEditor.SerializedProperty InternalProperty_954
+            {
+                get
+                {
+                    return this.InternalField_3654;
+                }
+                set
+                {
+                    this.InternalField_3654 = value;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public UnityEditor.SerializedProperty InternalProperty_1165
+            {
+                get
+                {
+                    if ((InternalField_3655 == null))
+                    {
+                        InternalField_3655 = this.InternalField_3654.FindPropertyRelative("m_TitleContent");
+                    }
+                    return InternalField_3655;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public UnityEditor.SerializedProperty InternalProperty_1166
+            {
+                get
+                {
+                    if ((InternalField_3656 == null))
+                    {
+                        InternalField_3656 = this.InternalField_3654.FindPropertyRelative("m_Pos");
+                    }
+                    return InternalField_3656;
+                }
+            }
+            
+            public void InternalMethod_3680()
+            {
+                this.InternalField_3654.serializedObject.ApplyModifiedProperties();
+            }
+        }
+        
         public class InternalType_634 : Nova.InternalNamespace_17.InternalNamespace_20.InternalType_645
         {
             
@@ -3572,6 +4252,9 @@ namespace Nova.InternalNamespace_17.InternalNamespace_20
                         private UnityEditor.SerializedProperty InternalField_2936;
             
             [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+                        private UnityEditor.SerializedProperty InternalField_3509;
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
                         private UnityEditor.SerializedProperty InternalField_2937;
             
             [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
@@ -3597,15 +4280,28 @@ namespace Nova.InternalNamespace_17.InternalNamespace_20
             }
             
             [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
-            public UnityEngine.Object InternalProperty_337
+            public UnityEngine.Camera InternalProperty_337
             {
                 get
                 {
-                    return this.InternalField_2936.FindPropertyRelative("targetCamera").objectReferenceValue;
+                    return ((UnityEngine.Camera)(this.InternalProperty_1127.objectReferenceValue));
                 }
                 set
                 {
-                    this.InternalField_2936.FindPropertyRelative("targetCamera").objectReferenceValue = value;
+                    this.InternalProperty_1127.objectReferenceValue = value;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public UnityEditor.SerializedProperty InternalProperty_1127
+            {
+                get
+                {
+                    if ((InternalField_3509 == null))
+                    {
+                        InternalField_3509 = this.InternalField_2936.FindPropertyRelative("targetCamera");
+                    }
+                    return InternalField_3509;
                 }
             }
             
@@ -3738,6 +4434,9 @@ namespace Nova.InternalNamespace_17.InternalNamespace_20
                         private UnityEditor.SerializedProperty InternalField_2930;
             
             [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+                        private UnityEditor.SerializedProperty InternalField_3510;
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
                         private UnityEditor.SerializedProperty InternalField_2932;
             
             [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
@@ -3751,6 +4450,18 @@ namespace Nova.InternalNamespace_17.InternalNamespace_20
             
             [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
                         private UnityEditor.SerializedProperty InternalField_3358;
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+                        private UnityEditor.SerializedProperty InternalField_3511;
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+                        private UnityEditor.SerializedProperty InternalField_3512;
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+                        private InternalType_751 InternalField_3513;
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+                        private UnityEditor.SerializedProperty InternalField_3514;
             
             [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
             public UnityEditor.SerializedProperty InternalProperty_954
@@ -3870,15 +4581,28 @@ namespace Nova.InternalNamespace_17.InternalNamespace_20
             }
             
             [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
-            public UnityEngine.Object InternalProperty_934
+            public Nova.UIBlock InternalProperty_934
             {
                 get
                 {
-                    return this.InternalField_2927.FindPropertyRelative("scrollbarVisual").objectReferenceValue;
+                    return ((Nova.UIBlock)(this.InternalProperty_1128.objectReferenceValue));
                 }
                 set
                 {
-                    this.InternalField_2927.FindPropertyRelative("scrollbarVisual").objectReferenceValue = value;
+                    this.InternalProperty_1128.objectReferenceValue = value;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public UnityEditor.SerializedProperty InternalProperty_1128
+            {
+                get
+                {
+                    if ((InternalField_3510 == null))
+                    {
+                        InternalField_3510 = this.InternalField_2927.FindPropertyRelative("scrollbarVisual");
+                    }
+                    return InternalField_3510;
                 }
             }
             
@@ -4009,6 +4733,85 @@ namespace Nova.InternalNamespace_17.InternalNamespace_20
                         InternalField_3358 = this.InternalField_2927.FindPropertyRelative("ClickBehavior");
                     }
                     return InternalField_3358;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public Nova.SelectBehavior InternalProperty_1129
+            {
+                get
+                {
+                    return ((Nova.SelectBehavior)(this.InternalProperty_1130.intValue));
+                }
+                set
+                {
+                    this.InternalProperty_1130.intValue = ((int)(value));
+                }
+            }
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public UnityEditor.SerializedProperty InternalProperty_1130
+            {
+                get
+                {
+                    if ((InternalField_3511 == null))
+                    {
+                        InternalField_3511 = this.InternalField_2927.FindPropertyRelative("onSelect");
+                    }
+                    return InternalField_3511;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public bool InternalProperty_1131
+            {
+                get
+                {
+                    return this.InternalProperty_1132.boolValue;
+                }
+                set
+                {
+                    this.InternalProperty_1132.boolValue = value;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public UnityEditor.SerializedProperty InternalProperty_1132
+            {
+                get
+                {
+                    if ((InternalField_3512 == null))
+                    {
+                        InternalField_3512 = this.InternalField_2927.FindPropertyRelative("autoSelect");
+                    }
+                    return InternalField_3512;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public InternalType_751 InternalProperty_1133
+            {
+                get
+                {
+                    if ((InternalField_3513 == null))
+                    {
+                        InternalField_3513 = new InternalType_751();
+                        InternalField_3513.InternalProperty_954 = this.InternalProperty_1134;
+                    }
+                    return InternalField_3513;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public UnityEditor.SerializedProperty InternalProperty_1134
+            {
+                get
+                {
+                    if ((InternalField_3514 == null))
+                    {
+                        InternalField_3514 = this.InternalField_2927.FindPropertyRelative("Navigation");
+                    }
+                    return InternalField_3514;
                 }
             }
             
@@ -4779,7 +5582,7 @@ namespace Nova.InternalNamespace_17.InternalNamespace_20
             {
                 get
                 {
-                    return this.InternalProperty_704.objectReferenceValue;
+                    return ((UnityEngine.Object)(this.InternalProperty_704.objectReferenceValue));
                 }
                 set
                 {
@@ -5150,6 +5953,15 @@ namespace Nova.InternalNamespace_17.InternalNamespace_20
                         private UnityEditor.SerializedProperty InternalField_2870;
             
             [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+                        private UnityEditor.SerializedProperty InternalField_3515;
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+                        private UnityEditor.SerializedProperty InternalField_3516;
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+                        private UnityEditor.SerializedProperty InternalField_3517;
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
                         private UnityEditor.SerializedProperty InternalField_2871;
             
             [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
@@ -5165,7 +5977,16 @@ namespace Nova.InternalNamespace_17.InternalNamespace_20
                         private UnityEditor.SerializedProperty InternalField_2875;
             
             [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+                        private UnityEditor.SerializedProperty InternalField_3518;
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+                        private UnityEditor.SerializedProperty InternalField_3519;
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
                         private UnityEditor.SerializedProperty InternalField_2876;
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+                        private UnityEditor.SerializedProperty InternalField_3520;
             
             [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
                         private UnityEditor.SerializedProperty InternalField_2877;
@@ -5234,6 +6055,12 @@ namespace Nova.InternalNamespace_17.InternalNamespace_20
                         private UnityEditor.SerializedProperty InternalField_2898;
             
             [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+                        private UnityEditor.SerializedProperty InternalField_3521;
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+                        private UnityEditor.SerializedProperty InternalField_3522;
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
                         private UnityEditor.SerializedProperty InternalField_2899;
             
             [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
@@ -5286,6 +6113,9 @@ namespace Nova.InternalNamespace_17.InternalNamespace_20
             
             [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
                         private UnityEditor.SerializedProperty InternalField_2916;
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+                        private UnityEditor.SerializedProperty InternalField_3523;
             
             [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
             public UnityEditor.SerializedProperty InternalProperty_954
@@ -5444,28 +6274,54 @@ namespace Nova.InternalNamespace_17.InternalNamespace_20
             }
             
             [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
-            public UnityEngine.Object InternalProperty_811
+            public TMPro.TMP_FontAsset InternalProperty_811
             {
                 get
                 {
-                    return this.InternalField_2864.FindPropertyRelative("m_fontAsset").objectReferenceValue;
+                    return ((TMPro.TMP_FontAsset)(this.InternalProperty_1135.objectReferenceValue));
                 }
                 set
                 {
-                    this.InternalField_2864.FindPropertyRelative("m_fontAsset").objectReferenceValue = value;
+                    this.InternalProperty_1135.objectReferenceValue = value;
                 }
             }
             
             [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
-            public UnityEngine.Object InternalProperty_812
+            public UnityEditor.SerializedProperty InternalProperty_1135
             {
                 get
                 {
-                    return this.InternalField_2864.FindPropertyRelative("m_sharedMaterial").objectReferenceValue;
+                    if ((InternalField_3515 == null))
+                    {
+                        InternalField_3515 = this.InternalField_2864.FindPropertyRelative("m_fontAsset");
+                    }
+                    return InternalField_3515;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public UnityEngine.Material InternalProperty_812
+            {
+                get
+                {
+                    return ((UnityEngine.Material)(this.InternalProperty_1136.objectReferenceValue));
                 }
                 set
                 {
-                    this.InternalField_2864.FindPropertyRelative("m_sharedMaterial").objectReferenceValue = value;
+                    this.InternalProperty_1136.objectReferenceValue = value;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public UnityEditor.SerializedProperty InternalProperty_1136
+            {
+                get
+                {
+                    if ((InternalField_3516 == null))
+                    {
+                        InternalField_3516 = this.InternalField_2864.FindPropertyRelative("m_sharedMaterial");
+                    }
+                    return InternalField_3516;
                 }
             }
             
@@ -5479,15 +6335,28 @@ namespace Nova.InternalNamespace_17.InternalNamespace_20
             }
             
             [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
-            public UnityEngine.Object InternalProperty_814
+            public UnityEngine.Material InternalProperty_814
             {
                 get
                 {
-                    return this.InternalField_2864.FindPropertyRelative("m_fontMaterial").objectReferenceValue;
+                    return ((UnityEngine.Material)(this.InternalProperty_1137.objectReferenceValue));
                 }
                 set
                 {
-                    this.InternalField_2864.FindPropertyRelative("m_fontMaterial").objectReferenceValue = value;
+                    this.InternalProperty_1137.objectReferenceValue = value;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public UnityEditor.SerializedProperty InternalProperty_1137
+            {
+                get
+                {
+                    if ((InternalField_3517 == null))
+                    {
+                        InternalField_3517 = this.InternalField_2864.FindPropertyRelative("m_fontMaterial");
+                    }
+                    return InternalField_3517;
                 }
             }
             
@@ -5605,28 +6474,54 @@ namespace Nova.InternalNamespace_17.InternalNamespace_20
             }
             
             [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
-            public UnityEngine.Object InternalProperty_824
+            public TMPro.TMP_ColorGradient InternalProperty_824
             {
                 get
                 {
-                    return this.InternalField_2864.FindPropertyRelative("m_fontColorGradientPreset").objectReferenceValue;
+                    return ((TMPro.TMP_ColorGradient)(this.InternalProperty_1138.objectReferenceValue));
                 }
                 set
                 {
-                    this.InternalField_2864.FindPropertyRelative("m_fontColorGradientPreset").objectReferenceValue = value;
+                    this.InternalProperty_1138.objectReferenceValue = value;
                 }
             }
             
             [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
-            public UnityEngine.Object InternalProperty_825
+            public UnityEditor.SerializedProperty InternalProperty_1138
             {
                 get
                 {
-                    return this.InternalField_2864.FindPropertyRelative("m_spriteAsset").objectReferenceValue;
+                    if ((InternalField_3518 == null))
+                    {
+                        InternalField_3518 = this.InternalField_2864.FindPropertyRelative("m_fontColorGradientPreset");
+                    }
+                    return InternalField_3518;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public TMPro.TMP_SpriteAsset InternalProperty_825
+            {
+                get
+                {
+                    return ((TMPro.TMP_SpriteAsset)(this.InternalProperty_1139.objectReferenceValue));
                 }
                 set
                 {
-                    this.InternalField_2864.FindPropertyRelative("m_spriteAsset").objectReferenceValue = value;
+                    this.InternalProperty_1139.objectReferenceValue = value;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public UnityEditor.SerializedProperty InternalProperty_1139
+            {
+                get
+                {
+                    if ((InternalField_3519 == null))
+                    {
+                        InternalField_3519 = this.InternalField_2864.FindPropertyRelative("m_spriteAsset");
+                    }
+                    return InternalField_3519;
                 }
             }
             
@@ -5657,15 +6552,28 @@ namespace Nova.InternalNamespace_17.InternalNamespace_20
             }
             
             [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
-            public UnityEngine.Object InternalProperty_828
+            public TMPro.TMP_StyleSheet InternalProperty_828
             {
                 get
                 {
-                    return this.InternalField_2864.FindPropertyRelative("m_StyleSheet").objectReferenceValue;
+                    return ((TMPro.TMP_StyleSheet)(this.InternalProperty_1140.objectReferenceValue));
                 }
                 set
                 {
-                    this.InternalField_2864.FindPropertyRelative("m_StyleSheet").objectReferenceValue = value;
+                    this.InternalProperty_1140.objectReferenceValue = value;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public UnityEditor.SerializedProperty InternalProperty_1140
+            {
+                get
+                {
+                    if ((InternalField_3520 == null))
+                    {
+                        InternalField_3520 = this.InternalField_2864.FindPropertyRelative("m_StyleSheet");
+                    }
+                    return InternalField_3520;
                 }
             }
             
@@ -6229,28 +7137,54 @@ namespace Nova.InternalNamespace_17.InternalNamespace_20
             }
             
             [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
-            public UnityEngine.Object InternalProperty_872
+            public TMPro.TMP_Text InternalProperty_872
             {
                 get
                 {
-                    return this.InternalField_2864.FindPropertyRelative("m_linkedTextComponent").objectReferenceValue;
+                    return ((TMPro.TMP_Text)(this.InternalProperty_1141.objectReferenceValue));
                 }
                 set
                 {
-                    this.InternalField_2864.FindPropertyRelative("m_linkedTextComponent").objectReferenceValue = value;
+                    this.InternalProperty_1141.objectReferenceValue = value;
                 }
             }
             
             [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
-            public UnityEngine.Object InternalProperty_873
+            public UnityEditor.SerializedProperty InternalProperty_1141
             {
                 get
                 {
-                    return this.InternalField_2864.FindPropertyRelative("parentLinkedComponent").objectReferenceValue;
+                    if ((InternalField_3521 == null))
+                    {
+                        InternalField_3521 = this.InternalField_2864.FindPropertyRelative("m_linkedTextComponent");
+                    }
+                    return InternalField_3521;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public TMPro.TMP_Text InternalProperty_873
+            {
+                get
+                {
+                    return ((TMPro.TMP_Text)(this.InternalProperty_1142.objectReferenceValue));
                 }
                 set
                 {
-                    this.InternalField_2864.FindPropertyRelative("parentLinkedComponent").objectReferenceValue = value;
+                    this.InternalProperty_1142.objectReferenceValue = value;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public UnityEditor.SerializedProperty InternalProperty_1142
+            {
+                get
+                {
+                    if ((InternalField_3522 == null))
+                    {
+                        InternalField_3522 = this.InternalField_2864.FindPropertyRelative("parentLinkedComponent");
+                    }
+                    return InternalField_3522;
                 }
             }
             
@@ -6723,15 +7657,28 @@ namespace Nova.InternalNamespace_17.InternalNamespace_20
             }
             
             [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
-            public UnityEngine.Object InternalProperty_910
+            public UnityEngine.Material InternalProperty_910
             {
                 get
                 {
-                    return this.InternalField_2864.FindPropertyRelative("m_Material").objectReferenceValue;
+                    return ((UnityEngine.Material)(this.InternalProperty_1143.objectReferenceValue));
                 }
                 set
                 {
-                    this.InternalField_2864.FindPropertyRelative("m_Material").objectReferenceValue = value;
+                    this.InternalProperty_1143.objectReferenceValue = value;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public UnityEditor.SerializedProperty InternalProperty_1143
+            {
+                get
+                {
+                    if ((InternalField_3523 == null))
+                    {
+                        InternalField_3523 = this.InternalField_2864.FindPropertyRelative("m_Material");
+                    }
+                    return InternalField_3523;
                 }
             }
             
@@ -6940,6 +7887,12 @@ namespace Nova.InternalNamespace_17.InternalNamespace_20
                         private UnityEditor.SerializedProperty InternalField_53;
             
             [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+                        private UnityEditor.SerializedProperty InternalField_3524;
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+                        private UnityEditor.SerializedProperty InternalField_3525;
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
                         private InternalType_611 InternalField_3316;
             
             [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
@@ -6995,28 +7948,54 @@ namespace Nova.InternalNamespace_17.InternalNamespace_20
             }
             
             [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
-            public UnityEngine.Object InternalProperty_739
+            public UnityEngine.Texture InternalProperty_739
             {
                 get
                 {
-                    return this.InternalField_2807.FindPropertyRelative("texture").objectReferenceValue;
+                    return ((UnityEngine.Texture)(this.InternalProperty_1144.objectReferenceValue));
                 }
                 set
                 {
-                    this.InternalField_2807.FindPropertyRelative("texture").objectReferenceValue = value;
+                    this.InternalProperty_1144.objectReferenceValue = value;
                 }
             }
             
             [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
-            public UnityEngine.Object InternalProperty_740
+            public UnityEditor.SerializedProperty InternalProperty_1144
             {
                 get
                 {
-                    return this.InternalField_2807.FindPropertyRelative("sprite").objectReferenceValue;
+                    if ((InternalField_3524 == null))
+                    {
+                        InternalField_3524 = this.InternalField_2807.FindPropertyRelative("texture");
+                    }
+                    return InternalField_3524;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public UnityEngine.Sprite InternalProperty_740
+            {
+                get
+                {
+                    return ((UnityEngine.Sprite)(this.InternalProperty_1145.objectReferenceValue));
                 }
                 set
                 {
-                    this.InternalField_2807.FindPropertyRelative("sprite").objectReferenceValue = value;
+                    this.InternalProperty_1145.objectReferenceValue = value;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public UnityEditor.SerializedProperty InternalProperty_1145
+            {
+                get
+                {
+                    if ((InternalField_3525 == null))
+                    {
+                        InternalField_3525 = this.InternalField_2807.FindPropertyRelative("sprite");
+                    }
+                    return InternalField_3525;
                 }
             }
             
@@ -7725,7 +8704,7 @@ namespace Nova.InternalNamespace_17.InternalNamespace_20
             {
                 get
                 {
-                    return this.InternalProperty_707.objectReferenceValue;
+                    return ((UnityEngine.Object)(this.InternalProperty_707.objectReferenceValue));
                 }
                 set
                 {
@@ -7788,7 +8767,7 @@ namespace Nova.InternalNamespace_17.InternalNamespace_20
             {
                 get
                 {
-                    return this.InternalProperty_710.objectReferenceValue;
+                    return ((UnityEngine.Object)(this.InternalProperty_710.objectReferenceValue));
                 }
                 set
                 {
@@ -7851,7 +8830,7 @@ namespace Nova.InternalNamespace_17.InternalNamespace_20
             {
                 get
                 {
-                    return this.InternalProperty_713.objectReferenceValue;
+                    return ((UnityEngine.Object)(this.InternalProperty_713.objectReferenceValue));
                 }
                 set
                 {
@@ -7889,6 +8868,9 @@ namespace Nova.InternalNamespace_17.InternalNamespace_20
             
             [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
                         private UnityEditor.SerializedProperty InternalField_2943;
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+                        private UnityEditor.SerializedProperty InternalField_3526;
             
             [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
             public UnityEditor.SerializedProperty InternalProperty_954
@@ -7952,15 +8934,28 @@ namespace Nova.InternalNamespace_17.InternalNamespace_20
             }
             
             [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
-            public UnityEngine.Object InternalProperty_953
+            public Nova.CoreBlock InternalProperty_953
             {
                 get
                 {
-                    return this.InternalField_2941.FindPropertyRelative("owner").objectReferenceValue;
+                    return ((Nova.CoreBlock)(this.InternalProperty_1146.objectReferenceValue));
                 }
                 set
                 {
-                    this.InternalField_2941.FindPropertyRelative("owner").objectReferenceValue = value;
+                    this.InternalProperty_1146.objectReferenceValue = value;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public UnityEditor.SerializedProperty InternalProperty_1146
+            {
+                get
+                {
+                    if ((InternalField_3526 == null))
+                    {
+                        InternalField_3526 = this.InternalField_2941.FindPropertyRelative("owner");
+                    }
+                    return InternalField_3526;
                 }
             }
             
@@ -8385,6 +9380,18 @@ namespace Nova.InternalNamespace_17.InternalNamespace_20
             
             [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
                         public static string InternalField_3359 = "ClickBehavior";
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+                        public static string InternalField_3527 = "navigable";
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+                        public static string InternalField_3528 = "onSelect";
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+                        public static string InternalField_3529 = "autoSelect";
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+                        public static string InternalField_3530 = "Navigation";
         }
         
         public class InternalType_648
@@ -8420,6 +9427,9 @@ namespace Nova.InternalNamespace_17.InternalNamespace_20
                         public static string InternalField_3051 = "UVScale";
             
             [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+                        public static string InternalField_3425 = "PixelsPerUnitMultiplier";
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
                         public static string InternalField_3052 = "scaleMode";
         }
         
@@ -8450,6 +9460,15 @@ namespace Nova.InternalNamespace_17.InternalNamespace_20
             
             [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
                         public static string InternalField_3166 = "ClickBehavior";
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+                        public static string InternalField_3531 = "onSelect";
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+                        public static string InternalField_3532 = "autoSelect";
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+                        public static string InternalField_3533 = "Navigation";
         }
         
         public class InternalType_669
@@ -8615,6 +9634,51 @@ namespace Nova.InternalNamespace_17.InternalNamespace_20
                         public static string InternalField_793 = "Back";
         }
         
+        public class InternalType_752
+        {
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+                        public static string InternalField_3534 = "Type";
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+                        public static string InternalField_3535 = "Fallback";
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+                        public static string InternalField_3536 = "Target";
+        }
+        
+        public class InternalType_753
+        {
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+                        public static string InternalField_3537 = "Left";
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+                        public static string InternalField_3538 = "Right";
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+                        public static string InternalField_3539 = "Down";
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+                        public static string InternalField_3540 = "Up";
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+                        public static string InternalField_3541 = "Forward";
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+                        public static string InternalField_3542 = "Back";
+        }
+        
+        public class InternalType_769
+        {
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+                        public static string InternalField_3657 = "m_TitleContent";
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+                        public static string InternalField_3658 = "m_Pos";
+        }
+        
         public class InternalType_685
         {
             
@@ -8708,6 +9772,15 @@ namespace Nova.InternalNamespace_17.InternalNamespace_20
             
             [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
                         public static string InternalField_3360 = "ClickBehavior";
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+                        public static string InternalField_3543 = "onSelect";
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+                        public static string InternalField_3544 = "autoSelect";
+            
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+                        public static string InternalField_3545 = "Navigation";
         }
         
         public class InternalType_686

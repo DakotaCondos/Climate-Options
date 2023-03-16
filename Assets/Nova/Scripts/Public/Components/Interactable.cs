@@ -1,44 +1,44 @@
 
-using Nova.Compat;
 using Nova.InternalNamespace_16;
 using Nova.InternalNamespace_25;
 using Nova.InternalNamespace_0;
 using Nova.InternalNamespace_0.InternalNamespace_5;
 using System.Collections.Generic;
 using UnityEngine;
+using Navigator = Nova.InternalNamespace_0.InternalType_757<Nova.UIBlock>; 
 
 namespace Nova
 {
     /// <summary>
-    /// Defines on which event a "click" should be triggered
+    /// Defines on which event a "click" should be triggered.
     /// </summary>
     public enum ClickBehavior
     {
         /// <summary>
-        /// On release, correlated with a pointer up event
+        /// On release, correlated with a pointer up event.
         /// </summary>
         OnRelease,
         /// <summary>
-        /// On press, correlated with a pointer down event
+        /// On press, correlated with a pointer down event.
         /// </summary>
         OnPress,
         /// <summary>
-        /// Don't trigger "click" events
+        /// Don't trigger "click" events.
         /// </summary>
         None,
     }
 
     /// <summary>
-    /// The animation applied to content once it's scrolled past the edges of its viewport
+    /// The animation applied to content once it's scrolled past the edges of its viewport.
     /// </summary>
     public enum OverscrollEffect
     {
         /// <summary>
-        /// An iOS-like bounce effect
+        /// An iOS-like bounce effect.
         /// </summary>
         Bounce,
         /// <summary>
-        /// A stay-in-bounds effect
+        /// A stay-in-bounds effect.
         /// </summary>
         Clamp
     };
@@ -84,11 +84,127 @@ namespace Nova
         public float LowAccuracyDragThreshold = 30;
 
         /// <summary>
-        /// Determines when this interactable should trigger click events
+        /// Determines when this component should trigger click events.
         /// </summary>
         /// <seealso cref="Gesture.OnClick"/>
         [SerializeField]
         public ClickBehavior ClickBehavior = ClickBehavior.OnRelease;
+
+        [SerializeField]
+        [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+        private bool navigable = true;
+
+        /// <summary>
+        /// Is this component navigable?
+        /// </summary>
+        public bool Navigable
+        {
+            get => navigable;
+            set
+            {
+                if (navigable == value)
+                {
+                    return;
+                }
+
+                bool InternalVar_1 = InternalProperty_164;
+
+                navigable = value;
+
+                bool InternalVar_2 = InternalProperty_164;
+
+                if (InternalVar_1 == InternalVar_2)
+                {
+                    return;
+                }
+
+                if (InternalVar_1 && !InternalVar_2)
+                {
+                    Navigator.InternalMethod_3565(UIBlock);
+                }
+                else if (!InternalVar_1 && InternalVar_2)
+                {
+                    Navigator.InternalMethod_3564(UIBlock);
+                }
+            }
+        }
+
+        [SerializeField]
+        [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+        private protected SelectBehavior onSelect = SelectBehavior.Click;
+
+        [SerializeField]
+        [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+        private protected bool autoSelect = false;
+
+        /// <summary>
+        /// Determines if this component should automatically be selected whenever it's navigated to.
+        /// </summary>
+        /// <remarks>
+        /// If <see cref="OnSelect"/> is set to <see cref="SelectBehavior.ScopeNavigation"/>,
+        /// setting this to <c>true</c> will effectively allow navigation moves to pass through
+        /// the attached <see cref="UIBlock"/> onto the navigable descendant closest to the navigation
+        /// source.
+        /// </remarks>
+        public bool AutoSelect
+        {
+            get => autoSelect;
+            set
+            {
+                if (autoSelect == value)
+                {
+                    return;
+                }
+
+                autoSelect = value;
+
+                if (InternalProperty_164 && OnSelect != SelectBehavior.Click)
+                {
+                    Navigator.InternalMethod_3563(UIBlock, value);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Determines how this component should handle select events.
+        /// </summary>
+        /// <seealso cref="Navigate.OnSelect"/>
+        public SelectBehavior OnSelect
+        {
+            get => onSelect;
+            set
+            {
+                if (onSelect == value)
+                {
+                    return;
+                }
+
+                bool InternalVar_1 = onSelect != SelectBehavior.Click;
+                bool InternalVar_2 = value != SelectBehavior.Click;
+
+                onSelect = value;
+
+                if (!InternalProperty_164 || InternalVar_1 == InternalVar_2)
+                {
+                    return;
+                }
+
+                if (InternalVar_1 && !InternalVar_2)
+                {
+                    Navigator.InternalMethod_3566(UIBlock);
+                }
+                else if (!InternalVar_1 && InternalVar_2)
+                {
+                    Navigator.InternalMethod_3563(UIBlock, AutoSelect);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Defines a <see cref="NavLink"/> per axis-aligned direction.
+        /// </summary>
+        [SerializeField]
+        public NavNode Navigation = NavNode.TwoD;
 
         /// <summary>
         /// The attached <see cref="Nova.UIBlock"/> receiving the interaction events, <see cref="IEvent.Receiver"/>
@@ -110,7 +226,6 @@ namespace Nova
         /// Prevent users from inherting
         /// </summary>
         internal GestureRecognizer() { }
-
 
         #region 
         [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
@@ -187,6 +302,16 @@ namespace Nova
 
         private void OnEnable()
         {
+            if (Navigable)
+            {
+                Navigator.InternalMethod_3564(UIBlock);
+                
+                if (OnSelect != SelectBehavior.Click)
+                {
+                    Navigator.InternalMethod_3563(UIBlock, AutoSelect);
+                }
+            }
+
             InternalMethod_2750();
         }
 
@@ -206,7 +331,15 @@ namespace Nova
             }
 
             InternalMethod_2664();
+
+            Navigator.InternalMethod_3565(UIBlock);
+
+            if (OnSelect != SelectBehavior.Click)
+            {
+                Navigator.InternalMethod_3566(UIBlock);
+            }
         }
+
         private void InternalMethod_158(ref InternalType_14.InternalType_16<bool> InternalParameter_100)
         {
             if (!isActiveAndEnabled)
@@ -388,9 +521,12 @@ namespace Nova
 
         private protected abstract void InternalMethod_2750();
         private protected abstract void InternalMethod_2664();
+
+        [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+        internal bool InternalProperty_164 => InternalProperty_911 && Navigable;
     }
 
-    internal interface InternalType_493 : InternalType_523, InternalType_273, InternalType_75 { }
+    internal interface InternalType_493 : InternalType_523, InternalType_273, InternalType_75, InternalType_754 { }
 
     /// <summary>
     /// Triggers pointer-based gesture events (e.g. hover, click, drag, etc.) on the attached <see cref="UIBlock"/>
@@ -436,12 +572,12 @@ namespace Nova
                 {
                     if (draggable.InternalMethod_3291(true) && value.InternalMethod_3292(false))
                     {
-                        UIBlock.InternalProperty_23.InternalMethod_461(this);
+                        UIBlock.InternalProperty_23.InternalMethod_3549();
                     }
 
                     if (draggable.InternalMethod_3292(false) && value.InternalMethod_3291(true))
                     {
-                        UIBlock.InternalProperty_23.InternalMethod_460(this);
+                        UIBlock.InternalProperty_23.InternalMethod_3548(this);
                     }
                 }
 
@@ -459,9 +595,10 @@ namespace Nova
 
             if (Draggable.InternalMethod_3291(true))
             {
-                UIBlock.InternalProperty_23.InternalMethod_460(this);
+                UIBlock.InternalProperty_23.InternalMethod_3548(this);
             }
 
+            UIBlock.InternalProperty_23.InternalMethod_3551(this);
             UIBlock.InternalProperty_23.InternalEvent_2 += InternalProperty_766;
             UIBlock.InternalProperty_23.InternalEvent_4 += InternalProperty_770;
         }
@@ -472,9 +609,10 @@ namespace Nova
 
             if (Draggable.InternalMethod_3291(true))
             {
-                UIBlock.InternalProperty_23.InternalMethod_461(this);
+                UIBlock.InternalProperty_23.InternalMethod_3549();
             }
 
+            UIBlock.InternalProperty_23.InternalMethod_3552();
             UIBlock.InternalProperty_23.InternalEvent_2 -= InternalProperty_766;
             UIBlock.InternalProperty_23.InternalEvent_4 -= InternalProperty_770;
         }
@@ -556,7 +694,7 @@ namespace Nova
                     InternalVar_6 = Vector3.Cross(InternalVar_4, InternalVar_3);
                 }
 
-                Vector3 InternalVar_7 = InternalType_187.InternalMethod_881(InternalParameter_2232.InternalField_248 - InternalVar_5);
+                Vector3 InternalVar_7 = InternalType_187.InternalMethod_3642(InternalParameter_2232.InternalField_248 - InternalVar_5);
                 float InternalVar_8 = InternalType_187.InternalMethod_907(InternalVar_4, InternalVar_7, InternalVar_6);
                 InternalVar_8 = Mathf.Min(InternalVar_8, 180 - InternalVar_8);
 
@@ -566,6 +704,28 @@ namespace Nova
             return InternalVar_1;
         }
 
+        [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+        bool InternalType_754.InternalProperty_1153 => InternalProperty_164;
+        [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+        bool InternalType_754.InternalProperty_1154 => OnSelect == SelectBehavior.FireEvents;
+        [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+        bool InternalType_754.InternalProperty_1155 => OnSelect == SelectBehavior.ScopeNavigation;
+        bool InternalType_754.InternalMethod_3559(Vector3 InternalParameter_3234) => true;
+        bool InternalType_754.InternalMethod_3561(Vector3 InternalParameter_3238, out InternalType_5 InternalParameter_3239)
+        {
+            InternalParameter_3239 = null;
+
+            if (!InternalProperty_164)
+            {
+                return false;
+            }
+
+            return Navigation.InternalMethod_2715(InternalParameter_3238, out InternalParameter_3239);
+        }
+
+        bool InternalType_754.InternalMethod_3576(InternalType_5 InternalParameter_3264, InternalType_5 InternalParameter_3263, Vector3 InternalParameter_3262) => false;
+        void InternalType_754.InternalMethod_3585(InternalType_5 InternalParameter_3313) { }
+        
         private float InternalMethod_2350<T>(ref InternalType_76<T> InternalParameter_2157) where T : unmanaged, System.IEquatable<T> => InternalParameter_2157.InternalField_250 ? LowAccuracyDragThreshold : DragThreshold;
 
         [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]

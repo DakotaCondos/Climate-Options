@@ -1,7 +1,6 @@
+#if UNITY_EDITOR
 using Nova;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class ComponentController : MonoBehaviour
 {
@@ -52,3 +51,5 @@ public class ComponentController : MonoBehaviour
         block.SetImage(tex);
     }
 }
+// current file contents
+#endif

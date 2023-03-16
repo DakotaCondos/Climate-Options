@@ -2,9 +2,6 @@ using Nova.Compat;
 using Nova.InternalNamespace_17.InternalNamespace_20;
 using Nova.InternalNamespace_17.InternalNamespace_21;
 using Nova.InternalNamespace_25;
-using Nova.InternalNamespace_0.InternalNamespace_2;
-using Nova.InternalNamespace_0.InternalNamespace_9;
-using Nova.InternalNamespace_0.InternalNamespace_10;
 using Nova.InternalNamespace_0.InternalNamespace_5;
 using System.Collections.Generic;
 using System.Reflection;
@@ -38,7 +35,9 @@ namespace Nova.InternalNamespace_17.InternalNamespace_18
         protected T68 InternalProperty_683 => serializedObject.isEditingMultipleObjects ? null : target as T68;
 
         [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
-        private int InternalField_2212 = 0;
+        private int InternalField_1559 = 0;
+        [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+        private int InternalField_1156 = 0;
 
         protected override void OnEnable()
         {
@@ -62,7 +61,8 @@ namespace Nova.InternalNamespace_17.InternalNamespace_18
 
             Undo.undoRedoPerformed += InternalMethod_2185;
 
-            InternalField_2212 = 0;
+            InternalField_1559 = 0;
+            InternalField_1156 = 0;
         }
 
 
@@ -78,18 +78,23 @@ namespace Nova.InternalNamespace_17.InternalNamespace_18
 
         public override void OnInspectorGUI()
         {
-            int InternalVar_1 = EditorUtility.GetDirtyCount(target);
-            if (InternalField_2212 != InternalVar_1)
+            T68 InternalVar_1 = target as T68;
+
+            int InternalVar_2 = EditorUtility.GetDirtyCount(InternalVar_1);
+            int InternalVar_3 = EditorUtility.GetDirtyCount(InternalVar_1.gameObject);
+
+            if (InternalField_1559 != InternalVar_2 || InternalField_1156 != InternalVar_3)
             {
                 if (!Application.IsPlaying(target))
                 {
                     InternalMethod_2189(InternalParameter_2493: true);
                 }
 
-                InternalField_2212 = InternalVar_1;
+                InternalField_1559 = InternalVar_2;
+                InternalField_1156 = InternalVar_3;
             }
 
-            if (!UnityEditorInternal.InternalEditorUtility.GetIsInspectorExpanded(target))
+            if (!InternalEditorUtility.GetIsInspectorExpanded(target))
             {
                 return;
             }
@@ -100,11 +105,9 @@ namespace Nova.InternalNamespace_17.InternalNamespace_18
 
             EditorGUI.BeginChangeCheck();
 
-            T68 InternalVar_2 = target as T68;
+            InternalMethod_2186(InternalVar_1, InternalField_2425);
 
-            InternalMethod_2186(InternalVar_2, InternalField_2425);
-
-            InternalMethod_2184(InternalVar_2);
+            InternalMethod_2184(InternalVar_1);
 
             if (EditorGUI.EndChangeCheck())
             {
@@ -112,7 +115,8 @@ namespace Nova.InternalNamespace_17.InternalNamespace_18
                 InternalType_180.InternalMethod_849();
             }
 
-            InternalField_2212 = EditorUtility.GetDirtyCount(target);
+            InternalField_1559 = EditorUtility.GetDirtyCount(InternalVar_1);
+            InternalField_1156 = EditorUtility.GetDirtyCount(InternalVar_1.gameObject);
 
         }
 

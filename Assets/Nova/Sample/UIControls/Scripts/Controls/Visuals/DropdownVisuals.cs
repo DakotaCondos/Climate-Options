@@ -10,7 +10,7 @@ namespace NovaSamples.UIControls
     /// </summary>
     [Serializable]
     [MovedFrom(false, null, "Assembly-CSharp")]
-    public class DropdownVisuals : ItemVisuals
+    public class DropdownVisuals : UIControlVisuals
     {
         [Header("Collapsed Visuals")]
         [Tooltip("The TextBlock to display the label of currently selected option.")]
@@ -28,19 +28,13 @@ namespace NovaSamples.UIControls
         [Tooltip("If false, the dropdown will expand upwards.")]
         public bool ExpandDown = true;
 
-        [Header("Visual State Colors")]
-        [Tooltip("The default background color of the dropdown.")]
-        public Color DefaultColor;
-        [Tooltip("The color to use on this dropdown and its list items when one of them is pressed.")]
-        public Color PressedColor;
-        [Tooltip("The color to use on this dropdown and its list items when one of them is hovered.")]
-        public Color HoveredColor;
-
         [Header("Options View Row Colors")]
         [Tooltip("The default background color of the dropdown list items. Every even-row item will be this color.")]
         public Color DefaultRowColor;
         [Tooltip("The alternative background color of the dropdown list items. Every odd-row item will be this color.")]
         public Color AlternatingRowColor;
+
+        protected override UIBlock TransitionTargetFallback => Background;
 
         /// <summary>
         /// Is the dropdown list open?
@@ -207,8 +201,15 @@ namespace NovaSamples.UIControls
         /// <param name="visuals">The <see cref="ItemVisuals"/> receiving the release event.</param>
         public static void HandleUnhovered(Gesture.OnUnhover evt, DropdownVisuals visuals)
         {
-            // Restore the background color
-            visuals.Background.Color = visuals.DefaultColor;
+            if (evt.Receiver.transform.IsChildOf(visuals.ExpandedViewRoot.transform))
+            {
+                // The hierarchy is hovered, which will happen if one of the objects in visuals.OptionsView
+                // is hovered, but we don't want to highlight the background
+                // element in that context.
+                return;
+            }
+
+            ButtonVisuals.HandleUnhovered(evt, visuals);
         }
 
         /// <summary>
@@ -226,8 +227,7 @@ namespace NovaSamples.UIControls
                 return;
             }
 
-            // Update the background color to indicate a press is occurring.
-            visuals.Background.Color = visuals.HoveredColor;
+            ButtonVisuals.HandleHovered(evt, visuals);
         }
 
         /// <summary>
@@ -238,8 +238,15 @@ namespace NovaSamples.UIControls
         /// <param name="visuals">The <see cref="ItemVisuals"/> receiving the cancel event.</param>
         public static void HandlePressCanceled(Gesture.OnCancel evt, DropdownVisuals visuals)
         {
-            // Restore the background color
-            visuals.Background.Color = visuals.DefaultColor;
+            if (evt.Receiver.transform.IsChildOf(visuals.ExpandedViewRoot.transform))
+            {
+                // The hierarchy is hovered, which will happen if one of the objects in visuals.OptionsView
+                // is hovered, but we don't want to highlight the background
+                // element in that context.
+                return;
+            }
+
+            ButtonVisuals.HandlePressCanceled(evt, visuals);
         }
 
         /// <summary>
@@ -258,8 +265,7 @@ namespace NovaSamples.UIControls
                 return;
             }
 
-            // Restore the background color
-            visuals.Background.Color = evt.Hovering ? visuals.HoveredColor : visuals.DefaultColor;
+            ButtonVisuals.HandleReleased(evt, visuals);
         }
 
         /// <summary>
@@ -276,8 +282,7 @@ namespace NovaSamples.UIControls
                 return;
             }
 
-            // Update the background color to indicate a press is occurring.
-            visuals.Background.Color = visuals.PressedColor;
+            ButtonVisuals.HandlePressed(evt, visuals);
         }
     }
 }

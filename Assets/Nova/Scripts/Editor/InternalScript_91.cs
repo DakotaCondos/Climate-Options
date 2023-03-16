@@ -34,28 +34,30 @@ namespace Nova.InternalNamespace_17.InternalNamespace_18
         private const string InternalField_2453 = "_LightIcon.png";
 
         [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
-        public static readonly GUIContent InternalField_3354 = EditorGUIUtility.IconContent("Warning@2x");
+        public const string InternalField_3453 = "Warning@2x";
+        [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+        public static readonly GUIContent InternalField_3354 = EditorGUIUtility.TrIconContent(InternalField_3453);
 
         [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
         private static readonly GUIContent[][] InternalField_2454 = new GUIContent[][]
         {
             new GUIContent[]
             {
-                new GUIContent(EditorGUIUtility.IconContent($"{InternalProperty_7}/AlignLeft{InternalField_2453}")) { tooltip = "Left Aligned"},
-                new GUIContent(EditorGUIUtility.IconContent($"{InternalProperty_7}/AlignCenterX{InternalField_2453}")) { tooltip = "X Center Aligned" },
-                new GUIContent(EditorGUIUtility.IconContent($"{InternalProperty_7}/AlignRight{InternalField_2453}")) { tooltip = "Right Aligned" }
+                new GUIContent(EditorGUIUtility.TrIconContent($"{InternalProperty_7}/AlignLeft{InternalField_2453}")) { tooltip = "Left Aligned"},
+                new GUIContent(EditorGUIUtility.TrIconContent($"{InternalProperty_7}/AlignCenterX{InternalField_2453}")) { tooltip = "X Center Aligned" },
+                new GUIContent(EditorGUIUtility.TrIconContent($"{InternalProperty_7}/AlignRight{InternalField_2453}")) { tooltip = "Right Aligned" }
             },
             new GUIContent[]
             {
-                new GUIContent(EditorGUIUtility.IconContent($"{InternalProperty_7}/AlignBottom{InternalField_2453}")) { tooltip = "Bottom Aligned" },
-                new GUIContent(EditorGUIUtility.IconContent($"{InternalProperty_7}/AlignCenterY{InternalField_2453}")) { tooltip = "Y Center Aligned" },
-                new GUIContent(EditorGUIUtility.IconContent($"{InternalProperty_7}/AlignTop{InternalField_2453}")) { tooltip = "Top Aligned" }
+                new GUIContent(EditorGUIUtility.TrIconContent($"{InternalProperty_7}/AlignBottom{InternalField_2453}")) { tooltip = "Bottom Aligned" },
+                new GUIContent(EditorGUIUtility.TrIconContent($"{InternalProperty_7}/AlignCenterY{InternalField_2453}")) { tooltip = "Y Center Aligned" },
+                new GUIContent(EditorGUIUtility.TrIconContent($"{InternalProperty_7}/AlignTop{InternalField_2453}")) { tooltip = "Top Aligned" }
             },
             new GUIContent[]
             {
-                new GUIContent(EditorGUIUtility.IconContent($"{InternalProperty_7}/AlignFront{InternalField_2453}")) { tooltip = "Front Aligned" },
-                new GUIContent(EditorGUIUtility.IconContent($"{InternalProperty_7}/AlignCenterZ{InternalField_2453}")) { tooltip = "Z Center Aligned" },
-                new GUIContent(EditorGUIUtility.IconContent($"{InternalProperty_7}/AlignBack{InternalField_2453}")) { tooltip = "Back Aligned" }
+                new GUIContent(EditorGUIUtility.TrIconContent($"{InternalProperty_7}/AlignFront{InternalField_2453}")) { tooltip = "Front Aligned" },
+                new GUIContent(EditorGUIUtility.TrIconContent($"{InternalProperty_7}/AlignCenterZ{InternalField_2453}")) { tooltip = "Z Center Aligned" },
+                new GUIContent(EditorGUIUtility.TrIconContent($"{InternalProperty_7}/AlignBack{InternalField_2453}")) { tooltip = "Back Aligned" }
             }
         };
 
@@ -64,21 +66,21 @@ namespace Nova.InternalNamespace_17.InternalNamespace_18
         {
             new GUIContent[]
             {
-                new GUIContent(EditorGUIUtility.IconContent($"{InternalProperty_7}/AlignLeft{InternalField_2452}")) { tooltip = "Left Aligned"},
-                new GUIContent(EditorGUIUtility.IconContent($"{InternalProperty_7}/AlignCenterX{InternalField_2452}")) { tooltip = "X Center Aligned" },
-                new GUIContent(EditorGUIUtility.IconContent($"{InternalProperty_7}/AlignRight{InternalField_2452}")) { tooltip = "Right Aligned" }
+                new GUIContent(EditorGUIUtility.TrIconContent($"{InternalProperty_7}/AlignLeft{InternalField_2452}")) { tooltip = "Left Aligned"},
+                new GUIContent(EditorGUIUtility.TrIconContent($"{InternalProperty_7}/AlignCenterX{InternalField_2452}")) { tooltip = "X Center Aligned" },
+                new GUIContent(EditorGUIUtility.TrIconContent($"{InternalProperty_7}/AlignRight{InternalField_2452}")) { tooltip = "Right Aligned" }
             },
             new GUIContent[]
             {
-                new GUIContent(EditorGUIUtility.IconContent($"{InternalProperty_7}/AlignBottom{InternalField_2452}")) { tooltip = "Bottom Aligned" },
-                new GUIContent(EditorGUIUtility.IconContent($"{InternalProperty_7}/AlignCenterY{InternalField_2452}")) { tooltip = "Y Center Aligned" },
-                new GUIContent(EditorGUIUtility.IconContent($"{InternalProperty_7}/AlignTop{InternalField_2452}")) { tooltip = "Top Aligned" }
+                new GUIContent(EditorGUIUtility.TrIconContent($"{InternalProperty_7}/AlignBottom{InternalField_2452}")) { tooltip = "Bottom Aligned" },
+                new GUIContent(EditorGUIUtility.TrIconContent($"{InternalProperty_7}/AlignCenterY{InternalField_2452}")) { tooltip = "Y Center Aligned" },
+                new GUIContent(EditorGUIUtility.TrIconContent($"{InternalProperty_7}/AlignTop{InternalField_2452}")) { tooltip = "Top Aligned" }
             },
             new GUIContent[]
             {
-                new GUIContent(EditorGUIUtility.IconContent($"{InternalProperty_7}/AlignFront{InternalField_2452}")) { tooltip = "Front Aligned" },
-                new GUIContent(EditorGUIUtility.IconContent($"{InternalProperty_7}/AlignCenterZ{InternalField_2452}")) { tooltip = "Z Center Aligned" },
-                new GUIContent(EditorGUIUtility.IconContent($"{InternalProperty_7}/AlignBack{InternalField_2452}")) { tooltip = "Back Aligned" }
+                new GUIContent(EditorGUIUtility.TrIconContent($"{InternalProperty_7}/AlignFront{InternalField_2452}")) { tooltip = "Front Aligned" },
+                new GUIContent(EditorGUIUtility.TrIconContent($"{InternalProperty_7}/AlignCenterZ{InternalField_2452}")) { tooltip = "Z Center Aligned" },
+                new GUIContent(EditorGUIUtility.TrIconContent($"{InternalProperty_7}/AlignBack{InternalField_2452}")) { tooltip = "Back Aligned" }
             }
         };
 
@@ -90,18 +92,18 @@ namespace Nova.InternalNamespace_17.InternalNamespace_18
         {
             new GUIContent[]
             {
-                new GUIContent(EditorGUIUtility.IconContent($"{InternalProperty_7}/LeftToRight{InternalField_2453}")) { tooltip = "Order Left to Right"},
-                new GUIContent(EditorGUIUtility.IconContent($"{InternalProperty_7}/RightToLeft{InternalField_2453}")) { tooltip = "Order Right to Left"}
+                new GUIContent(EditorGUIUtility.TrIconContent($"{InternalProperty_7}/LeftToRight{InternalField_2453}")) { tooltip = "Order Left to Right"},
+                new GUIContent(EditorGUIUtility.TrIconContent($"{InternalProperty_7}/RightToLeft{InternalField_2453}")) { tooltip = "Order Right to Left"}
             },
             new GUIContent[]
             {
-                new GUIContent(EditorGUIUtility.IconContent($"{InternalProperty_7}/TopToBottom{InternalField_2453}")) { tooltip = "Order Top to Bottom"},
-                new GUIContent(EditorGUIUtility.IconContent($"{InternalProperty_7}/BottomToTop{InternalField_2453}")) { tooltip = "Order Bottom to Top"}
+                new GUIContent(EditorGUIUtility.TrIconContent($"{InternalProperty_7}/TopToBottom{InternalField_2453}")) { tooltip = "Order Top to Bottom"},
+                new GUIContent(EditorGUIUtility.TrIconContent($"{InternalProperty_7}/BottomToTop{InternalField_2453}")) { tooltip = "Order Bottom to Top"}
             },
             new GUIContent[]
             {
-                new GUIContent(EditorGUIUtility.IconContent($"{InternalProperty_7}/FrontToBack{InternalField_2453}")) { tooltip = "Order Front to Back"},
-                new GUIContent(EditorGUIUtility.IconContent($"{InternalProperty_7}/BackToFront{InternalField_2453}")) { tooltip = "Order Back to Front"}
+                new GUIContent(EditorGUIUtility.TrIconContent($"{InternalProperty_7}/FrontToBack{InternalField_2453}")) { tooltip = "Order Front to Back"},
+                new GUIContent(EditorGUIUtility.TrIconContent($"{InternalProperty_7}/BackToFront{InternalField_2453}")) { tooltip = "Order Back to Front"}
             }
         };
 
@@ -111,15 +113,15 @@ namespace Nova.InternalNamespace_17.InternalNamespace_18
         {
             new GUIContent[]
             {
-                new GUIContent(EditorGUIUtility.IconContent("align_horizontally_left")) { tooltip = "Left"},
-                new GUIContent(EditorGUIUtility.IconContent("align_horizontally_center")) { tooltip = "Center" },
-                new GUIContent(EditorGUIUtility.IconContent("align_horizontally_right")) { tooltip = "Right" }
+                new GUIContent(EditorGUIUtility.TrIconContent("align_horizontally_left")) { tooltip = "Left"},
+                new GUIContent(EditorGUIUtility.TrIconContent("align_horizontally_center")) { tooltip = "Center" },
+                new GUIContent(EditorGUIUtility.TrIconContent("align_horizontally_right")) { tooltip = "Right" }
             },
             new GUIContent[]
             {
-                new GUIContent(EditorGUIUtility.IconContent("align_vertically_bottom")) { tooltip = "Bottom" },
-                new GUIContent(EditorGUIUtility.IconContent("align_vertically_center")) { tooltip = "Middle" },
-                new GUIContent(EditorGUIUtility.IconContent("align_vertically_top")) { tooltip = "Top" }
+                new GUIContent(EditorGUIUtility.TrIconContent("align_vertically_bottom")) { tooltip = "Bottom" },
+                new GUIContent(EditorGUIUtility.TrIconContent("align_vertically_center")) { tooltip = "Middle" },
+                new GUIContent(EditorGUIUtility.TrIconContent("align_vertically_top")) { tooltip = "Top" }
             }
         };
 
@@ -128,18 +130,18 @@ namespace Nova.InternalNamespace_17.InternalNamespace_18
         {
             new GUIContent[]
             {
-                new GUIContent(EditorGUIUtility.IconContent($"{InternalProperty_7}/LeftToRight{InternalField_2452}")) { tooltip = "Order Left to Right"},
-                new GUIContent(EditorGUIUtility.IconContent($"{InternalProperty_7}/RightToLeft{InternalField_2452}")) { tooltip = "Order Right to Left"}
+                new GUIContent(EditorGUIUtility.TrIconContent($"{InternalProperty_7}/LeftToRight{InternalField_2452}")) { tooltip = "Order Left to Right"},
+                new GUIContent(EditorGUIUtility.TrIconContent($"{InternalProperty_7}/RightToLeft{InternalField_2452}")) { tooltip = "Order Right to Left"}
             },
             new GUIContent[]
             {
-                new GUIContent(EditorGUIUtility.IconContent($"{InternalProperty_7}/TopToBottom{InternalField_2452}")) { tooltip = "Order Top to Bottom"},
-                new GUIContent(EditorGUIUtility.IconContent($"{InternalProperty_7}/BottomToTop{InternalField_2452}")) { tooltip = "Order Bottom to Top"}
+                new GUIContent(EditorGUIUtility.TrIconContent($"{InternalProperty_7}/TopToBottom{InternalField_2452}")) { tooltip = "Order Top to Bottom"},
+                new GUIContent(EditorGUIUtility.TrIconContent($"{InternalProperty_7}/BottomToTop{InternalField_2452}")) { tooltip = "Order Bottom to Top"}
             },
             new GUIContent[]
             {
-                new GUIContent(EditorGUIUtility.IconContent($"{InternalProperty_7}/FrontToBack{InternalField_2452}")) { tooltip = "Order Front to Back"},
-                new GUIContent(EditorGUIUtility.IconContent($"{InternalProperty_7}/BackToFront{InternalField_2452}")) { tooltip = "Order Back to Front"}
+                new GUIContent(EditorGUIUtility.TrIconContent($"{InternalProperty_7}/FrontToBack{InternalField_2452}")) { tooltip = "Order Front to Back"},
+                new GUIContent(EditorGUIUtility.TrIconContent($"{InternalProperty_7}/BackToFront{InternalField_2452}")) { tooltip = "Order Back to Front"}
             }
         };
 
@@ -151,18 +153,18 @@ namespace Nova.InternalNamespace_17.InternalNamespace_18
         {
             new GUIContent[]
             {
-                new GUIContent(EditorGUIUtility.IconContent($"{InternalProperty_7}/ExpandX{InternalField_2452}")) { tooltip = "Expand to Parent"},
-                new GUIContent(EditorGUIUtility.IconContent($"{InternalProperty_7}/ShrinkX{InternalField_2452}")) { tooltip = "Shrink to Children"}
+                new GUIContent(EditorGUIUtility.TrIconContent($"{InternalProperty_7}/ExpandX{InternalField_2452}")) { tooltip = "Expand to Parent"},
+                new GUIContent(EditorGUIUtility.TrIconContent($"{InternalProperty_7}/ShrinkX{InternalField_2452}")) { tooltip = "Shrink to Children"}
             },
             new GUIContent[]
             {
-                new GUIContent(EditorGUIUtility.IconContent($"{InternalProperty_7}/ExpandY{InternalField_2452}")) { tooltip = "Expand to Parent"},
-                new GUIContent(EditorGUIUtility.IconContent($"{InternalProperty_7}/ShrinkY{InternalField_2452}")) { tooltip = "Shrink to Children"}
+                new GUIContent(EditorGUIUtility.TrIconContent($"{InternalProperty_7}/ExpandY{InternalField_2452}")) { tooltip = "Expand to Parent"},
+                new GUIContent(EditorGUIUtility.TrIconContent($"{InternalProperty_7}/ShrinkY{InternalField_2452}")) { tooltip = "Shrink to Children"}
             },
             new GUIContent[]
             {
-                new GUIContent(EditorGUIUtility.IconContent($"{InternalProperty_7}/ExpandZ{InternalField_2452}")) { tooltip = "Expand to Parent"},
-                new GUIContent(EditorGUIUtility.IconContent($"{InternalProperty_7}/ShrinkZ{InternalField_2452}")) { tooltip = "Shrink to Children"}
+                new GUIContent(EditorGUIUtility.TrIconContent($"{InternalProperty_7}/ExpandZ{InternalField_2452}")) { tooltip = "Expand to Parent"},
+                new GUIContent(EditorGUIUtility.TrIconContent($"{InternalProperty_7}/ShrinkZ{InternalField_2452}")) { tooltip = "Shrink to Children"}
             },
         };
 
@@ -171,18 +173,18 @@ namespace Nova.InternalNamespace_17.InternalNamespace_18
         {
             new GUIContent[]
             {
-                new GUIContent(EditorGUIUtility.IconContent($"{InternalProperty_7}/ExpandX{InternalField_2453}")) { tooltip = "Expand to Parent"},
-                new GUIContent(EditorGUIUtility.IconContent($"{InternalProperty_7}/ShrinkX{InternalField_2453}")) { tooltip = "Shrink to Children"}
+                new GUIContent(EditorGUIUtility.TrIconContent($"{InternalProperty_7}/ExpandX{InternalField_2453}")) { tooltip = "Expand to Parent"},
+                new GUIContent(EditorGUIUtility.TrIconContent($"{InternalProperty_7}/ShrinkX{InternalField_2453}")) { tooltip = "Shrink to Children"}
             },
             new GUIContent[]
             {
-                new GUIContent(EditorGUIUtility.IconContent($"{InternalProperty_7}/ExpandY{InternalField_2453}")) { tooltip = "Expand to Parent"},
-                new GUIContent(EditorGUIUtility.IconContent($"{InternalProperty_7}/ShrinkY{InternalField_2453}")) { tooltip = "Shrink to Children"}
+                new GUIContent(EditorGUIUtility.TrIconContent($"{InternalProperty_7}/ExpandY{InternalField_2453}")) { tooltip = "Expand to Parent"},
+                new GUIContent(EditorGUIUtility.TrIconContent($"{InternalProperty_7}/ShrinkY{InternalField_2453}")) { tooltip = "Shrink to Children"}
             },
             new GUIContent[]
             {
-                new GUIContent(EditorGUIUtility.IconContent($"{InternalProperty_7}/ExpandZ{InternalField_2453}")) { tooltip = "Expand to Parent"},
-                new GUIContent(EditorGUIUtility.IconContent($"{InternalProperty_7}/ShrinkZ{InternalField_2453}")) { tooltip = "Shrink to Children"}
+                new GUIContent(EditorGUIUtility.TrIconContent($"{InternalProperty_7}/ExpandZ{InternalField_2453}")) { tooltip = "Expand to Parent"},
+                new GUIContent(EditorGUIUtility.TrIconContent($"{InternalProperty_7}/ShrinkZ{InternalField_2453}")) { tooltip = "Shrink to Children"}
             }
         };
 
@@ -248,6 +250,11 @@ namespace Nova.InternalNamespace_17.InternalNamespace_18
         public static readonly GUIContent InternalField_2475 = EditorGUIUtility.TrTextContent("Max");
         [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
         public static readonly GUIContent InternalField_2476 = EditorGUIUtility.TrTextContent("Min-Max");
+        [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+        public static readonly GUIContent InternalField_3627 = EditorGUIUtility.TrTextContent(" ", "Opacity");
+
+        [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+        public static readonly GUIContent InternalField_3642 = EditorGUIUtility.TrIconContent($"{InternalProperty_7}/NovaLogo.png");
 
         public class InternalType_555
         {
@@ -287,9 +294,9 @@ namespace Nova.InternalNamespace_17.InternalNamespace_18
         public static class InternalType_556
         {
             [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
-            private static readonly GUIContent InternalField_2486 = new GUIContent(EditorGUIUtility.IconContent($"{InternalProperty_7}/3DToggle{InternalField_2453}")) { tooltip = "Show All 3D Properties." };
+            private static readonly GUIContent InternalField_2486 = new GUIContent(EditorGUIUtility.TrIconContent($"{InternalProperty_7}/3DToggle{InternalField_2453}")) { tooltip = "Show All 3D Properties." };
             [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
-            private static readonly GUIContent InternalField_2487 = new GUIContent(EditorGUIUtility.IconContent($"{InternalProperty_7}/3DToggle{InternalField_2452}")) { tooltip = "Show All 3D Properties." };
+            private static readonly GUIContent InternalField_2487 = new GUIContent(EditorGUIUtility.TrIconContent($"{InternalProperty_7}/3DToggle{InternalField_2452}")) { tooltip = "Show All 3D Properties." };
 
             [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
             public static GUIContent InternalProperty_467 => EditorGUIUtility.isProSkin ? InternalField_2486 : InternalField_2487;
@@ -365,6 +372,92 @@ namespace Nova.InternalNamespace_17.InternalNamespace_18
         {
             [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
             public static readonly GUIContent InternalField_715 = EditorGUIUtility.TrTextContent("Visuals", "The set of visual fields.");
+        }
+
+        public static class InternalType_743
+        {
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public static readonly GUIContent InternalField_3454 = EditorGUIUtility.TrTextContent("Obstruct Drags", "When true, drag gestures will not be routed to content behind the attached UIBlock.\nWhen false, content behind the attached UIBlock can receive drag gestures if it is \"draggable\" in a direction this component is not.\nDoes not impact the \"draggable\" state of this component.");
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public static readonly GUIContent InternalField_3455 = EditorGUIUtility.TrTextContent("Drag Threshold", "The threshold that must be surpassed to initiate a drag event.\n\nThis threshold is generally used for high precision input devices, E.g. mouse, touchscreen, VR controller, and most other ray based input.");
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public static readonly GUIContent InternalField_3456 = EditorGUIUtility.TrTextContent("Low Accuracy Drag Threshold", "The threshold that must be surpassed to initiate a drag event.\n\nThis \"Low Accuracy\" threshold is generally used for noisier (i.e. less physically stable) input devices, E.g. VR handtracking and other sphere collider based input.");
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public static readonly GUIContent InternalField_3457 = EditorGUIUtility.TrTextContent("Click Behavior", "Determines when this component should trigger click events.");
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public static readonly GUIContent InternalField_3458 = EditorGUIUtility.TrTextContent("Navigable", "Is this component navigable?");
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public static readonly GUIContent InternalField_3459 = EditorGUIUtility.TrTextContent("Navigation", "Defines a navigation target per axis-aligned direction.");
+
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public static readonly GUIContent InternalField_3460 = EditorGUIUtility.TrTextContent("On Select", "Determines how this component should handle navigation \"Select\" events.");
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public static readonly GUIContent InternalField_3461 = EditorGUIUtility.TrTextContent("Auto Select", "Determines if this component should automatically be selected whenever it's navigated to.\n\nIf \"On Select\" is set to \"Scope Navigation\", setting this to True will effectively allow navigation moves to pass through the attached UIBlock onto the navigable descendant closest to the navigation source.");
+
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            private static readonly GUIContent InternalField_3462 = EditorGUIUtility.TrIconContent("scenevis_visible_hover", "Hide Navigation Graph");
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            private static readonly GUIContent InternalField_3463 = EditorGUIUtility.TrIconContent("scenevis_hidden_hover", "Show Navigation Graph");
+
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            private static readonly GUIContent InternalField_3464 = EditorGUIUtility.TrIconContent("scenepicking_pickable_hover", "Filter Graph to Selection");
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            private static readonly GUIContent InternalField_3465 = EditorGUIUtility.TrIconContent("scenepicking_notpickable_hover", "Show Full Graph");
+
+            public static GUIContent InternalMethod_3435(bool InternalParameter_3214)
+            {
+                return InternalParameter_3214 ? InternalField_3465 : InternalField_3464;
+            }
+
+            public static GUIContent InternalMethod_3436(bool InternalParameter_3215)
+            {
+               return InternalParameter_3215 ? InternalField_3462 : InternalField_3463;
+            }
+        }
+
+        public static class InternalType_744
+        {
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public static readonly GUIContent InternalField_3466 = EditorGUIUtility.TrTextContent("Draggable", "Acts as a bit - mask indicating which axes can trigger drag events once a \"drag threshold\" is surpassed.");
+        }
+
+        public static class InternalType_745
+        {
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public static readonly GUIContent InternalField_3467 = EditorGUIUtility.TrTextContent("Overscroll Effect", "The behavior applied when there's no more content to scroll in the scrolling direction");
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public static readonly GUIContent InternalField_3468 = EditorGUIUtility.TrTextContent("Drag Scrolling", "Allow Interactions.Point drag events to trigger a scroll.\n\nE.g. Dragging on a touch screen.");
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public static readonly GUIContent InternalField_3469 = EditorGUIUtility.TrTextContent("Vector Scrolling", "Allow Interactions.Scroll vector events to trigger a scroll.\n\nE.g. Scroll wheel on a mouse.");
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public static readonly GUIContent InternalField_3470 = EditorGUIUtility.TrTextContent("Vector Scroll Multiplier", "The speed multiplier for vector scrolling");
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public static readonly GUIContent InternalField_3471 = EditorGUIUtility.TrTextContent("Draggable Scrollbar", "Indicates whether or not the Scroller should handle drag events on the Scrollbar Visual automatically.");
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public static readonly GUIContent InternalField_3472 = EditorGUIUtility.TrTextContent("Scrollbar Visual", "The visual representing the scroll position of content relative to the viewport. The Scroller component will adjust this visual's size/position along the scrolling axis");
+        }
+
+        public static class InternalType_746
+        {
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public static readonly GUIContent InternalField_3473 = EditorGUIUtility.TrTextContent(nameof(Nova.NavLink.Type), "The type of navigation to perform in this direction.");
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public static readonly GUIContent InternalField_3474 = EditorGUIUtility.TrTextContent(nameof(Nova.NavLink.Target), "The Interactable or Scroller to navigate to when \"Type\" is set to \"Manual\".");
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public static readonly GUIContent InternalField_3475 = EditorGUIUtility.TrTextContent(nameof(Nova.NavLink.Fallback), "Designates the fallback behavior in the event a navigation target isn't found or is not configured to be navigable.");
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public static readonly GUIContent InternalField_3476 = EditorGUIUtility.TrIconContent(InternalField_3453, "\"Target\" not configured to be navigable. Will result in \"Fallback\" behavior.");
+        }
+
+        public static class InternalType_747
+        {
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            private static readonly GUIContent InternalField_3477 = new GUIContent(EditorGUIUtility.TrIconContent($"{InternalProperty_7}/3DToggle{InternalField_2453}")) { tooltip = "Show navigation directions for Z axis." };
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            private static readonly GUIContent InternalField_3478 = new GUIContent(EditorGUIUtility.TrIconContent($"{InternalProperty_7}/3DToggle{InternalField_2452}")) { tooltip = "Show navigation directions for Z axis." };
+
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public static GUIContent InternalProperty_1091 => EditorGUIUtility.isProSkin ? InternalField_3477 : InternalField_3478;
         }
 
         public static class InternalType_564
@@ -481,7 +574,11 @@ namespace Nova.InternalNamespace_17.InternalNamespace_18
             [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
             public static readonly GUIContent InternalField_2534 = EditorGUIUtility.TrTextContent("Scale", "How much to scale the image in UV space, where UVs go from (-1, -1) in the bottom-left to (1, 1) in the top-right.");
             [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public static readonly GUIContent InternalField_1333 = EditorGUIUtility.TrTextContent("Pixels Per Unit Multiplier", "Determines how many pixels from the target image fit into a 1x1 square in the UIBlock2D's local space.");
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
             public static readonly GUIContent[] InternalField_2535 = new GUIContent[] { EditorGUIUtility.TrTextContent("T", "Texture"), EditorGUIUtility.TrTextContent("S", "Sprite") };
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public const string InternalField_3635 = "\"Sliced\" Scale Mode isn't compatible with \"Texture\" images. Change the Image Type to \"Sprite\" to used \"Sliced\" Scale Mode.";
         }
 
         public static class InternalType_570
@@ -521,7 +618,7 @@ namespace Nova.InternalNamespace_17.InternalNamespace_18
             [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
             public static readonly GUIContent InternalField_2548 = EditorGUIUtility.TrTextContent("Font Size", "Sets the font size on the attached Text Mesh Pro component.");
             [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
-            public static readonly GUIContent InternalField_2549 = new GUIContent(EditorGUIUtility.IconContent("d_console.infoicon.inactive.sml")) { tooltip = "[Text] and its expanded properties write directly to the attached Text Mesh Pro object. They are not controlled by this Text Block at runtime." };
+            public static readonly GUIContent InternalField_2549 = new GUIContent(EditorGUIUtility.TrIconContent("d_console.infoicon.inactive.sml")) { tooltip = "[Text] and its expanded properties write directly to the attached Text Mesh Pro object. They are not controlled by this Text Block at runtime." };
         }
     }
 }

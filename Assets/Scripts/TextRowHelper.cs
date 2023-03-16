@@ -1,5 +1,5 @@
+#if UNITY_EDITOR
 using Nova;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,3 +12,5 @@ public class TextRowHelper : MonoBehaviour, IVisible
         textBlocks.ForEach(block => { block.Visible = value; });
     }
 }
+// current file contents
+#endif

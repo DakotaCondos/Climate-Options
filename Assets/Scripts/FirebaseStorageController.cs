@@ -1,7 +1,7 @@
+#if UNITY_EDITOR
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Firebase;
 using Firebase.Extensions;
 using Firebase.Storage;
 using Nova;
@@ -94,8 +94,8 @@ public class FirebaseStorageController : MonoBehaviour
 
         totalImagesSave = (await Task.WhenAll(firebaseImages)).ToList();
         return totalImagesSave.Where(x => x is not null).ToList();
-      
-        
+
+
     }
 
     public async Task<List<byte[]>> GetAllImages(List<string> imageNames)
@@ -146,9 +146,8 @@ public class FirebaseStorageController : MonoBehaviour
     public int GetTotalImageIndex()
     {
         return totalImagesIndex;
-    }   
+    }
 }
 
-
-
-
+// current file contents
+#endif

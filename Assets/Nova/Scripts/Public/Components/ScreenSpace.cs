@@ -1,6 +1,7 @@
 using Nova.Compat;
 using Nova.InternalNamespace_0.InternalNamespace_2;
 using Nova.InternalNamespace_0.InternalNamespace_10;
+using Nova.InternalNamespace_0.InternalNamespace_5;
 using System;
 using System.Reflection;
 using UnityEngine;
@@ -16,7 +17,7 @@ namespace Nova
     [AddComponentMenu("Nova/Screen Space")]
     [ExecuteAlways]
     [HelpURL("https://novaui.io/manual/ScreenSpace.html")]
-    public class ScreenSpace : MonoBehaviour
+    public class ScreenSpace : MonoBehaviour, InternalType_765
     {
         #region Public
         /// <summary>
@@ -137,6 +138,11 @@ namespace Nova
         [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
         private bool haveConfiguredSortGroup = false;
 
+        [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+        int InternalType_765.InternalProperty_1156 => targetCamera.GetInstanceID();
+
+        void InternalType_765.InternalMethod_3365() => InternalMethod_1617();
+
         private void OnEnable()
         {
             UIBlock.InternalMethod_116();
@@ -149,8 +155,8 @@ namespace Nova
             if (!haveConfiguredSortGroup)
             {
                 haveConfiguredSortGroup = true;
-                InternalField_1434.RenderOverOpaqueGeometry = InternalType_40.InternalField_815.RenderOverOpaqueGeometry;
-                InternalField_1434.RenderQueue = InternalType_40.InternalField_815.RenderQueue;
+                InternalField_1434.RenderOverOpaqueGeometry = true;
+                InternalField_1434.RenderQueue = InternalType_776.InternalField_3710;
             }
 
             if (targetCamera == null)
@@ -187,7 +193,7 @@ namespace Nova
 
             if (targetCamera != null)
             {
-                InternalType_274.InternalProperty_190.InternalMethod_3365(UIBlock.InternalProperty_29, targetCamera);
+                InternalType_274.InternalProperty_190.InternalMethod_3647(UIBlock.InternalProperty_29, this);
             }
             else
             {
@@ -202,12 +208,7 @@ namespace Nova
                 return;
             }
 
-            InternalType_274.InternalProperty_190.InternalMethod_3366(InternalParameter_1753);
-        }
-
-        private void LateUpdate()
-        {
-            InternalMethod_1617();
+            InternalType_274.InternalProperty_190.InternalMethod_3648(InternalParameter_1753, this);
         }
 
         private void InternalMethod_1617(bool InternalParameter_1752 = false)
@@ -291,6 +292,6 @@ namespace Nova
         {
             InternalMethod_1618();
         }
-        #endregion
+#endregion
     }
 }

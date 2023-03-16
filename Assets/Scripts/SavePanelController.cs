@@ -1,7 +1,6 @@
+#if UNITY_EDITOR
 using Nova;
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine;
 
@@ -71,3 +70,5 @@ public class SavePanelController : MonoBehaviour
         responseBlock.Color = color;
     }
 }
+// current file contents
+#endif

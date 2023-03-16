@@ -1,13 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
+#if UNITY_EDITOR
 using UnityEngine;
 using Firebase.Auth;
 using TMPro;
 using System;
 using System.Text.RegularExpressions;
 using System.Globalization;
-using Firebase;
-using UnityEngine.UI;
 using Firebase.Extensions;
 
 public class AuthController : MonoBehaviour
@@ -328,3 +325,5 @@ public class AuthController : MonoBehaviour
     }
 }
 
+// current file contents
+#endif

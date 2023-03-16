@@ -110,72 +110,15 @@
     #endif
 #endif
 
-///////////////////////////// CLIP MASKS ////////////////////////////////////
-#if defined(NOVA_CLIP_RECT) || defined(NOVA_CLIP_MASK) || defined(NOVA_COLOR_MODIFIER)
-    float4x4 _NovaVisualModifierFromWorld;
-    // xy -> nHalfSize
-    // z -> nFactor
-    // w -> nRadius
-    half4 _NovaClipRectInfo;
-    fixed4 _NovaGlobalColorModifier;
-
-    #if defined(NOVA_CLIP_RECT) || defined(NOVA_CLIP_MASK)
-        #define NOVA_CLIPPING
-
-        #define ClipRectNHalfSize _NovaClipRectInfo.xy
-        #define ClipRectNFactor _NovaClipRectInfo.z
-        #define ClipRectNRadius _NovaClipRectInfo.w
-        #define ClipRectNCornerOrigin (ClipRectNHalfSize - ClipRectNRadius)
-
-        float2 NClipRectPosFromWorld(float3 worldPos)
-        {
-            float2 clipRectPos = mul(_NovaVisualModifierFromWorld, float4(worldPos, 1.0)).xy;
-            return clipRectPos * ClipRectNFactor;
-        }
-    #endif
-
-    #if defined(NOVA_CLIP_RECT)
-        fixed4 ApplyClipColorModification(fixed4 baseColor, half2 clipRectNPos)
-        {
-            fixed4 toRet = ApplyColorTint(baseColor, _NovaGlobalColorModifier);
-            #if !defined(NOVA_ALPHA)
-                clip(toRet.a - NOVA_EPSILON);
-            #endif
-            return toRet;
-        }
-        
-    #elif defined(NOVA_CLIP_MASK)
-        sampler2D _ClipMaskTex;
-
-        fixed4 ApplyClipColorModification(fixed4 baseColor, half2 clipRectNPos)
-        {
-            half2 novaUV = clipRectNPos / ClipRectNHalfSize;
-            half2 unityUV = ToUnityUV(novaUV);
-            fixed4 clipMaskColor = tex2D(_ClipMaskTex, unityUV);
-            clipMaskColor *= _NovaGlobalColorModifier;
-            fixed4 toRet = ApplyColorTint(baseColor, clipMaskColor);
-            #if !defined(NOVA_ALPHA)
-                clip(toRet.a - NOVA_EPSILON);
-            #endif
-            return toRet;
-        }
-
-    #elif defined(NOVA_COLOR_MODIFIER)
-        fixed4 ApplyClipColorModification(fixed4 baseColor)
-        {
-            return ApplyColorTint(baseColor, _NovaGlobalColorModifier);
-        }
-    #endif
-#endif
-
 #if 1 ///////////////////////////// Edge Softening ////////////////////////////////////
 
     half _NovaEdgeSoftenWidth;
 
     half GetSoftenWidth(half2 position)
     {
-        half2 dx = abs(ddx(position));
-        half2 dy = abs(ddy(position));
+        float2 posAsFloat = position;
+        float2 dx = abs(ddx(posAsFloat));
+        float2 dy = abs(ddy(posAsFloat));
         half fw = sqrt(dot(dx, dy.yx));
         fw = max(_NovaEdgeSoftenWidth * fw, NOVA_EPSILON);
         return fw;
@@ -183,8 +126,9 @@
 
     half2 GetSoftenWidth2(half4 position)
     {
-        half4 dx = abs(ddx(position));
-        half4 dy = abs(ddy(position));
+        float4 posAsFloat = position;
+        float4 dx = abs(ddx(posAsFloat));
+        float4 dy = abs(ddy(posAsFloat));
         half2 fw = half2(dot(dx.xy, dy.yx), dot(dx.zw, dy.wz));
         fw = sqrt(fw);
         fw = max(_NovaEdgeSoftenWidth * fw, NOVA_EPSILON);
@@ -256,4 +200,103 @@
         }
     #endif
 #endif
+
+///////////////////////////// CLIP MASKS ////////////////////////////////////
+#if defined(NOVA_CLIP_RECT) || defined(NOVA_CLIP_MASK)
+    #define MAX_VISUAL_MODIFIERS 16
+    uint _NovaVisualModifierCount;
+    float4x4 _NovaVisualModifiersFromRoot[MAX_VISUAL_MODIFIERS];
+    // xy -> nHalfSize
+    // z -> nFactor
+    // w -> nRadius
+    float4 _NovaClipRectInfos[MAX_VISUAL_MODIFIERS];
+    float4 _NovaGlobalColorModifiers[MAX_VISUAL_MODIFIERS];
+
+    #if defined(NOVA_CLIP_RECT) || defined(NOVA_CLIP_MASK)
+        #define NOVA_CLIPPING
+
+        #define GetClipRectNHalfSize(info) info.xy
+        #define GetClipRectNFactor(info) info.z
+        #define GetClipRectNRadius(info) info.w
+        #define GetClipRectNCornerOrigin(info) (GetClipRectNHalfSize(info) - GetClipRectNRadius(info))
+
+        half GetTotalVisualModifierClipping(float3 rootPos)
+        {
+            half clipWeight = 1.0;
+            for (uint i = 0; i < _NovaVisualModifierCount; ++i)
+            {
+                float2 visualModifierPos = mul(_NovaVisualModifiersFromRoot[i], float4(rootPos, 1.0)).xy;
+                float4 clipRectInfo = _NovaClipRectInfos[i];
+                float2 visualModifierNPos = visualModifierPos * GetClipRectNFactor(clipRectInfo);
+
+
+                half2 clampedCornerSpace;
+                half distanceOutsideBounds = DistanceFromCircleEdge(visualModifierNPos, GetClipRectNCornerOrigin(clipRectInfo), GetClipRectNRadius(clipRectInfo), clampedCornerSpace);
+                
+                half softenWidth = GetSoftenWidth(visualModifierNPos);
+                half softenInverse = 1.0 / softenWidth;
+
+                clipWeight *= GetClipWeight10(distanceOutsideBounds, softenInverse);
+            }
+            return clipWeight;
+        }
+
+        fixed4 ApplyVisualModiferClipping(fixed4 color, float3 rootPos)
+        {
+            for (uint i = 0; i < _NovaVisualModifierCount; ++i)
+            {
+                float2 visualModifierPos = mul(_NovaVisualModifiersFromRoot[i], float4(rootPos, 1.0)).xy;
+                float4 clipRectInfo = _NovaClipRectInfos[i];
+                float2 visualModifierNPos = visualModifierPos * GetClipRectNFactor(clipRectInfo);
+
+
+                half2 clampedCornerSpace;
+                half distanceOutsideBounds = DistanceFromCircleEdge(visualModifierNPos, GetClipRectNCornerOrigin(clipRectInfo), GetClipRectNRadius(clipRectInfo), clampedCornerSpace);
+                
+                half softenWidth = GetSoftenWidth(visualModifierNPos);
+                half softenInverse = 1.0 / softenWidth;
+
+                half clipWeight = GetClipWeight10(distanceOutsideBounds, softenInverse);
+                color = ApplyClipWeight(color, clipWeight);
+            }
+
+            return color;
+        }
+
+        fixed4 ApplyGlobalColorModification(fixed4 color)
+        {
+            for (uint i = 0; i < _NovaVisualModifierCount; ++i)
+            {
+                color = ApplyColorTint(color, _NovaGlobalColorModifiers[i]);
+            }
+            #if !defined(NOVA_ALPHA)
+                clip(color.a - NOVA_EPSILON);
+            #endif
+            return color;
+        }
+    #endif
+
+    #if defined(NOVA_CLIP_MASK)
+        // The index of the visual modifier corresponding to the clip mask
+        uint _NovaClipMaskIndex;
+        sampler2D _ClipMaskTex;
+
+        fixed4 ApplyClipMaskAndColorModifiers(fixed4 color, float3 rootPos)
+        {
+            float4 clipMaskInfo = _NovaClipRectInfos[_NovaClipMaskIndex];
+
+            float2 clipMaskPos = mul(_NovaVisualModifiersFromRoot[_NovaClipMaskIndex], float4(rootPos, 1.0)).xy;
+            float2 clipMaskNPos = clipMaskPos * GetClipRectNFactor(clipMaskInfo);
+
+            half2 novaUV = clipMaskNPos / GetClipRectNHalfSize(clipMaskInfo);
+            half2 unityUV = ToUnityUV(novaUV);
+            fixed4 clipMaskColor = tex2D(_ClipMaskTex, unityUV);
+            // Clip mask
+            color = ApplyColorTint(color, clipMaskColor);
+            // Color Modifiers
+            return ApplyGlobalColorModification(color);
+        }
+    #endif
+#endif
+
 #endif

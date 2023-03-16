@@ -1,5 +1,5 @@
+#if UNITY_EDITOR
 using Nova;
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -101,3 +101,5 @@ public class ProgramManager : MonoBehaviour
 
 
 }
+// current file contents
+#endif

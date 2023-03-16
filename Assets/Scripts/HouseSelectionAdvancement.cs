@@ -1,5 +1,5 @@
+#if UNITY_EDITOR
 using NovaSamples.UIControls;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -41,3 +41,5 @@ public class HouseSelectionAdvancement : MonoBehaviour
         programManager.sceneController.LoadSceneName("SetupScene");
     }
 }
+// current file contents
+#endif

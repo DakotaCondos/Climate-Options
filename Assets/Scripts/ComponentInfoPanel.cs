@@ -1,7 +1,5 @@
+#if UNITY_EDITOR
 using Nova;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ComponentInfoPanel : MonoBehaviour
@@ -42,3 +40,5 @@ public class ComponentInfoPanel : MonoBehaviour
     }
 
 }
+// current file contents
+#endif

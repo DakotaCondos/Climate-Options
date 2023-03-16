@@ -1,6 +1,4 @@
 using Nova.InternalNamespace_25;
-using Nova.InternalNamespace_0;
-using Nova.InternalNamespace_0.InternalNamespace_5;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -125,7 +123,8 @@ namespace Nova
                 return lhs.Target == rhs.Target &&
                        lhs.Receiver == rhs.Receiver &&
                        lhs.View == rhs.View &&
-                       EqualityComparer<TData>.Default.Equals(lhs.UserData, rhs.UserData);
+                       EqualityComparer<TData>.Default.Equals(lhs.UserData, rhs.UserData) &&
+                       lhs.ID == rhs.ID;
             }
 
             /// <summary>
@@ -139,7 +138,8 @@ namespace Nova
                 return lhs.Target != rhs.Target ||
                        lhs.Receiver != rhs.Receiver ||
                        lhs.View != rhs.View ||
-                       !EqualityComparer<TData>.Default.Equals(lhs.UserData, rhs.UserData);
+                       !EqualityComparer<TData>.Default.Equals(lhs.UserData, rhs.UserData) ||
+                       lhs.ID != rhs.ID;
             }
 
             /// <summary>The hashcode for this <see cref="OnBind{TData}"/>.</summary>
@@ -233,7 +233,8 @@ namespace Nova
                 return lhs.Target == rhs.Target &&
                        lhs.Receiver == rhs.Receiver &&
                        lhs.View == rhs.View &&
-                       EqualityComparer<TData>.Default.Equals(lhs.UserData, rhs.UserData);
+                       EqualityComparer<TData>.Default.Equals(lhs.UserData, rhs.UserData) &&
+                       lhs.ID == rhs.ID;
             }
 
             /// <summary>
@@ -247,7 +248,8 @@ namespace Nova
                 return lhs.Target != rhs.Target ||
                        lhs.Receiver != rhs.Receiver ||
                        lhs.View != rhs.View ||
-                       !EqualityComparer<TData>.Default.Equals(lhs.UserData, rhs.UserData);
+                       !EqualityComparer<TData>.Default.Equals(lhs.UserData, rhs.UserData) ||
+                       lhs.ID != rhs.ID;
             }
 
             /// <summary>The hashcode for this <see cref="OnUnbind{TData}"/>.</summary>
@@ -470,7 +472,7 @@ namespace Nova
         public struct OnMove : IGestureEvent, System.IEquatable<OnMove>
         {
             /// <summary>
-            /// The interaction update responsible for triggering the event. Either passed into or created by an <see cref="Interaction"/> method.
+            /// The interaction update responsible for triggering the event. Either passed into or created by an <see cref="Nova.Interaction"/> method.
             /// </summary>
             public Interaction.Update Interaction { get; set; }
 
@@ -505,7 +507,8 @@ namespace Nova
                 return lhs.Interaction == rhs.Interaction &&
                        lhs.Target == rhs.Target &&
                        lhs.Receiver == rhs.Receiver &&
-                       lhs.PointerWorldPosition == rhs.PointerWorldPosition;
+                       lhs.PointerWorldPosition == rhs.PointerWorldPosition &&
+                       lhs.ID == rhs.ID;
             }
 
             /// <summary>
@@ -519,7 +522,8 @@ namespace Nova
                 return lhs.Interaction != rhs.Interaction ||
                        lhs.Target != rhs.Target ||
                        lhs.Receiver != rhs.Receiver ||
-                       lhs.PointerWorldPosition != rhs.PointerWorldPosition;
+                       lhs.PointerWorldPosition != rhs.PointerWorldPosition ||
+                       lhs.ID != rhs.ID;
             }
 
             /// <summary>The hashcode for this <see cref="OnMove"/></summary>
@@ -567,7 +571,7 @@ namespace Nova
         public struct OnHover : IGestureEvent, System.IEquatable<OnHover>
         {
             /// <summary>
-            /// The interaction update responsible for triggering the event. Either passed into or created by an <see cref="Interaction"/> method.
+            /// The interaction update responsible for triggering the event. Either passed into or created by an <see cref="Nova.Interaction"/> method.
             /// </summary>
             public Interaction.Update Interaction { get; set; }
 
@@ -601,7 +605,9 @@ namespace Nova
             {
                 return lhs.Interaction == rhs.Interaction &&
                        lhs.Target == rhs.Target &&
-                       lhs.Receiver == rhs.Receiver;
+                       lhs.Receiver == rhs.Receiver &&
+                       lhs.PointerWorldPosition == rhs.PointerWorldPosition &&
+                       lhs.ID == rhs.ID;
             }
 
             /// <summary>
@@ -614,7 +620,9 @@ namespace Nova
             {
                 return lhs.Interaction != rhs.Interaction ||
                        lhs.Target != rhs.Target ||
-                       lhs.Receiver != rhs.Receiver;
+                       lhs.Receiver != rhs.Receiver ||
+                       lhs.PointerWorldPosition != rhs.PointerWorldPosition ||
+                       lhs.ID != rhs.ID;
             }
 
             /// <summary>The hashcode for this <see cref="OnHover"/></summary>
@@ -660,7 +668,7 @@ namespace Nova
         public struct OnUnhover : IGestureEvent, System.IEquatable<OnUnhover>
         {
             /// <summary>
-            /// The interaction update responsible for triggering the event. Either passed into or created by an <see cref="Interaction"/> method.
+            /// The interaction update responsible for triggering the event. Either passed into or created by an <see cref="Nova.Interaction"/> method.
             /// </summary>
             public Interaction.Update Interaction { get; set; }
 
@@ -689,7 +697,8 @@ namespace Nova
             {
                 return lhs.Interaction == rhs.Interaction &&
                        lhs.Target == rhs.Target &&
-                       lhs.Receiver == rhs.Receiver;
+                       lhs.Receiver == rhs.Receiver &&
+                       lhs.ID == rhs.ID;
             }
 
             /// <summary>
@@ -702,7 +711,8 @@ namespace Nova
             {
                 return lhs.Interaction != rhs.Interaction ||
                        lhs.Target != rhs.Target ||
-                       lhs.Receiver != rhs.Receiver;
+                       lhs.Receiver != rhs.Receiver ||
+                       lhs.ID != rhs.ID;
             }
 
             /// <summary>The hashcode for this <see cref="OnUnhover"/></summary>
@@ -748,7 +758,7 @@ namespace Nova
         public struct OnPress : IGestureEvent, System.IEquatable<OnPress>
         {
             /// <summary>
-            /// The interaction update responsible for triggering the event. Either passed into or created by an <see cref="Interaction"/> method.
+            /// The interaction update responsible for triggering the event. Either passed into or created by an <see cref="Nova.Interaction"/> method.
             /// </summary>
             public Interaction.Update Interaction { get; set; }
 
@@ -782,7 +792,9 @@ namespace Nova
             {
                 return lhs.Interaction == rhs.Interaction &&
                        lhs.Target == rhs.Target &&
-                       lhs.Receiver == rhs.Receiver;
+                       lhs.Receiver == rhs.Receiver &&
+                       lhs.PointerWorldPosition == rhs.PointerWorldPosition &&
+                       lhs.ID == rhs.ID;
             }
 
             /// <summary>
@@ -795,7 +807,9 @@ namespace Nova
             {
                 return lhs.Interaction != rhs.Interaction ||
                        lhs.Target != rhs.Target ||
-                       lhs.Receiver != rhs.Receiver;
+                       lhs.Receiver != rhs.Receiver ||
+                       lhs.PointerWorldPosition != rhs.PointerWorldPosition ||
+                       lhs.ID != rhs.ID;
             }
 
             /// <summary>The hashcode for this <see cref="OnPress"/>.</summary>
@@ -841,7 +855,7 @@ namespace Nova
         public struct OnRelease : IGestureEvent, System.IEquatable<OnRelease>
         {
             /// <summary>
-            /// The interaction update responsible for triggering the event. Either passed into or created by an <see cref="Interaction"/> method.
+            /// The interaction update responsible for triggering the event. Either passed into or created by an <see cref="Nova.Interaction"/> method.
             /// </summary>
             public Interaction.Update Interaction { get; set; }
 
@@ -882,7 +896,8 @@ namespace Nova
                        lhs.Target == rhs.Target &&
                        lhs.Receiver == rhs.Receiver &&
                        lhs.Hovering == rhs.Hovering &&
-                       lhs.WasDragged == rhs.WasDragged;
+                       lhs.WasDragged == rhs.WasDragged &&
+                       lhs.ID == rhs.ID;
             }
 
             /// <summary>
@@ -897,7 +912,8 @@ namespace Nova
                        lhs.Target != rhs.Target ||
                        lhs.Receiver != rhs.Receiver ||
                        lhs.Hovering != rhs.Hovering ||
-                       lhs.WasDragged != rhs.WasDragged;
+                       lhs.WasDragged != rhs.WasDragged ||
+                       lhs.ID != rhs.ID;
             }
 
             /// <summary>The hashcode for this <see cref="OnRelease"/>.</summary>
@@ -947,7 +963,7 @@ namespace Nova
         public struct OnClick : IGestureEvent, System.IEquatable<OnClick>
         {
             /// <summary>
-            /// The interaction update responsible for triggering the event. Either passed into or created by an <see cref="Interaction"/> method.
+            /// The interaction update responsible for triggering the event. Either passed into or created by an <see cref="Nova.Interaction"/> method.
             /// </summary>
             public Interaction.Update Interaction { get; set; }
 
@@ -976,7 +992,8 @@ namespace Nova
             {
                 return lhs.Interaction == rhs.Interaction &&
                        lhs.Target == rhs.Target &&
-                       lhs.Receiver == rhs.Receiver;
+                       lhs.Receiver == rhs.Receiver &&
+                       lhs.ID == rhs.ID;
             }
 
             /// <summary>
@@ -989,7 +1006,8 @@ namespace Nova
             {
                 return lhs.Interaction != rhs.Interaction ||
                        lhs.Target != rhs.Target ||
-                       lhs.Receiver != rhs.Receiver;
+                       lhs.Receiver != rhs.Receiver ||
+                       lhs.ID != rhs.ID;
             }
 
             /// <summary>The hashcode for this <see cref="OnClick"/></summary>
@@ -1034,7 +1052,7 @@ namespace Nova
         public struct OnScroll : IGestureEvent, System.IEquatable<OnScroll>
         {
             /// <summary>
-            /// The interaction update responsible for triggering the event. Either passed into or created by an <see cref="Interaction"/> method.
+            /// The interaction update responsible for triggering the event. Either passed into or created by an <see cref="Nova.Interaction"/> method.
             /// </summary>
             public Interaction.Update Interaction { get; set; }
 
@@ -1075,7 +1093,8 @@ namespace Nova
                        lhs.Target == rhs.Target &&
                        lhs.Receiver == rhs.Receiver &&
                        lhs.ScrollType == rhs.ScrollType &&
-                       lhs.ScrollDeltaLocalSpace == rhs.ScrollDeltaLocalSpace;
+                       lhs.ScrollDeltaLocalSpace == rhs.ScrollDeltaLocalSpace &&
+                       lhs.ID == rhs.ID;
             }
 
             /// <summary>
@@ -1090,7 +1109,8 @@ namespace Nova
                        lhs.Target != rhs.Target ||
                        lhs.Receiver != rhs.Receiver ||
                        lhs.ScrollType != rhs.ScrollType ||
-                       lhs.ScrollDeltaLocalSpace != rhs.ScrollDeltaLocalSpace;
+                       lhs.ScrollDeltaLocalSpace != rhs.ScrollDeltaLocalSpace ||
+                       lhs.ID != rhs.ID;
             }
 
             /// <summary>The hashcode for this <see cref="OnScroll"/>.</summary>
@@ -1141,7 +1161,7 @@ namespace Nova
         public struct OnDrag : IGestureEvent, System.IEquatable<OnDrag>
         {
             /// <summary>
-            /// The interaction update responsible for triggering the event. Either passed into or created by an <see cref="Interaction"/> method.
+            /// The interaction update responsible for triggering the event. Either passed into or created by an <see cref="Nova.Interaction"/> method.
             /// </summary>
             public Interaction.Update Interaction { get; set; }
 
@@ -1210,7 +1230,8 @@ namespace Nova
                        lhs.Target == rhs.Target &&
                        lhs.Receiver == rhs.Receiver &&
                        lhs.PointerPositions == rhs.PointerPositions &&
-                       lhs.DraggableAxes.Equals(rhs.DraggableAxes);
+                       lhs.DraggableAxes.Equals(rhs.DraggableAxes) &&
+                       lhs.ID == rhs.ID;
             }
 
             /// <summary>
@@ -1225,7 +1246,8 @@ namespace Nova
                        lhs.Target != rhs.Target ||
                        lhs.Receiver != rhs.Receiver ||
                        lhs.PointerPositions != rhs.PointerPositions ||
-                       !lhs.DraggableAxes.Equals(rhs.DraggableAxes);
+                       !lhs.DraggableAxes.Equals(rhs.DraggableAxes) ||
+                       lhs.ID != rhs.ID;
             }
 
             /// <summary>The hashcode for this <see cref="OnDrag"/>.</summary>
@@ -1274,7 +1296,7 @@ namespace Nova
         public struct OnCancel : IGestureEvent, System.IEquatable<OnCancel>
         {
             /// <summary>
-            /// The interaction update responsible for triggering the event. Either passed into or created by an <see cref="Interaction"/> method.
+            /// The interaction update responsible for triggering the event. Either passed into or created by an <see cref="Nova.Interaction"/> method.
             /// </summary>
             public Interaction.Update Interaction { get; set; }
 
@@ -1303,7 +1325,8 @@ namespace Nova
             {
                 return lhs.Interaction == rhs.Interaction &&
                        lhs.Target == rhs.Target &&
-                       lhs.Receiver == rhs.Receiver;
+                       lhs.Receiver == rhs.Receiver &&
+                       lhs.ID == rhs.ID;
             }
 
             /// <summary>
@@ -1316,7 +1339,8 @@ namespace Nova
             {
                 return lhs.Interaction != rhs.Interaction ||
                        lhs.Target != rhs.Target ||
-                       lhs.Receiver != rhs.Receiver;
+                       lhs.Receiver != rhs.Receiver ||
+                       lhs.ID != rhs.ID;
             }
 
             /// <summary>The hashcode for this <see cref="OnCancel"/>.</summary>
@@ -1355,6 +1379,516 @@ namespace Nova
     }
 
     /// <summary>
+    /// A static class providing all available UIBlock navigation event types.
+    /// </summary>
+    /// <seealso cref="OnDirection"/>
+    /// <seealso cref="OnMoveTo"/>
+    /// <seealso cref="OnMoveFrom"/>
+    /// <seealso cref="OnSelect"/>
+    /// <seealso cref="OnDeselect"/>
+    /// <seealso cref="IGestureEvent"/>
+    /// <seealso cref="Interactable"/>
+    /// <seealso cref="Scroller"/>
+    public static class Navigate
+    {
+        internal static OnMoveTo InternalMethod_507(Interaction.Update InternalParameter_2084, UIBlock InternalParameter_2083, UIBlock InternalParameter_2082, Vector3 InternalParameter_2081) => new OnMoveTo() { Interaction = InternalParameter_2084, Target = InternalParameter_2083, Receiver = InternalParameter_2083, FromUIBlock = InternalParameter_2082, Direction = InternalParameter_2081 };
+        internal static OnMoveFrom InternalMethod_1883(Interaction.Update InternalParameter_321, UIBlock InternalParameter_320, UIBlock InternalParameter_1215, Vector3 InternalParameter_1214) => new OnMoveFrom() { Interaction = InternalParameter_321, Target = InternalParameter_320, Receiver = InternalParameter_320, ToUIBlock = InternalParameter_1215, Direction = InternalParameter_1214 };
+        internal static OnDirection InternalMethod_461(Interaction.Update InternalParameter_2378, UIBlock InternalParameter_2381, Vector3 InternalParameter_3023) => new OnDirection() { Interaction = InternalParameter_2378, Target = InternalParameter_2381, Receiver = InternalParameter_2381, Direction = InternalParameter_3023 };
+        internal static OnSelect InternalMethod_460(Interaction.Update InternalParameter_3018, UIBlock InternalParameter_3017) => new OnSelect() { Interaction = InternalParameter_3018, Target = InternalParameter_3017, Receiver = InternalParameter_3017 };
+        internal static OnDeselect InternalMethod_2058(Interaction.Update InternalParameter_3016, UIBlock InternalParameter_3019) => new OnDeselect() { Interaction = InternalParameter_3016, Target = InternalParameter_3019, Receiver = InternalParameter_3019 };
+
+        /// <summary>
+        /// Details of a navigation select event.
+        /// </summary>
+        /// <remarks>
+        /// Not fired when <see cref="Receiver"/>'s <see cref="GestureRecognizer.OnSelect"/> is set
+        /// to <see cref="SelectBehavior.Click"/>. In that case, <see cref="Gesture.OnClick"/> events 
+        /// are fired instead.
+        /// </remarks>
+        /// <seealso cref="Navigate"/>
+        /// <seealso cref="Interactable"/>
+        /// <seealso cref="Scroller"/>
+        /// <seealso cref="SelectBehavior"/>
+        public struct OnSelect : IGestureEvent, System.IEquatable<OnSelect>
+        {
+            /// <summary>
+            /// The interaction update responsible for triggering the event. Created by a <see cref="Navigation"/> method.
+            /// </summary>
+            public Interaction.Update Interaction { get; set; }
+
+            /// <summary>
+            /// An ancestor of the <see cref="Receiver"/> (or the  <see cref="Receiver"/> itself) holding information pertinent to the event handler.
+            /// </summary>
+            public UIBlock Target { get; set; }
+
+            /// <summary>
+            /// The <see cref="UIBlock"/> from which the event was invoked.
+            /// </summary>
+            public UIBlock Receiver { get; set; }
+
+            /// <summary>
+            /// A unique identifier associated with the event.
+            /// </summary>
+            public int ID { get; set; }
+
+            /// <summary>
+            /// Equality operator.
+            /// </summary>
+            /// <param name="lhs">Left hand side.</param>
+            /// <param name="rhs">Right hand side.</param>
+            /// <returns><see langword="true"/> if all fields of <paramref name="lhs"/> are equal to their respective fields of <paramref name="rhs"/>.</returns>
+            public static bool operator ==(OnSelect lhs, OnSelect rhs)
+            {
+                return lhs.Interaction == rhs.Interaction &&
+                       lhs.Target == rhs.Target &&
+                       lhs.Receiver == rhs.Receiver &&
+                       lhs.ID == rhs.ID;
+            }
+
+            /// <summary>
+            /// Inequality operator.
+            /// </summary>
+            /// <param name="lhs">Left hand side.</param>
+            /// <param name="rhs">Right hand side.</param>
+            /// <returns><see langword="true"/> if any fields of <paramref name="lhs"/> are <b>not</b> equal to their respective fields of <paramref name="rhs"/>.</returns>
+            public static bool operator !=(OnSelect lhs, OnSelect rhs)
+            {
+                return lhs.Interaction != rhs.Interaction ||
+                       lhs.Target != rhs.Target ||
+                       lhs.Receiver != rhs.Receiver ||
+                       lhs.ID != rhs.ID;
+            }
+
+            /// <summary>The hashcode for this <see cref="OnSelect"/></summary>
+            public override int GetHashCode()
+            {
+                int InternalVar_1 = 13;
+                InternalVar_1 = (InternalVar_1 * 7) + InternalType_27.InternalMethod_193(this);
+                return InternalVar_1;
+            }
+
+            /// <summary>
+            /// Equality compare.
+            /// </summary>
+            /// <param name="other">The <see cref="OnSelect"/> to compare.</param>
+            /// <returns><see langword="true"/> if <c>this == <paramref name="other"/></c>.</returns>
+            public override bool Equals(object other)
+            {
+                if (other is OnSelect evt)
+                {
+                    return this == evt;
+                }
+
+                return false;
+            }
+
+            /// <summary>
+            /// Equality compare.
+            /// </summary>
+            /// <param name="other">The <see cref="OnSelect"/> to compare.</param>
+            /// <returns><see langword="true"/> if <c>this == <paramref name="other"/></c>.</returns>
+            public bool Equals(OnSelect other)
+            {
+                return this == other;
+            }
+        }
+
+        /// <summary>
+        /// Details of a navigation deselect event.
+        /// </summary>
+        /// <seealso cref="Navigate"/>
+        /// <seealso cref="Interactable"/>
+        /// <seealso cref="Scroller"/>
+        /// <seealso cref="SelectBehavior"/>
+        public struct OnDeselect : IGestureEvent, System.IEquatable<OnDeselect>
+        {
+            /// <summary>
+            /// The interaction update responsible for triggering the event. Created by a <see cref="Navigation"/> method.
+            /// </summary>
+            public Interaction.Update Interaction { get; set; }
+
+            /// <summary>
+            /// An ancestor of the <see cref="Receiver"/> (or the  <see cref="Receiver"/> itself) holding information pertinent to the event handler.
+            /// </summary>
+            public UIBlock Target { get; set; }
+
+            /// <summary>
+            /// The <see cref="UIBlock"/> from which the event was invoked.
+            /// </summary>
+            public UIBlock Receiver { get; set; }
+
+            /// <summary>
+            /// A unique identifier associated with the event.
+            /// </summary>
+            public int ID { get; set; }
+
+            /// <summary>
+            /// Equality operator.
+            /// </summary>
+            /// <param name="lhs">Left hand side.</param>
+            /// <param name="rhs">Right hand side.</param>
+            /// <returns><see langword="true"/> if all fields of <paramref name="lhs"/> are equal to their respective fields of <paramref name="rhs"/>.</returns>
+            public static bool operator ==(OnDeselect lhs, OnDeselect rhs)
+            {
+                return lhs.Interaction == rhs.Interaction &&
+                       lhs.Target == rhs.Target &&
+                       lhs.Receiver == rhs.Receiver &&
+                       lhs.ID == rhs.ID;
+            }
+
+            /// <summary>
+            /// Inequality operator.
+            /// </summary>
+            /// <param name="lhs">Left hand side.</param>
+            /// <param name="rhs">Right hand side.</param>
+            /// <returns><see langword="true"/> if any fields of <paramref name="lhs"/> are <b>not</b> equal to their respective fields of <paramref name="rhs"/>.</returns>
+            public static bool operator !=(OnDeselect lhs, OnDeselect rhs)
+            {
+                return lhs.Interaction != rhs.Interaction ||
+                       lhs.Target != rhs.Target ||
+                       lhs.Receiver != rhs.Receiver ||
+                       lhs.ID != rhs.ID;
+            }
+
+            /// <summary>The hashcode for this <see cref="OnDeselect"/></summary>
+            public override int GetHashCode()
+            {
+                int InternalVar_1 = 13;
+                InternalVar_1 = (InternalVar_1 * 7) + InternalType_27.InternalMethod_193(this);
+                return InternalVar_1;
+            }
+
+            /// <summary>
+            /// Equality compare.
+            /// </summary>
+            /// <param name="other">The <see cref="OnDeselect"/> to compare.</param>
+            /// <returns><see langword="true"/> if <c>this == <paramref name="other"/></c>.</returns>
+            public override bool Equals(object other)
+            {
+                if (other is OnDeselect evt)
+                {
+                    return this == evt;
+                }
+
+                return false;
+            }
+
+            /// <summary>
+            /// Equality compare.
+            /// </summary>
+            /// <param name="other">The <see cref="OnDeselect"/> to compare.</param>
+            /// <returns><see langword="true"/> if <c>this == <paramref name="other"/></c>.</returns>
+            public bool Equals(OnDeselect other)
+            {
+                return this == other;
+            }
+        }
+
+        /// <summary>
+        /// Details of a navigation event for when focus moves from <see cref="FromUIBlock"/> to <see cref="Receiver"/>.
+        /// </summary>
+        public struct OnMoveTo : IGestureEvent, System.IEquatable<OnMoveTo>
+        {
+            /// <summary>
+            /// The interaction update responsible for triggering the event. Created by a <see cref="Navigation"/> method.
+            /// </summary>
+            public Interaction.Update Interaction { get; set; }
+
+            /// <summary>
+            /// An ancestor of the <see cref="Receiver"/> (or the  <see cref="Receiver"/> itself) holding information pertinent to the event handler.
+            /// </summary>
+            public UIBlock Target { get; set; }
+
+            /// <summary>
+            /// The <see cref="UIBlock"/> from which the event was invoked.
+            /// </summary>
+            public UIBlock Receiver { get; set; }
+
+            /// <summary>
+            /// The direction in the <see cref="Receiver"/>'s local space
+            /// </summary>
+            public Vector3 Direction;
+
+            /// <summary>
+            /// The <see cref="UIBlock"/> navigation focus was moved from.
+            /// </summary>
+            /// <remarks>May be <c>null</c> if nothing previously had focus.</remarks>
+            public UIBlock FromUIBlock;
+
+            /// <summary>
+            /// A unique identifier associated with the event.
+            /// </summary>
+            public int ID { get; set; }
+
+            /// <summary>
+            /// Equality operator.
+            /// </summary>
+            /// <param name="lhs">Left hand side.</param>
+            /// <param name="rhs">Right hand side.</param>
+            /// <returns><see langword="true"/> if all fields of <paramref name="lhs"/> are equal to their respective fields of <paramref name="rhs"/>.</returns>
+            public static bool operator ==(OnMoveTo lhs, OnMoveTo rhs)
+            {
+                return lhs.Interaction == rhs.Interaction &&
+                       lhs.Target == rhs.Target &&
+                       lhs.Receiver == rhs.Receiver &&
+                       lhs.ID == rhs.ID &&
+                       lhs.Direction == rhs.Direction &&
+                       lhs.FromUIBlock == rhs.FromUIBlock;
+            }
+
+            /// <summary>
+            /// Inequality operator.
+            /// </summary>
+            /// <param name="lhs">Left hand side.</param>
+            /// <param name="rhs">Right hand side.</param>
+            /// <returns><see langword="true"/> if any fields of <paramref name="lhs"/> are <b>not</b> equal to their respective fields of <paramref name="rhs"/>.</returns>
+            public static bool operator !=(OnMoveTo lhs, OnMoveTo rhs)
+            {
+                return lhs.Interaction != rhs.Interaction ||
+                       lhs.Target != rhs.Target ||
+                       lhs.Receiver != rhs.Receiver ||
+                       lhs.ID != rhs.ID ||
+                       lhs.Direction != rhs.Direction ||
+                       lhs.FromUIBlock != rhs.FromUIBlock;
+            }
+
+            /// <summary>The hashcode for this <see cref="OnMoveTo"/>.</summary>
+            public override int GetHashCode()
+            {
+                int InternalVar_1 = 13;
+                InternalVar_1 = (InternalVar_1 * 7) + InternalType_27.InternalMethod_193(this);
+                InternalVar_1 = (InternalVar_1 * 7) + Direction.GetHashCode();
+
+                if (FromUIBlock != null)
+                {
+                    InternalVar_1 = (InternalVar_1 * 7) + FromUIBlock.GetHashCode();
+                }
+
+                return InternalVar_1;
+            }
+
+            /// <summary>
+            /// Equality compare.
+            /// </summary>
+            /// <param name="other">The <see cref="OnMoveFrom"/> to compare.</param>
+            /// <returns><see langword="true"/> if <c>this == <paramref name="other"/></c>.</returns>
+            public override bool Equals(object other)
+            {
+                return other is OnMoveTo evt && this == evt;
+            }
+
+            /// <summary>
+            /// Equality compare.
+            /// </summary>
+            /// <param name="other">The <see cref="OnMoveFrom"/> to compare.</param>
+            /// <returns><see langword="true"/> if <c>this == <paramref name="other"/></c>.</returns>
+            public bool Equals(OnMoveTo other)
+            {
+                return this == other;
+            }
+        }
+
+        /// <summary>
+        /// Details of a navigation event for when focus moves from <see cref="Receiver"/> to <see cref="ToUIBlock"/>.
+        /// </summary>
+        public struct OnMoveFrom : IGestureEvent, System.IEquatable<OnMoveFrom>
+        {
+            /// <summary>
+            /// The interaction update responsible for triggering the event. Created by a <see cref="Navigation"/> method.
+            /// </summary>
+            public Interaction.Update Interaction { get; set; }
+
+            /// <summary>
+            /// An ancestor of the <see cref="Receiver"/> (or the  <see cref="Receiver"/> itself) holding information pertinent to the event handler.
+            /// </summary>
+            public UIBlock Target { get; set; }
+
+            /// <summary>
+            /// The <see cref="UIBlock"/> from which the event was invoked.
+            /// </summary>
+            public UIBlock Receiver { get; set; }
+
+            /// <summary>
+            /// The direction in the <see cref="Receiver"/>'s local space
+            /// </summary>
+            public Vector3 Direction;
+
+            /// <summary>
+            /// The <see cref="UIBlock"/> navigation focus was moved to.
+            /// </summary>
+            /// <remarks>May be <c>null</c> if focus moved off the <see cref="Receiver"/> but nothing received focus.</remarks>
+            public UIBlock ToUIBlock;
+
+            /// <summary>
+            /// A unique identifier associated with the event.
+            /// </summary>
+            public int ID { get; set; }
+
+            /// <summary>
+            /// Equality operator.
+            /// </summary>
+            /// <param name="lhs">Left hand side.</param>
+            /// <param name="rhs">Right hand side.</param>
+            /// <returns><see langword="true"/> if all fields of <paramref name="lhs"/> are equal to their respective fields of <paramref name="rhs"/>.</returns>
+            public static bool operator ==(OnMoveFrom lhs, OnMoveFrom rhs)
+            {
+                return lhs.Interaction == rhs.Interaction &&
+                       lhs.Target == rhs.Target &&
+                       lhs.Receiver == rhs.Receiver &&
+                       lhs.ID == rhs.ID &&
+                       lhs.Direction == rhs.Direction &&
+                       lhs.ToUIBlock == rhs.ToUIBlock;
+            }
+
+            /// <summary>
+            /// Inequality operator.
+            /// </summary>
+            /// <param name="lhs">Left hand side.</param>
+            /// <param name="rhs">Right hand side.</param>
+            /// <returns><see langword="true"/> if any fields of <paramref name="lhs"/> are <b>not</b> equal to their respective fields of <paramref name="rhs"/>.</returns>
+            public static bool operator !=(OnMoveFrom lhs, OnMoveFrom rhs)
+            {
+                return lhs.Interaction != rhs.Interaction ||
+                       lhs.Target != rhs.Target ||
+                       lhs.Receiver != rhs.Receiver ||
+                       lhs.ID != rhs.ID ||
+                       lhs.Direction != rhs.Direction ||
+                       lhs.ToUIBlock != rhs.ToUIBlock;
+            }
+
+            /// <summary>The hashcode for this <see cref="OnMoveFrom"/>.</summary>
+            public override int GetHashCode()
+            {
+                int InternalVar_1 = 13;
+                InternalVar_1 = (InternalVar_1 * 7) + InternalType_27.InternalMethod_193(this);
+                InternalVar_1 = (InternalVar_1 * 7) + Direction.GetHashCode();
+
+                if (ToUIBlock != null)
+                {
+                    InternalVar_1 = (InternalVar_1 * 7) + ToUIBlock.GetHashCode();
+                }
+
+                return InternalVar_1;
+            }
+
+            /// <summary>
+            /// Equality compare.
+            /// </summary>
+            /// <param name="other">The <see cref="OnMoveFrom"/> to compare.</param>
+            /// <returns><see langword="true"/> if <c>this == <paramref name="other"/></c>.</returns>
+            public override bool Equals(object other)
+            {
+                return other is OnMoveFrom evt && this == evt;
+            }
+
+            /// <summary>
+            /// Equality compare.
+            /// </summary>
+            /// <param name="other">The <see cref="OnMoveFrom"/> to compare.</param>
+            /// <returns><see langword="true"/> if <c>this == <paramref name="other"/></c>.</returns>
+            public bool Equals(OnMoveFrom other)
+            {
+                return this == other;
+            }
+        }
+
+        /// <summary>
+        /// Details of a navigation event for when focus is unchanged but received navigation input in <see cref="Direction"/>.
+        /// </summary>
+        public struct OnDirection : IGestureEvent, System.IEquatable<OnDirection>
+        {
+            /// <summary>
+            /// The interaction update responsible for triggering the event. Created by a <see cref="Navigation"/> method.
+            /// </summary>
+            public Interaction.Update Interaction { get; set; }
+
+            /// <summary>
+            /// An ancestor of the <see cref="Receiver"/> (or the  <see cref="Receiver"/> itself) holding information pertinent to the event handler.
+            /// </summary>
+            public UIBlock Target { get; set; }
+
+            /// <summary>
+            /// The <see cref="UIBlock"/> from which the event was invoked.
+            /// </summary>
+            public UIBlock Receiver { get; set; }
+
+            /// <summary>
+            /// The direction in the <see cref="Receiver"/>'s local space
+            /// </summary>
+            public Vector3 Direction;
+
+            /// <summary>
+            /// A unique identifier associated with the event.
+            /// </summary>
+            public int ID { get; set; }
+
+            /// <summary>
+            /// Equality operator.
+            /// </summary>
+            /// <param name="lhs">Left hand side.</param>
+            /// <param name="rhs">Right hand side.</param>
+            /// <returns><see langword="true"/> if all fields of <paramref name="lhs"/> are equal to their respective fields of <paramref name="rhs"/>.</returns>
+            public static bool operator ==(OnDirection lhs, OnDirection rhs)
+            {
+                return lhs.Interaction == rhs.Interaction &&
+                       lhs.Target == rhs.Target &&
+                       lhs.Receiver == rhs.Receiver &&
+                       lhs.ID == rhs.ID &&
+                       lhs.Direction == rhs.Direction;
+            }
+
+            /// <summary>
+            /// Inequality operator.
+            /// </summary>
+            /// <param name="lhs">Left hand side.</param>
+            /// <param name="rhs">Right hand side.</param>
+            /// <returns><see langword="true"/> if any fields of <paramref name="lhs"/> are <b>not</b> equal to their respective fields of <paramref name="rhs"/>.</returns>
+            public static bool operator !=(OnDirection lhs, OnDirection rhs)
+            {
+                return lhs.Interaction != rhs.Interaction ||
+                       lhs.Target != rhs.Target ||
+                       lhs.Receiver != rhs.Receiver ||
+                       lhs.ID != rhs.ID ||
+                       lhs.Direction != rhs.Direction;
+            }
+
+            /// <summary>The hashcode for this <see cref="OnDirection"/>.</summary>
+            public override int GetHashCode()
+            {
+                int InternalVar_1 = 13;
+                InternalVar_1 = (InternalVar_1 * 7) + InternalType_27.InternalMethod_193(this);
+                return InternalVar_1;
+            }
+
+            /// <summary>
+            /// Equality compare.
+            /// </summary>
+            /// <param name="other">The <see cref="OnDirection"/> to compare.</param>
+            /// <returns><see langword="true"/> if <c>this == <paramref name="other"/></c>.</returns>
+            public override bool Equals(object other)
+            {
+                if (other is OnDirection evt)
+                {
+                    return this == evt;
+                }
+
+                return false;
+            }
+
+            /// <summary>
+            /// Equality compare.
+            /// </summary>
+            /// <param name="other">The <see cref="OnDirection"/> to compare.</param>
+            /// <returns><see langword="true"/> if <c>this == <paramref name="other"/></c>.</returns>
+            public bool Equals(OnDirection other)
+            {
+                return this == other;
+            }
+        }
+
+    }
+
+    /// <summary>
     /// A common interface implemented by all UIBlock gesture event structs.
     /// </summary>
     /// <seealso cref="Interaction.Point(Interaction.Update, bool, bool, float, int, InputAccuracy)"/>
@@ -1370,10 +1904,19 @@ namespace Nova
     /// <seealso cref="Gesture.OnUnhover"/>
     /// <seealso cref="Gesture.OnMove"/>
     /// <seealso cref="Gesture.OnCancel"/>
+    /// <seealso cref="Navigation.Focus(UIBlock, uint, object, int)"/>
+    /// <seealso cref="Navigation.Move(Vector3, uint, object, int)"/>
+    /// <seealso cref="Navigation.Select(uint, object, int)"/>
+    /// <seealso cref="Navigation.Deselect(uint, object, int)"/>
+    /// <seealso cref="Navigate.OnDirection"/>
+    /// <seealso cref="Navigate.OnMoveTo"/>
+    /// <seealso cref="Navigate.OnMoveFrom"/>
+    /// <seealso cref="Navigate.OnSelect"/>
+    /// <seealso cref="Navigate.OnDeselect"/>
     public interface IGestureEvent : IEvent
     {
         /// <summary>
-        /// The interaction update responsible for triggering the event. Either passed into or created by an <see cref="Interaction"/> method.
+        /// The interaction update responsible for triggering the event. Either passed into or created by an <see cref="Nova.Interaction"/> method.
         /// </summary>
         Interaction.Update Interaction { get; set; }
     }
@@ -1390,6 +1933,11 @@ namespace Nova
     /// <seealso cref="Gesture.OnMove"/>
     /// <seealso cref="Gesture.OnDrag"/>
     /// <seealso cref="Gesture.OnCancel"/>
+    /// <seealso cref="Navigate.OnDirection"/>
+    /// <seealso cref="Navigate.OnMoveTo"/>
+    /// <seealso cref="Navigate.OnMoveFrom"/>
+    /// <seealso cref="Navigate.OnSelect"/>
+    /// <seealso cref="Navigate.OnDeselect"/>
     /// <seealso cref="Data.OnBind{TData}"/>
     /// <seealso cref="Data.OnUnbind{TData}"/>
     public interface IEvent
@@ -1433,6 +1981,8 @@ namespace Nova
         public static int InternalMethod_2009<T>(this T InternalParameter_2149) where T : struct, IEvent
         {
             int InternalVar_1 = 13;
+
+            InternalVar_1 = (InternalVar_1 * 7) + InternalParameter_2149.ID.GetHashCode();
 
             if (InternalParameter_2149.Target != null)
             {

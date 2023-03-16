@@ -1,9 +1,8 @@
+#if UNITY_EDITOR
 using Nova;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using static Unity.Collections.AllocatorManager;
 
 public class BorderActiveGroup : MonoBehaviour
 {
@@ -30,3 +29,5 @@ public class BorderActiveGroup : MonoBehaviour
         }
     }
 }
+// current file contents
+#endif

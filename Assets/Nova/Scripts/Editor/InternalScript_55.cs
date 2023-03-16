@@ -20,22 +20,6 @@ namespace Nova.InternalNamespace_17.InternalNamespace_18
         private static GUIContent InternalField_2408 = new GUIContent("Scrollbar");
 
         [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
-        private static GUIContent InternalField_2409 = new GUIContent("Overscroll Effect", "The behavior applied when there's no more content to scroll in the scrolling direction");
-
-        [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
-        private static GUIContent InternalField_2410 = new GUIContent("Drag Scrolling", "Allow Interactions.Point drag events to trigger a scroll.\n\nE.g. Dragging on a touch screen.");
-
-        [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
-        private static GUIContent InternalField_2411 = new GUIContent("Vector Scrolling", "Allow Interactions.Scroll vector events to trigger a scroll.\n\nE.g. Scroll wheel on a mouse.");
-        [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
-        private static GUIContent InternalField_2412 = new GUIContent("Vector Scroll Multiplier", "The speed multiplier for vector scrolling");
-
-        [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
-        private static GUIContent InternalField_2413 = new GUIContent("Draggable Scrollbar", "Indicates whether or not the Scroller should handle drag events on the Scrollbar Visual automatically.");
-        [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
-        private static GUIContent InternalField_2414 = new GUIContent("Scrollbar Visual", "The visual representing the scroll position of content relative to the viewport. The Scroller component will adjust this visual's size/position along the scrolling axis");
-
-        [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
         SerializedProperty InternalField_2213 = null;
         [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
         SerializedProperty InternalField_2819 = null;
@@ -87,33 +71,36 @@ namespace Nova.InternalNamespace_17.InternalNamespace_18
             EditorGUI.BeginChangeCheck();
 
             EditorGUILayout.LabelField(InternalField_2918, EditorStyles.boldLabel);
-            EditorGUILayout.PropertyField(InternalField_2819, InternalField_2924);
+            EditorGUILayout.PropertyField(InternalField_2819, InternalType_554.InternalType_743.InternalField_3457);
 
             EditorGUILayout.Separator();
             EditorGUILayout.LabelField(InternalField_2406, EditorStyles.boldLabel);
-            EditorGUILayout.PropertyField(InternalField_2417, InternalField_2410);
+            EditorGUILayout.PropertyField(InternalField_2417, InternalType_554.InternalType_745.InternalField_3468);
 
             if (InternalField_2417.boolValue)
             {
-                InternalType_573.InternalMethod_2233(InternalField_2217, InternalField_2418, 0, InternalField_3344);
-                InternalType_573.InternalMethod_2233(InternalField_2216, InternalField_2419, 0, InternalField_3344);
+                InternalType_573.InternalMethod_2233(InternalType_554.InternalType_743.InternalField_3455, InternalField_2418, 0, InternalField_3344);
+                InternalType_573.InternalMethod_2233(InternalType_554.InternalType_743.InternalField_3456, InternalField_2419, 0, InternalField_3344);
             }
 
             EditorGUILayout.Separator();
             EditorGUILayout.LabelField(InternalField_2407, EditorStyles.boldLabel);
-            EditorGUILayout.PropertyField(InternalField_2420, InternalField_2411);
+            EditorGUILayout.PropertyField(InternalField_2420, InternalType_554.InternalType_745.InternalField_3469);
 
             if (InternalField_2420.boolValue)
             {
-                EditorGUILayout.PropertyField(InternalField_2421, InternalField_2412);
+                EditorGUILayout.PropertyField(InternalField_2421, InternalType_554.InternalType_745.InternalField_3470);
             }
+
+            EditorGUILayout.Separator();
+            InternalMethod_3433();
 
             InternalMethod_2176();
 
             EditorGUILayout.Separator();
             EditorGUILayout.Separator();
-            EditorGUILayout.PropertyField(InternalField_2416, InternalField_2409);
-            EditorGUILayout.PropertyField(InternalField_2213, InternalField_2218);
+            EditorGUILayout.PropertyField(InternalField_2416, InternalType_554.InternalType_745.InternalField_3467);
+            EditorGUILayout.PropertyField(InternalField_2213, InternalType_554.InternalType_743.InternalField_3454);
 
             if (EditorGUI.EndChangeCheck())
             {
@@ -180,7 +167,7 @@ namespace Nova.InternalNamespace_17.InternalNamespace_18
         private void InternalMethod_829()
         {
             EditorGUI.BeginChangeCheck();
-            EditorGUILayout.PropertyField(InternalField_2423, InternalField_2413);
+            EditorGUILayout.PropertyField(InternalField_2423, InternalType_554.InternalType_745.InternalField_3471);
 
             if (!EditorGUI.EndChangeCheck() || !InternalProperty_1039)
             {
@@ -193,7 +180,7 @@ namespace Nova.InternalNamespace_17.InternalNamespace_18
         private void InternalMethod_832()
         {
             EditorGUI.BeginChangeCheck();
-            EditorGUILayout.PropertyField(InternalField_2422, InternalField_2414);
+            EditorGUILayout.PropertyField(InternalField_2422, InternalType_554.InternalType_745.InternalField_3472);
 
             if (!(EditorGUI.EndChangeCheck() && InternalProperty_1039 && InternalField_2422.objectReferenceValue is UIBlock scrollbarBlock))
             {

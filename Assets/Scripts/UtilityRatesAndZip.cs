@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using UnityEngine;
 using System.Collections.Generic;
 using System.IO;
@@ -67,3 +68,5 @@ public class UtilityRatesAndZip : MonoBehaviour
         isReady = true;
     }
 }
+// current file contents
+#endif

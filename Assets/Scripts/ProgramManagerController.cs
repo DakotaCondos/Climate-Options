@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+#if UNITY_EDITOR
 using UnityEngine;
 
 public class ProgramManagerController : MonoBehaviour
@@ -28,3 +27,5 @@ public class ProgramManagerController : MonoBehaviour
         programManager.sceneController.QuitGame();
     }
 }
+// current file contents
+#endif

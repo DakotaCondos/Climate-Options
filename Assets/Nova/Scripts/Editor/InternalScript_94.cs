@@ -1,3 +1,4 @@
+using Nova.InternalNamespace_17.InternalNamespace_18;
 using System.Diagnostics;
 using UnityEditor;
 
@@ -5,6 +6,12 @@ namespace Nova.InternalNamespace_17
 {
     internal static class InternalType_185
     {
+        [MenuItem("Tools/Nova/FAQ")]
+        private static void InternalMethod_3655()
+        { 
+            InternalType_767.InternalMethod_3671();
+        }
+
         [MenuItem("Tools/Nova/Manual")]
         private static void InternalMethod_1545()
         {

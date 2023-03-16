@@ -1,7 +1,6 @@
+#if UNITY_EDITOR
 using Nova;
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class RoomComponentBlockController : MonoBehaviour
@@ -43,3 +42,5 @@ public class RoomComponentBlockController : MonoBehaviour
         return false;
     }
 }
+// current file contents
+#endif

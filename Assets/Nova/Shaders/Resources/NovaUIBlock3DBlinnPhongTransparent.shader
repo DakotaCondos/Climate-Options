@@ -78,7 +78,7 @@ Shader "Hidden/Nova/NovaUIBlock3DBlinnPhongTransparent"
 
             #define NOVA_BLINNPHONG_LIGHTING
             
-            #pragma multi_compile_local __ NOVA_COLOR_MODIFIER NOVA_CLIP_RECT NOVA_CLIP_MASK            #include "../UIBlock3D.cginc"
+            #pragma multi_compile_local __ NOVA_CLIP_RECT NOVA_CLIP_MASK            #include "../UIBlock3D.cginc"
 
 
             NOVA_DUMMY_INSTANCE_SETUP
@@ -130,7 +130,7 @@ Shader "Hidden/Nova/NovaUIBlock3DBlinnPhongTransparent"
 
             #define NOVA_BLINNPHONG_LIGHTING
             
-            #pragma multi_compile_local __ NOVA_COLOR_MODIFIER NOVA_CLIP_RECT NOVA_CLIP_MASK            #include "../UIBlock3D.cginc"
+            #pragma multi_compile_local __ NOVA_CLIP_RECT NOVA_CLIP_MASK            #include "../UIBlock3D.cginc"
 
             
             NOVA_DUMMY_INSTANCE_SETUP
@@ -176,7 +176,7 @@ Shader "Hidden/Nova/NovaUIBlock3DBlinnPhongTransparent"
 
             #define NOVA_BLINNPHONG_LIGHTING
             
-            #pragma multi_compile_local __ NOVA_COLOR_MODIFIER NOVA_CLIP_RECT NOVA_CLIP_MASK            #include "../UIBlock3D.cginc"
+            #pragma multi_compile_local __ NOVA_CLIP_RECT NOVA_CLIP_MASK            #include "../UIBlock3D.cginc"
 
 
             NOVA_DUMMY_INSTANCE_SETUP

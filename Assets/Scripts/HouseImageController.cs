@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using System.Collections;
 using System.Collections.Generic;
 using Nova;
@@ -97,3 +98,5 @@ public class HouseImageController : MonoBehaviour
         ImageLoader(imageIndex);
     }
 }
+// current file contents
+#endif

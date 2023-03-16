@@ -1,9 +1,8 @@
+#if UNITY_EDITOR
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
-using static UnityEditor.Progress;
 
 public class CCSCFactory : MonoBehaviour
 {
@@ -130,4 +129,4 @@ public class CCSCFactory : MonoBehaviour
     }
 }
 
-
+#endif

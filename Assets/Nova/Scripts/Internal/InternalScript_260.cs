@@ -1,14 +1,12 @@
-using Nova.InternalNamespace_0;
 using Nova.InternalNamespace_0.InternalNamespace_10;
 using System;
-using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 
 namespace Nova
 {
-    
+
     [Serializable]
     internal class InternalType_42 : InternalType_33, InternalType_7
     {

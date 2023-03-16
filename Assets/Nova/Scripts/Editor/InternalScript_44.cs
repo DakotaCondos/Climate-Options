@@ -1,6 +1,7 @@
 using Nova.InternalNamespace_17.InternalNamespace_20;
 using Nova.InternalNamespace_0.InternalNamespace_2;
 using Nova.InternalNamespace_0.InternalNamespace_10;
+using Nova.InternalNamespace_0.InternalNamespace_5;
 using System;
 using Unity.Collections.LowLevel.Unsafe;
 using UnityEditor;
@@ -62,7 +63,12 @@ namespace Nova.InternalNamespace_17.InternalNamespace_18
             }
             else
             {
-                InternalParameter_1751 = InternalType_40.InternalField_815;
+                InternalParameter_1751 = new InternalType_40()
+                {
+                    SortingOrder = 0,
+                    RenderQueue = InternalType_776.InternalField_3710,
+                    RenderOverOpaqueGeometry = true,
+                };
             }
 
             return true;

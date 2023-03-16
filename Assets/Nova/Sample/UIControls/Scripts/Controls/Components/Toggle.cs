@@ -39,6 +39,12 @@ namespace NovaSamples.UIControls
 
         private void OnEnable()
         {
+            if (View.TryGetVisuals(out ToggleVisuals visuals))
+            {
+                // Set default state
+                visuals.UpdateVisualState(VisualState.Default);
+            }
+
             // Subscribe to desired events
             View.UIBlock.AddGestureHandler<Gesture.OnClick, ToggleVisuals>(HandleClicked);
             View.UIBlock.AddGestureHandler<Gesture.OnHover, ToggleVisuals>(ToggleVisuals.HandleHovered);

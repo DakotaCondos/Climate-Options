@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+#if UNITY_EDITOR
 using UnityEngine;
 
 public class DisplaySwitcherButton : MonoBehaviour
@@ -13,3 +12,5 @@ public class DisplaySwitcherButton : MonoBehaviour
         displaySwitcher.SwitchDisplay(display);
     }
 }
+// current file contents
+#endif

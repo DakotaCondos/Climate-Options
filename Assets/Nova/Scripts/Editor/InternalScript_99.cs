@@ -22,6 +22,8 @@ namespace Nova.InternalNamespace_17.InternalNamespace_18
         [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
         public const float InternalField_2550 = 10;
         [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+        public const float InternalField_3636 = 12.5f;
+        [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
         public const float InternalField_2551 = 15;
         [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
         public const float InternalField_2552 = 15;
@@ -513,6 +515,65 @@ namespace Nova.InternalNamespace_17.InternalNamespace_18
                 }
             }
 
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            private static GUIStyle InternalField_3643 = null;
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public static GUIStyle InternalProperty_1158
+            {
+                get
+                {
+                    if (InternalField_3643 == null)
+                    {
+                        InternalField_3643 = new GUIStyle(EditorStyles.linkLabel);
+                        InternalField_3643.fontSize += 2;
+                        InternalField_3643.hover = new GUIStyleState()
+                        {
+                            textColor = EditorStyles.label.normal.textColor
+                        };
+                    }
+
+                    return InternalField_3643;
+                }
+            }
+
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            private static GUIStyle InternalField_3644 = null;
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public static GUIStyle InternalProperty_1159
+            {
+                get
+                {
+                    if (InternalField_3644 == null)
+                    {
+                        InternalField_3644 = new GUIStyle(EditorStyles.label);
+
+                        InternalField_3644.fontSize += 2;
+                        InternalField_3644.wordWrap = true;
+                        InternalField_3644.padding = new RectOffset(36, 36, 18, 18);
+                    }
+
+                    return InternalField_3644;
+                }
+            }
+
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            private static GUIStyle InternalField_3645 = null;
+            [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+            public static GUIStyle InternalProperty_1160
+            {
+                get
+                {
+                    if (InternalField_3645 == null)
+                    {
+                        InternalField_3645 = new GUIStyle(EditorStyles.boldLabel);
+
+                        InternalField_3645.fontSize += 2;
+                    }
+
+                    return InternalField_3645;
+                }
+            }
+
             public static void InternalMethod_2290(Rect InternalParameter_2665, Color InternalParameter_2666)
             {
                 if (Event.current == null || Event.current.type != EventType.Repaint)
@@ -525,23 +586,27 @@ namespace Nova.InternalNamespace_17.InternalNamespace_18
                 InternalProperty_493.Draw(InternalParameter_2665, false, false, false, false);
             }
 
-            public static void InternalMethod_2291(Rect InternalParameter_2667, float InternalParameter_2668 = 1.5f, bool InternalParameter_2669 = true)
+            public static void InternalMethod_3438(Rect InternalParameter_3216, float InternalParameter_3217 = 1.5f, bool InternalParameter_3218 = true, bool InternalParameter_3219 = false)
             {
                 if (Event.current.type != EventType.Repaint)
                 {
                     return;
                 }
 
-                Rect InternalVar_1 = InternalParameter_2667;
+                Rect InternalVar_1 = InternalParameter_3216;
                 InternalVar_1.y = InternalVar_1.yMax;
-                InternalVar_1.x = 0;
-                InternalVar_1.width = EditorGUIUtility.currentViewWidth;
 
-                int InternalVar_2 = InternalParameter_2669 ? 0 : 1;
-                int InternalVar_3 = InternalParameter_2669 ? 1 : 0;
+                if (!InternalParameter_3219)
+                {
+                    InternalVar_1.x = 0;
+                    InternalVar_1.width = EditorGUIUtility.currentViewWidth;
+                }
 
-                float InternalVar_4 = InternalParameter_2669 ? InternalParameter_2668 * (1 / 3f) : InternalParameter_2668 * (2 / 3f);
-                float InternalVar_5 = InternalParameter_2669 ? InternalParameter_2668 * (2 / 3f) : InternalParameter_2668 * (1 / 3f);
+                int InternalVar_2 = InternalParameter_3218 ? 0 : 1;
+                int InternalVar_3 = InternalParameter_3218 ? 1 : 0;
+
+                float InternalVar_4 = InternalParameter_3218 ? InternalParameter_3217 * (1 / 3f) : InternalParameter_3217 * (2 / 3f);
+                float InternalVar_5 = InternalParameter_3218 ? InternalParameter_3217 * (2 / 3f) : InternalParameter_3217 * (1 / 3f);
 
                 InternalVar_1.height = InternalVar_4;
                 InternalProperty_492[InternalVar_2].Draw(InternalVar_1, false, false, false, false);
@@ -799,14 +864,54 @@ namespace Nova.InternalNamespace_17.InternalNamespace_18
         {
             Rect InternalVar_1 = InternalType_573.InternalType_575.InternalMethod_2302(GUILayout.Width(0), GUILayout.Height(0));
 
-            InternalVar_1.x -= EditorGUIUtility.singleLineHeight;
-            InternalVar_1.y += InternalType_573.InternalField_2557;
-            InternalVar_1.width = InternalType_573.InternalField_2552;
-            InternalVar_1.height = InternalType_573.InternalField_2552;
+            InternalMethod_3639(InternalVar_1, InternalParameter_33);
 
-            EditorGUI.LabelField(InternalVar_1, new GUIContent(InternalType_554.InternalField_3354) { tooltip = InternalParameter_33 });
+            EditorGUILayout.Space(-3);
+        }
 
-            EditorGUILayout.Space(-4);
+        public static void InternalMethod_3639(Rect InternalParameter_3429, string InternalParameter_3428)
+        {
+            InternalParameter_3429.x -= InternalType_573.InternalField_2552;
+            InternalParameter_3429.y += InternalType_573.InternalField_2557;
+            InternalParameter_3429.width = InternalType_573.InternalField_2552;
+            InternalParameter_3429.height = InternalType_573.InternalField_2552;
+
+            EditorGUI.LabelField(InternalParameter_3429, new GUIContent(InternalType_554.InternalField_3354) { tooltip = InternalParameter_3428 });
+        }
+
+        public static void InternalMethod_3658(Rect InternalParameter_3453, GUIContent InternalParameter_3454, string InternalParameter_3455, bool InternalParameter_3456 = true)
+        {
+            if (InternalMethod_3661(InternalParameter_3453, InternalParameter_3454, InternalParameter_3456))
+            {
+                System.Diagnostics.Process.Start(InternalParameter_3455);
+            }
+        }
+
+        public static void InternalMethod_3659(Rect InternalParameter_3457, string InternalParameter_3458, string InternalParameter_3459, bool InternalParameter_3460 = true)
+        {
+            InternalMethod_3658(InternalParameter_3457, EditorGUIUtility.TrTempContent(InternalParameter_3458), InternalParameter_3459, InternalParameter_3460);
+        }
+
+        public static bool InternalMethod_3660(Rect InternalParameter_3461, string InternalParameter_3462, bool InternalParameter_3463 = true)
+        {
+            return InternalMethod_3661(InternalParameter_3461, EditorGUIUtility.TrTempContent(InternalParameter_3462), InternalParameter_3463);
+        }
+
+        public static bool InternalMethod_3661(Rect InternalParameter_3464, GUIContent InternalParameter_3465, bool InternalParameter_3466 = true)
+        {
+            EditorGUIUtility.AddCursorRect(InternalParameter_3464, MouseCursor.Link);
+
+            GUIStyle InternalVar_1 = InternalParameter_3466 ? InternalType_574.InternalProperty_1158 : EditorStyles.linkLabel;
+
+            Vector2 InternalVar_2 = InternalVar_1.CalcSize(InternalParameter_3465);
+            InternalParameter_3464.width = InternalVar_2.x;
+            InternalParameter_3464.height = InternalVar_2.y;
+
+            Handles.color = InternalVar_1.normal.textColor;
+            Handles.DrawLine(new Vector3(InternalParameter_3464.xMin + (float)InternalVar_1.padding.left, InternalParameter_3464.yMax), new Vector3(InternalParameter_3464.xMax - (float)InternalVar_1.padding.right, InternalParameter_3464.yMax));
+            Handles.color = Color.white;
+
+            return GUI.Button(InternalParameter_3464, InternalParameter_3465, InternalVar_1);
         }
 
         public static void InternalMethod_2225(GUIContent InternalParameter_2519)
@@ -879,14 +984,61 @@ namespace Nova.InternalNamespace_17.InternalNamespace_18
 
         public static void InternalMethod_2232(Rect InternalParameter_2534, GUIContent InternalParameter_2535, SerializedProperty InternalParameter_2536, bool InternalParameter_2537 = true)
         {
-            EditorGUI.BeginChangeCheck();
             GUIContent InternalVar_1 = EditorGUI.BeginProperty(InternalParameter_2534, InternalParameter_2535, InternalParameter_2536);
-            Color InternalVar_2 = EditorGUI.ColorField(InternalParameter_2534, InternalVar_1, InternalParameter_2536.colorValue, showEyedropper: true, showAlpha: InternalParameter_2537, hdr: false);
-            EditorGUI.EndProperty();
+
+            EditorGUI.BeginChangeCheck();
+            Color InternalVar_2 = InternalMethod_2250(InternalParameter_2534, InternalVar_1, InternalParameter_2536.colorValue, InternalParameter_2536.hasMultipleDifferentValues, InternalParameter_2537);
             if (EditorGUI.EndChangeCheck())
             {
                 InternalParameter_2536.colorValue = InternalVar_2;
             }
+
+            EditorGUI.EndProperty();
+        }
+
+        public static Color InternalMethod_2250(Rect InternalParameter_3427, GUIContent InternalParameter_2207, Color InternalParameter_3444, bool InternalParameter_3445, bool InternalParameter_3446 = true)
+        {
+            float InternalVar_1 = InternalProperty_472;
+
+            Rect InternalVar_2 = InternalParameter_3427;
+
+            float InternalVar_3 = InternalParameter_3445 ? -InternalField_2557 : EditorStyles.label.CalcSize(InternalType_554.InternalField_3627).x;
+
+            if (!string.IsNullOrWhiteSpace(InternalParameter_2207.text))
+            {
+                InternalVar_2.width = InternalProperty_472 - InternalVar_3;
+                InternalParameter_3427.xMin = InternalVar_2.xMax;
+            }
+
+            EditorGUI.LabelField(InternalVar_2, InternalParameter_2207);
+
+            Rect InternalVar_4 = InternalParameter_3427;
+            InternalVar_4.width = 0;
+
+            Rect InternalVar_5 = InternalParameter_3427;
+
+            if (!InternalParameter_3445)
+            {   
+                InternalProperty_472 = InternalVar_3;
+                InternalVar_4.width = 2 * InternalField_3636 + EditorStyles.numberField.padding.horizontal + InternalVar_3;
+                InternalVar_5.xMin = InternalVar_4.xMax - InternalField_2557;
+            }
+
+            EditorGUI.BeginDisabledGroup(InternalParameter_3445);
+            InternalParameter_3444.a = Mathf.Clamp01(EditorGUI.IntField(InternalVar_4, InternalParameter_3445 ? GUIContent.none : InternalType_554.InternalField_3627, Mathf.RoundToInt(100 * InternalParameter_3444.a)) / 100f);
+            EditorGUI.EndDisabledGroup();
+
+            bool InternalVar_6 = EditorGUI.showMixedValue;
+
+            EditorGUI.showMixedValue = InternalParameter_3445;
+
+            InternalParameter_3444 = EditorGUI.ColorField(InternalVar_5, GUIContent.none, InternalParameter_3444, showEyedropper: true, showAlpha: InternalParameter_3446, hdr: false);
+
+            EditorGUI.showMixedValue = InternalVar_6;
+
+            InternalProperty_472 = InternalVar_1;
+
+            return InternalParameter_3444;
         }
 
         public static void InternalMethod_2233(GUIContent InternalParameter_2538, SerializedProperty InternalParameter_2539, float InternalParameter_2540 = 0, float InternalParameter_2541 = 1)
@@ -933,7 +1085,7 @@ namespace Nova.InternalNamespace_17.InternalNamespace_18
 
         public static void InternalMethod_2236(float InternalParameter_2546 = 1)
         {
-            GUILayout.Space(InternalParameter_2546 * 16);
+            GUILayout.Space(InternalParameter_2546 * InternalField_2558);
         }
 
         public static void InternalMethod_2237(GUIContent InternalParameter_2547, SerializedProperty InternalParameter_2548)
@@ -1091,7 +1243,7 @@ namespace Nova.InternalNamespace_17.InternalNamespace_18
 
         public static void InternalMethod_2387(InternalType_595 InternalParameter_2584, InternalType_662 InternalParameter_2577, Length3.Calculated InternalParameter_2576, bool InternalParameter_2575)
         {
-            InternalType_574.InternalMethod_2291(GUILayoutUtility.GetLastRect());
+            InternalType_574.InternalMethod_3438(GUILayoutUtility.GetLastRect());
 
             float InternalVar_1 = InternalProperty_472;
 
@@ -1215,7 +1367,7 @@ namespace Nova.InternalNamespace_17.InternalNamespace_18
 
                 EditorGUILayout.Space(1);
 
-                InternalType_574.InternalMethod_2291(GUILayoutUtility.GetLastRect());
+                InternalType_574.InternalMethod_3438(GUILayoutUtility.GetLastRect());
                 InternalType_575.InternalMethod_2309(InternalType_574.InternalProperty_475);
                 InternalType_575.InternalMethod_2305();
                 InternalMethod_2236(0.5f);
@@ -1311,7 +1463,7 @@ namespace Nova.InternalNamespace_17.InternalNamespace_18
 
                 if (InternalParameter_2568)
                 {
-                    InternalType_574.InternalMethod_2291(GUILayoutUtility.GetLastRect());
+                    InternalType_574.InternalMethod_3438(GUILayoutUtility.GetLastRect());
                     InternalType_575.InternalMethod_2306(InternalType_574.InternalProperty_475);
                     InternalMethod_2236(3);
                     InternalMethod_2385(InternalParameter_2573, InternalParameter_2572, InternalParameter_2571, InternalParameter_2570);
@@ -1388,7 +1540,7 @@ namespace Nova.InternalNamespace_17.InternalNamespace_18
 
                 if (InternalParameter_2595.InternalProperty_573 != Axis.None)
                 {
-                    InternalParameter_2595.InternalProperty_571 = InternalParameter_2596.CalculatedSize.Value / InternalParameter_2596.CalculatedSize[0].Value;
+                    InternalParameter_2595.InternalProperty_571 = InternalParameter_2596.CalculatedSize[0].Value == 0 ? Vector3.zero : InternalParameter_2596.CalculatedSize.Value / InternalParameter_2596.CalculatedSize[0].Value;
                 }
             }
 

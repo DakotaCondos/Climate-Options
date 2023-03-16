@@ -6,8 +6,8 @@ using Unity.Collections.LowLevel.Unsafe;
 namespace Nova.Compat
 {
     internal struct NovaHashMap<K,V> : IDisposable
-        where K : struct, IEquatable<K>
-        where V : struct
+        where K : unmanaged, IEquatable<K>
+        where V : unmanaged
     {
         [NativeDisableContainerSafetyRestriction]
         [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]

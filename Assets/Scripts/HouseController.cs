@@ -1,11 +1,7 @@
-using System.Collections;
+#if UNITY_EDITOR
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using Nova;
-using System.IO;
 using TMPro;
-using UnityEngine.SceneManagement;
 
 namespace NovaSamples.UIControls
 {
@@ -35,8 +31,8 @@ namespace NovaSamples.UIControls
         public void HouseSelectionConfirm()
         {
             responseText.text = "";
-            
-            if(!HouseSizeValidate(houseSize))
+
+            if (!HouseSizeValidate(houseSize))
             {
                 return;
             }
@@ -53,9 +49,9 @@ namespace NovaSamples.UIControls
             List<RoomConfig> rooms = new();
             int totalRooms = bedroom + bathroom + 1;
 
-            for(int i = 0; i <= totalRooms; i++)
+            for (int i = 0; i <= totalRooms; i++)
             {
-                if(i <= bedroom)
+                if (i <= bedroom)
                 {
                     rooms.Add(new RoomConfig(i, false));
                 }
@@ -64,7 +60,7 @@ namespace NovaSamples.UIControls
                     rooms.Add(new RoomConfig(i, true));
                 }
             }
-                
+
             houseConfig.rooms = rooms;
             houseConfig.size = int.Parse(houseSize.text);
             return houseConfig;
@@ -72,11 +68,11 @@ namespace NovaSamples.UIControls
 
         public void BedroomSelect()
         {
-            bedroom = Dropdown.selectedIndex;
+            //bedroom = Dropdown.selectedIndex;
         }
         public void BathroomSelect()
         {
-            bathroom = Dropdown.selectedIndex;
+            //bathroom = Dropdown.selectedIndex;
         }
 
         public bool HouseSizeValidate(TMP_Text houseSize)
@@ -91,7 +87,7 @@ namespace NovaSamples.UIControls
                 responseText.text = "House size must be a whole number.";
                 return false;
             }
-            if(int.Parse(houseSize.text) <= 0)
+            if (int.Parse(houseSize.text) <= 0)
             {
                 responseText.text = "House size cannot be less than 0.";
                 return false;
@@ -100,3 +96,5 @@ namespace NovaSamples.UIControls
         }
     }
 }
+// current file contents
+#endif

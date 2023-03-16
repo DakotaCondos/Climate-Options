@@ -1,4 +1,4 @@
-using System.Collections;
+#if UNITY_EDITOR
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -30,3 +30,5 @@ public class RoomHelper : MonoBehaviour
         componentSelectionController.UpdateComponentHeaderLabel(areaDisplayName);
     }
 }
+// current file contents
+#endif

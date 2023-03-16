@@ -21,6 +21,12 @@ namespace Nova.InternalNamespace_17.InternalNamespace_18
             for (int InternalVar_2 = 0; InternalVar_2 < InternalVar_1.Count; ++InternalVar_2)
             {
                 Type InternalVar_3 = InternalVar_1[InternalVar_2];
+
+                if (InternalVar_3.IsAbstract)
+                {
+                    continue;
+                }
+
                 if (InternalField_3312.TryGetValue(InternalVar_3.Name, out int InternalVar_4))
                 {
                     InternalVar_4++;
@@ -29,7 +35,6 @@ namespace Nova.InternalNamespace_17.InternalNamespace_18
                 {
                     InternalVar_4 = 1;
                 }
-
 
                 InternalField_3312[InternalVar_3.Name] = InternalVar_4;
                 InternalField_3313.Add(InternalVar_3);

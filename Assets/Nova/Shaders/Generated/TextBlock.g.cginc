@@ -35,45 +35,45 @@
 				#if defined(NOVA_CLIPPING)
 					#if defined(NOVA_LIT)
 						#if defined(NOVA_LAMBERT_LIGHTING)
-							#define GetWorldPos(val) val.Packed3.xyz
-							#define SetWorldPos(val, toSet) val.Packed3.xyz = toSet
-							#define GetUnderlayUV(val) val.Packed4.xy
-							#define SetUnderlayUV(val, toSet) val.Packed4.xy = toSet
-							#define GetNClipRectPos(val) val.Packed5.xy
-							#define SetNClipRectPos(val, toSet) val.Packed5.xy = toSet
-							#define GetUnderlayAlpha(val) val.Packed5.z
-							#define SetUnderlayAlpha(val, toSet) val.Packed5.z = toSet
-							#define GetUnderlayAlpha(val) val.Packed5.w
-							#define SetUnderlayAlpha(val, toSet) val.Packed5.w = toSet
-							#define GetWorldNormal(val) half3(val.Packed3.w, val.Packed4.zw)
-							#define SetWorldNormal(val, toSet) \
-								val.Packed3.w = toSet.x; \
-								val.Packed4.zw = toSet.yz;
-							#define POST_NOVA_0 8
-							#define POST_NOVA_1 9
-							#define POST_NOVA_2 10
-							#define POST_NOVA_3 11
-							#define POST_NOVA_4 12
-							#define POST_NOVA_5 13
-						#elif defined(NOVA_BLINNPHONG_LIGHTING)
-							#define GetNClipRectPos(val) val.Packed3.xy
-							#define SetNClipRectPos(val, toSet) val.Packed3.xy = toSet
-							#define GetSpecular(val) val.Packed3.z
-							#define SetSpecular(val, toSet) val.Packed3.z = toSet
-							#define GetGloss(val) val.Packed3.w
-							#define SetGloss(val, toSet) val.Packed3.w = toSet
+							#define GetRootPos(val) val.Packed3.xyz
+							#define SetRootPos(val, toSet) val.Packed3.xyz = toSet
 							#define GetWorldPos(val) val.Packed4.xyz
 							#define SetWorldPos(val, toSet) val.Packed4.xyz = toSet
-							#define GetUnderlayUV(val) val.Packed5.xy
-							#define SetUnderlayUV(val, toSet) val.Packed5.xy = toSet
-							#define GetUnderlayAlpha(val) val.Packed6.x
-							#define SetUnderlayAlpha(val, toSet) val.Packed6.x = toSet
+							#define GetWorldNormal(val) val.Packed5.xyz
+							#define SetWorldNormal(val, toSet) val.Packed5.xyz = toSet
+							#define GetUnderlayAlpha(val) val.Packed5.w
+							#define SetUnderlayAlpha(val, toSet) val.Packed5.w = toSet
+							#define GetUnderlayAlpha(val) val.UnderlayAlpha
+							#define SetUnderlayAlpha(val, toSet) val.UnderlayAlpha = toSet
+							#define GetUnderlayUV(val) float2(val.Packed3.w, val.Packed4.w)
+							#define SetUnderlayUV(val, toSet) \
+								val.Packed3.w = toSet.x; \
+								val.Packed4.w = toSet.y;
+							#define POST_NOVA_0 9
+							#define POST_NOVA_1 10
+							#define POST_NOVA_2 11
+							#define POST_NOVA_3 12
+							#define POST_NOVA_4 13
+							#define POST_NOVA_5 14
+						#elif defined(NOVA_BLINNPHONG_LIGHTING)
+							#define GetWorldNormal(val) val.Packed3.xyz
+							#define SetWorldNormal(val, toSet) val.Packed3.xyz = toSet
+							#define GetSpecular(val) val.Packed3.w
+							#define SetSpecular(val, toSet) val.Packed3.w = toSet
+							#define GetRootPos(val) val.Packed4.xyz
+							#define SetRootPos(val, toSet) val.Packed4.xyz = toSet
+							#define GetWorldPos(val) val.Packed5.xyz
+							#define SetWorldPos(val, toSet) val.Packed5.xyz = toSet
+							#define GetGloss(val) val.Packed6.x
+							#define SetGloss(val, toSet) val.Packed6.x = toSet
 							#define GetUnderlayAlpha(val) val.Packed6.y
 							#define SetUnderlayAlpha(val, toSet) val.Packed6.y = toSet
-							#define GetWorldNormal(val) half3(val.Packed4.w, val.Packed5.zw)
-							#define SetWorldNormal(val, toSet) \
+							#define GetUnderlayAlpha(val) val.Packed6.z
+							#define SetUnderlayAlpha(val, toSet) val.Packed6.z = toSet
+							#define GetUnderlayUV(val) float2(val.Packed4.w, val.Packed5.w)
+							#define SetUnderlayUV(val, toSet) \
 								val.Packed4.w = toSet.x; \
-								val.Packed5.zw = toSet.yz;
+								val.Packed5.w = toSet.y;
 							#define POST_NOVA_0 9
 							#define POST_NOVA_1 10
 							#define POST_NOVA_2 11
@@ -81,24 +81,24 @@
 							#define POST_NOVA_4 13
 							#define POST_NOVA_5 14
 						#elif defined(NOVA_STANDARD_LIGHTING)
-							#define GetNClipRectPos(val) val.Packed3.xy
-							#define SetNClipRectPos(val, toSet) val.Packed3.xy = toSet
-							#define GetSmoothness(val) val.Packed3.z
-							#define SetSmoothness(val, toSet) val.Packed3.z = toSet
-							#define GetMetallic(val) val.Packed3.w
-							#define SetMetallic(val, toSet) val.Packed3.w = toSet
-							#define GetWorldPos(val) val.Packed4.xyz
-							#define SetWorldPos(val, toSet) val.Packed4.xyz = toSet
-							#define GetUnderlayUV(val) val.Packed5.xy
-							#define SetUnderlayUV(val, toSet) val.Packed5.xy = toSet
-							#define GetUnderlayAlpha(val) val.Packed6.x
-							#define SetUnderlayAlpha(val, toSet) val.Packed6.x = toSet
+							#define GetWorldNormal(val) val.Packed3.xyz
+							#define SetWorldNormal(val, toSet) val.Packed3.xyz = toSet
+							#define GetSmoothness(val) val.Packed3.w
+							#define SetSmoothness(val, toSet) val.Packed3.w = toSet
+							#define GetRootPos(val) val.Packed4.xyz
+							#define SetRootPos(val, toSet) val.Packed4.xyz = toSet
+							#define GetWorldPos(val) val.Packed5.xyz
+							#define SetWorldPos(val, toSet) val.Packed5.xyz = toSet
+							#define GetMetallic(val) val.Packed6.x
+							#define SetMetallic(val, toSet) val.Packed6.x = toSet
 							#define GetUnderlayAlpha(val) val.Packed6.y
 							#define SetUnderlayAlpha(val, toSet) val.Packed6.y = toSet
-							#define GetWorldNormal(val) half3(val.Packed4.w, val.Packed5.zw)
-							#define SetWorldNormal(val, toSet) \
+							#define GetUnderlayAlpha(val) val.Packed6.z
+							#define SetUnderlayAlpha(val, toSet) val.Packed6.z = toSet
+							#define GetUnderlayUV(val) float2(val.Packed4.w, val.Packed5.w)
+							#define SetUnderlayUV(val, toSet) \
 								val.Packed4.w = toSet.x; \
-								val.Packed5.zw = toSet.yz;
+								val.Packed5.w = toSet.y;
 							#define POST_NOVA_0 9
 							#define POST_NOVA_1 10
 							#define POST_NOVA_2 11
@@ -114,32 +114,32 @@
 							#define SetSpecularColor(val, toSet) val.Packed4.xyz = toSet
 							#define GetUnderlayAlpha(val) val.Packed4.w
 							#define SetUnderlayAlpha(val, toSet) val.Packed4.w = toSet
-							#define GetWorldPos(val) val.Packed5.xyz
-							#define SetWorldPos(val, toSet) val.Packed5.xyz = toSet
-							#define GetUnderlayUV(val) val.Packed6.xy
-							#define SetUnderlayUV(val, toSet) val.Packed6.xy = toSet
-							#define GetUnderlayAlpha(val) val.Packed6.w
-							#define SetUnderlayAlpha(val, toSet) val.Packed6.w = toSet
-							#define GetNClipRectPos(val) half2(val.Packed5.w, val.Packed6.z)
-							#define SetNClipRectPos(val, toSet) \
+							#define GetRootPos(val) val.Packed5.xyz
+							#define SetRootPos(val, toSet) val.Packed5.xyz = toSet
+							#define GetWorldPos(val) val.Packed6.xyz
+							#define SetWorldPos(val, toSet) val.Packed6.xyz = toSet
+							#define GetUnderlayAlpha(val) val.UnderlayAlpha
+							#define SetUnderlayAlpha(val, toSet) val.UnderlayAlpha = toSet
+							#define GetUnderlayUV(val) float2(val.Packed5.w, val.Packed6.w)
+							#define SetUnderlayUV(val, toSet) \
 								val.Packed5.w = toSet.x; \
-								val.Packed6.z = toSet.y;
-							#define POST_NOVA_0 9
-							#define POST_NOVA_1 10
-							#define POST_NOVA_2 11
-							#define POST_NOVA_3 12
-							#define POST_NOVA_4 13
-							#define POST_NOVA_5 14
+								val.Packed6.w = toSet.y;
+							#define POST_NOVA_0 10
+							#define POST_NOVA_1 11
+							#define POST_NOVA_2 12
+							#define POST_NOVA_3 13
+							#define POST_NOVA_4 14
+							#define POST_NOVA_5 15
 						#endif
 					#else
-						#define GetUnderlayUV(val) val.Packed3.xy
-						#define SetUnderlayUV(val, toSet) val.Packed3.xy = toSet
-						#define GetNClipRectPos(val) val.Packed3.zw
-						#define SetNClipRectPos(val, toSet) val.Packed3.zw = toSet
-						#define GetUnderlayAlpha(val) val.Packed4.x
-						#define SetUnderlayAlpha(val, toSet) val.Packed4.x = toSet
-						#define GetUnderlayAlpha(val) val.Packed4.y
-						#define SetUnderlayAlpha(val, toSet) val.Packed4.y = toSet
+						#define GetRootPos(val) val.Packed3.xyz
+						#define SetRootPos(val, toSet) val.Packed3.xyz = toSet
+						#define GetUnderlayAlpha(val) val.Packed3.w
+						#define SetUnderlayAlpha(val, toSet) val.Packed3.w = toSet
+						#define GetUnderlayUV(val) val.Packed4.xy
+						#define SetUnderlayUV(val, toSet) val.Packed4.xy = toSet
+						#define GetUnderlayAlpha(val) val.Packed4.z
+						#define SetUnderlayAlpha(val, toSet) val.Packed4.z = toSet
 					#endif
 				#else
 					#if defined(NOVA_LIT)
@@ -237,20 +237,20 @@
 				#endif
 			#else
 				#if defined(NOVA_CLIPPING)
-					#define GetUnderlayScale(val) val.Packed2.x
-					#define SetUnderlayScale(val, toSet) val.Packed2.x = toSet
-					#define GetUnderlayBias(val) val.Packed2.y
-					#define SetUnderlayBias(val, toSet) val.Packed2.y = toSet
-					#define GetNClipRectPos(val) val.Packed2.zw
-					#define SetNClipRectPos(val, toSet) val.Packed2.zw = toSet
 					#if defined(NOVA_LIT)
+						#define GetWorldNormal(val) val.Packed2.xyz
+						#define SetWorldNormal(val, toSet) val.Packed2.xyz = toSet
+						#define GetUnderlayScale(val) val.Packed2.w
+						#define SetUnderlayScale(val, toSet) val.Packed2.w = toSet
 						#if defined(NOVA_LAMBERT_LIGHTING)
-							#define GetWorldPos(val) val.Packed3.xyz
-							#define SetWorldPos(val, toSet) val.Packed3.xyz = toSet
-							#define GetUnderlayAlpha(val) val.Packed3.w
-							#define SetUnderlayAlpha(val, toSet) val.Packed3.w = toSet
-							#define GetWorldNormal(val) val.WorldNormal
-							#define SetWorldNormal(val, toSet) val.WorldNormal = toSet
+							#define GetRootPos(val) val.Packed3.xyz
+							#define SetRootPos(val, toSet) val.Packed3.xyz = toSet
+							#define GetUnderlayBias(val) val.Packed3.w
+							#define SetUnderlayBias(val, toSet) val.Packed3.w = toSet
+							#define GetWorldPos(val) val.Packed4.xyz
+							#define SetWorldPos(val, toSet) val.Packed4.xyz = toSet
+							#define GetUnderlayAlpha(val) val.Packed4.w
+							#define SetUnderlayAlpha(val, toSet) val.Packed4.w = toSet
 							#define POST_NOVA_0 7
 							#define POST_NOVA_1 8
 							#define POST_NOVA_2 9
@@ -258,16 +258,18 @@
 							#define POST_NOVA_4 11
 							#define POST_NOVA_5 12
 						#elif defined(NOVA_BLINNPHONG_LIGHTING)
-							#define GetWorldNormal(val) val.Packed3.xyz
-							#define SetWorldNormal(val, toSet) val.Packed3.xyz = toSet
-							#define GetSpecular(val) val.Packed3.w
-							#define SetSpecular(val, toSet) val.Packed3.w = toSet
+							#define GetRootPos(val) val.Packed3.xyz
+							#define SetRootPos(val, toSet) val.Packed3.xyz = toSet
+							#define GetUnderlayBias(val) val.Packed3.w
+							#define SetUnderlayBias(val, toSet) val.Packed3.w = toSet
 							#define GetWorldPos(val) val.Packed4.xyz
 							#define SetWorldPos(val, toSet) val.Packed4.xyz = toSet
-							#define GetGloss(val) val.Packed4.w
-							#define SetGloss(val, toSet) val.Packed4.w = toSet
-							#define GetUnderlayAlpha(val) val.UnderlayAlpha
-							#define SetUnderlayAlpha(val, toSet) val.UnderlayAlpha = toSet
+							#define GetSpecular(val) val.Packed4.w
+							#define SetSpecular(val, toSet) val.Packed4.w = toSet
+							#define GetGloss(val) val.Packed5.x
+							#define SetGloss(val, toSet) val.Packed5.x = toSet
+							#define GetUnderlayAlpha(val) val.Packed5.y
+							#define SetUnderlayAlpha(val, toSet) val.Packed5.y = toSet
 							#define POST_NOVA_0 8
 							#define POST_NOVA_1 9
 							#define POST_NOVA_2 10
@@ -275,16 +277,18 @@
 							#define POST_NOVA_4 12
 							#define POST_NOVA_5 13
 						#elif defined(NOVA_STANDARD_LIGHTING)
-							#define GetWorldNormal(val) val.Packed3.xyz
-							#define SetWorldNormal(val, toSet) val.Packed3.xyz = toSet
-							#define GetSmoothness(val) val.Packed3.w
-							#define SetSmoothness(val, toSet) val.Packed3.w = toSet
+							#define GetRootPos(val) val.Packed3.xyz
+							#define SetRootPos(val, toSet) val.Packed3.xyz = toSet
+							#define GetUnderlayBias(val) val.Packed3.w
+							#define SetUnderlayBias(val, toSet) val.Packed3.w = toSet
 							#define GetWorldPos(val) val.Packed4.xyz
 							#define SetWorldPos(val, toSet) val.Packed4.xyz = toSet
-							#define GetMetallic(val) val.Packed4.w
-							#define SetMetallic(val, toSet) val.Packed4.w = toSet
-							#define GetUnderlayAlpha(val) val.UnderlayAlpha
-							#define SetUnderlayAlpha(val, toSet) val.UnderlayAlpha = toSet
+							#define GetSmoothness(val) val.Packed4.w
+							#define SetSmoothness(val, toSet) val.Packed4.w = toSet
+							#define GetMetallic(val) val.Packed5.x
+							#define SetMetallic(val, toSet) val.Packed5.x = toSet
+							#define GetUnderlayAlpha(val) val.Packed5.y
+							#define SetUnderlayAlpha(val, toSet) val.Packed5.y = toSet
 							#define POST_NOVA_0 8
 							#define POST_NOVA_1 9
 							#define POST_NOVA_2 10
@@ -292,16 +296,18 @@
 							#define POST_NOVA_4 12
 							#define POST_NOVA_5 13
 						#elif defined(NOVA_STANDARDSPECULAR_LIGHTING)
-							#define GetWorldNormal(val) val.Packed3.xyz
-							#define SetWorldNormal(val, toSet) val.Packed3.xyz = toSet
-							#define GetSmoothness(val) val.Packed3.w
-							#define SetSmoothness(val, toSet) val.Packed3.w = toSet
-							#define GetUnderlayAlpha(val) val.Packed4.x
-							#define SetUnderlayAlpha(val, toSet) val.Packed4.x = toSet
-							#define GetSpecularColor(val) val.Packed4.yzw
-							#define SetSpecularColor(val, toSet) val.Packed4.yzw = toSet
-							#define GetWorldPos(val) val.WorldPos
-							#define SetWorldPos(val, toSet) val.WorldPos = toSet
+							#define GetUnderlayAlpha(val) val.Packed3.x
+							#define SetUnderlayAlpha(val, toSet) val.Packed3.x = toSet
+							#define GetSpecularColor(val) val.Packed3.yzw
+							#define SetSpecularColor(val, toSet) val.Packed3.yzw = toSet
+							#define GetRootPos(val) val.Packed4.xyz
+							#define SetRootPos(val, toSet) val.Packed4.xyz = toSet
+							#define GetUnderlayBias(val) val.Packed4.w
+							#define SetUnderlayBias(val, toSet) val.Packed4.w = toSet
+							#define GetWorldPos(val) val.Packed5.xyz
+							#define SetWorldPos(val, toSet) val.Packed5.xyz = toSet
+							#define GetSmoothness(val) val.Packed5.w
+							#define SetSmoothness(val, toSet) val.Packed5.w = toSet
 							#define POST_NOVA_0 8
 							#define POST_NOVA_1 9
 							#define POST_NOVA_2 10
@@ -310,8 +316,14 @@
 							#define POST_NOVA_5 13
 						#endif
 					#else
-						#define GetUnderlayAlpha(val) val.UnderlayAlpha
-						#define SetUnderlayAlpha(val, toSet) val.UnderlayAlpha = toSet
+						#define GetRootPos(val) val.Packed2.xyz
+						#define SetRootPos(val, toSet) val.Packed2.xyz = toSet
+						#define GetUnderlayScale(val) val.Packed2.w
+						#define SetUnderlayScale(val, toSet) val.Packed2.w = toSet
+						#define GetUnderlayBias(val) val.Packed3.x
+						#define SetUnderlayBias(val, toSet) val.Packed3.x = toSet
+						#define GetUnderlayAlpha(val) val.Packed3.y
+						#define SetUnderlayAlpha(val, toSet) val.Packed3.y = toSet
 					#endif
 				#else
 					#if defined(NOVA_LIT)
@@ -401,20 +413,20 @@
 				#define GetUnderlayUV(val) val.Packed1.zw
 				#define SetUnderlayUV(val, toSet) val.Packed1.zw = toSet
 				#if defined(NOVA_CLIPPING)
-					#define GetUnderlayScale(val) val.Packed2.x
-					#define SetUnderlayScale(val, toSet) val.Packed2.x = toSet
-					#define GetUnderlayBias(val) val.Packed2.y
-					#define SetUnderlayBias(val, toSet) val.Packed2.y = toSet
-					#define GetNClipRectPos(val) val.Packed2.zw
-					#define SetNClipRectPos(val, toSet) val.Packed2.zw = toSet
 					#if defined(NOVA_LIT)
+						#define GetWorldNormal(val) val.Packed2.xyz
+						#define SetWorldNormal(val, toSet) val.Packed2.xyz = toSet
+						#define GetUnderlayScale(val) val.Packed2.w
+						#define SetUnderlayScale(val, toSet) val.Packed2.w = toSet
 						#if defined(NOVA_LAMBERT_LIGHTING)
-							#define GetWorldPos(val) val.Packed3.xyz
-							#define SetWorldPos(val, toSet) val.Packed3.xyz = toSet
-							#define GetUnderlayAlpha(val) val.Packed3.w
-							#define SetUnderlayAlpha(val, toSet) val.Packed3.w = toSet
-							#define GetWorldNormal(val) val.WorldNormal
-							#define SetWorldNormal(val, toSet) val.WorldNormal = toSet
+							#define GetRootPos(val) val.Packed3.xyz
+							#define SetRootPos(val, toSet) val.Packed3.xyz = toSet
+							#define GetUnderlayBias(val) val.Packed3.w
+							#define SetUnderlayBias(val, toSet) val.Packed3.w = toSet
+							#define GetWorldPos(val) val.Packed4.xyz
+							#define SetWorldPos(val, toSet) val.Packed4.xyz = toSet
+							#define GetUnderlayAlpha(val) val.Packed4.w
+							#define SetUnderlayAlpha(val, toSet) val.Packed4.w = toSet
 							#define POST_NOVA_0 7
 							#define POST_NOVA_1 8
 							#define POST_NOVA_2 9
@@ -422,16 +434,18 @@
 							#define POST_NOVA_4 11
 							#define POST_NOVA_5 12
 						#elif defined(NOVA_BLINNPHONG_LIGHTING)
-							#define GetWorldNormal(val) val.Packed3.xyz
-							#define SetWorldNormal(val, toSet) val.Packed3.xyz = toSet
-							#define GetSpecular(val) val.Packed3.w
-							#define SetSpecular(val, toSet) val.Packed3.w = toSet
+							#define GetRootPos(val) val.Packed3.xyz
+							#define SetRootPos(val, toSet) val.Packed3.xyz = toSet
+							#define GetUnderlayBias(val) val.Packed3.w
+							#define SetUnderlayBias(val, toSet) val.Packed3.w = toSet
 							#define GetWorldPos(val) val.Packed4.xyz
 							#define SetWorldPos(val, toSet) val.Packed4.xyz = toSet
-							#define GetGloss(val) val.Packed4.w
-							#define SetGloss(val, toSet) val.Packed4.w = toSet
-							#define GetUnderlayAlpha(val) val.UnderlayAlpha
-							#define SetUnderlayAlpha(val, toSet) val.UnderlayAlpha = toSet
+							#define GetSpecular(val) val.Packed4.w
+							#define SetSpecular(val, toSet) val.Packed4.w = toSet
+							#define GetGloss(val) val.Packed5.x
+							#define SetGloss(val, toSet) val.Packed5.x = toSet
+							#define GetUnderlayAlpha(val) val.Packed5.y
+							#define SetUnderlayAlpha(val, toSet) val.Packed5.y = toSet
 							#define POST_NOVA_0 8
 							#define POST_NOVA_1 9
 							#define POST_NOVA_2 10
@@ -439,16 +453,18 @@
 							#define POST_NOVA_4 12
 							#define POST_NOVA_5 13
 						#elif defined(NOVA_STANDARD_LIGHTING)
-							#define GetWorldNormal(val) val.Packed3.xyz
-							#define SetWorldNormal(val, toSet) val.Packed3.xyz = toSet
-							#define GetSmoothness(val) val.Packed3.w
-							#define SetSmoothness(val, toSet) val.Packed3.w = toSet
+							#define GetRootPos(val) val.Packed3.xyz
+							#define SetRootPos(val, toSet) val.Packed3.xyz = toSet
+							#define GetUnderlayBias(val) val.Packed3.w
+							#define SetUnderlayBias(val, toSet) val.Packed3.w = toSet
 							#define GetWorldPos(val) val.Packed4.xyz
 							#define SetWorldPos(val, toSet) val.Packed4.xyz = toSet
-							#define GetMetallic(val) val.Packed4.w
-							#define SetMetallic(val, toSet) val.Packed4.w = toSet
-							#define GetUnderlayAlpha(val) val.UnderlayAlpha
-							#define SetUnderlayAlpha(val, toSet) val.UnderlayAlpha = toSet
+							#define GetSmoothness(val) val.Packed4.w
+							#define SetSmoothness(val, toSet) val.Packed4.w = toSet
+							#define GetMetallic(val) val.Packed5.x
+							#define SetMetallic(val, toSet) val.Packed5.x = toSet
+							#define GetUnderlayAlpha(val) val.Packed5.y
+							#define SetUnderlayAlpha(val, toSet) val.Packed5.y = toSet
 							#define POST_NOVA_0 8
 							#define POST_NOVA_1 9
 							#define POST_NOVA_2 10
@@ -456,16 +472,18 @@
 							#define POST_NOVA_4 12
 							#define POST_NOVA_5 13
 						#elif defined(NOVA_STANDARDSPECULAR_LIGHTING)
-							#define GetWorldNormal(val) val.Packed3.xyz
-							#define SetWorldNormal(val, toSet) val.Packed3.xyz = toSet
-							#define GetSmoothness(val) val.Packed3.w
-							#define SetSmoothness(val, toSet) val.Packed3.w = toSet
-							#define GetUnderlayAlpha(val) val.Packed4.x
-							#define SetUnderlayAlpha(val, toSet) val.Packed4.x = toSet
-							#define GetSpecularColor(val) val.Packed4.yzw
-							#define SetSpecularColor(val, toSet) val.Packed4.yzw = toSet
-							#define GetWorldPos(val) val.WorldPos
-							#define SetWorldPos(val, toSet) val.WorldPos = toSet
+							#define GetUnderlayAlpha(val) val.Packed3.x
+							#define SetUnderlayAlpha(val, toSet) val.Packed3.x = toSet
+							#define GetSpecularColor(val) val.Packed3.yzw
+							#define SetSpecularColor(val, toSet) val.Packed3.yzw = toSet
+							#define GetRootPos(val) val.Packed4.xyz
+							#define SetRootPos(val, toSet) val.Packed4.xyz = toSet
+							#define GetUnderlayBias(val) val.Packed4.w
+							#define SetUnderlayBias(val, toSet) val.Packed4.w = toSet
+							#define GetWorldPos(val) val.Packed5.xyz
+							#define SetWorldPos(val, toSet) val.Packed5.xyz = toSet
+							#define GetSmoothness(val) val.Packed5.w
+							#define SetSmoothness(val, toSet) val.Packed5.w = toSet
 							#define POST_NOVA_0 8
 							#define POST_NOVA_1 9
 							#define POST_NOVA_2 10
@@ -474,8 +492,14 @@
 							#define POST_NOVA_5 13
 						#endif
 					#else
-						#define GetUnderlayAlpha(val) val.UnderlayAlpha
-						#define SetUnderlayAlpha(val, toSet) val.UnderlayAlpha = toSet
+						#define GetRootPos(val) val.Packed2.xyz
+						#define SetRootPos(val, toSet) val.Packed2.xyz = toSet
+						#define GetUnderlayScale(val) val.Packed2.w
+						#define SetUnderlayScale(val, toSet) val.Packed2.w = toSet
+						#define GetUnderlayBias(val) val.Packed3.x
+						#define SetUnderlayBias(val, toSet) val.Packed3.x = toSet
+						#define GetUnderlayAlpha(val) val.Packed3.y
+						#define SetUnderlayAlpha(val, toSet) val.Packed3.y = toSet
 					#endif
 				#else
 					#if defined(NOVA_LIT)
@@ -561,16 +585,16 @@
 				#if defined(NOVA_CLIPPING)
 					#if defined(NOVA_LIT)
 						#if defined(NOVA_LAMBERT_LIGHTING)
-							#define GetWorldPos(val) val.Packed1.xyz
-							#define SetWorldPos(val, toSet) val.Packed1.xyz = toSet
-							#define GetTextureUV(val) val.Packed2.xy
-							#define SetTextureUV(val, toSet) val.Packed2.xy = toSet
-							#define GetNClipRectPos(val) val.NClipRectPos
-							#define SetNClipRectPos(val, toSet) val.NClipRectPos = toSet
-							#define GetWorldNormal(val) half3(val.Packed1.w, val.Packed2.zw)
-							#define SetWorldNormal(val, toSet) \
+							#define GetRootPos(val) val.Packed1.xyz
+							#define SetRootPos(val, toSet) val.Packed1.xyz = toSet
+							#define GetWorldPos(val) val.Packed2.xyz
+							#define SetWorldPos(val, toSet) val.Packed2.xyz = toSet
+							#define GetWorldNormal(val) val.WorldNormal
+							#define SetWorldNormal(val, toSet) val.WorldNormal = toSet
+							#define GetTextureUV(val) float2(val.Packed1.w, val.Packed2.w)
+							#define SetTextureUV(val, toSet) \
 								val.Packed1.w = toSet.x; \
-								val.Packed2.zw = toSet.yz;
+								val.Packed2.w = toSet.y;
 							#define POST_NOVA_0 6
 							#define POST_NOVA_1 7
 							#define POST_NOVA_2 8
@@ -578,62 +602,62 @@
 							#define POST_NOVA_4 10
 							#define POST_NOVA_5 11
 						#elif defined(NOVA_BLINNPHONG_LIGHTING)
-							#define GetNClipRectPos(val) val.Packed1.xy
-							#define SetNClipRectPos(val, toSet) val.Packed1.xy = toSet
-							#define GetSpecular(val) val.Packed1.z
-							#define SetSpecular(val, toSet) val.Packed1.z = toSet
-							#define GetGloss(val) val.Packed1.w
-							#define SetGloss(val, toSet) val.Packed1.w = toSet
-							#define GetWorldPos(val) val.Packed2.xyz
-							#define SetWorldPos(val, toSet) val.Packed2.xyz = toSet
-							#define GetTextureUV(val) val.Packed3.xy
-							#define SetTextureUV(val, toSet) val.Packed3.xy = toSet
-							#define GetWorldNormal(val) half3(val.Packed2.w, val.Packed3.zw)
-							#define SetWorldNormal(val, toSet) \
+							#define GetWorldNormal(val) val.Packed1.xyz
+							#define SetWorldNormal(val, toSet) val.Packed1.xyz = toSet
+							#define GetSpecular(val) val.Packed1.w
+							#define SetSpecular(val, toSet) val.Packed1.w = toSet
+							#define GetRootPos(val) val.Packed2.xyz
+							#define SetRootPos(val, toSet) val.Packed2.xyz = toSet
+							#define GetWorldPos(val) val.Packed3.xyz
+							#define SetWorldPos(val, toSet) val.Packed3.xyz = toSet
+							#define GetGloss(val) val.Gloss
+							#define SetGloss(val, toSet) val.Gloss = toSet
+							#define GetTextureUV(val) float2(val.Packed2.w, val.Packed3.w)
+							#define SetTextureUV(val, toSet) \
 								val.Packed2.w = toSet.x; \
-								val.Packed3.zw = toSet.yz;
-							#define POST_NOVA_0 6
-							#define POST_NOVA_1 7
-							#define POST_NOVA_2 8
-							#define POST_NOVA_3 9
-							#define POST_NOVA_4 10
-							#define POST_NOVA_5 11
+								val.Packed3.w = toSet.y;
+							#define POST_NOVA_0 7
+							#define POST_NOVA_1 8
+							#define POST_NOVA_2 9
+							#define POST_NOVA_3 10
+							#define POST_NOVA_4 11
+							#define POST_NOVA_5 12
 						#elif defined(NOVA_STANDARD_LIGHTING)
-							#define GetNClipRectPos(val) val.Packed1.xy
-							#define SetNClipRectPos(val, toSet) val.Packed1.xy = toSet
-							#define GetSmoothness(val) val.Packed1.z
-							#define SetSmoothness(val, toSet) val.Packed1.z = toSet
-							#define GetMetallic(val) val.Packed1.w
-							#define SetMetallic(val, toSet) val.Packed1.w = toSet
-							#define GetWorldPos(val) val.Packed2.xyz
-							#define SetWorldPos(val, toSet) val.Packed2.xyz = toSet
-							#define GetTextureUV(val) val.Packed3.xy
-							#define SetTextureUV(val, toSet) val.Packed3.xy = toSet
-							#define GetWorldNormal(val) half3(val.Packed2.w, val.Packed3.zw)
-							#define SetWorldNormal(val, toSet) \
+							#define GetWorldNormal(val) val.Packed1.xyz
+							#define SetWorldNormal(val, toSet) val.Packed1.xyz = toSet
+							#define GetSmoothness(val) val.Packed1.w
+							#define SetSmoothness(val, toSet) val.Packed1.w = toSet
+							#define GetRootPos(val) val.Packed2.xyz
+							#define SetRootPos(val, toSet) val.Packed2.xyz = toSet
+							#define GetWorldPos(val) val.Packed3.xyz
+							#define SetWorldPos(val, toSet) val.Packed3.xyz = toSet
+							#define GetMetallic(val) val.Metallic
+							#define SetMetallic(val, toSet) val.Metallic = toSet
+							#define GetTextureUV(val) float2(val.Packed2.w, val.Packed3.w)
+							#define SetTextureUV(val, toSet) \
 								val.Packed2.w = toSet.x; \
-								val.Packed3.zw = toSet.yz;
-							#define POST_NOVA_0 6
-							#define POST_NOVA_1 7
-							#define POST_NOVA_2 8
-							#define POST_NOVA_3 9
-							#define POST_NOVA_4 10
-							#define POST_NOVA_5 11
+								val.Packed3.w = toSet.y;
+							#define POST_NOVA_0 7
+							#define POST_NOVA_1 8
+							#define POST_NOVA_2 9
+							#define POST_NOVA_3 10
+							#define POST_NOVA_4 11
+							#define POST_NOVA_5 12
 						#elif defined(NOVA_STANDARDSPECULAR_LIGHTING)
 							#define GetWorldNormal(val) val.Packed1.xyz
 							#define SetWorldNormal(val, toSet) val.Packed1.xyz = toSet
 							#define GetSmoothness(val) val.Packed1.w
 							#define SetSmoothness(val, toSet) val.Packed1.w = toSet
-							#define GetWorldPos(val) val.Packed2.xyz
-							#define SetWorldPos(val, toSet) val.Packed2.xyz = toSet
-							#define GetTextureUV(val) val.Packed3.xy
-							#define SetTextureUV(val, toSet) val.Packed3.xy = toSet
+							#define GetRootPos(val) val.Packed2.xyz
+							#define SetRootPos(val, toSet) val.Packed2.xyz = toSet
+							#define GetWorldPos(val) val.Packed3.xyz
+							#define SetWorldPos(val, toSet) val.Packed3.xyz = toSet
 							#define GetSpecularColor(val) val.SpecularColor
 							#define SetSpecularColor(val, toSet) val.SpecularColor = toSet
-							#define GetNClipRectPos(val) half2(val.Packed2.w, val.Packed3.z)
-							#define SetNClipRectPos(val, toSet) \
+							#define GetTextureUV(val) float2(val.Packed2.w, val.Packed3.w)
+							#define SetTextureUV(val, toSet) \
 								val.Packed2.w = toSet.x; \
-								val.Packed3.z = toSet.y;
+								val.Packed3.w = toSet.y;
 							#define POST_NOVA_0 7
 							#define POST_NOVA_1 8
 							#define POST_NOVA_2 9
@@ -642,10 +666,10 @@
 							#define POST_NOVA_5 12
 						#endif
 					#else
-						#define GetTextureUV(val) val.Packed1.xy
-						#define SetTextureUV(val, toSet) val.Packed1.xy = toSet
-						#define GetNClipRectPos(val) val.Packed1.zw
-						#define SetNClipRectPos(val, toSet) val.Packed1.zw = toSet
+						#define GetRootPos(val) val.RootPos
+						#define SetRootPos(val, toSet) val.RootPos = toSet
+						#define GetTextureUV(val) val.TextureUV
+						#define SetTextureUV(val, toSet) val.TextureUV = toSet
 					#endif
 				#else
 					#if defined(NOVA_LIT)
@@ -741,26 +765,28 @@
 			#define SetUnderlayScale(val, toSet) val.Packed1.w = toSet
 			#if defined(UNDERLAY_ON)
 				#if defined(NOVA_CLIPPING)
-					#define GetNClipRectPos(val) val.Packed2.xy
-					#define SetNClipRectPos(val, toSet) val.Packed2.xy = toSet
-					#define GetUnderlayBias(val) val.Packed2.z
-					#define SetUnderlayBias(val, toSet) val.Packed2.z = toSet
-					#define GetUnderlayScale(val) val.Packed2.w
-					#define SetUnderlayScale(val, toSet) val.Packed2.w = toSet
 					#if defined(NOVA_LIT)
-						#define GetUnderlayBias(val) val.Packed3.x
-						#define SetUnderlayBias(val, toSet) val.Packed3.x = toSet
-						#define GetWorldNormal(val) val.Packed3.yzw
-						#define SetWorldNormal(val, toSet) val.Packed3.yzw = toSet
+						#define GetWorldNormal(val) val.Packed2.xyz
+						#define SetWorldNormal(val, toSet) val.Packed2.xyz = toSet
+						#define GetUnderlayBias(val) val.Packed2.w
+						#define SetUnderlayBias(val, toSet) val.Packed2.w = toSet
 						#if defined(NOVA_LAMBERT_LIGHTING)
+							#define GetRootPos(val) val.Packed3.xyz
+							#define SetRootPos(val, toSet) val.Packed3.xyz = toSet
 							#define GetWorldPos(val) val.Packed4.xyz
 							#define SetWorldPos(val, toSet) val.Packed4.xyz = toSet
-							#define GetUnderlayAlpha(val) val.Packed4.w
-							#define SetUnderlayAlpha(val, toSet) val.Packed4.w = toSet
-							#define GetUnderlayUV(val) val.Packed5.xy
-							#define SetUnderlayUV(val, toSet) val.Packed5.xy = toSet
+							#define GetUnderlayBias(val) val.Packed5.x
+							#define SetUnderlayBias(val, toSet) val.Packed5.x = toSet
+							#define GetUnderlayScale(val) val.Packed5.y
+							#define SetUnderlayScale(val, toSet) val.Packed5.y = toSet
 							#define GetUnderlayAlpha(val) val.Packed5.z
 							#define SetUnderlayAlpha(val, toSet) val.Packed5.z = toSet
+							#define GetUnderlayAlpha(val) val.Packed5.w
+							#define SetUnderlayAlpha(val, toSet) val.Packed5.w = toSet
+							#define GetUnderlayUV(val) float2(val.Packed3.w, val.Packed4.w)
+							#define SetUnderlayUV(val, toSet) \
+								val.Packed3.w = toSet.x; \
+								val.Packed4.w = toSet.y;
 							#define POST_NOVA_0 7
 							#define POST_NOVA_1 8
 							#define POST_NOVA_2 9
@@ -768,18 +794,26 @@
 							#define POST_NOVA_4 11
 							#define POST_NOVA_5 12
 						#elif defined(NOVA_BLINNPHONG_LIGHTING)
-							#define GetWorldPos(val) val.Packed4.xyz
-							#define SetWorldPos(val, toSet) val.Packed4.xyz = toSet
-							#define GetSpecular(val) val.Packed4.w
-							#define SetSpecular(val, toSet) val.Packed4.w = toSet
-							#define GetUnderlayUV(val) val.Packed5.xy
-							#define SetUnderlayUV(val, toSet) val.Packed5.xy = toSet
-							#define GetGloss(val) val.Packed5.z
-							#define SetGloss(val, toSet) val.Packed5.z = toSet
-							#define GetUnderlayAlpha(val) val.Packed5.w
-							#define SetUnderlayAlpha(val, toSet) val.Packed5.w = toSet
-							#define GetUnderlayAlpha(val) val.UnderlayAlpha
-							#define SetUnderlayAlpha(val, toSet) val.UnderlayAlpha = toSet
+							#define GetUnderlayBias(val) val.Packed3.x
+							#define SetUnderlayBias(val, toSet) val.Packed3.x = toSet
+							#define GetUnderlayScale(val) val.Packed3.y
+							#define SetUnderlayScale(val, toSet) val.Packed3.y = toSet
+							#define GetSpecular(val) val.Packed3.z
+							#define SetSpecular(val, toSet) val.Packed3.z = toSet
+							#define GetGloss(val) val.Packed3.w
+							#define SetGloss(val, toSet) val.Packed3.w = toSet
+							#define GetRootPos(val) val.Packed4.xyz
+							#define SetRootPos(val, toSet) val.Packed4.xyz = toSet
+							#define GetWorldPos(val) val.Packed5.xyz
+							#define SetWorldPos(val, toSet) val.Packed5.xyz = toSet
+							#define GetUnderlayAlpha(val) val.Packed6.x
+							#define SetUnderlayAlpha(val, toSet) val.Packed6.x = toSet
+							#define GetUnderlayAlpha(val) val.Packed6.y
+							#define SetUnderlayAlpha(val, toSet) val.Packed6.y = toSet
+							#define GetUnderlayUV(val) float2(val.Packed4.w, val.Packed5.w)
+							#define SetUnderlayUV(val, toSet) \
+								val.Packed4.w = toSet.x; \
+								val.Packed5.w = toSet.y;
 							#define POST_NOVA_0 8
 							#define POST_NOVA_1 9
 							#define POST_NOVA_2 10
@@ -787,18 +821,26 @@
 							#define POST_NOVA_4 12
 							#define POST_NOVA_5 13
 						#elif defined(NOVA_STANDARD_LIGHTING)
-							#define GetWorldPos(val) val.Packed4.xyz
-							#define SetWorldPos(val, toSet) val.Packed4.xyz = toSet
-							#define GetSmoothness(val) val.Packed4.w
-							#define SetSmoothness(val, toSet) val.Packed4.w = toSet
-							#define GetUnderlayUV(val) val.Packed5.xy
-							#define SetUnderlayUV(val, toSet) val.Packed5.xy = toSet
-							#define GetMetallic(val) val.Packed5.z
-							#define SetMetallic(val, toSet) val.Packed5.z = toSet
-							#define GetUnderlayAlpha(val) val.Packed5.w
-							#define SetUnderlayAlpha(val, toSet) val.Packed5.w = toSet
-							#define GetUnderlayAlpha(val) val.UnderlayAlpha
-							#define SetUnderlayAlpha(val, toSet) val.UnderlayAlpha = toSet
+							#define GetUnderlayBias(val) val.Packed3.x
+							#define SetUnderlayBias(val, toSet) val.Packed3.x = toSet
+							#define GetUnderlayScale(val) val.Packed3.y
+							#define SetUnderlayScale(val, toSet) val.Packed3.y = toSet
+							#define GetSmoothness(val) val.Packed3.z
+							#define SetSmoothness(val, toSet) val.Packed3.z = toSet
+							#define GetMetallic(val) val.Packed3.w
+							#define SetMetallic(val, toSet) val.Packed3.w = toSet
+							#define GetRootPos(val) val.Packed4.xyz
+							#define SetRootPos(val, toSet) val.Packed4.xyz = toSet
+							#define GetWorldPos(val) val.Packed5.xyz
+							#define SetWorldPos(val, toSet) val.Packed5.xyz = toSet
+							#define GetUnderlayAlpha(val) val.Packed6.x
+							#define SetUnderlayAlpha(val, toSet) val.Packed6.x = toSet
+							#define GetUnderlayAlpha(val) val.Packed6.y
+							#define SetUnderlayAlpha(val, toSet) val.Packed6.y = toSet
+							#define GetUnderlayUV(val) float2(val.Packed4.w, val.Packed5.w)
+							#define SetUnderlayUV(val, toSet) \
+								val.Packed4.w = toSet.x; \
+								val.Packed5.w = toSet.y;
 							#define POST_NOVA_0 8
 							#define POST_NOVA_1 9
 							#define POST_NOVA_2 10
@@ -806,18 +848,26 @@
 							#define POST_NOVA_4 12
 							#define POST_NOVA_5 13
 						#elif defined(NOVA_STANDARDSPECULAR_LIGHTING)
-							#define GetSpecularColor(val) val.Packed4.xyz
-							#define SetSpecularColor(val, toSet) val.Packed4.xyz = toSet
-							#define GetUnderlayAlpha(val) val.Packed4.w
-							#define SetUnderlayAlpha(val, toSet) val.Packed4.w = toSet
+							#define GetSpecularColor(val) val.Packed3.xyz
+							#define SetSpecularColor(val, toSet) val.Packed3.xyz = toSet
+							#define GetUnderlayAlpha(val) val.Packed3.w
+							#define SetUnderlayAlpha(val, toSet) val.Packed3.w = toSet
+							#define GetRootPos(val) val.Packed4.xyz
+							#define SetRootPos(val, toSet) val.Packed4.xyz = toSet
 							#define GetWorldPos(val) val.Packed5.xyz
 							#define SetWorldPos(val, toSet) val.Packed5.xyz = toSet
-							#define GetSmoothness(val) val.Packed5.w
-							#define SetSmoothness(val, toSet) val.Packed5.w = toSet
-							#define GetUnderlayUV(val) val.Packed6.xy
-							#define SetUnderlayUV(val, toSet) val.Packed6.xy = toSet
-							#define GetUnderlayAlpha(val) val.Packed6.z
-							#define SetUnderlayAlpha(val, toSet) val.Packed6.z = toSet
+							#define GetUnderlayBias(val) val.Packed6.x
+							#define SetUnderlayBias(val, toSet) val.Packed6.x = toSet
+							#define GetUnderlayScale(val) val.Packed6.y
+							#define SetUnderlayScale(val, toSet) val.Packed6.y = toSet
+							#define GetSmoothness(val) val.Packed6.z
+							#define SetSmoothness(val, toSet) val.Packed6.z = toSet
+							#define GetUnderlayAlpha(val) val.Packed6.w
+							#define SetUnderlayAlpha(val, toSet) val.Packed6.w = toSet
+							#define GetUnderlayUV(val) float2(val.Packed4.w, val.Packed5.w)
+							#define SetUnderlayUV(val, toSet) \
+								val.Packed4.w = toSet.x; \
+								val.Packed5.w = toSet.y;
 							#define POST_NOVA_0 8
 							#define POST_NOVA_1 9
 							#define POST_NOVA_2 10
@@ -826,14 +876,20 @@
 							#define POST_NOVA_5 13
 						#endif
 					#else
+						#define GetRootPos(val) val.Packed2.xyz
+						#define SetRootPos(val, toSet) val.Packed2.xyz = toSet
+						#define GetUnderlayBias(val) val.Packed2.w
+						#define SetUnderlayBias(val, toSet) val.Packed2.w = toSet
 						#define GetUnderlayUV(val) val.Packed3.xy
 						#define SetUnderlayUV(val, toSet) val.Packed3.xy = toSet
-						#define GetUnderlayBias(val) val.Packed3.z
-						#define SetUnderlayBias(val, toSet) val.Packed3.z = toSet
-						#define GetUnderlayAlpha(val) val.Packed3.w
-						#define SetUnderlayAlpha(val, toSet) val.Packed3.w = toSet
-						#define GetUnderlayAlpha(val) val.UnderlayAlpha
-						#define SetUnderlayAlpha(val, toSet) val.UnderlayAlpha = toSet
+						#define GetUnderlayScale(val) val.Packed3.z
+						#define SetUnderlayScale(val, toSet) val.Packed3.z = toSet
+						#define GetUnderlayBias(val) val.Packed3.w
+						#define SetUnderlayBias(val, toSet) val.Packed3.w = toSet
+						#define GetUnderlayAlpha(val) val.Packed4.x
+						#define SetUnderlayAlpha(val, toSet) val.Packed4.x = toSet
+						#define GetUnderlayAlpha(val) val.Packed4.y
+						#define SetUnderlayAlpha(val, toSet) val.Packed4.y = toSet
 					#endif
 				#else
 					#if defined(NOVA_LIT)
@@ -948,17 +1004,17 @@
 			#else
 				#if defined(NOVA_CLIPPING)
 					#if defined(NOVA_LIT)
-						#define GetWorldNormal(val) val.Packed2.xyz
-						#define SetWorldNormal(val, toSet) val.Packed2.xyz = toSet
-						#define GetUnderlayBias(val) val.Packed2.w
-						#define SetUnderlayBias(val, toSet) val.Packed2.w = toSet
+						#define GetUnderlayBias(val) val.Packed2.x
+						#define SetUnderlayBias(val, toSet) val.Packed2.x = toSet
+						#define GetWorldNormal(val) val.Packed2.yzw
+						#define SetWorldNormal(val, toSet) val.Packed2.yzw = toSet
 						#if defined(NOVA_LAMBERT_LIGHTING)
-							#define GetWorldPos(val) val.Packed3.xyz
-							#define SetWorldPos(val, toSet) val.Packed3.xyz = toSet
+							#define GetRootPos(val) val.Packed3.xyz
+							#define SetRootPos(val, toSet) val.Packed3.xyz = toSet
 							#define GetUnderlayAlpha(val) val.Packed3.w
 							#define SetUnderlayAlpha(val, toSet) val.Packed3.w = toSet
-							#define GetNClipRectPos(val) val.NClipRectPos
-							#define SetNClipRectPos(val, toSet) val.NClipRectPos = toSet
+							#define GetWorldPos(val) val.WorldPos
+							#define SetWorldPos(val, toSet) val.WorldPos = toSet
 							#define POST_NOVA_0 6
 							#define POST_NOVA_1 7
 							#define POST_NOVA_2 8
@@ -966,50 +1022,50 @@
 							#define POST_NOVA_4 10
 							#define POST_NOVA_5 11
 						#elif defined(NOVA_BLINNPHONG_LIGHTING)
-							#define GetNClipRectPos(val) val.Packed3.xy
-							#define SetNClipRectPos(val, toSet) val.Packed3.xy = toSet
-							#define GetSpecular(val) val.Packed3.z
-							#define SetSpecular(val, toSet) val.Packed3.z = toSet
-							#define GetGloss(val) val.Packed3.w
-							#define SetGloss(val, toSet) val.Packed3.w = toSet
+							#define GetRootPos(val) val.Packed3.xyz
+							#define SetRootPos(val, toSet) val.Packed3.xyz = toSet
+							#define GetSpecular(val) val.Packed3.w
+							#define SetSpecular(val, toSet) val.Packed3.w = toSet
 							#define GetWorldPos(val) val.Packed4.xyz
 							#define SetWorldPos(val, toSet) val.Packed4.xyz = toSet
-							#define GetUnderlayAlpha(val) val.Packed4.w
-							#define SetUnderlayAlpha(val, toSet) val.Packed4.w = toSet
-							#define POST_NOVA_0 6
-							#define POST_NOVA_1 7
-							#define POST_NOVA_2 8
-							#define POST_NOVA_3 9
-							#define POST_NOVA_4 10
-							#define POST_NOVA_5 11
+							#define GetGloss(val) val.Packed4.w
+							#define SetGloss(val, toSet) val.Packed4.w = toSet
+							#define GetUnderlayAlpha(val) val.UnderlayAlpha
+							#define SetUnderlayAlpha(val, toSet) val.UnderlayAlpha = toSet
+							#define POST_NOVA_0 7
+							#define POST_NOVA_1 8
+							#define POST_NOVA_2 9
+							#define POST_NOVA_3 10
+							#define POST_NOVA_4 11
+							#define POST_NOVA_5 12
 						#elif defined(NOVA_STANDARD_LIGHTING)
-							#define GetNClipRectPos(val) val.Packed3.xy
-							#define SetNClipRectPos(val, toSet) val.Packed3.xy = toSet
-							#define GetSmoothness(val) val.Packed3.z
-							#define SetSmoothness(val, toSet) val.Packed3.z = toSet
-							#define GetMetallic(val) val.Packed3.w
-							#define SetMetallic(val, toSet) val.Packed3.w = toSet
+							#define GetRootPos(val) val.Packed3.xyz
+							#define SetRootPos(val, toSet) val.Packed3.xyz = toSet
+							#define GetSmoothness(val) val.Packed3.w
+							#define SetSmoothness(val, toSet) val.Packed3.w = toSet
 							#define GetWorldPos(val) val.Packed4.xyz
 							#define SetWorldPos(val, toSet) val.Packed4.xyz = toSet
-							#define GetUnderlayAlpha(val) val.Packed4.w
-							#define SetUnderlayAlpha(val, toSet) val.Packed4.w = toSet
-							#define POST_NOVA_0 6
-							#define POST_NOVA_1 7
-							#define POST_NOVA_2 8
-							#define POST_NOVA_3 9
-							#define POST_NOVA_4 10
-							#define POST_NOVA_5 11
+							#define GetMetallic(val) val.Packed4.w
+							#define SetMetallic(val, toSet) val.Packed4.w = toSet
+							#define GetUnderlayAlpha(val) val.UnderlayAlpha
+							#define SetUnderlayAlpha(val, toSet) val.UnderlayAlpha = toSet
+							#define POST_NOVA_0 7
+							#define POST_NOVA_1 8
+							#define POST_NOVA_2 9
+							#define POST_NOVA_3 10
+							#define POST_NOVA_4 11
+							#define POST_NOVA_5 12
 						#elif defined(NOVA_STANDARDSPECULAR_LIGHTING)
 							#define GetUnderlayAlpha(val) val.Packed3.x
 							#define SetUnderlayAlpha(val, toSet) val.Packed3.x = toSet
 							#define GetSpecularColor(val) val.Packed3.yzw
 							#define SetSpecularColor(val, toSet) val.Packed3.yzw = toSet
-							#define GetWorldPos(val) val.Packed4.xyz
-							#define SetWorldPos(val, toSet) val.Packed4.xyz = toSet
+							#define GetRootPos(val) val.Packed4.xyz
+							#define SetRootPos(val, toSet) val.Packed4.xyz = toSet
 							#define GetSmoothness(val) val.Packed4.w
 							#define SetSmoothness(val, toSet) val.Packed4.w = toSet
-							#define GetNClipRectPos(val) val.NClipRectPos
-							#define SetNClipRectPos(val, toSet) val.NClipRectPos = toSet
+							#define GetWorldPos(val) val.WorldPos
+							#define SetWorldPos(val, toSet) val.WorldPos = toSet
 							#define POST_NOVA_0 7
 							#define POST_NOVA_1 8
 							#define POST_NOVA_2 9
@@ -1018,12 +1074,12 @@
 							#define POST_NOVA_5 12
 						#endif
 					#else
-						#define GetNClipRectPos(val) val.Packed2.xy
-						#define SetNClipRectPos(val, toSet) val.Packed2.xy = toSet
-						#define GetUnderlayBias(val) val.Packed2.z
-						#define SetUnderlayBias(val, toSet) val.Packed2.z = toSet
-						#define GetUnderlayAlpha(val) val.Packed2.w
-						#define SetUnderlayAlpha(val, toSet) val.Packed2.w = toSet
+						#define GetRootPos(val) val.Packed2.xyz
+						#define SetRootPos(val, toSet) val.Packed2.xyz = toSet
+						#define GetUnderlayBias(val) val.Packed2.w
+						#define SetUnderlayBias(val, toSet) val.Packed2.w = toSet
+						#define GetUnderlayAlpha(val) val.UnderlayAlpha
+						#define SetUnderlayAlpha(val, toSet) val.UnderlayAlpha = toSet
 					#endif
 				#else
 					#if defined(NOVA_LIT)
@@ -1112,17 +1168,17 @@
 				#define SetUnderlayScale(val, toSet) val.Packed1.w = toSet
 				#if defined(NOVA_CLIPPING)
 					#if defined(NOVA_LIT)
-						#define GetWorldNormal(val) val.Packed2.xyz
-						#define SetWorldNormal(val, toSet) val.Packed2.xyz = toSet
-						#define GetUnderlayBias(val) val.Packed2.w
-						#define SetUnderlayBias(val, toSet) val.Packed2.w = toSet
+						#define GetUnderlayBias(val) val.Packed2.x
+						#define SetUnderlayBias(val, toSet) val.Packed2.x = toSet
+						#define GetWorldNormal(val) val.Packed2.yzw
+						#define SetWorldNormal(val, toSet) val.Packed2.yzw = toSet
 						#if defined(NOVA_LAMBERT_LIGHTING)
-							#define GetWorldPos(val) val.Packed3.xyz
-							#define SetWorldPos(val, toSet) val.Packed3.xyz = toSet
+							#define GetRootPos(val) val.Packed3.xyz
+							#define SetRootPos(val, toSet) val.Packed3.xyz = toSet
 							#define GetUnderlayAlpha(val) val.Packed3.w
 							#define SetUnderlayAlpha(val, toSet) val.Packed3.w = toSet
-							#define GetNClipRectPos(val) val.NClipRectPos
-							#define SetNClipRectPos(val, toSet) val.NClipRectPos = toSet
+							#define GetWorldPos(val) val.WorldPos
+							#define SetWorldPos(val, toSet) val.WorldPos = toSet
 							#define POST_NOVA_0 6
 							#define POST_NOVA_1 7
 							#define POST_NOVA_2 8
@@ -1130,50 +1186,50 @@
 							#define POST_NOVA_4 10
 							#define POST_NOVA_5 11
 						#elif defined(NOVA_BLINNPHONG_LIGHTING)
-							#define GetNClipRectPos(val) val.Packed3.xy
-							#define SetNClipRectPos(val, toSet) val.Packed3.xy = toSet
-							#define GetSpecular(val) val.Packed3.z
-							#define SetSpecular(val, toSet) val.Packed3.z = toSet
-							#define GetGloss(val) val.Packed3.w
-							#define SetGloss(val, toSet) val.Packed3.w = toSet
+							#define GetRootPos(val) val.Packed3.xyz
+							#define SetRootPos(val, toSet) val.Packed3.xyz = toSet
+							#define GetSpecular(val) val.Packed3.w
+							#define SetSpecular(val, toSet) val.Packed3.w = toSet
 							#define GetWorldPos(val) val.Packed4.xyz
 							#define SetWorldPos(val, toSet) val.Packed4.xyz = toSet
-							#define GetUnderlayAlpha(val) val.Packed4.w
-							#define SetUnderlayAlpha(val, toSet) val.Packed4.w = toSet
-							#define POST_NOVA_0 6
-							#define POST_NOVA_1 7
-							#define POST_NOVA_2 8
-							#define POST_NOVA_3 9
-							#define POST_NOVA_4 10
-							#define POST_NOVA_5 11
+							#define GetGloss(val) val.Packed4.w
+							#define SetGloss(val, toSet) val.Packed4.w = toSet
+							#define GetUnderlayAlpha(val) val.UnderlayAlpha
+							#define SetUnderlayAlpha(val, toSet) val.UnderlayAlpha = toSet
+							#define POST_NOVA_0 7
+							#define POST_NOVA_1 8
+							#define POST_NOVA_2 9
+							#define POST_NOVA_3 10
+							#define POST_NOVA_4 11
+							#define POST_NOVA_5 12
 						#elif defined(NOVA_STANDARD_LIGHTING)
-							#define GetNClipRectPos(val) val.Packed3.xy
-							#define SetNClipRectPos(val, toSet) val.Packed3.xy = toSet
-							#define GetSmoothness(val) val.Packed3.z
-							#define SetSmoothness(val, toSet) val.Packed3.z = toSet
-							#define GetMetallic(val) val.Packed3.w
-							#define SetMetallic(val, toSet) val.Packed3.w = toSet
+							#define GetRootPos(val) val.Packed3.xyz
+							#define SetRootPos(val, toSet) val.Packed3.xyz = toSet
+							#define GetSmoothness(val) val.Packed3.w
+							#define SetSmoothness(val, toSet) val.Packed3.w = toSet
 							#define GetWorldPos(val) val.Packed4.xyz
 							#define SetWorldPos(val, toSet) val.Packed4.xyz = toSet
-							#define GetUnderlayAlpha(val) val.Packed4.w
-							#define SetUnderlayAlpha(val, toSet) val.Packed4.w = toSet
-							#define POST_NOVA_0 6
-							#define POST_NOVA_1 7
-							#define POST_NOVA_2 8
-							#define POST_NOVA_3 9
-							#define POST_NOVA_4 10
-							#define POST_NOVA_5 11
+							#define GetMetallic(val) val.Packed4.w
+							#define SetMetallic(val, toSet) val.Packed4.w = toSet
+							#define GetUnderlayAlpha(val) val.UnderlayAlpha
+							#define SetUnderlayAlpha(val, toSet) val.UnderlayAlpha = toSet
+							#define POST_NOVA_0 7
+							#define POST_NOVA_1 8
+							#define POST_NOVA_2 9
+							#define POST_NOVA_3 10
+							#define POST_NOVA_4 11
+							#define POST_NOVA_5 12
 						#elif defined(NOVA_STANDARDSPECULAR_LIGHTING)
 							#define GetUnderlayAlpha(val) val.Packed3.x
 							#define SetUnderlayAlpha(val, toSet) val.Packed3.x = toSet
 							#define GetSpecularColor(val) val.Packed3.yzw
 							#define SetSpecularColor(val, toSet) val.Packed3.yzw = toSet
-							#define GetWorldPos(val) val.Packed4.xyz
-							#define SetWorldPos(val, toSet) val.Packed4.xyz = toSet
+							#define GetRootPos(val) val.Packed4.xyz
+							#define SetRootPos(val, toSet) val.Packed4.xyz = toSet
 							#define GetSmoothness(val) val.Packed4.w
 							#define SetSmoothness(val, toSet) val.Packed4.w = toSet
-							#define GetNClipRectPos(val) val.NClipRectPos
-							#define SetNClipRectPos(val, toSet) val.NClipRectPos = toSet
+							#define GetWorldPos(val) val.WorldPos
+							#define SetWorldPos(val, toSet) val.WorldPos = toSet
 							#define POST_NOVA_0 7
 							#define POST_NOVA_1 8
 							#define POST_NOVA_2 9
@@ -1182,12 +1238,12 @@
 							#define POST_NOVA_5 12
 						#endif
 					#else
-						#define GetNClipRectPos(val) val.Packed2.xy
-						#define SetNClipRectPos(val, toSet) val.Packed2.xy = toSet
-						#define GetUnderlayBias(val) val.Packed2.z
-						#define SetUnderlayBias(val, toSet) val.Packed2.z = toSet
-						#define GetUnderlayAlpha(val) val.Packed2.w
-						#define SetUnderlayAlpha(val, toSet) val.Packed2.w = toSet
+						#define GetRootPos(val) val.Packed2.xyz
+						#define SetRootPos(val, toSet) val.Packed2.xyz = toSet
+						#define GetUnderlayBias(val) val.Packed2.w
+						#define SetUnderlayBias(val, toSet) val.Packed2.w = toSet
+						#define GetUnderlayAlpha(val) val.UnderlayAlpha
+						#define SetUnderlayAlpha(val, toSet) val.UnderlayAlpha = toSet
 					#endif
 				#else
 					#if defined(NOVA_LIT)
@@ -1261,22 +1317,24 @@
 				#endif
 			#else
 				#if defined(NOVA_CLIPPING)
-					#define GetNClipRectPos(val) val.Packed0.xy
-					#define SetNClipRectPos(val, toSet) val.Packed0.xy = toSet
-					#define GetScaleParam(val) val.Packed0.z
-					#define SetScaleParam(val, toSet) val.Packed0.z = toSet
-					#define GetBiasParam(val) val.Packed0.w
-					#define SetBiasParam(val, toSet) val.Packed0.w = toSet
 					#if defined(NOVA_LIT)
-						#define GetBiasOutParam(val) val.Packed1.x
-						#define SetBiasOutParam(val, toSet) val.Packed1.x = toSet
-						#define GetWorldNormal(val) val.Packed1.yzw
-						#define SetWorldNormal(val, toSet) val.Packed1.yzw = toSet
+						#define GetWorldNormal(val) val.Packed0.xyz
+						#define SetWorldNormal(val, toSet) val.Packed0.xyz = toSet
+						#define GetScaleParam(val) val.Packed0.w
+						#define SetScaleParam(val, toSet) val.Packed0.w = toSet
 						#if defined(NOVA_LAMBERT_LIGHTING)
-							#define GetWorldPos(val) val.WorldPos
-							#define SetWorldPos(val, toSet) val.WorldPos = toSet
-							#define GetTextureUV(val) val.TextureUV
-							#define SetTextureUV(val, toSet) val.TextureUV = toSet
+							#define GetRootPos(val) val.Packed1.xyz
+							#define SetRootPos(val, toSet) val.Packed1.xyz = toSet
+							#define GetWorldPos(val) val.Packed2.xyz
+							#define SetWorldPos(val, toSet) val.Packed2.xyz = toSet
+							#define GetBiasOutParam(val) val.Packed3.x
+							#define SetBiasOutParam(val, toSet) val.Packed3.x = toSet
+							#define GetBiasParam(val) val.Packed3.y
+							#define SetBiasParam(val, toSet) val.Packed3.y = toSet
+							#define GetTextureUV(val) float2(val.Packed1.w, val.Packed2.w)
+							#define SetTextureUV(val, toSet) \
+								val.Packed1.w = toSet.x; \
+								val.Packed2.w = toSet.y;
 							#define POST_NOVA_0 5
 							#define POST_NOVA_1 6
 							#define POST_NOVA_2 7
@@ -1284,14 +1342,22 @@
 							#define POST_NOVA_4 9
 							#define POST_NOVA_5 10
 						#elif defined(NOVA_BLINNPHONG_LIGHTING)
-							#define GetWorldPos(val) val.Packed2.xyz
-							#define SetWorldPos(val, toSet) val.Packed2.xyz = toSet
-							#define GetSpecular(val) val.Packed2.w
-							#define SetSpecular(val, toSet) val.Packed2.w = toSet
-							#define GetTextureUV(val) val.Packed3.xy
-							#define SetTextureUV(val, toSet) val.Packed3.xy = toSet
-							#define GetGloss(val) val.Packed3.z
-							#define SetGloss(val, toSet) val.Packed3.z = toSet
+							#define GetBiasOutParam(val) val.Packed1.x
+							#define SetBiasOutParam(val, toSet) val.Packed1.x = toSet
+							#define GetBiasParam(val) val.Packed1.y
+							#define SetBiasParam(val, toSet) val.Packed1.y = toSet
+							#define GetSpecular(val) val.Packed1.z
+							#define SetSpecular(val, toSet) val.Packed1.z = toSet
+							#define GetGloss(val) val.Packed1.w
+							#define SetGloss(val, toSet) val.Packed1.w = toSet
+							#define GetRootPos(val) val.Packed2.xyz
+							#define SetRootPos(val, toSet) val.Packed2.xyz = toSet
+							#define GetWorldPos(val) val.Packed3.xyz
+							#define SetWorldPos(val, toSet) val.Packed3.xyz = toSet
+							#define GetTextureUV(val) float2(val.Packed2.w, val.Packed3.w)
+							#define SetTextureUV(val, toSet) \
+								val.Packed2.w = toSet.x; \
+								val.Packed3.w = toSet.y;
 							#define POST_NOVA_0 5
 							#define POST_NOVA_1 6
 							#define POST_NOVA_2 7
@@ -1299,14 +1365,22 @@
 							#define POST_NOVA_4 9
 							#define POST_NOVA_5 10
 						#elif defined(NOVA_STANDARD_LIGHTING)
-							#define GetWorldPos(val) val.Packed2.xyz
-							#define SetWorldPos(val, toSet) val.Packed2.xyz = toSet
-							#define GetSmoothness(val) val.Packed2.w
-							#define SetSmoothness(val, toSet) val.Packed2.w = toSet
-							#define GetTextureUV(val) val.Packed3.xy
-							#define SetTextureUV(val, toSet) val.Packed3.xy = toSet
-							#define GetMetallic(val) val.Packed3.z
-							#define SetMetallic(val, toSet) val.Packed3.z = toSet
+							#define GetBiasOutParam(val) val.Packed1.x
+							#define SetBiasOutParam(val, toSet) val.Packed1.x = toSet
+							#define GetBiasParam(val) val.Packed1.y
+							#define SetBiasParam(val, toSet) val.Packed1.y = toSet
+							#define GetSmoothness(val) val.Packed1.z
+							#define SetSmoothness(val, toSet) val.Packed1.z = toSet
+							#define GetMetallic(val) val.Packed1.w
+							#define SetMetallic(val, toSet) val.Packed1.w = toSet
+							#define GetRootPos(val) val.Packed2.xyz
+							#define SetRootPos(val, toSet) val.Packed2.xyz = toSet
+							#define GetWorldPos(val) val.Packed3.xyz
+							#define SetWorldPos(val, toSet) val.Packed3.xyz = toSet
+							#define GetTextureUV(val) float2(val.Packed2.w, val.Packed3.w)
+							#define SetTextureUV(val, toSet) \
+								val.Packed2.w = toSet.x; \
+								val.Packed3.w = toSet.y;
 							#define POST_NOVA_0 5
 							#define POST_NOVA_1 6
 							#define POST_NOVA_2 7
@@ -1314,14 +1388,22 @@
 							#define POST_NOVA_4 9
 							#define POST_NOVA_5 10
 						#elif defined(NOVA_STANDARDSPECULAR_LIGHTING)
+							#define GetRootPos(val) val.Packed1.xyz
+							#define SetRootPos(val, toSet) val.Packed1.xyz = toSet
 							#define GetWorldPos(val) val.Packed2.xyz
 							#define SetWorldPos(val, toSet) val.Packed2.xyz = toSet
-							#define GetSmoothness(val) val.Packed2.w
-							#define SetSmoothness(val, toSet) val.Packed2.w = toSet
-							#define GetTextureUV(val) val.TextureUV
-							#define SetTextureUV(val, toSet) val.TextureUV = toSet
+							#define GetBiasOutParam(val) val.Packed3.x
+							#define SetBiasOutParam(val, toSet) val.Packed3.x = toSet
+							#define GetBiasParam(val) val.Packed3.y
+							#define SetBiasParam(val, toSet) val.Packed3.y = toSet
+							#define GetSmoothness(val) val.Packed3.z
+							#define SetSmoothness(val, toSet) val.Packed3.z = toSet
 							#define GetSpecularColor(val) val.SpecularColor
 							#define SetSpecularColor(val, toSet) val.SpecularColor = toSet
+							#define GetTextureUV(val) float2(val.Packed1.w, val.Packed2.w)
+							#define SetTextureUV(val, toSet) \
+								val.Packed1.w = toSet.x; \
+								val.Packed2.w = toSet.y;
 							#define POST_NOVA_0 6
 							#define POST_NOVA_1 7
 							#define POST_NOVA_2 8
@@ -1330,10 +1412,16 @@
 							#define POST_NOVA_5 11
 						#endif
 					#else
+						#define GetRootPos(val) val.Packed0.xyz
+						#define SetRootPos(val, toSet) val.Packed0.xyz = toSet
+						#define GetScaleParam(val) val.Packed0.w
+						#define SetScaleParam(val, toSet) val.Packed0.w = toSet
 						#define GetTextureUV(val) val.Packed1.xy
 						#define SetTextureUV(val, toSet) val.Packed1.xy = toSet
-						#define GetBiasOutParam(val) val.Packed1.z
-						#define SetBiasOutParam(val, toSet) val.Packed1.z = toSet
+						#define GetBiasParam(val) val.Packed1.z
+						#define SetBiasParam(val, toSet) val.Packed1.z = toSet
+						#define GetBiasOutParam(val) val.Packed1.w
+						#define SetBiasOutParam(val, toSet) val.Packed1.w = toSet
 					#endif
 				#else
 					#if defined(NOVA_LIT)
@@ -1447,26 +1535,28 @@
 			#define SetUnderlayScale(val, toSet) val.Packed1.w = toSet
 			#if defined(UNDERLAY_ON)
 				#if defined(NOVA_CLIPPING)
-					#define GetNClipRectPos(val) val.Packed2.xy
-					#define SetNClipRectPos(val, toSet) val.Packed2.xy = toSet
-					#define GetUnderlayBias(val) val.Packed2.z
-					#define SetUnderlayBias(val, toSet) val.Packed2.z = toSet
-					#define GetUnderlayScale(val) val.Packed2.w
-					#define SetUnderlayScale(val, toSet) val.Packed2.w = toSet
 					#if defined(NOVA_LIT)
-						#define GetUnderlayBias(val) val.Packed3.x
-						#define SetUnderlayBias(val, toSet) val.Packed3.x = toSet
-						#define GetWorldNormal(val) val.Packed3.yzw
-						#define SetWorldNormal(val, toSet) val.Packed3.yzw = toSet
+						#define GetWorldNormal(val) val.Packed2.xyz
+						#define SetWorldNormal(val, toSet) val.Packed2.xyz = toSet
+						#define GetUnderlayBias(val) val.Packed2.w
+						#define SetUnderlayBias(val, toSet) val.Packed2.w = toSet
 						#if defined(NOVA_LAMBERT_LIGHTING)
+							#define GetRootPos(val) val.Packed3.xyz
+							#define SetRootPos(val, toSet) val.Packed3.xyz = toSet
 							#define GetWorldPos(val) val.Packed4.xyz
 							#define SetWorldPos(val, toSet) val.Packed4.xyz = toSet
-							#define GetUnderlayAlpha(val) val.Packed4.w
-							#define SetUnderlayAlpha(val, toSet) val.Packed4.w = toSet
-							#define GetUnderlayUV(val) val.Packed5.xy
-							#define SetUnderlayUV(val, toSet) val.Packed5.xy = toSet
+							#define GetUnderlayBias(val) val.Packed5.x
+							#define SetUnderlayBias(val, toSet) val.Packed5.x = toSet
+							#define GetUnderlayScale(val) val.Packed5.y
+							#define SetUnderlayScale(val, toSet) val.Packed5.y = toSet
 							#define GetUnderlayAlpha(val) val.Packed5.z
 							#define SetUnderlayAlpha(val, toSet) val.Packed5.z = toSet
+							#define GetUnderlayAlpha(val) val.Packed5.w
+							#define SetUnderlayAlpha(val, toSet) val.Packed5.w = toSet
+							#define GetUnderlayUV(val) float2(val.Packed3.w, val.Packed4.w)
+							#define SetUnderlayUV(val, toSet) \
+								val.Packed3.w = toSet.x; \
+								val.Packed4.w = toSet.y;
 							#define POST_NOVA_0 8
 							#define POST_NOVA_1 9
 							#define POST_NOVA_2 10
@@ -1474,18 +1564,26 @@
 							#define POST_NOVA_4 12
 							#define POST_NOVA_5 13
 						#elif defined(NOVA_BLINNPHONG_LIGHTING)
-							#define GetWorldPos(val) val.Packed4.xyz
-							#define SetWorldPos(val, toSet) val.Packed4.xyz = toSet
-							#define GetSpecular(val) val.Packed4.w
-							#define SetSpecular(val, toSet) val.Packed4.w = toSet
-							#define GetUnderlayUV(val) val.Packed5.xy
-							#define SetUnderlayUV(val, toSet) val.Packed5.xy = toSet
-							#define GetGloss(val) val.Packed5.z
-							#define SetGloss(val, toSet) val.Packed5.z = toSet
-							#define GetUnderlayAlpha(val) val.Packed5.w
-							#define SetUnderlayAlpha(val, toSet) val.Packed5.w = toSet
-							#define GetUnderlayAlpha(val) val.UnderlayAlpha
-							#define SetUnderlayAlpha(val, toSet) val.UnderlayAlpha = toSet
+							#define GetUnderlayBias(val) val.Packed3.x
+							#define SetUnderlayBias(val, toSet) val.Packed3.x = toSet
+							#define GetUnderlayScale(val) val.Packed3.y
+							#define SetUnderlayScale(val, toSet) val.Packed3.y = toSet
+							#define GetSpecular(val) val.Packed3.z
+							#define SetSpecular(val, toSet) val.Packed3.z = toSet
+							#define GetGloss(val) val.Packed3.w
+							#define SetGloss(val, toSet) val.Packed3.w = toSet
+							#define GetRootPos(val) val.Packed4.xyz
+							#define SetRootPos(val, toSet) val.Packed4.xyz = toSet
+							#define GetWorldPos(val) val.Packed5.xyz
+							#define SetWorldPos(val, toSet) val.Packed5.xyz = toSet
+							#define GetUnderlayAlpha(val) val.Packed6.x
+							#define SetUnderlayAlpha(val, toSet) val.Packed6.x = toSet
+							#define GetUnderlayAlpha(val) val.Packed6.y
+							#define SetUnderlayAlpha(val, toSet) val.Packed6.y = toSet
+							#define GetUnderlayUV(val) float2(val.Packed4.w, val.Packed5.w)
+							#define SetUnderlayUV(val, toSet) \
+								val.Packed4.w = toSet.x; \
+								val.Packed5.w = toSet.y;
 							#define POST_NOVA_0 9
 							#define POST_NOVA_1 10
 							#define POST_NOVA_2 11
@@ -1493,18 +1591,26 @@
 							#define POST_NOVA_4 13
 							#define POST_NOVA_5 14
 						#elif defined(NOVA_STANDARD_LIGHTING)
-							#define GetWorldPos(val) val.Packed4.xyz
-							#define SetWorldPos(val, toSet) val.Packed4.xyz = toSet
-							#define GetSmoothness(val) val.Packed4.w
-							#define SetSmoothness(val, toSet) val.Packed4.w = toSet
-							#define GetUnderlayUV(val) val.Packed5.xy
-							#define SetUnderlayUV(val, toSet) val.Packed5.xy = toSet
-							#define GetMetallic(val) val.Packed5.z
-							#define SetMetallic(val, toSet) val.Packed5.z = toSet
-							#define GetUnderlayAlpha(val) val.Packed5.w
-							#define SetUnderlayAlpha(val, toSet) val.Packed5.w = toSet
-							#define GetUnderlayAlpha(val) val.UnderlayAlpha
-							#define SetUnderlayAlpha(val, toSet) val.UnderlayAlpha = toSet
+							#define GetUnderlayBias(val) val.Packed3.x
+							#define SetUnderlayBias(val, toSet) val.Packed3.x = toSet
+							#define GetUnderlayScale(val) val.Packed3.y
+							#define SetUnderlayScale(val, toSet) val.Packed3.y = toSet
+							#define GetSmoothness(val) val.Packed3.z
+							#define SetSmoothness(val, toSet) val.Packed3.z = toSet
+							#define GetMetallic(val) val.Packed3.w
+							#define SetMetallic(val, toSet) val.Packed3.w = toSet
+							#define GetRootPos(val) val.Packed4.xyz
+							#define SetRootPos(val, toSet) val.Packed4.xyz = toSet
+							#define GetWorldPos(val) val.Packed5.xyz
+							#define SetWorldPos(val, toSet) val.Packed5.xyz = toSet
+							#define GetUnderlayAlpha(val) val.Packed6.x
+							#define SetUnderlayAlpha(val, toSet) val.Packed6.x = toSet
+							#define GetUnderlayAlpha(val) val.Packed6.y
+							#define SetUnderlayAlpha(val, toSet) val.Packed6.y = toSet
+							#define GetUnderlayUV(val) float2(val.Packed4.w, val.Packed5.w)
+							#define SetUnderlayUV(val, toSet) \
+								val.Packed4.w = toSet.x; \
+								val.Packed5.w = toSet.y;
 							#define POST_NOVA_0 9
 							#define POST_NOVA_1 10
 							#define POST_NOVA_2 11
@@ -1512,18 +1618,26 @@
 							#define POST_NOVA_4 13
 							#define POST_NOVA_5 14
 						#elif defined(NOVA_STANDARDSPECULAR_LIGHTING)
-							#define GetSpecularColor(val) val.Packed4.xyz
-							#define SetSpecularColor(val, toSet) val.Packed4.xyz = toSet
-							#define GetUnderlayAlpha(val) val.Packed4.w
-							#define SetUnderlayAlpha(val, toSet) val.Packed4.w = toSet
+							#define GetSpecularColor(val) val.Packed3.xyz
+							#define SetSpecularColor(val, toSet) val.Packed3.xyz = toSet
+							#define GetUnderlayAlpha(val) val.Packed3.w
+							#define SetUnderlayAlpha(val, toSet) val.Packed3.w = toSet
+							#define GetRootPos(val) val.Packed4.xyz
+							#define SetRootPos(val, toSet) val.Packed4.xyz = toSet
 							#define GetWorldPos(val) val.Packed5.xyz
 							#define SetWorldPos(val, toSet) val.Packed5.xyz = toSet
-							#define GetSmoothness(val) val.Packed5.w
-							#define SetSmoothness(val, toSet) val.Packed5.w = toSet
-							#define GetUnderlayUV(val) val.Packed6.xy
-							#define SetUnderlayUV(val, toSet) val.Packed6.xy = toSet
-							#define GetUnderlayAlpha(val) val.Packed6.z
-							#define SetUnderlayAlpha(val, toSet) val.Packed6.z = toSet
+							#define GetUnderlayBias(val) val.Packed6.x
+							#define SetUnderlayBias(val, toSet) val.Packed6.x = toSet
+							#define GetUnderlayScale(val) val.Packed6.y
+							#define SetUnderlayScale(val, toSet) val.Packed6.y = toSet
+							#define GetSmoothness(val) val.Packed6.z
+							#define SetSmoothness(val, toSet) val.Packed6.z = toSet
+							#define GetUnderlayAlpha(val) val.Packed6.w
+							#define SetUnderlayAlpha(val, toSet) val.Packed6.w = toSet
+							#define GetUnderlayUV(val) float2(val.Packed4.w, val.Packed5.w)
+							#define SetUnderlayUV(val, toSet) \
+								val.Packed4.w = toSet.x; \
+								val.Packed5.w = toSet.y;
 							#define POST_NOVA_0 9
 							#define POST_NOVA_1 10
 							#define POST_NOVA_2 11
@@ -1532,14 +1646,20 @@
 							#define POST_NOVA_5 14
 						#endif
 					#else
+						#define GetRootPos(val) val.Packed2.xyz
+						#define SetRootPos(val, toSet) val.Packed2.xyz = toSet
+						#define GetUnderlayBias(val) val.Packed2.w
+						#define SetUnderlayBias(val, toSet) val.Packed2.w = toSet
 						#define GetUnderlayUV(val) val.Packed3.xy
 						#define SetUnderlayUV(val, toSet) val.Packed3.xy = toSet
-						#define GetUnderlayBias(val) val.Packed3.z
-						#define SetUnderlayBias(val, toSet) val.Packed3.z = toSet
-						#define GetUnderlayAlpha(val) val.Packed3.w
-						#define SetUnderlayAlpha(val, toSet) val.Packed3.w = toSet
-						#define GetUnderlayAlpha(val) val.UnderlayAlpha
-						#define SetUnderlayAlpha(val, toSet) val.UnderlayAlpha = toSet
+						#define GetUnderlayScale(val) val.Packed3.z
+						#define SetUnderlayScale(val, toSet) val.Packed3.z = toSet
+						#define GetUnderlayBias(val) val.Packed3.w
+						#define SetUnderlayBias(val, toSet) val.Packed3.w = toSet
+						#define GetUnderlayAlpha(val) val.Packed4.x
+						#define SetUnderlayAlpha(val, toSet) val.Packed4.x = toSet
+						#define GetUnderlayAlpha(val) val.Packed4.y
+						#define SetUnderlayAlpha(val, toSet) val.Packed4.y = toSet
 					#endif
 				#else
 					#if defined(NOVA_LIT)
@@ -1654,17 +1774,17 @@
 			#else
 				#if defined(NOVA_CLIPPING)
 					#if defined(NOVA_LIT)
-						#define GetWorldNormal(val) val.Packed2.xyz
-						#define SetWorldNormal(val, toSet) val.Packed2.xyz = toSet
-						#define GetUnderlayBias(val) val.Packed2.w
-						#define SetUnderlayBias(val, toSet) val.Packed2.w = toSet
+						#define GetUnderlayBias(val) val.Packed2.x
+						#define SetUnderlayBias(val, toSet) val.Packed2.x = toSet
+						#define GetWorldNormal(val) val.Packed2.yzw
+						#define SetWorldNormal(val, toSet) val.Packed2.yzw = toSet
 						#if defined(NOVA_LAMBERT_LIGHTING)
-							#define GetWorldPos(val) val.Packed3.xyz
-							#define SetWorldPos(val, toSet) val.Packed3.xyz = toSet
+							#define GetRootPos(val) val.Packed3.xyz
+							#define SetRootPos(val, toSet) val.Packed3.xyz = toSet
 							#define GetUnderlayAlpha(val) val.Packed3.w
 							#define SetUnderlayAlpha(val, toSet) val.Packed3.w = toSet
-							#define GetNClipRectPos(val) val.NClipRectPos
-							#define SetNClipRectPos(val, toSet) val.NClipRectPos = toSet
+							#define GetWorldPos(val) val.WorldPos
+							#define SetWorldPos(val, toSet) val.WorldPos = toSet
 							#define POST_NOVA_0 7
 							#define POST_NOVA_1 8
 							#define POST_NOVA_2 9
@@ -1672,50 +1792,50 @@
 							#define POST_NOVA_4 11
 							#define POST_NOVA_5 12
 						#elif defined(NOVA_BLINNPHONG_LIGHTING)
-							#define GetNClipRectPos(val) val.Packed3.xy
-							#define SetNClipRectPos(val, toSet) val.Packed3.xy = toSet
-							#define GetSpecular(val) val.Packed3.z
-							#define SetSpecular(val, toSet) val.Packed3.z = toSet
-							#define GetGloss(val) val.Packed3.w
-							#define SetGloss(val, toSet) val.Packed3.w = toSet
+							#define GetRootPos(val) val.Packed3.xyz
+							#define SetRootPos(val, toSet) val.Packed3.xyz = toSet
+							#define GetSpecular(val) val.Packed3.w
+							#define SetSpecular(val, toSet) val.Packed3.w = toSet
 							#define GetWorldPos(val) val.Packed4.xyz
 							#define SetWorldPos(val, toSet) val.Packed4.xyz = toSet
-							#define GetUnderlayAlpha(val) val.Packed4.w
-							#define SetUnderlayAlpha(val, toSet) val.Packed4.w = toSet
-							#define POST_NOVA_0 7
-							#define POST_NOVA_1 8
-							#define POST_NOVA_2 9
-							#define POST_NOVA_3 10
-							#define POST_NOVA_4 11
-							#define POST_NOVA_5 12
+							#define GetGloss(val) val.Packed4.w
+							#define SetGloss(val, toSet) val.Packed4.w = toSet
+							#define GetUnderlayAlpha(val) val.UnderlayAlpha
+							#define SetUnderlayAlpha(val, toSet) val.UnderlayAlpha = toSet
+							#define POST_NOVA_0 8
+							#define POST_NOVA_1 9
+							#define POST_NOVA_2 10
+							#define POST_NOVA_3 11
+							#define POST_NOVA_4 12
+							#define POST_NOVA_5 13
 						#elif defined(NOVA_STANDARD_LIGHTING)
-							#define GetNClipRectPos(val) val.Packed3.xy
-							#define SetNClipRectPos(val, toSet) val.Packed3.xy = toSet
-							#define GetSmoothness(val) val.Packed3.z
-							#define SetSmoothness(val, toSet) val.Packed3.z = toSet
-							#define GetMetallic(val) val.Packed3.w
-							#define SetMetallic(val, toSet) val.Packed3.w = toSet
+							#define GetRootPos(val) val.Packed3.xyz
+							#define SetRootPos(val, toSet) val.Packed3.xyz = toSet
+							#define GetSmoothness(val) val.Packed3.w
+							#define SetSmoothness(val, toSet) val.Packed3.w = toSet
 							#define GetWorldPos(val) val.Packed4.xyz
 							#define SetWorldPos(val, toSet) val.Packed4.xyz = toSet
-							#define GetUnderlayAlpha(val) val.Packed4.w
-							#define SetUnderlayAlpha(val, toSet) val.Packed4.w = toSet
-							#define POST_NOVA_0 7
-							#define POST_NOVA_1 8
-							#define POST_NOVA_2 9
-							#define POST_NOVA_3 10
-							#define POST_NOVA_4 11
-							#define POST_NOVA_5 12
+							#define GetMetallic(val) val.Packed4.w
+							#define SetMetallic(val, toSet) val.Packed4.w = toSet
+							#define GetUnderlayAlpha(val) val.UnderlayAlpha
+							#define SetUnderlayAlpha(val, toSet) val.UnderlayAlpha = toSet
+							#define POST_NOVA_0 8
+							#define POST_NOVA_1 9
+							#define POST_NOVA_2 10
+							#define POST_NOVA_3 11
+							#define POST_NOVA_4 12
+							#define POST_NOVA_5 13
 						#elif defined(NOVA_STANDARDSPECULAR_LIGHTING)
 							#define GetUnderlayAlpha(val) val.Packed3.x
 							#define SetUnderlayAlpha(val, toSet) val.Packed3.x = toSet
 							#define GetSpecularColor(val) val.Packed3.yzw
 							#define SetSpecularColor(val, toSet) val.Packed3.yzw = toSet
-							#define GetWorldPos(val) val.Packed4.xyz
-							#define SetWorldPos(val, toSet) val.Packed4.xyz = toSet
+							#define GetRootPos(val) val.Packed4.xyz
+							#define SetRootPos(val, toSet) val.Packed4.xyz = toSet
 							#define GetSmoothness(val) val.Packed4.w
 							#define SetSmoothness(val, toSet) val.Packed4.w = toSet
-							#define GetNClipRectPos(val) val.NClipRectPos
-							#define SetNClipRectPos(val, toSet) val.NClipRectPos = toSet
+							#define GetWorldPos(val) val.WorldPos
+							#define SetWorldPos(val, toSet) val.WorldPos = toSet
 							#define POST_NOVA_0 8
 							#define POST_NOVA_1 9
 							#define POST_NOVA_2 10
@@ -1724,12 +1844,12 @@
 							#define POST_NOVA_5 13
 						#endif
 					#else
-						#define GetNClipRectPos(val) val.Packed2.xy
-						#define SetNClipRectPos(val, toSet) val.Packed2.xy = toSet
-						#define GetUnderlayBias(val) val.Packed2.z
-						#define SetUnderlayBias(val, toSet) val.Packed2.z = toSet
-						#define GetUnderlayAlpha(val) val.Packed2.w
-						#define SetUnderlayAlpha(val, toSet) val.Packed2.w = toSet
+						#define GetRootPos(val) val.Packed2.xyz
+						#define SetRootPos(val, toSet) val.Packed2.xyz = toSet
+						#define GetUnderlayBias(val) val.Packed2.w
+						#define SetUnderlayBias(val, toSet) val.Packed2.w = toSet
+						#define GetUnderlayAlpha(val) val.UnderlayAlpha
+						#define SetUnderlayAlpha(val, toSet) val.UnderlayAlpha = toSet
 					#endif
 				#else
 					#if defined(NOVA_LIT)
@@ -1818,17 +1938,17 @@
 				#define SetUnderlayScale(val, toSet) val.Packed1.w = toSet
 				#if defined(NOVA_CLIPPING)
 					#if defined(NOVA_LIT)
-						#define GetWorldNormal(val) val.Packed2.xyz
-						#define SetWorldNormal(val, toSet) val.Packed2.xyz = toSet
-						#define GetUnderlayBias(val) val.Packed2.w
-						#define SetUnderlayBias(val, toSet) val.Packed2.w = toSet
+						#define GetUnderlayBias(val) val.Packed2.x
+						#define SetUnderlayBias(val, toSet) val.Packed2.x = toSet
+						#define GetWorldNormal(val) val.Packed2.yzw
+						#define SetWorldNormal(val, toSet) val.Packed2.yzw = toSet
 						#if defined(NOVA_LAMBERT_LIGHTING)
-							#define GetWorldPos(val) val.Packed3.xyz
-							#define SetWorldPos(val, toSet) val.Packed3.xyz = toSet
+							#define GetRootPos(val) val.Packed3.xyz
+							#define SetRootPos(val, toSet) val.Packed3.xyz = toSet
 							#define GetUnderlayAlpha(val) val.Packed3.w
 							#define SetUnderlayAlpha(val, toSet) val.Packed3.w = toSet
-							#define GetNClipRectPos(val) val.NClipRectPos
-							#define SetNClipRectPos(val, toSet) val.NClipRectPos = toSet
+							#define GetWorldPos(val) val.WorldPos
+							#define SetWorldPos(val, toSet) val.WorldPos = toSet
 							#define POST_NOVA_0 7
 							#define POST_NOVA_1 8
 							#define POST_NOVA_2 9
@@ -1836,50 +1956,50 @@
 							#define POST_NOVA_4 11
 							#define POST_NOVA_5 12
 						#elif defined(NOVA_BLINNPHONG_LIGHTING)
-							#define GetNClipRectPos(val) val.Packed3.xy
-							#define SetNClipRectPos(val, toSet) val.Packed3.xy = toSet
-							#define GetSpecular(val) val.Packed3.z
-							#define SetSpecular(val, toSet) val.Packed3.z = toSet
-							#define GetGloss(val) val.Packed3.w
-							#define SetGloss(val, toSet) val.Packed3.w = toSet
+							#define GetRootPos(val) val.Packed3.xyz
+							#define SetRootPos(val, toSet) val.Packed3.xyz = toSet
+							#define GetSpecular(val) val.Packed3.w
+							#define SetSpecular(val, toSet) val.Packed3.w = toSet
 							#define GetWorldPos(val) val.Packed4.xyz
 							#define SetWorldPos(val, toSet) val.Packed4.xyz = toSet
-							#define GetUnderlayAlpha(val) val.Packed4.w
-							#define SetUnderlayAlpha(val, toSet) val.Packed4.w = toSet
-							#define POST_NOVA_0 7
-							#define POST_NOVA_1 8
-							#define POST_NOVA_2 9
-							#define POST_NOVA_3 10
-							#define POST_NOVA_4 11
-							#define POST_NOVA_5 12
+							#define GetGloss(val) val.Packed4.w
+							#define SetGloss(val, toSet) val.Packed4.w = toSet
+							#define GetUnderlayAlpha(val) val.UnderlayAlpha
+							#define SetUnderlayAlpha(val, toSet) val.UnderlayAlpha = toSet
+							#define POST_NOVA_0 8
+							#define POST_NOVA_1 9
+							#define POST_NOVA_2 10
+							#define POST_NOVA_3 11
+							#define POST_NOVA_4 12
+							#define POST_NOVA_5 13
 						#elif defined(NOVA_STANDARD_LIGHTING)
-							#define GetNClipRectPos(val) val.Packed3.xy
-							#define SetNClipRectPos(val, toSet) val.Packed3.xy = toSet
-							#define GetSmoothness(val) val.Packed3.z
-							#define SetSmoothness(val, toSet) val.Packed3.z = toSet
-							#define GetMetallic(val) val.Packed3.w
-							#define SetMetallic(val, toSet) val.Packed3.w = toSet
+							#define GetRootPos(val) val.Packed3.xyz
+							#define SetRootPos(val, toSet) val.Packed3.xyz = toSet
+							#define GetSmoothness(val) val.Packed3.w
+							#define SetSmoothness(val, toSet) val.Packed3.w = toSet
 							#define GetWorldPos(val) val.Packed4.xyz
 							#define SetWorldPos(val, toSet) val.Packed4.xyz = toSet
-							#define GetUnderlayAlpha(val) val.Packed4.w
-							#define SetUnderlayAlpha(val, toSet) val.Packed4.w = toSet
-							#define POST_NOVA_0 7
-							#define POST_NOVA_1 8
-							#define POST_NOVA_2 9
-							#define POST_NOVA_3 10
-							#define POST_NOVA_4 11
-							#define POST_NOVA_5 12
+							#define GetMetallic(val) val.Packed4.w
+							#define SetMetallic(val, toSet) val.Packed4.w = toSet
+							#define GetUnderlayAlpha(val) val.UnderlayAlpha
+							#define SetUnderlayAlpha(val, toSet) val.UnderlayAlpha = toSet
+							#define POST_NOVA_0 8
+							#define POST_NOVA_1 9
+							#define POST_NOVA_2 10
+							#define POST_NOVA_3 11
+							#define POST_NOVA_4 12
+							#define POST_NOVA_5 13
 						#elif defined(NOVA_STANDARDSPECULAR_LIGHTING)
 							#define GetUnderlayAlpha(val) val.Packed3.x
 							#define SetUnderlayAlpha(val, toSet) val.Packed3.x = toSet
 							#define GetSpecularColor(val) val.Packed3.yzw
 							#define SetSpecularColor(val, toSet) val.Packed3.yzw = toSet
-							#define GetWorldPos(val) val.Packed4.xyz
-							#define SetWorldPos(val, toSet) val.Packed4.xyz = toSet
+							#define GetRootPos(val) val.Packed4.xyz
+							#define SetRootPos(val, toSet) val.Packed4.xyz = toSet
 							#define GetSmoothness(val) val.Packed4.w
 							#define SetSmoothness(val, toSet) val.Packed4.w = toSet
-							#define GetNClipRectPos(val) val.NClipRectPos
-							#define SetNClipRectPos(val, toSet) val.NClipRectPos = toSet
+							#define GetWorldPos(val) val.WorldPos
+							#define SetWorldPos(val, toSet) val.WorldPos = toSet
 							#define POST_NOVA_0 8
 							#define POST_NOVA_1 9
 							#define POST_NOVA_2 10
@@ -1888,12 +2008,12 @@
 							#define POST_NOVA_5 13
 						#endif
 					#else
-						#define GetNClipRectPos(val) val.Packed2.xy
-						#define SetNClipRectPos(val, toSet) val.Packed2.xy = toSet
-						#define GetUnderlayBias(val) val.Packed2.z
-						#define SetUnderlayBias(val, toSet) val.Packed2.z = toSet
-						#define GetUnderlayAlpha(val) val.Packed2.w
-						#define SetUnderlayAlpha(val, toSet) val.Packed2.w = toSet
+						#define GetRootPos(val) val.Packed2.xyz
+						#define SetRootPos(val, toSet) val.Packed2.xyz = toSet
+						#define GetUnderlayBias(val) val.Packed2.w
+						#define SetUnderlayBias(val, toSet) val.Packed2.w = toSet
+						#define GetUnderlayAlpha(val) val.UnderlayAlpha
+						#define SetUnderlayAlpha(val, toSet) val.UnderlayAlpha = toSet
 					#endif
 				#else
 					#if defined(NOVA_LIT)
@@ -1967,22 +2087,24 @@
 				#endif
 			#else
 				#if defined(NOVA_CLIPPING)
-					#define GetNClipRectPos(val) val.Packed0.xy
-					#define SetNClipRectPos(val, toSet) val.Packed0.xy = toSet
-					#define GetScaleParam(val) val.Packed0.z
-					#define SetScaleParam(val, toSet) val.Packed0.z = toSet
-					#define GetBiasParam(val) val.Packed0.w
-					#define SetBiasParam(val, toSet) val.Packed0.w = toSet
 					#if defined(NOVA_LIT)
-						#define GetBiasInParam(val) val.Packed1.x
-						#define SetBiasInParam(val, toSet) val.Packed1.x = toSet
-						#define GetWorldNormal(val) val.Packed1.yzw
-						#define SetWorldNormal(val, toSet) val.Packed1.yzw = toSet
+						#define GetWorldNormal(val) val.Packed0.xyz
+						#define SetWorldNormal(val, toSet) val.Packed0.xyz = toSet
+						#define GetScaleParam(val) val.Packed0.w
+						#define SetScaleParam(val, toSet) val.Packed0.w = toSet
 						#if defined(NOVA_LAMBERT_LIGHTING)
-							#define GetWorldPos(val) val.WorldPos
-							#define SetWorldPos(val, toSet) val.WorldPos = toSet
-							#define GetTextureUV(val) val.TextureUV
-							#define SetTextureUV(val, toSet) val.TextureUV = toSet
+							#define GetRootPos(val) val.Packed1.xyz
+							#define SetRootPos(val, toSet) val.Packed1.xyz = toSet
+							#define GetWorldPos(val) val.Packed2.xyz
+							#define SetWorldPos(val, toSet) val.Packed2.xyz = toSet
+							#define GetBiasInParam(val) val.Packed3.x
+							#define SetBiasInParam(val, toSet) val.Packed3.x = toSet
+							#define GetBiasParam(val) val.Packed3.y
+							#define SetBiasParam(val, toSet) val.Packed3.y = toSet
+							#define GetTextureUV(val) float2(val.Packed1.w, val.Packed2.w)
+							#define SetTextureUV(val, toSet) \
+								val.Packed1.w = toSet.x; \
+								val.Packed2.w = toSet.y;
 							#define POST_NOVA_0 6
 							#define POST_NOVA_1 7
 							#define POST_NOVA_2 8
@@ -1990,14 +2112,22 @@
 							#define POST_NOVA_4 10
 							#define POST_NOVA_5 11
 						#elif defined(NOVA_BLINNPHONG_LIGHTING)
-							#define GetWorldPos(val) val.Packed2.xyz
-							#define SetWorldPos(val, toSet) val.Packed2.xyz = toSet
-							#define GetSpecular(val) val.Packed2.w
-							#define SetSpecular(val, toSet) val.Packed2.w = toSet
-							#define GetTextureUV(val) val.Packed3.xy
-							#define SetTextureUV(val, toSet) val.Packed3.xy = toSet
-							#define GetGloss(val) val.Packed3.z
-							#define SetGloss(val, toSet) val.Packed3.z = toSet
+							#define GetBiasInParam(val) val.Packed1.x
+							#define SetBiasInParam(val, toSet) val.Packed1.x = toSet
+							#define GetBiasParam(val) val.Packed1.y
+							#define SetBiasParam(val, toSet) val.Packed1.y = toSet
+							#define GetSpecular(val) val.Packed1.z
+							#define SetSpecular(val, toSet) val.Packed1.z = toSet
+							#define GetGloss(val) val.Packed1.w
+							#define SetGloss(val, toSet) val.Packed1.w = toSet
+							#define GetRootPos(val) val.Packed2.xyz
+							#define SetRootPos(val, toSet) val.Packed2.xyz = toSet
+							#define GetWorldPos(val) val.Packed3.xyz
+							#define SetWorldPos(val, toSet) val.Packed3.xyz = toSet
+							#define GetTextureUV(val) float2(val.Packed2.w, val.Packed3.w)
+							#define SetTextureUV(val, toSet) \
+								val.Packed2.w = toSet.x; \
+								val.Packed3.w = toSet.y;
 							#define POST_NOVA_0 6
 							#define POST_NOVA_1 7
 							#define POST_NOVA_2 8
@@ -2005,14 +2135,22 @@
 							#define POST_NOVA_4 10
 							#define POST_NOVA_5 11
 						#elif defined(NOVA_STANDARD_LIGHTING)
-							#define GetWorldPos(val) val.Packed2.xyz
-							#define SetWorldPos(val, toSet) val.Packed2.xyz = toSet
-							#define GetSmoothness(val) val.Packed2.w
-							#define SetSmoothness(val, toSet) val.Packed2.w = toSet
-							#define GetTextureUV(val) val.Packed3.xy
-							#define SetTextureUV(val, toSet) val.Packed3.xy = toSet
-							#define GetMetallic(val) val.Packed3.z
-							#define SetMetallic(val, toSet) val.Packed3.z = toSet
+							#define GetBiasInParam(val) val.Packed1.x
+							#define SetBiasInParam(val, toSet) val.Packed1.x = toSet
+							#define GetBiasParam(val) val.Packed1.y
+							#define SetBiasParam(val, toSet) val.Packed1.y = toSet
+							#define GetSmoothness(val) val.Packed1.z
+							#define SetSmoothness(val, toSet) val.Packed1.z = toSet
+							#define GetMetallic(val) val.Packed1.w
+							#define SetMetallic(val, toSet) val.Packed1.w = toSet
+							#define GetRootPos(val) val.Packed2.xyz
+							#define SetRootPos(val, toSet) val.Packed2.xyz = toSet
+							#define GetWorldPos(val) val.Packed3.xyz
+							#define SetWorldPos(val, toSet) val.Packed3.xyz = toSet
+							#define GetTextureUV(val) float2(val.Packed2.w, val.Packed3.w)
+							#define SetTextureUV(val, toSet) \
+								val.Packed2.w = toSet.x; \
+								val.Packed3.w = toSet.y;
 							#define POST_NOVA_0 6
 							#define POST_NOVA_1 7
 							#define POST_NOVA_2 8
@@ -2020,14 +2158,22 @@
 							#define POST_NOVA_4 10
 							#define POST_NOVA_5 11
 						#elif defined(NOVA_STANDARDSPECULAR_LIGHTING)
+							#define GetRootPos(val) val.Packed1.xyz
+							#define SetRootPos(val, toSet) val.Packed1.xyz = toSet
 							#define GetWorldPos(val) val.Packed2.xyz
 							#define SetWorldPos(val, toSet) val.Packed2.xyz = toSet
-							#define GetSmoothness(val) val.Packed2.w
-							#define SetSmoothness(val, toSet) val.Packed2.w = toSet
-							#define GetTextureUV(val) val.TextureUV
-							#define SetTextureUV(val, toSet) val.TextureUV = toSet
+							#define GetBiasInParam(val) val.Packed3.x
+							#define SetBiasInParam(val, toSet) val.Packed3.x = toSet
+							#define GetBiasParam(val) val.Packed3.y
+							#define SetBiasParam(val, toSet) val.Packed3.y = toSet
+							#define GetSmoothness(val) val.Packed3.z
+							#define SetSmoothness(val, toSet) val.Packed3.z = toSet
 							#define GetSpecularColor(val) val.SpecularColor
 							#define SetSpecularColor(val, toSet) val.SpecularColor = toSet
+							#define GetTextureUV(val) float2(val.Packed1.w, val.Packed2.w)
+							#define SetTextureUV(val, toSet) \
+								val.Packed1.w = toSet.x; \
+								val.Packed2.w = toSet.y;
 							#define POST_NOVA_0 7
 							#define POST_NOVA_1 8
 							#define POST_NOVA_2 9
@@ -2036,10 +2182,16 @@
 							#define POST_NOVA_5 12
 						#endif
 					#else
+						#define GetRootPos(val) val.Packed0.xyz
+						#define SetRootPos(val, toSet) val.Packed0.xyz = toSet
+						#define GetScaleParam(val) val.Packed0.w
+						#define SetScaleParam(val, toSet) val.Packed0.w = toSet
 						#define GetTextureUV(val) val.Packed1.xy
 						#define SetTextureUV(val, toSet) val.Packed1.xy = toSet
-						#define GetBiasInParam(val) val.Packed1.z
-						#define SetBiasInParam(val, toSet) val.Packed1.z = toSet
+						#define GetBiasParam(val) val.Packed1.z
+						#define SetBiasParam(val, toSet) val.Packed1.z = toSet
+						#define GetBiasInParam(val) val.Packed1.w
+						#define SetBiasInParam(val, toSet) val.Packed1.w = toSet
 					#endif
 				#else
 					#if defined(NOVA_LIT)
@@ -2149,26 +2301,26 @@
 			#define SetUnderlayBias(val, toSet) val.Packed1.w = toSet
 			#if defined(UNDERLAY_ON)
 				#if defined(NOVA_CLIPPING)
-					#define GetUnderlayScale(val) val.Packed2.x
-					#define SetUnderlayScale(val, toSet) val.Packed2.x = toSet
-					#define GetUnderlayBias(val) val.Packed2.y
-					#define SetUnderlayBias(val, toSet) val.Packed2.y = toSet
-					#define GetNClipRectPos(val) val.Packed2.zw
-					#define SetNClipRectPos(val, toSet) val.Packed2.zw = toSet
 					#if defined(NOVA_LIT)
+						#define GetWorldNormal(val) val.Packed2.xyz
+						#define SetWorldNormal(val, toSet) val.Packed2.xyz = toSet
+						#define GetUnderlayScale(val) val.Packed2.w
+						#define SetUnderlayScale(val, toSet) val.Packed2.w = toSet
 						#if defined(NOVA_LAMBERT_LIGHTING)
-							#define GetWorldPos(val) val.Packed3.xyz
-							#define SetWorldPos(val, toSet) val.Packed3.xyz = toSet
-							#define GetUnderlayUV(val) val.Packed4.xy
-							#define SetUnderlayUV(val, toSet) val.Packed4.xy = toSet
-							#define GetUnderlayAlpha(val) val.Packed5.x
-							#define SetUnderlayAlpha(val, toSet) val.Packed5.x = toSet
+							#define GetRootPos(val) val.Packed3.xyz
+							#define SetRootPos(val, toSet) val.Packed3.xyz = toSet
+							#define GetWorldPos(val) val.Packed4.xyz
+							#define SetWorldPos(val, toSet) val.Packed4.xyz = toSet
+							#define GetUnderlayBias(val) val.Packed5.x
+							#define SetUnderlayBias(val, toSet) val.Packed5.x = toSet
 							#define GetUnderlayAlpha(val) val.Packed5.y
 							#define SetUnderlayAlpha(val, toSet) val.Packed5.y = toSet
-							#define GetWorldNormal(val) half3(val.Packed3.w, val.Packed4.zw)
-							#define SetWorldNormal(val, toSet) \
+							#define GetUnderlayAlpha(val) val.Packed5.z
+							#define SetUnderlayAlpha(val, toSet) val.Packed5.z = toSet
+							#define GetUnderlayUV(val) float2(val.Packed3.w, val.Packed4.w)
+							#define SetUnderlayUV(val, toSet) \
 								val.Packed3.w = toSet.x; \
-								val.Packed4.zw = toSet.yz;
+								val.Packed4.w = toSet.y;
 							#define POST_NOVA_0 7
 							#define POST_NOVA_1 8
 							#define POST_NOVA_2 9
@@ -2176,62 +2328,74 @@
 							#define POST_NOVA_4 11
 							#define POST_NOVA_5 12
 						#elif defined(NOVA_BLINNPHONG_LIGHTING)
-							#define GetWorldNormal(val) val.Packed3.xyz
-							#define SetWorldNormal(val, toSet) val.Packed3.xyz = toSet
-							#define GetSpecular(val) val.Packed3.w
-							#define SetSpecular(val, toSet) val.Packed3.w = toSet
+							#define GetRootPos(val) val.Packed3.xyz
+							#define SetRootPos(val, toSet) val.Packed3.xyz = toSet
 							#define GetWorldPos(val) val.Packed4.xyz
 							#define SetWorldPos(val, toSet) val.Packed4.xyz = toSet
-							#define GetGloss(val) val.Packed4.w
-							#define SetGloss(val, toSet) val.Packed4.w = toSet
-							#define GetUnderlayUV(val) val.Packed5.xy
-							#define SetUnderlayUV(val, toSet) val.Packed5.xy = toSet
-							#define GetUnderlayAlpha(val) val.Packed5.z
-							#define SetUnderlayAlpha(val, toSet) val.Packed5.z = toSet
+							#define GetUnderlayBias(val) val.Packed5.x
+							#define SetUnderlayBias(val, toSet) val.Packed5.x = toSet
+							#define GetSpecular(val) val.Packed5.y
+							#define SetSpecular(val, toSet) val.Packed5.y = toSet
+							#define GetGloss(val) val.Packed5.z
+							#define SetGloss(val, toSet) val.Packed5.z = toSet
 							#define GetUnderlayAlpha(val) val.Packed5.w
 							#define SetUnderlayAlpha(val, toSet) val.Packed5.w = toSet
-							#define POST_NOVA_0 7
-							#define POST_NOVA_1 8
-							#define POST_NOVA_2 9
-							#define POST_NOVA_3 10
-							#define POST_NOVA_4 11
-							#define POST_NOVA_5 12
+							#define GetUnderlayAlpha(val) val.UnderlayAlpha
+							#define SetUnderlayAlpha(val, toSet) val.UnderlayAlpha = toSet
+							#define GetUnderlayUV(val) float2(val.Packed3.w, val.Packed4.w)
+							#define SetUnderlayUV(val, toSet) \
+								val.Packed3.w = toSet.x; \
+								val.Packed4.w = toSet.y;
+							#define POST_NOVA_0 8
+							#define POST_NOVA_1 9
+							#define POST_NOVA_2 10
+							#define POST_NOVA_3 11
+							#define POST_NOVA_4 12
+							#define POST_NOVA_5 13
 						#elif defined(NOVA_STANDARD_LIGHTING)
-							#define GetWorldNormal(val) val.Packed3.xyz
-							#define SetWorldNormal(val, toSet) val.Packed3.xyz = toSet
-							#define GetSmoothness(val) val.Packed3.w
-							#define SetSmoothness(val, toSet) val.Packed3.w = toSet
+							#define GetRootPos(val) val.Packed3.xyz
+							#define SetRootPos(val, toSet) val.Packed3.xyz = toSet
 							#define GetWorldPos(val) val.Packed4.xyz
 							#define SetWorldPos(val, toSet) val.Packed4.xyz = toSet
-							#define GetMetallic(val) val.Packed4.w
-							#define SetMetallic(val, toSet) val.Packed4.w = toSet
-							#define GetUnderlayUV(val) val.Packed5.xy
-							#define SetUnderlayUV(val, toSet) val.Packed5.xy = toSet
-							#define GetUnderlayAlpha(val) val.Packed5.z
-							#define SetUnderlayAlpha(val, toSet) val.Packed5.z = toSet
+							#define GetUnderlayBias(val) val.Packed5.x
+							#define SetUnderlayBias(val, toSet) val.Packed5.x = toSet
+							#define GetSmoothness(val) val.Packed5.y
+							#define SetSmoothness(val, toSet) val.Packed5.y = toSet
+							#define GetMetallic(val) val.Packed5.z
+							#define SetMetallic(val, toSet) val.Packed5.z = toSet
 							#define GetUnderlayAlpha(val) val.Packed5.w
 							#define SetUnderlayAlpha(val, toSet) val.Packed5.w = toSet
-							#define POST_NOVA_0 7
-							#define POST_NOVA_1 8
-							#define POST_NOVA_2 9
-							#define POST_NOVA_3 10
-							#define POST_NOVA_4 11
-							#define POST_NOVA_5 12
+							#define GetUnderlayAlpha(val) val.UnderlayAlpha
+							#define SetUnderlayAlpha(val, toSet) val.UnderlayAlpha = toSet
+							#define GetUnderlayUV(val) float2(val.Packed3.w, val.Packed4.w)
+							#define SetUnderlayUV(val, toSet) \
+								val.Packed3.w = toSet.x; \
+								val.Packed4.w = toSet.y;
+							#define POST_NOVA_0 8
+							#define POST_NOVA_1 9
+							#define POST_NOVA_2 10
+							#define POST_NOVA_3 11
+							#define POST_NOVA_4 12
+							#define POST_NOVA_5 13
 						#elif defined(NOVA_STANDARDSPECULAR_LIGHTING)
-							#define GetWorldNormal(val) val.Packed3.xyz
-							#define SetWorldNormal(val, toSet) val.Packed3.xyz = toSet
-							#define GetSmoothness(val) val.Packed3.w
-							#define SetSmoothness(val, toSet) val.Packed3.w = toSet
-							#define GetSpecularColor(val) val.Packed4.xyz
-							#define SetSpecularColor(val, toSet) val.Packed4.xyz = toSet
-							#define GetUnderlayAlpha(val) val.Packed4.w
-							#define SetUnderlayAlpha(val, toSet) val.Packed4.w = toSet
+							#define GetSpecularColor(val) val.Packed3.xyz
+							#define SetSpecularColor(val, toSet) val.Packed3.xyz = toSet
+							#define GetUnderlayAlpha(val) val.Packed3.w
+							#define SetUnderlayAlpha(val, toSet) val.Packed3.w = toSet
+							#define GetRootPos(val) val.Packed4.xyz
+							#define SetRootPos(val, toSet) val.Packed4.xyz = toSet
 							#define GetWorldPos(val) val.Packed5.xyz
 							#define SetWorldPos(val, toSet) val.Packed5.xyz = toSet
-							#define GetUnderlayAlpha(val) val.Packed5.w
-							#define SetUnderlayAlpha(val, toSet) val.Packed5.w = toSet
-							#define GetUnderlayUV(val) val.UnderlayUV
-							#define SetUnderlayUV(val, toSet) val.UnderlayUV = toSet
+							#define GetUnderlayBias(val) val.Packed6.x
+							#define SetUnderlayBias(val, toSet) val.Packed6.x = toSet
+							#define GetSmoothness(val) val.Packed6.y
+							#define SetSmoothness(val, toSet) val.Packed6.y = toSet
+							#define GetUnderlayAlpha(val) val.Packed6.z
+							#define SetUnderlayAlpha(val, toSet) val.Packed6.z = toSet
+							#define GetUnderlayUV(val) float2(val.Packed4.w, val.Packed5.w)
+							#define SetUnderlayUV(val, toSet) \
+								val.Packed4.w = toSet.x; \
+								val.Packed5.w = toSet.y;
 							#define POST_NOVA_0 8
 							#define POST_NOVA_1 9
 							#define POST_NOVA_2 10
@@ -2240,12 +2404,18 @@
 							#define POST_NOVA_5 13
 						#endif
 					#else
+						#define GetRootPos(val) val.Packed2.xyz
+						#define SetRootPos(val, toSet) val.Packed2.xyz = toSet
+						#define GetUnderlayScale(val) val.Packed2.w
+						#define SetUnderlayScale(val, toSet) val.Packed2.w = toSet
 						#define GetUnderlayUV(val) val.Packed3.xy
 						#define SetUnderlayUV(val, toSet) val.Packed3.xy = toSet
-						#define GetUnderlayAlpha(val) val.Packed3.z
-						#define SetUnderlayAlpha(val, toSet) val.Packed3.z = toSet
+						#define GetUnderlayBias(val) val.Packed3.z
+						#define SetUnderlayBias(val, toSet) val.Packed3.z = toSet
 						#define GetUnderlayAlpha(val) val.Packed3.w
 						#define SetUnderlayAlpha(val, toSet) val.Packed3.w = toSet
+						#define GetUnderlayAlpha(val) val.UnderlayAlpha
+						#define SetUnderlayAlpha(val, toSet) val.UnderlayAlpha = toSet
 					#endif
 				#else
 					#if defined(NOVA_LIT)
@@ -2351,16 +2521,14 @@
 				#if defined(NOVA_CLIPPING)
 					#if defined(NOVA_LIT)
 						#if defined(NOVA_LAMBERT_LIGHTING)
-							#define GetWorldPos(val) val.Packed2.xyz
-							#define SetWorldPos(val, toSet) val.Packed2.xyz = toSet
-							#define GetWorldNormal(val) val.Packed3.xyz
-							#define SetWorldNormal(val, toSet) val.Packed3.xyz = toSet
-							#define GetUnderlayAlpha(val) val.UnderlayAlpha
-							#define SetUnderlayAlpha(val, toSet) val.UnderlayAlpha = toSet
-							#define GetNClipRectPos(val) half2(val.Packed2.w, val.Packed3.w)
-							#define SetNClipRectPos(val, toSet) \
-								val.Packed2.w = toSet.x; \
-								val.Packed3.w = toSet.y;
+							#define GetRootPos(val) val.Packed2.xyz
+							#define SetRootPos(val, toSet) val.Packed2.xyz = toSet
+							#define GetUnderlayAlpha(val) val.Packed2.w
+							#define SetUnderlayAlpha(val, toSet) val.Packed2.w = toSet
+							#define GetWorldPos(val) val.WorldPos
+							#define SetWorldPos(val, toSet) val.WorldPos = toSet
+							#define GetWorldNormal(val) val.WorldNormal
+							#define SetWorldNormal(val, toSet) val.WorldNormal = toSet
 							#define POST_NOVA_0 6
 							#define POST_NOVA_1 7
 							#define POST_NOVA_2 8
@@ -2368,18 +2536,18 @@
 							#define POST_NOVA_4 10
 							#define POST_NOVA_5 11
 						#elif defined(NOVA_BLINNPHONG_LIGHTING)
-							#define GetNClipRectPos(val) val.Packed2.xy
-							#define SetNClipRectPos(val, toSet) val.Packed2.xy = toSet
-							#define GetSpecular(val) val.Packed2.z
-							#define SetSpecular(val, toSet) val.Packed2.z = toSet
-							#define GetGloss(val) val.Packed2.w
-							#define SetGloss(val, toSet) val.Packed2.w = toSet
-							#define GetWorldPos(val) val.Packed3.xyz
-							#define SetWorldPos(val, toSet) val.Packed3.xyz = toSet
-							#define GetUnderlayAlpha(val) val.Packed3.w
-							#define SetUnderlayAlpha(val, toSet) val.Packed3.w = toSet
-							#define GetWorldNormal(val) val.WorldNormal
-							#define SetWorldNormal(val, toSet) val.WorldNormal = toSet
+							#define GetWorldNormal(val) val.Packed2.xyz
+							#define SetWorldNormal(val, toSet) val.Packed2.xyz = toSet
+							#define GetSpecular(val) val.Packed2.w
+							#define SetSpecular(val, toSet) val.Packed2.w = toSet
+							#define GetRootPos(val) val.Packed3.xyz
+							#define SetRootPos(val, toSet) val.Packed3.xyz = toSet
+							#define GetGloss(val) val.Packed3.w
+							#define SetGloss(val, toSet) val.Packed3.w = toSet
+							#define GetWorldPos(val) val.Packed4.xyz
+							#define SetWorldPos(val, toSet) val.Packed4.xyz = toSet
+							#define GetUnderlayAlpha(val) val.Packed4.w
+							#define SetUnderlayAlpha(val, toSet) val.Packed4.w = toSet
 							#define POST_NOVA_0 6
 							#define POST_NOVA_1 7
 							#define POST_NOVA_2 8
@@ -2387,18 +2555,18 @@
 							#define POST_NOVA_4 10
 							#define POST_NOVA_5 11
 						#elif defined(NOVA_STANDARD_LIGHTING)
-							#define GetNClipRectPos(val) val.Packed2.xy
-							#define SetNClipRectPos(val, toSet) val.Packed2.xy = toSet
-							#define GetSmoothness(val) val.Packed2.z
-							#define SetSmoothness(val, toSet) val.Packed2.z = toSet
-							#define GetMetallic(val) val.Packed2.w
-							#define SetMetallic(val, toSet) val.Packed2.w = toSet
-							#define GetWorldPos(val) val.Packed3.xyz
-							#define SetWorldPos(val, toSet) val.Packed3.xyz = toSet
-							#define GetUnderlayAlpha(val) val.Packed3.w
-							#define SetUnderlayAlpha(val, toSet) val.Packed3.w = toSet
-							#define GetWorldNormal(val) val.WorldNormal
-							#define SetWorldNormal(val, toSet) val.WorldNormal = toSet
+							#define GetWorldNormal(val) val.Packed2.xyz
+							#define SetWorldNormal(val, toSet) val.Packed2.xyz = toSet
+							#define GetSmoothness(val) val.Packed2.w
+							#define SetSmoothness(val, toSet) val.Packed2.w = toSet
+							#define GetRootPos(val) val.Packed3.xyz
+							#define SetRootPos(val, toSet) val.Packed3.xyz = toSet
+							#define GetMetallic(val) val.Packed3.w
+							#define SetMetallic(val, toSet) val.Packed3.w = toSet
+							#define GetWorldPos(val) val.Packed4.xyz
+							#define SetWorldPos(val, toSet) val.Packed4.xyz = toSet
+							#define GetUnderlayAlpha(val) val.Packed4.w
+							#define SetUnderlayAlpha(val, toSet) val.Packed4.w = toSet
 							#define POST_NOVA_0 6
 							#define POST_NOVA_1 7
 							#define POST_NOVA_2 8
@@ -2414,10 +2582,10 @@
 							#define SetUnderlayAlpha(val, toSet) val.Packed3.x = toSet
 							#define GetSpecularColor(val) val.Packed3.yzw
 							#define SetSpecularColor(val, toSet) val.Packed3.yzw = toSet
+							#define GetRootPos(val) val.RootPos
+							#define SetRootPos(val, toSet) val.RootPos = toSet
 							#define GetWorldPos(val) val.WorldPos
 							#define SetWorldPos(val, toSet) val.WorldPos = toSet
-							#define GetNClipRectPos(val) val.NClipRectPos
-							#define SetNClipRectPos(val, toSet) val.NClipRectPos = toSet
 							#define POST_NOVA_0 7
 							#define POST_NOVA_1 8
 							#define POST_NOVA_2 9
@@ -2426,10 +2594,10 @@
 							#define POST_NOVA_5 12
 						#endif
 					#else
-						#define GetNClipRectPos(val) val.Packed2.xy
-						#define SetNClipRectPos(val, toSet) val.Packed2.xy = toSet
-						#define GetUnderlayAlpha(val) val.Packed2.z
-						#define SetUnderlayAlpha(val, toSet) val.Packed2.z = toSet
+						#define GetRootPos(val) val.Packed2.xyz
+						#define SetRootPos(val, toSet) val.Packed2.xyz = toSet
+						#define GetUnderlayAlpha(val) val.Packed2.w
+						#define SetUnderlayAlpha(val, toSet) val.Packed2.w = toSet
 					#endif
 				#else
 					#if defined(NOVA_LIT)
@@ -2521,16 +2689,14 @@
 				#if defined(NOVA_CLIPPING)
 					#if defined(NOVA_LIT)
 						#if defined(NOVA_LAMBERT_LIGHTING)
-							#define GetWorldPos(val) val.Packed2.xyz
-							#define SetWorldPos(val, toSet) val.Packed2.xyz = toSet
-							#define GetWorldNormal(val) val.Packed3.xyz
-							#define SetWorldNormal(val, toSet) val.Packed3.xyz = toSet
-							#define GetUnderlayAlpha(val) val.UnderlayAlpha
-							#define SetUnderlayAlpha(val, toSet) val.UnderlayAlpha = toSet
-							#define GetNClipRectPos(val) half2(val.Packed2.w, val.Packed3.w)
-							#define SetNClipRectPos(val, toSet) \
-								val.Packed2.w = toSet.x; \
-								val.Packed3.w = toSet.y;
+							#define GetRootPos(val) val.Packed2.xyz
+							#define SetRootPos(val, toSet) val.Packed2.xyz = toSet
+							#define GetUnderlayAlpha(val) val.Packed2.w
+							#define SetUnderlayAlpha(val, toSet) val.Packed2.w = toSet
+							#define GetWorldPos(val) val.WorldPos
+							#define SetWorldPos(val, toSet) val.WorldPos = toSet
+							#define GetWorldNormal(val) val.WorldNormal
+							#define SetWorldNormal(val, toSet) val.WorldNormal = toSet
 							#define POST_NOVA_0 6
 							#define POST_NOVA_1 7
 							#define POST_NOVA_2 8
@@ -2538,18 +2704,18 @@
 							#define POST_NOVA_4 10
 							#define POST_NOVA_5 11
 						#elif defined(NOVA_BLINNPHONG_LIGHTING)
-							#define GetNClipRectPos(val) val.Packed2.xy
-							#define SetNClipRectPos(val, toSet) val.Packed2.xy = toSet
-							#define GetSpecular(val) val.Packed2.z
-							#define SetSpecular(val, toSet) val.Packed2.z = toSet
-							#define GetGloss(val) val.Packed2.w
-							#define SetGloss(val, toSet) val.Packed2.w = toSet
-							#define GetWorldPos(val) val.Packed3.xyz
-							#define SetWorldPos(val, toSet) val.Packed3.xyz = toSet
-							#define GetUnderlayAlpha(val) val.Packed3.w
-							#define SetUnderlayAlpha(val, toSet) val.Packed3.w = toSet
-							#define GetWorldNormal(val) val.WorldNormal
-							#define SetWorldNormal(val, toSet) val.WorldNormal = toSet
+							#define GetWorldNormal(val) val.Packed2.xyz
+							#define SetWorldNormal(val, toSet) val.Packed2.xyz = toSet
+							#define GetSpecular(val) val.Packed2.w
+							#define SetSpecular(val, toSet) val.Packed2.w = toSet
+							#define GetRootPos(val) val.Packed3.xyz
+							#define SetRootPos(val, toSet) val.Packed3.xyz = toSet
+							#define GetGloss(val) val.Packed3.w
+							#define SetGloss(val, toSet) val.Packed3.w = toSet
+							#define GetWorldPos(val) val.Packed4.xyz
+							#define SetWorldPos(val, toSet) val.Packed4.xyz = toSet
+							#define GetUnderlayAlpha(val) val.Packed4.w
+							#define SetUnderlayAlpha(val, toSet) val.Packed4.w = toSet
 							#define POST_NOVA_0 6
 							#define POST_NOVA_1 7
 							#define POST_NOVA_2 8
@@ -2557,18 +2723,18 @@
 							#define POST_NOVA_4 10
 							#define POST_NOVA_5 11
 						#elif defined(NOVA_STANDARD_LIGHTING)
-							#define GetNClipRectPos(val) val.Packed2.xy
-							#define SetNClipRectPos(val, toSet) val.Packed2.xy = toSet
-							#define GetSmoothness(val) val.Packed2.z
-							#define SetSmoothness(val, toSet) val.Packed2.z = toSet
-							#define GetMetallic(val) val.Packed2.w
-							#define SetMetallic(val, toSet) val.Packed2.w = toSet
-							#define GetWorldPos(val) val.Packed3.xyz
-							#define SetWorldPos(val, toSet) val.Packed3.xyz = toSet
-							#define GetUnderlayAlpha(val) val.Packed3.w
-							#define SetUnderlayAlpha(val, toSet) val.Packed3.w = toSet
-							#define GetWorldNormal(val) val.WorldNormal
-							#define SetWorldNormal(val, toSet) val.WorldNormal = toSet
+							#define GetWorldNormal(val) val.Packed2.xyz
+							#define SetWorldNormal(val, toSet) val.Packed2.xyz = toSet
+							#define GetSmoothness(val) val.Packed2.w
+							#define SetSmoothness(val, toSet) val.Packed2.w = toSet
+							#define GetRootPos(val) val.Packed3.xyz
+							#define SetRootPos(val, toSet) val.Packed3.xyz = toSet
+							#define GetMetallic(val) val.Packed3.w
+							#define SetMetallic(val, toSet) val.Packed3.w = toSet
+							#define GetWorldPos(val) val.Packed4.xyz
+							#define SetWorldPos(val, toSet) val.Packed4.xyz = toSet
+							#define GetUnderlayAlpha(val) val.Packed4.w
+							#define SetUnderlayAlpha(val, toSet) val.Packed4.w = toSet
 							#define POST_NOVA_0 6
 							#define POST_NOVA_1 7
 							#define POST_NOVA_2 8
@@ -2584,10 +2750,10 @@
 							#define SetUnderlayAlpha(val, toSet) val.Packed3.x = toSet
 							#define GetSpecularColor(val) val.Packed3.yzw
 							#define SetSpecularColor(val, toSet) val.Packed3.yzw = toSet
+							#define GetRootPos(val) val.RootPos
+							#define SetRootPos(val, toSet) val.RootPos = toSet
 							#define GetWorldPos(val) val.WorldPos
 							#define SetWorldPos(val, toSet) val.WorldPos = toSet
-							#define GetNClipRectPos(val) val.NClipRectPos
-							#define SetNClipRectPos(val, toSet) val.NClipRectPos = toSet
 							#define POST_NOVA_0 7
 							#define POST_NOVA_1 8
 							#define POST_NOVA_2 9
@@ -2596,10 +2762,10 @@
 							#define POST_NOVA_5 12
 						#endif
 					#else
-						#define GetNClipRectPos(val) val.Packed2.xy
-						#define SetNClipRectPos(val, toSet) val.Packed2.xy = toSet
-						#define GetUnderlayAlpha(val) val.Packed2.z
-						#define SetUnderlayAlpha(val, toSet) val.Packed2.z = toSet
+						#define GetRootPos(val) val.Packed2.xyz
+						#define SetRootPos(val, toSet) val.Packed2.xyz = toSet
+						#define GetUnderlayAlpha(val) val.Packed2.w
+						#define SetUnderlayAlpha(val, toSet) val.Packed2.w = toSet
 					#endif
 				#else
 					#if defined(NOVA_LIT)
@@ -2675,39 +2841,43 @@
 				#endif
 			#else
 				#if defined(NOVA_CLIPPING)
-					#define GetScaleParam(val) val.Packed0.x
-					#define SetScaleParam(val, toSet) val.Packed0.x = toSet
-					#define GetBiasParam(val) val.Packed0.y
-					#define SetBiasParam(val, toSet) val.Packed0.y = toSet
-					#define GetNClipRectPos(val) val.Packed0.zw
-					#define SetNClipRectPos(val, toSet) val.Packed0.zw = toSet
 					#if defined(NOVA_LIT)
+						#define GetWorldNormal(val) val.Packed0.xyz
+						#define SetWorldNormal(val, toSet) val.Packed0.xyz = toSet
+						#define GetScaleParam(val) val.Packed0.w
+						#define SetScaleParam(val, toSet) val.Packed0.w = toSet
 						#if defined(NOVA_LAMBERT_LIGHTING)
-							#define GetWorldPos(val) val.Packed1.xyz
-							#define SetWorldPos(val, toSet) val.Packed1.xyz = toSet
-							#define GetTextureUV(val) val.Packed2.xy
-							#define SetTextureUV(val, toSet) val.Packed2.xy = toSet
-							#define GetWorldNormal(val) half3(val.Packed1.w, val.Packed2.zw)
-							#define SetWorldNormal(val, toSet) \
-								val.Packed1.w = toSet.x; \
-								val.Packed2.zw = toSet.yz;
-							#define POST_NOVA_0 4
-							#define POST_NOVA_1 5
-							#define POST_NOVA_2 6
-							#define POST_NOVA_3 7
-							#define POST_NOVA_4 8
-							#define POST_NOVA_5 9
-						#elif defined(NOVA_BLINNPHONG_LIGHTING)
-							#define GetWorldNormal(val) val.Packed1.xyz
-							#define SetWorldNormal(val, toSet) val.Packed1.xyz = toSet
-							#define GetSpecular(val) val.Packed1.w
-							#define SetSpecular(val, toSet) val.Packed1.w = toSet
+							#define GetRootPos(val) val.Packed1.xyz
+							#define SetRootPos(val, toSet) val.Packed1.xyz = toSet
 							#define GetWorldPos(val) val.Packed2.xyz
 							#define SetWorldPos(val, toSet) val.Packed2.xyz = toSet
-							#define GetGloss(val) val.Packed2.w
-							#define SetGloss(val, toSet) val.Packed2.w = toSet
-							#define GetTextureUV(val) val.TextureUV
-							#define SetTextureUV(val, toSet) val.TextureUV = toSet
+							#define GetBiasParam(val) val.BiasParam
+							#define SetBiasParam(val, toSet) val.BiasParam = toSet
+							#define GetTextureUV(val) float2(val.Packed1.w, val.Packed2.w)
+							#define SetTextureUV(val, toSet) \
+								val.Packed1.w = toSet.x; \
+								val.Packed2.w = toSet.y;
+							#define POST_NOVA_0 5
+							#define POST_NOVA_1 6
+							#define POST_NOVA_2 7
+							#define POST_NOVA_3 8
+							#define POST_NOVA_4 9
+							#define POST_NOVA_5 10
+						#elif defined(NOVA_BLINNPHONG_LIGHTING)
+							#define GetRootPos(val) val.Packed1.xyz
+							#define SetRootPos(val, toSet) val.Packed1.xyz = toSet
+							#define GetWorldPos(val) val.Packed2.xyz
+							#define SetWorldPos(val, toSet) val.Packed2.xyz = toSet
+							#define GetBiasParam(val) val.Packed3.x
+							#define SetBiasParam(val, toSet) val.Packed3.x = toSet
+							#define GetSpecular(val) val.Packed3.y
+							#define SetSpecular(val, toSet) val.Packed3.y = toSet
+							#define GetGloss(val) val.Packed3.z
+							#define SetGloss(val, toSet) val.Packed3.z = toSet
+							#define GetTextureUV(val) float2(val.Packed1.w, val.Packed2.w)
+							#define SetTextureUV(val, toSet) \
+								val.Packed1.w = toSet.x; \
+								val.Packed2.w = toSet.y;
 							#define POST_NOVA_0 5
 							#define POST_NOVA_1 6
 							#define POST_NOVA_2 7
@@ -2715,16 +2885,20 @@
 							#define POST_NOVA_4 9
 							#define POST_NOVA_5 10
 						#elif defined(NOVA_STANDARD_LIGHTING)
-							#define GetWorldNormal(val) val.Packed1.xyz
-							#define SetWorldNormal(val, toSet) val.Packed1.xyz = toSet
-							#define GetSmoothness(val) val.Packed1.w
-							#define SetSmoothness(val, toSet) val.Packed1.w = toSet
+							#define GetRootPos(val) val.Packed1.xyz
+							#define SetRootPos(val, toSet) val.Packed1.xyz = toSet
 							#define GetWorldPos(val) val.Packed2.xyz
 							#define SetWorldPos(val, toSet) val.Packed2.xyz = toSet
-							#define GetMetallic(val) val.Packed2.w
-							#define SetMetallic(val, toSet) val.Packed2.w = toSet
-							#define GetTextureUV(val) val.TextureUV
-							#define SetTextureUV(val, toSet) val.TextureUV = toSet
+							#define GetBiasParam(val) val.Packed3.x
+							#define SetBiasParam(val, toSet) val.Packed3.x = toSet
+							#define GetSmoothness(val) val.Packed3.y
+							#define SetSmoothness(val, toSet) val.Packed3.y = toSet
+							#define GetMetallic(val) val.Packed3.z
+							#define SetMetallic(val, toSet) val.Packed3.z = toSet
+							#define GetTextureUV(val) float2(val.Packed1.w, val.Packed2.w)
+							#define SetTextureUV(val, toSet) \
+								val.Packed1.w = toSet.x; \
+								val.Packed2.w = toSet.y;
 							#define POST_NOVA_0 5
 							#define POST_NOVA_1 6
 							#define POST_NOVA_2 7
@@ -2732,28 +2906,36 @@
 							#define POST_NOVA_4 9
 							#define POST_NOVA_5 10
 						#elif defined(NOVA_STANDARDSPECULAR_LIGHTING)
-							#define GetWorldNormal(val) val.Packed1.xyz
-							#define SetWorldNormal(val, toSet) val.Packed1.xyz = toSet
-							#define GetSmoothness(val) val.Packed1.w
-							#define SetSmoothness(val, toSet) val.Packed1.w = toSet
+							#define GetRootPos(val) val.Packed1.xyz
+							#define SetRootPos(val, toSet) val.Packed1.xyz = toSet
 							#define GetWorldPos(val) val.Packed2.xyz
 							#define SetWorldPos(val, toSet) val.Packed2.xyz = toSet
-							#define GetTextureUV(val) val.Packed3.xy
-							#define SetTextureUV(val, toSet) val.Packed3.xy = toSet
-							#define GetSpecularColor(val) fixed3(val.Packed2.w, val.Packed3.zw)
-							#define SetSpecularColor(val, toSet) \
-								val.Packed2.w = toSet.x; \
-								val.Packed3.zw = toSet.yz;
-							#define POST_NOVA_0 5
-							#define POST_NOVA_1 6
-							#define POST_NOVA_2 7
-							#define POST_NOVA_3 8
-							#define POST_NOVA_4 9
-							#define POST_NOVA_5 10
+							#define GetBiasParam(val) val.Packed3.x
+							#define SetBiasParam(val, toSet) val.Packed3.x = toSet
+							#define GetSmoothness(val) val.Packed3.y
+							#define SetSmoothness(val, toSet) val.Packed3.y = toSet
+							#define GetSpecularColor(val) val.SpecularColor
+							#define SetSpecularColor(val, toSet) val.SpecularColor = toSet
+							#define GetTextureUV(val) float2(val.Packed1.w, val.Packed2.w)
+							#define SetTextureUV(val, toSet) \
+								val.Packed1.w = toSet.x; \
+								val.Packed2.w = toSet.y;
+							#define POST_NOVA_0 6
+							#define POST_NOVA_1 7
+							#define POST_NOVA_2 8
+							#define POST_NOVA_3 9
+							#define POST_NOVA_4 10
+							#define POST_NOVA_5 11
 						#endif
 					#else
-						#define GetTextureUV(val) val.TextureUV
-						#define SetTextureUV(val, toSet) val.TextureUV = toSet
+						#define GetRootPos(val) val.Packed0.xyz
+						#define SetRootPos(val, toSet) val.Packed0.xyz = toSet
+						#define GetScaleParam(val) val.Packed0.w
+						#define SetScaleParam(val, toSet) val.Packed0.w = toSet
+						#define GetTextureUV(val) val.Packed1.xy
+						#define SetTextureUV(val, toSet) val.Packed1.xy = toSet
+						#define GetBiasParam(val) val.Packed1.z
+						#define SetBiasParam(val, toSet) val.Packed1.z = toSet
 					#endif
 				#else
 					#if defined(NOVA_LIT)
@@ -2865,44 +3047,44 @@ struct v2f
 					#if defined(NOVA_CLIPPING)
 						#if defined(NOVA_LIT)
 							#if defined(NOVA_LAMBERT_LIGHTING)
-								// xyz: WorldPos
-								// w: WorldNormal(x)
+								// xyz: RootPos
+								// w: UnderlayUV(x)
 								float4 Packed3 : TEXCOORD5;
-								// xy: UnderlayUV
-								// zw: WorldNormal(yz)
+								// xyz: WorldPos
+								// w: UnderlayUV(y)
 								float4 Packed4 : TEXCOORD6;
-								// xy: NClipRectPos
-								// z: UnderlayAlpha
+								// xyz: WorldNormal
 								// w: UnderlayAlpha
 								half4 Packed5 : TEXCOORD7;
+								fixed UnderlayAlpha : TEXCOORD8;
 							#elif defined(NOVA_BLINNPHONG_LIGHTING)
-								// xy: NClipRectPos
-								// z: Specular
-								// w: Gloss
+								// xyz: WorldNormal
+								// w: Specular
 								half4 Packed3 : TEXCOORD5;
-								// xyz: WorldPos
-								// w: WorldNormal(x)
+								// xyz: RootPos
+								// w: UnderlayUV(x)
 								float4 Packed4 : TEXCOORD6;
-								// xy: UnderlayUV
-								// zw: WorldNormal(yz)
+								// xyz: WorldPos
+								// w: UnderlayUV(y)
 								float4 Packed5 : TEXCOORD7;
-								// x: UnderlayAlpha
+								// x: Gloss
 								// y: UnderlayAlpha
-								fixed2 Packed6 : TEXCOORD8;
+								// z: UnderlayAlpha
+								half3 Packed6 : TEXCOORD8;
 							#elif defined(NOVA_STANDARD_LIGHTING)
-								// xy: NClipRectPos
-								// z: Smoothness
-								// w: Metallic
+								// xyz: WorldNormal
+								// w: Smoothness
 								half4 Packed3 : TEXCOORD5;
-								// xyz: WorldPos
-								// w: WorldNormal(x)
+								// xyz: RootPos
+								// w: UnderlayUV(x)
 								float4 Packed4 : TEXCOORD6;
-								// xy: UnderlayUV
-								// zw: WorldNormal(yz)
+								// xyz: WorldPos
+								// w: UnderlayUV(y)
 								float4 Packed5 : TEXCOORD7;
-								// x: UnderlayAlpha
+								// x: Metallic
 								// y: UnderlayAlpha
-								fixed2 Packed6 : TEXCOORD8;
+								// z: UnderlayAlpha
+								half3 Packed6 : TEXCOORD8;
 							#elif defined(NOVA_STANDARDSPECULAR_LIGHTING)
 								// xyz: WorldNormal
 								// w: Smoothness
@@ -2910,21 +3092,21 @@ struct v2f
 								// xyz: SpecularColor
 								// w: UnderlayAlpha
 								fixed4 Packed4 : TEXCOORD6;
-								// xyz: WorldPos
-								// w: NClipRectPos(x)
+								// xyz: RootPos
+								// w: UnderlayUV(x)
 								float4 Packed5 : TEXCOORD7;
-								// xy: UnderlayUV
-								// z: NClipRectPos(y)
-								// w: UnderlayAlpha
+								// xyz: WorldPos
+								// w: UnderlayUV(y)
 								float4 Packed6 : TEXCOORD8;
+								fixed UnderlayAlpha : TEXCOORD9;
 							#endif
 						#else
-							// xy: UnderlayUV
-							// zw: NClipRectPos
+							// xyz: RootPos
+							// w: UnderlayAlpha
 							float4 Packed3 : TEXCOORD5;
-							// x: UnderlayAlpha
-							// y: UnderlayAlpha
-							fixed2 Packed4 : TEXCOORD6;
+							// xy: UnderlayUV
+							// z: UnderlayAlpha
+							float3 Packed4 : TEXCOORD6;
 						#endif
 					#else
 						#if defined(NOVA_LIT)
@@ -2981,43 +3163,55 @@ struct v2f
 					#endif
 				#else
 					#if defined(NOVA_CLIPPING)
-						// x: UnderlayScale
-						// y: UnderlayBias
-						// zw: NClipRectPos
-						half4 Packed2 : TEXCOORD4;
 						#if defined(NOVA_LIT)
+							// xyz: WorldNormal
+							// w: UnderlayScale
+							half4 Packed2 : TEXCOORD4;
 							#if defined(NOVA_LAMBERT_LIGHTING)
+								// xyz: RootPos
+								// w: UnderlayBias
+								float4 Packed3 : TEXCOORD5;
 								// xyz: WorldPos
 								// w: UnderlayAlpha
-								float4 Packed3 : TEXCOORD5;
-								half3 WorldNormal : TEXCOORD6;
+								float4 Packed4 : TEXCOORD6;
 							#elif defined(NOVA_BLINNPHONG_LIGHTING)
-								// xyz: WorldNormal
+								// xyz: RootPos
+								// w: UnderlayBias
+								float4 Packed3 : TEXCOORD5;
+								// xyz: WorldPos
 								// w: Specular
-								half4 Packed3 : TEXCOORD5;
-								// xyz: WorldPos
-								// w: Gloss
 								float4 Packed4 : TEXCOORD6;
-								fixed UnderlayAlpha : TEXCOORD7;
+								// x: Gloss
+								// y: UnderlayAlpha
+								half2 Packed5 : TEXCOORD7;
 							#elif defined(NOVA_STANDARD_LIGHTING)
-								// xyz: WorldNormal
-								// w: Smoothness
-								half4 Packed3 : TEXCOORD5;
+								// xyz: RootPos
+								// w: UnderlayBias
+								float4 Packed3 : TEXCOORD5;
 								// xyz: WorldPos
-								// w: Metallic
-								float4 Packed4 : TEXCOORD6;
-								fixed UnderlayAlpha : TEXCOORD7;
-							#elif defined(NOVA_STANDARDSPECULAR_LIGHTING)
-								// xyz: WorldNormal
 								// w: Smoothness
-								half4 Packed3 : TEXCOORD5;
+								float4 Packed4 : TEXCOORD6;
+								// x: Metallic
+								// y: UnderlayAlpha
+								half2 Packed5 : TEXCOORD7;
+							#elif defined(NOVA_STANDARDSPECULAR_LIGHTING)
 								// x: UnderlayAlpha
 								// yzw: SpecularColor
-								fixed4 Packed4 : TEXCOORD6;
-								float3 WorldPos : TEXCOORD7;
+								fixed4 Packed3 : TEXCOORD5;
+								// xyz: RootPos
+								// w: UnderlayBias
+								float4 Packed4 : TEXCOORD6;
+								// xyz: WorldPos
+								// w: Smoothness
+								float4 Packed5 : TEXCOORD7;
 							#endif
 						#else
-							fixed UnderlayAlpha : TEXCOORD5;
+							// xyz: RootPos
+							// w: UnderlayScale
+							float4 Packed2 : TEXCOORD4;
+							// x: UnderlayBias
+							// y: UnderlayAlpha
+							half2 Packed3 : TEXCOORD5;
 						#endif
 					#else
 						#if defined(NOVA_LIT)
@@ -3068,43 +3262,55 @@ struct v2f
 					// zw: UnderlayUV
 					float4 Packed1 : TEXCOORD3;
 					#if defined(NOVA_CLIPPING)
-						// x: UnderlayScale
-						// y: UnderlayBias
-						// zw: NClipRectPos
-						half4 Packed2 : TEXCOORD4;
 						#if defined(NOVA_LIT)
+							// xyz: WorldNormal
+							// w: UnderlayScale
+							half4 Packed2 : TEXCOORD4;
 							#if defined(NOVA_LAMBERT_LIGHTING)
+								// xyz: RootPos
+								// w: UnderlayBias
+								float4 Packed3 : TEXCOORD5;
 								// xyz: WorldPos
 								// w: UnderlayAlpha
-								float4 Packed3 : TEXCOORD5;
-								half3 WorldNormal : TEXCOORD6;
+								float4 Packed4 : TEXCOORD6;
 							#elif defined(NOVA_BLINNPHONG_LIGHTING)
-								// xyz: WorldNormal
+								// xyz: RootPos
+								// w: UnderlayBias
+								float4 Packed3 : TEXCOORD5;
+								// xyz: WorldPos
 								// w: Specular
-								half4 Packed3 : TEXCOORD5;
-								// xyz: WorldPos
-								// w: Gloss
 								float4 Packed4 : TEXCOORD6;
-								fixed UnderlayAlpha : TEXCOORD7;
+								// x: Gloss
+								// y: UnderlayAlpha
+								half2 Packed5 : TEXCOORD7;
 							#elif defined(NOVA_STANDARD_LIGHTING)
-								// xyz: WorldNormal
-								// w: Smoothness
-								half4 Packed3 : TEXCOORD5;
+								// xyz: RootPos
+								// w: UnderlayBias
+								float4 Packed3 : TEXCOORD5;
 								// xyz: WorldPos
-								// w: Metallic
-								float4 Packed4 : TEXCOORD6;
-								fixed UnderlayAlpha : TEXCOORD7;
-							#elif defined(NOVA_STANDARDSPECULAR_LIGHTING)
-								// xyz: WorldNormal
 								// w: Smoothness
-								half4 Packed3 : TEXCOORD5;
+								float4 Packed4 : TEXCOORD6;
+								// x: Metallic
+								// y: UnderlayAlpha
+								half2 Packed5 : TEXCOORD7;
+							#elif defined(NOVA_STANDARDSPECULAR_LIGHTING)
 								// x: UnderlayAlpha
 								// yzw: SpecularColor
-								fixed4 Packed4 : TEXCOORD6;
-								float3 WorldPos : TEXCOORD7;
+								fixed4 Packed3 : TEXCOORD5;
+								// xyz: RootPos
+								// w: UnderlayBias
+								float4 Packed4 : TEXCOORD6;
+								// xyz: WorldPos
+								// w: Smoothness
+								float4 Packed5 : TEXCOORD7;
 							#endif
 						#else
-							fixed UnderlayAlpha : TEXCOORD5;
+							// xyz: RootPos
+							// w: UnderlayScale
+							float4 Packed2 : TEXCOORD4;
+							// x: UnderlayBias
+							// y: UnderlayAlpha
+							half2 Packed3 : TEXCOORD5;
 						#endif
 					#else
 						#if defined(NOVA_LIT)
@@ -3152,51 +3358,50 @@ struct v2f
 					#if defined(NOVA_CLIPPING)
 						#if defined(NOVA_LIT)
 							#if defined(NOVA_LAMBERT_LIGHTING)
-								// xyz: WorldPos
-								// w: WorldNormal(x)
+								// xyz: RootPos
+								// w: TextureUV(x)
 								float4 Packed1 : TEXCOORD3;
-								// xy: TextureUV
-								// zw: WorldNormal(yz)
+								// xyz: WorldPos
+								// w: TextureUV(y)
 								float4 Packed2 : TEXCOORD4;
-								half2 NClipRectPos : TEXCOORD5;
+								half3 WorldNormal : TEXCOORD5;
 							#elif defined(NOVA_BLINNPHONG_LIGHTING)
-								// xy: NClipRectPos
-								// z: Specular
-								// w: Gloss
+								// xyz: WorldNormal
+								// w: Specular
 								half4 Packed1 : TEXCOORD3;
-								// xyz: WorldPos
-								// w: WorldNormal(x)
+								// xyz: RootPos
+								// w: TextureUV(x)
 								float4 Packed2 : TEXCOORD4;
-								// xy: TextureUV
-								// zw: WorldNormal(yz)
+								// xyz: WorldPos
+								// w: TextureUV(y)
 								float4 Packed3 : TEXCOORD5;
+								half Gloss : TEXCOORD6;
 							#elif defined(NOVA_STANDARD_LIGHTING)
-								// xy: NClipRectPos
-								// z: Smoothness
-								// w: Metallic
+								// xyz: WorldNormal
+								// w: Smoothness
 								half4 Packed1 : TEXCOORD3;
-								// xyz: WorldPos
-								// w: WorldNormal(x)
+								// xyz: RootPos
+								// w: TextureUV(x)
 								float4 Packed2 : TEXCOORD4;
-								// xy: TextureUV
-								// zw: WorldNormal(yz)
+								// xyz: WorldPos
+								// w: TextureUV(y)
 								float4 Packed3 : TEXCOORD5;
+								half Metallic : TEXCOORD6;
 							#elif defined(NOVA_STANDARDSPECULAR_LIGHTING)
 								// xyz: WorldNormal
 								// w: Smoothness
 								half4 Packed1 : TEXCOORD3;
-								// xyz: WorldPos
-								// w: NClipRectPos(x)
+								// xyz: RootPos
+								// w: TextureUV(x)
 								float4 Packed2 : TEXCOORD4;
-								// xy: TextureUV
-								// z: NClipRectPos(y)
-								float3 Packed3 : TEXCOORD5;
+								// xyz: WorldPos
+								// w: TextureUV(y)
+								float4 Packed3 : TEXCOORD5;
 								fixed3 SpecularColor : TEXCOORD6;
 							#endif
 						#else
-							// xy: TextureUV
-							// zw: NClipRectPos
-							float4 Packed1 : TEXCOORD3;
+							float3 RootPos : TEXCOORD3;
+							float2 TextureUV : TEXCOORD4;
 						#endif
 					#else
 						#if defined(NOVA_LIT)
@@ -3252,56 +3457,79 @@ struct v2f
 				half4 Packed1 : TEXCOORD2;
 				#if defined(UNDERLAY_ON)
 					#if defined(NOVA_CLIPPING)
-						// xy: NClipRectPos
-						// z: UnderlayBias
-						// w: UnderlayScale
-						half4 Packed2 : TEXCOORD3;
 						#if defined(NOVA_LIT)
-							// x: UnderlayBias
-							// yzw: WorldNormal
-							half4 Packed3 : TEXCOORD4;
+							// xyz: WorldNormal
+							// w: UnderlayBias
+							half4 Packed2 : TEXCOORD3;
 							#if defined(NOVA_LAMBERT_LIGHTING)
+								// xyz: RootPos
+								// w: UnderlayUV(x)
+								float4 Packed3 : TEXCOORD4;
 								// xyz: WorldPos
-								// w: UnderlayAlpha
+								// w: UnderlayUV(y)
 								float4 Packed4 : TEXCOORD5;
-								// xy: UnderlayUV
+								// x: UnderlayBias
+								// y: UnderlayScale
 								// z: UnderlayAlpha
-								float3 Packed5 : TEXCOORD6;
+								// w: UnderlayAlpha
+								half4 Packed5 : TEXCOORD6;
 							#elif defined(NOVA_BLINNPHONG_LIGHTING)
-								// xyz: WorldPos
-								// w: Specular
+								// x: UnderlayBias
+								// y: UnderlayScale
+								// z: Specular
+								// w: Gloss
+								half4 Packed3 : TEXCOORD4;
+								// xyz: RootPos
+								// w: UnderlayUV(x)
 								float4 Packed4 : TEXCOORD5;
-								// xy: UnderlayUV
-								// z: Gloss
-								// w: UnderlayAlpha
+								// xyz: WorldPos
+								// w: UnderlayUV(y)
 								float4 Packed5 : TEXCOORD6;
-								fixed UnderlayAlpha : TEXCOORD7;
+								// x: UnderlayAlpha
+								// y: UnderlayAlpha
+								fixed2 Packed6 : TEXCOORD7;
 							#elif defined(NOVA_STANDARD_LIGHTING)
-								// xyz: WorldPos
-								// w: Smoothness
+								// x: UnderlayBias
+								// y: UnderlayScale
+								// z: Smoothness
+								// w: Metallic
+								half4 Packed3 : TEXCOORD4;
+								// xyz: RootPos
+								// w: UnderlayUV(x)
 								float4 Packed4 : TEXCOORD5;
-								// xy: UnderlayUV
-								// z: Metallic
-								// w: UnderlayAlpha
+								// xyz: WorldPos
+								// w: UnderlayUV(y)
 								float4 Packed5 : TEXCOORD6;
-								fixed UnderlayAlpha : TEXCOORD7;
+								// x: UnderlayAlpha
+								// y: UnderlayAlpha
+								fixed2 Packed6 : TEXCOORD7;
 							#elif defined(NOVA_STANDARDSPECULAR_LIGHTING)
 								// xyz: SpecularColor
 								// w: UnderlayAlpha
-								fixed4 Packed4 : TEXCOORD5;
+								fixed4 Packed3 : TEXCOORD4;
+								// xyz: RootPos
+								// w: UnderlayUV(x)
+								float4 Packed4 : TEXCOORD5;
 								// xyz: WorldPos
-								// w: Smoothness
+								// w: UnderlayUV(y)
 								float4 Packed5 : TEXCOORD6;
-								// xy: UnderlayUV
-								// z: UnderlayAlpha
-								float3 Packed6 : TEXCOORD7;
+								// x: UnderlayBias
+								// y: UnderlayScale
+								// z: Smoothness
+								// w: UnderlayAlpha
+								half4 Packed6 : TEXCOORD7;
 							#endif
 						#else
+							// xyz: RootPos
+							// w: UnderlayBias
+							float4 Packed2 : TEXCOORD3;
 							// xy: UnderlayUV
-							// z: UnderlayBias
-							// w: UnderlayAlpha
+							// z: UnderlayScale
+							// w: UnderlayBias
 							float4 Packed3 : TEXCOORD4;
-							fixed UnderlayAlpha : TEXCOORD5;
+							// x: UnderlayAlpha
+							// y: UnderlayAlpha
+							fixed2 Packed4 : TEXCOORD5;
 						#endif
 					#else
 						#if defined(NOVA_LIT)
@@ -3368,44 +3596,44 @@ struct v2f
 				#else
 					#if defined(NOVA_CLIPPING)
 						#if defined(NOVA_LIT)
-							// xyz: WorldNormal
-							// w: UnderlayBias
+							// x: UnderlayBias
+							// yzw: WorldNormal
 							half4 Packed2 : TEXCOORD3;
 							#if defined(NOVA_LAMBERT_LIGHTING)
-								// xyz: WorldPos
+								// xyz: RootPos
 								// w: UnderlayAlpha
 								float4 Packed3 : TEXCOORD4;
-								half2 NClipRectPos : TEXCOORD5;
+								float3 WorldPos : TEXCOORD5;
 							#elif defined(NOVA_BLINNPHONG_LIGHTING)
-								// xy: NClipRectPos
-								// z: Specular
+								// xyz: RootPos
+								// w: Specular
+								float4 Packed3 : TEXCOORD4;
+								// xyz: WorldPos
 								// w: Gloss
-								half4 Packed3 : TEXCOORD4;
-								// xyz: WorldPos
-								// w: UnderlayAlpha
 								float4 Packed4 : TEXCOORD5;
+								fixed UnderlayAlpha : TEXCOORD6;
 							#elif defined(NOVA_STANDARD_LIGHTING)
-								// xy: NClipRectPos
-								// z: Smoothness
-								// w: Metallic
-								half4 Packed3 : TEXCOORD4;
+								// xyz: RootPos
+								// w: Smoothness
+								float4 Packed3 : TEXCOORD4;
 								// xyz: WorldPos
-								// w: UnderlayAlpha
+								// w: Metallic
 								float4 Packed4 : TEXCOORD5;
+								fixed UnderlayAlpha : TEXCOORD6;
 							#elif defined(NOVA_STANDARDSPECULAR_LIGHTING)
 								// x: UnderlayAlpha
 								// yzw: SpecularColor
 								fixed4 Packed3 : TEXCOORD4;
-								// xyz: WorldPos
+								// xyz: RootPos
 								// w: Smoothness
 								float4 Packed4 : TEXCOORD5;
-								half2 NClipRectPos : TEXCOORD6;
+								float3 WorldPos : TEXCOORD6;
 							#endif
 						#else
-							// xy: NClipRectPos
-							// z: UnderlayBias
-							// w: UnderlayAlpha
-							half4 Packed2 : TEXCOORD3;
+							// xyz: RootPos
+							// w: UnderlayBias
+							float4 Packed2 : TEXCOORD3;
+							fixed UnderlayAlpha : TEXCOORD4;
 						#endif
 					#else
 						#if defined(NOVA_LIT)
@@ -3457,44 +3685,44 @@ struct v2f
 					half4 Packed1 : TEXCOORD2;
 					#if defined(NOVA_CLIPPING)
 						#if defined(NOVA_LIT)
-							// xyz: WorldNormal
-							// w: UnderlayBias
+							// x: UnderlayBias
+							// yzw: WorldNormal
 							half4 Packed2 : TEXCOORD3;
 							#if defined(NOVA_LAMBERT_LIGHTING)
-								// xyz: WorldPos
+								// xyz: RootPos
 								// w: UnderlayAlpha
 								float4 Packed3 : TEXCOORD4;
-								half2 NClipRectPos : TEXCOORD5;
+								float3 WorldPos : TEXCOORD5;
 							#elif defined(NOVA_BLINNPHONG_LIGHTING)
-								// xy: NClipRectPos
-								// z: Specular
+								// xyz: RootPos
+								// w: Specular
+								float4 Packed3 : TEXCOORD4;
+								// xyz: WorldPos
 								// w: Gloss
-								half4 Packed3 : TEXCOORD4;
-								// xyz: WorldPos
-								// w: UnderlayAlpha
 								float4 Packed4 : TEXCOORD5;
+								fixed UnderlayAlpha : TEXCOORD6;
 							#elif defined(NOVA_STANDARD_LIGHTING)
-								// xy: NClipRectPos
-								// z: Smoothness
-								// w: Metallic
-								half4 Packed3 : TEXCOORD4;
+								// xyz: RootPos
+								// w: Smoothness
+								float4 Packed3 : TEXCOORD4;
 								// xyz: WorldPos
-								// w: UnderlayAlpha
+								// w: Metallic
 								float4 Packed4 : TEXCOORD5;
+								fixed UnderlayAlpha : TEXCOORD6;
 							#elif defined(NOVA_STANDARDSPECULAR_LIGHTING)
 								// x: UnderlayAlpha
 								// yzw: SpecularColor
 								fixed4 Packed3 : TEXCOORD4;
-								// xyz: WorldPos
+								// xyz: RootPos
 								// w: Smoothness
 								float4 Packed4 : TEXCOORD5;
-								half2 NClipRectPos : TEXCOORD6;
+								float3 WorldPos : TEXCOORD6;
 							#endif
 						#else
-							// xy: NClipRectPos
-							// z: UnderlayBias
-							// w: UnderlayAlpha
-							half4 Packed2 : TEXCOORD3;
+							// xyz: RootPos
+							// w: UnderlayBias
+							float4 Packed2 : TEXCOORD3;
+							fixed UnderlayAlpha : TEXCOORD4;
 						#endif
 					#else
 						#if defined(NOVA_LIT)
@@ -3535,42 +3763,65 @@ struct v2f
 					#endif
 				#else
 					#if defined(NOVA_CLIPPING)
-						// xy: NClipRectPos
-						// z: ScaleParam
-						// w: BiasParam
-						half4 Packed0 : TEXCOORD1;
 						#if defined(NOVA_LIT)
-							// x: BiasOutParam
-							// yzw: WorldNormal
-							half4 Packed1 : TEXCOORD2;
+							// xyz: WorldNormal
+							// w: ScaleParam
+							half4 Packed0 : TEXCOORD1;
 							#if defined(NOVA_LAMBERT_LIGHTING)
-								float3 WorldPos : TEXCOORD3;
-								float2 TextureUV : TEXCOORD4;
+								// xyz: RootPos
+								// w: TextureUV(x)
+								float4 Packed1 : TEXCOORD2;
+								// xyz: WorldPos
+								// w: TextureUV(y)
+								float4 Packed2 : TEXCOORD3;
+								// x: BiasOutParam
+								// y: BiasParam
+								half2 Packed3 : TEXCOORD4;
 							#elif defined(NOVA_BLINNPHONG_LIGHTING)
-								// xyz: WorldPos
-								// w: Specular
+								// x: BiasOutParam
+								// y: BiasParam
+								// z: Specular
+								// w: Gloss
+								half4 Packed1 : TEXCOORD2;
+								// xyz: RootPos
+								// w: TextureUV(x)
 								float4 Packed2 : TEXCOORD3;
-								// xy: TextureUV
-								// z: Gloss
-								float3 Packed3 : TEXCOORD4;
+								// xyz: WorldPos
+								// w: TextureUV(y)
+								float4 Packed3 : TEXCOORD4;
 							#elif defined(NOVA_STANDARD_LIGHTING)
-								// xyz: WorldPos
-								// w: Smoothness
+								// x: BiasOutParam
+								// y: BiasParam
+								// z: Smoothness
+								// w: Metallic
+								half4 Packed1 : TEXCOORD2;
+								// xyz: RootPos
+								// w: TextureUV(x)
 								float4 Packed2 : TEXCOORD3;
-								// xy: TextureUV
-								// z: Metallic
-								float3 Packed3 : TEXCOORD4;
+								// xyz: WorldPos
+								// w: TextureUV(y)
+								float4 Packed3 : TEXCOORD4;
 							#elif defined(NOVA_STANDARDSPECULAR_LIGHTING)
+								// xyz: RootPos
+								// w: TextureUV(x)
+								float4 Packed1 : TEXCOORD2;
 								// xyz: WorldPos
-								// w: Smoothness
+								// w: TextureUV(y)
 								float4 Packed2 : TEXCOORD3;
-								float2 TextureUV : TEXCOORD4;
+								// x: BiasOutParam
+								// y: BiasParam
+								// z: Smoothness
+								half3 Packed3 : TEXCOORD4;
 								fixed3 SpecularColor : TEXCOORD5;
 							#endif
 						#else
+							// xyz: RootPos
+							// w: ScaleParam
+							float4 Packed0 : TEXCOORD1;
 							// xy: TextureUV
-							// z: BiasOutParam
-							float3 Packed1 : TEXCOORD2;
+							// z: BiasParam
+							// w: BiasOutParam
+							float4 Packed1 : TEXCOORD2;
 						#endif
 					#else
 						#if defined(NOVA_LIT)
@@ -3635,56 +3886,79 @@ struct v2f
 				half4 Packed1 : TEXCOORD3;
 				#if defined(UNDERLAY_ON)
 					#if defined(NOVA_CLIPPING)
-						// xy: NClipRectPos
-						// z: UnderlayBias
-						// w: UnderlayScale
-						half4 Packed2 : TEXCOORD4;
 						#if defined(NOVA_LIT)
-							// x: UnderlayBias
-							// yzw: WorldNormal
-							half4 Packed3 : TEXCOORD5;
+							// xyz: WorldNormal
+							// w: UnderlayBias
+							half4 Packed2 : TEXCOORD4;
 							#if defined(NOVA_LAMBERT_LIGHTING)
+								// xyz: RootPos
+								// w: UnderlayUV(x)
+								float4 Packed3 : TEXCOORD5;
 								// xyz: WorldPos
-								// w: UnderlayAlpha
+								// w: UnderlayUV(y)
 								float4 Packed4 : TEXCOORD6;
-								// xy: UnderlayUV
+								// x: UnderlayBias
+								// y: UnderlayScale
 								// z: UnderlayAlpha
-								float3 Packed5 : TEXCOORD7;
+								// w: UnderlayAlpha
+								half4 Packed5 : TEXCOORD7;
 							#elif defined(NOVA_BLINNPHONG_LIGHTING)
-								// xyz: WorldPos
-								// w: Specular
+								// x: UnderlayBias
+								// y: UnderlayScale
+								// z: Specular
+								// w: Gloss
+								half4 Packed3 : TEXCOORD5;
+								// xyz: RootPos
+								// w: UnderlayUV(x)
 								float4 Packed4 : TEXCOORD6;
-								// xy: UnderlayUV
-								// z: Gloss
-								// w: UnderlayAlpha
+								// xyz: WorldPos
+								// w: UnderlayUV(y)
 								float4 Packed5 : TEXCOORD7;
-								fixed UnderlayAlpha : TEXCOORD8;
+								// x: UnderlayAlpha
+								// y: UnderlayAlpha
+								fixed2 Packed6 : TEXCOORD8;
 							#elif defined(NOVA_STANDARD_LIGHTING)
-								// xyz: WorldPos
-								// w: Smoothness
+								// x: UnderlayBias
+								// y: UnderlayScale
+								// z: Smoothness
+								// w: Metallic
+								half4 Packed3 : TEXCOORD5;
+								// xyz: RootPos
+								// w: UnderlayUV(x)
 								float4 Packed4 : TEXCOORD6;
-								// xy: UnderlayUV
-								// z: Metallic
-								// w: UnderlayAlpha
+								// xyz: WorldPos
+								// w: UnderlayUV(y)
 								float4 Packed5 : TEXCOORD7;
-								fixed UnderlayAlpha : TEXCOORD8;
+								// x: UnderlayAlpha
+								// y: UnderlayAlpha
+								fixed2 Packed6 : TEXCOORD8;
 							#elif defined(NOVA_STANDARDSPECULAR_LIGHTING)
 								// xyz: SpecularColor
 								// w: UnderlayAlpha
-								fixed4 Packed4 : TEXCOORD6;
+								fixed4 Packed3 : TEXCOORD5;
+								// xyz: RootPos
+								// w: UnderlayUV(x)
+								float4 Packed4 : TEXCOORD6;
 								// xyz: WorldPos
-								// w: Smoothness
+								// w: UnderlayUV(y)
 								float4 Packed5 : TEXCOORD7;
-								// xy: UnderlayUV
-								// z: UnderlayAlpha
-								float3 Packed6 : TEXCOORD8;
+								// x: UnderlayBias
+								// y: UnderlayScale
+								// z: Smoothness
+								// w: UnderlayAlpha
+								half4 Packed6 : TEXCOORD8;
 							#endif
 						#else
+							// xyz: RootPos
+							// w: UnderlayBias
+							float4 Packed2 : TEXCOORD4;
 							// xy: UnderlayUV
-							// z: UnderlayBias
-							// w: UnderlayAlpha
+							// z: UnderlayScale
+							// w: UnderlayBias
 							float4 Packed3 : TEXCOORD5;
-							fixed UnderlayAlpha : TEXCOORD6;
+							// x: UnderlayAlpha
+							// y: UnderlayAlpha
+							fixed2 Packed4 : TEXCOORD6;
 						#endif
 					#else
 						#if defined(NOVA_LIT)
@@ -3751,44 +4025,44 @@ struct v2f
 				#else
 					#if defined(NOVA_CLIPPING)
 						#if defined(NOVA_LIT)
-							// xyz: WorldNormal
-							// w: UnderlayBias
+							// x: UnderlayBias
+							// yzw: WorldNormal
 							half4 Packed2 : TEXCOORD4;
 							#if defined(NOVA_LAMBERT_LIGHTING)
-								// xyz: WorldPos
+								// xyz: RootPos
 								// w: UnderlayAlpha
 								float4 Packed3 : TEXCOORD5;
-								half2 NClipRectPos : TEXCOORD6;
+								float3 WorldPos : TEXCOORD6;
 							#elif defined(NOVA_BLINNPHONG_LIGHTING)
-								// xy: NClipRectPos
-								// z: Specular
+								// xyz: RootPos
+								// w: Specular
+								float4 Packed3 : TEXCOORD5;
+								// xyz: WorldPos
 								// w: Gloss
-								half4 Packed3 : TEXCOORD5;
-								// xyz: WorldPos
-								// w: UnderlayAlpha
 								float4 Packed4 : TEXCOORD6;
+								fixed UnderlayAlpha : TEXCOORD7;
 							#elif defined(NOVA_STANDARD_LIGHTING)
-								// xy: NClipRectPos
-								// z: Smoothness
-								// w: Metallic
-								half4 Packed3 : TEXCOORD5;
+								// xyz: RootPos
+								// w: Smoothness
+								float4 Packed3 : TEXCOORD5;
 								// xyz: WorldPos
-								// w: UnderlayAlpha
+								// w: Metallic
 								float4 Packed4 : TEXCOORD6;
+								fixed UnderlayAlpha : TEXCOORD7;
 							#elif defined(NOVA_STANDARDSPECULAR_LIGHTING)
 								// x: UnderlayAlpha
 								// yzw: SpecularColor
 								fixed4 Packed3 : TEXCOORD5;
-								// xyz: WorldPos
+								// xyz: RootPos
 								// w: Smoothness
 								float4 Packed4 : TEXCOORD6;
-								half2 NClipRectPos : TEXCOORD7;
+								float3 WorldPos : TEXCOORD7;
 							#endif
 						#else
-							// xy: NClipRectPos
-							// z: UnderlayBias
-							// w: UnderlayAlpha
-							half4 Packed2 : TEXCOORD4;
+							// xyz: RootPos
+							// w: UnderlayBias
+							float4 Packed2 : TEXCOORD4;
+							fixed UnderlayAlpha : TEXCOORD5;
 						#endif
 					#else
 						#if defined(NOVA_LIT)
@@ -3840,44 +4114,44 @@ struct v2f
 					half4 Packed1 : TEXCOORD3;
 					#if defined(NOVA_CLIPPING)
 						#if defined(NOVA_LIT)
-							// xyz: WorldNormal
-							// w: UnderlayBias
+							// x: UnderlayBias
+							// yzw: WorldNormal
 							half4 Packed2 : TEXCOORD4;
 							#if defined(NOVA_LAMBERT_LIGHTING)
-								// xyz: WorldPos
+								// xyz: RootPos
 								// w: UnderlayAlpha
 								float4 Packed3 : TEXCOORD5;
-								half2 NClipRectPos : TEXCOORD6;
+								float3 WorldPos : TEXCOORD6;
 							#elif defined(NOVA_BLINNPHONG_LIGHTING)
-								// xy: NClipRectPos
-								// z: Specular
+								// xyz: RootPos
+								// w: Specular
+								float4 Packed3 : TEXCOORD5;
+								// xyz: WorldPos
 								// w: Gloss
-								half4 Packed3 : TEXCOORD5;
-								// xyz: WorldPos
-								// w: UnderlayAlpha
 								float4 Packed4 : TEXCOORD6;
+								fixed UnderlayAlpha : TEXCOORD7;
 							#elif defined(NOVA_STANDARD_LIGHTING)
-								// xy: NClipRectPos
-								// z: Smoothness
-								// w: Metallic
-								half4 Packed3 : TEXCOORD5;
+								// xyz: RootPos
+								// w: Smoothness
+								float4 Packed3 : TEXCOORD5;
 								// xyz: WorldPos
-								// w: UnderlayAlpha
+								// w: Metallic
 								float4 Packed4 : TEXCOORD6;
+								fixed UnderlayAlpha : TEXCOORD7;
 							#elif defined(NOVA_STANDARDSPECULAR_LIGHTING)
 								// x: UnderlayAlpha
 								// yzw: SpecularColor
 								fixed4 Packed3 : TEXCOORD5;
-								// xyz: WorldPos
+								// xyz: RootPos
 								// w: Smoothness
 								float4 Packed4 : TEXCOORD6;
-								half2 NClipRectPos : TEXCOORD7;
+								float3 WorldPos : TEXCOORD7;
 							#endif
 						#else
-							// xy: NClipRectPos
-							// z: UnderlayBias
-							// w: UnderlayAlpha
-							half4 Packed2 : TEXCOORD4;
+							// xyz: RootPos
+							// w: UnderlayBias
+							float4 Packed2 : TEXCOORD4;
+							fixed UnderlayAlpha : TEXCOORD5;
 						#endif
 					#else
 						#if defined(NOVA_LIT)
@@ -3918,42 +4192,65 @@ struct v2f
 					#endif
 				#else
 					#if defined(NOVA_CLIPPING)
-						// xy: NClipRectPos
-						// z: ScaleParam
-						// w: BiasParam
-						half4 Packed0 : TEXCOORD2;
 						#if defined(NOVA_LIT)
-							// x: BiasInParam
-							// yzw: WorldNormal
-							half4 Packed1 : TEXCOORD3;
+							// xyz: WorldNormal
+							// w: ScaleParam
+							half4 Packed0 : TEXCOORD2;
 							#if defined(NOVA_LAMBERT_LIGHTING)
-								float3 WorldPos : TEXCOORD4;
-								float2 TextureUV : TEXCOORD5;
+								// xyz: RootPos
+								// w: TextureUV(x)
+								float4 Packed1 : TEXCOORD3;
+								// xyz: WorldPos
+								// w: TextureUV(y)
+								float4 Packed2 : TEXCOORD4;
+								// x: BiasInParam
+								// y: BiasParam
+								half2 Packed3 : TEXCOORD5;
 							#elif defined(NOVA_BLINNPHONG_LIGHTING)
-								// xyz: WorldPos
-								// w: Specular
+								// x: BiasInParam
+								// y: BiasParam
+								// z: Specular
+								// w: Gloss
+								half4 Packed1 : TEXCOORD3;
+								// xyz: RootPos
+								// w: TextureUV(x)
 								float4 Packed2 : TEXCOORD4;
-								// xy: TextureUV
-								// z: Gloss
-								float3 Packed3 : TEXCOORD5;
+								// xyz: WorldPos
+								// w: TextureUV(y)
+								float4 Packed3 : TEXCOORD5;
 							#elif defined(NOVA_STANDARD_LIGHTING)
-								// xyz: WorldPos
-								// w: Smoothness
+								// x: BiasInParam
+								// y: BiasParam
+								// z: Smoothness
+								// w: Metallic
+								half4 Packed1 : TEXCOORD3;
+								// xyz: RootPos
+								// w: TextureUV(x)
 								float4 Packed2 : TEXCOORD4;
-								// xy: TextureUV
-								// z: Metallic
-								float3 Packed3 : TEXCOORD5;
+								// xyz: WorldPos
+								// w: TextureUV(y)
+								float4 Packed3 : TEXCOORD5;
 							#elif defined(NOVA_STANDARDSPECULAR_LIGHTING)
+								// xyz: RootPos
+								// w: TextureUV(x)
+								float4 Packed1 : TEXCOORD3;
 								// xyz: WorldPos
-								// w: Smoothness
+								// w: TextureUV(y)
 								float4 Packed2 : TEXCOORD4;
-								float2 TextureUV : TEXCOORD5;
+								// x: BiasInParam
+								// y: BiasParam
+								// z: Smoothness
+								half3 Packed3 : TEXCOORD5;
 								fixed3 SpecularColor : TEXCOORD6;
 							#endif
 						#else
+							// xyz: RootPos
+							// w: ScaleParam
+							float4 Packed0 : TEXCOORD2;
 							// xy: TextureUV
-							// z: BiasInParam
-							float3 Packed1 : TEXCOORD3;
+							// z: BiasParam
+							// w: BiasInParam
+							float4 Packed1 : TEXCOORD3;
 						#endif
 					#else
 						#if defined(NOVA_LIT)
@@ -4015,60 +4312,71 @@ struct v2f
 				half4 Packed1 : TEXCOORD2;
 				#if defined(UNDERLAY_ON)
 					#if defined(NOVA_CLIPPING)
-						// x: UnderlayScale
-						// y: UnderlayBias
-						// zw: NClipRectPos
-						half4 Packed2 : TEXCOORD3;
 						#if defined(NOVA_LIT)
+							// xyz: WorldNormal
+							// w: UnderlayScale
+							half4 Packed2 : TEXCOORD3;
 							#if defined(NOVA_LAMBERT_LIGHTING)
-								// xyz: WorldPos
-								// w: WorldNormal(x)
+								// xyz: RootPos
+								// w: UnderlayUV(x)
 								float4 Packed3 : TEXCOORD4;
-								// xy: UnderlayUV
-								// zw: WorldNormal(yz)
+								// xyz: WorldPos
+								// w: UnderlayUV(y)
 								float4 Packed4 : TEXCOORD5;
-								// x: UnderlayAlpha
+								// x: UnderlayBias
 								// y: UnderlayAlpha
-								fixed2 Packed5 : TEXCOORD6;
+								// z: UnderlayAlpha
+								half3 Packed5 : TEXCOORD6;
 							#elif defined(NOVA_BLINNPHONG_LIGHTING)
-								// xyz: WorldNormal
-								// w: Specular
-								half4 Packed3 : TEXCOORD4;
+								// xyz: RootPos
+								// w: UnderlayUV(x)
+								float4 Packed3 : TEXCOORD4;
 								// xyz: WorldPos
-								// w: Gloss
+								// w: UnderlayUV(y)
 								float4 Packed4 : TEXCOORD5;
-								// xy: UnderlayUV
-								// z: UnderlayAlpha
+								// x: UnderlayBias
+								// y: Specular
+								// z: Gloss
 								// w: UnderlayAlpha
-								float4 Packed5 : TEXCOORD6;
+								half4 Packed5 : TEXCOORD6;
+								fixed UnderlayAlpha : TEXCOORD7;
 							#elif defined(NOVA_STANDARD_LIGHTING)
-								// xyz: WorldNormal
-								// w: Smoothness
-								half4 Packed3 : TEXCOORD4;
+								// xyz: RootPos
+								// w: UnderlayUV(x)
+								float4 Packed3 : TEXCOORD4;
 								// xyz: WorldPos
-								// w: Metallic
+								// w: UnderlayUV(y)
 								float4 Packed4 : TEXCOORD5;
-								// xy: UnderlayUV
-								// z: UnderlayAlpha
+								// x: UnderlayBias
+								// y: Smoothness
+								// z: Metallic
 								// w: UnderlayAlpha
-								float4 Packed5 : TEXCOORD6;
+								half4 Packed5 : TEXCOORD6;
+								fixed UnderlayAlpha : TEXCOORD7;
 							#elif defined(NOVA_STANDARDSPECULAR_LIGHTING)
-								// xyz: WorldNormal
-								// w: Smoothness
-								half4 Packed3 : TEXCOORD4;
 								// xyz: SpecularColor
 								// w: UnderlayAlpha
-								fixed4 Packed4 : TEXCOORD5;
+								fixed4 Packed3 : TEXCOORD4;
+								// xyz: RootPos
+								// w: UnderlayUV(x)
+								float4 Packed4 : TEXCOORD5;
 								// xyz: WorldPos
-								// w: UnderlayAlpha
+								// w: UnderlayUV(y)
 								float4 Packed5 : TEXCOORD6;
-								float2 UnderlayUV : TEXCOORD7;
+								// x: UnderlayBias
+								// y: Smoothness
+								// z: UnderlayAlpha
+								half3 Packed6 : TEXCOORD7;
 							#endif
 						#else
+							// xyz: RootPos
+							// w: UnderlayScale
+							float4 Packed2 : TEXCOORD3;
 							// xy: UnderlayUV
-							// z: UnderlayAlpha
+							// z: UnderlayBias
 							// w: UnderlayAlpha
 							float4 Packed3 : TEXCOORD4;
+							fixed UnderlayAlpha : TEXCOORD5;
 						#endif
 					#else
 						#if defined(NOVA_LIT)
@@ -4131,31 +4439,31 @@ struct v2f
 					#if defined(NOVA_CLIPPING)
 						#if defined(NOVA_LIT)
 							#if defined(NOVA_LAMBERT_LIGHTING)
-								// xyz: WorldPos
-								// w: NClipRectPos(x)
+								// xyz: RootPos
+								// w: UnderlayAlpha
 								float4 Packed2 : TEXCOORD3;
-								// xyz: WorldNormal
-								// w: NClipRectPos(y)
-								half4 Packed3 : TEXCOORD4;
-								fixed UnderlayAlpha : TEXCOORD5;
+								float3 WorldPos : TEXCOORD4;
+								half3 WorldNormal : TEXCOORD5;
 							#elif defined(NOVA_BLINNPHONG_LIGHTING)
-								// xy: NClipRectPos
-								// z: Specular
+								// xyz: WorldNormal
+								// w: Specular
+								half4 Packed2 : TEXCOORD3;
+								// xyz: RootPos
 								// w: Gloss
-								half4 Packed2 : TEXCOORD3;
+								float4 Packed3 : TEXCOORD4;
 								// xyz: WorldPos
 								// w: UnderlayAlpha
-								float4 Packed3 : TEXCOORD4;
-								half3 WorldNormal : TEXCOORD5;
+								float4 Packed4 : TEXCOORD5;
 							#elif defined(NOVA_STANDARD_LIGHTING)
-								// xy: NClipRectPos
-								// z: Smoothness
-								// w: Metallic
+								// xyz: WorldNormal
+								// w: Smoothness
 								half4 Packed2 : TEXCOORD3;
+								// xyz: RootPos
+								// w: Metallic
+								float4 Packed3 : TEXCOORD4;
 								// xyz: WorldPos
 								// w: UnderlayAlpha
-								float4 Packed3 : TEXCOORD4;
-								half3 WorldNormal : TEXCOORD5;
+								float4 Packed4 : TEXCOORD5;
 							#elif defined(NOVA_STANDARDSPECULAR_LIGHTING)
 								// xyz: WorldNormal
 								// w: Smoothness
@@ -4163,13 +4471,13 @@ struct v2f
 								// x: UnderlayAlpha
 								// yzw: SpecularColor
 								fixed4 Packed3 : TEXCOORD4;
-								float3 WorldPos : TEXCOORD5;
-								half2 NClipRectPos : TEXCOORD6;
+								float3 RootPos : TEXCOORD5;
+								float3 WorldPos : TEXCOORD6;
 							#endif
 						#else
-							// xy: NClipRectPos
-							// z: UnderlayAlpha
-							half3 Packed2 : TEXCOORD3;
+							// xyz: RootPos
+							// w: UnderlayAlpha
+							float4 Packed2 : TEXCOORD3;
 						#endif
 					#else
 						#if defined(NOVA_LIT)
@@ -4221,31 +4529,31 @@ struct v2f
 					#if defined(NOVA_CLIPPING)
 						#if defined(NOVA_LIT)
 							#if defined(NOVA_LAMBERT_LIGHTING)
-								// xyz: WorldPos
-								// w: NClipRectPos(x)
+								// xyz: RootPos
+								// w: UnderlayAlpha
 								float4 Packed2 : TEXCOORD3;
-								// xyz: WorldNormal
-								// w: NClipRectPos(y)
-								half4 Packed3 : TEXCOORD4;
-								fixed UnderlayAlpha : TEXCOORD5;
+								float3 WorldPos : TEXCOORD4;
+								half3 WorldNormal : TEXCOORD5;
 							#elif defined(NOVA_BLINNPHONG_LIGHTING)
-								// xy: NClipRectPos
-								// z: Specular
+								// xyz: WorldNormal
+								// w: Specular
+								half4 Packed2 : TEXCOORD3;
+								// xyz: RootPos
 								// w: Gloss
-								half4 Packed2 : TEXCOORD3;
+								float4 Packed3 : TEXCOORD4;
 								// xyz: WorldPos
 								// w: UnderlayAlpha
-								float4 Packed3 : TEXCOORD4;
-								half3 WorldNormal : TEXCOORD5;
+								float4 Packed4 : TEXCOORD5;
 							#elif defined(NOVA_STANDARD_LIGHTING)
-								// xy: NClipRectPos
-								// z: Smoothness
-								// w: Metallic
+								// xyz: WorldNormal
+								// w: Smoothness
 								half4 Packed2 : TEXCOORD3;
+								// xyz: RootPos
+								// w: Metallic
+								float4 Packed3 : TEXCOORD4;
 								// xyz: WorldPos
 								// w: UnderlayAlpha
-								float4 Packed3 : TEXCOORD4;
-								half3 WorldNormal : TEXCOORD5;
+								float4 Packed4 : TEXCOORD5;
 							#elif defined(NOVA_STANDARDSPECULAR_LIGHTING)
 								// xyz: WorldNormal
 								// w: Smoothness
@@ -4253,13 +4561,13 @@ struct v2f
 								// x: UnderlayAlpha
 								// yzw: SpecularColor
 								fixed4 Packed3 : TEXCOORD4;
-								float3 WorldPos : TEXCOORD5;
-								half2 NClipRectPos : TEXCOORD6;
+								float3 RootPos : TEXCOORD5;
+								float3 WorldPos : TEXCOORD6;
 							#endif
 						#else
-							// xy: NClipRectPos
-							// z: UnderlayAlpha
-							half3 Packed2 : TEXCOORD3;
+							// xyz: RootPos
+							// w: UnderlayAlpha
+							float4 Packed2 : TEXCOORD3;
 						#endif
 					#else
 						#if defined(NOVA_LIT)
@@ -4299,47 +4607,59 @@ struct v2f
 					#endif
 				#else
 					#if defined(NOVA_CLIPPING)
-						// x: ScaleParam
-						// y: BiasParam
-						// zw: NClipRectPos
-						half4 Packed0 : TEXCOORD1;
 						#if defined(NOVA_LIT)
+							// xyz: WorldNormal
+							// w: ScaleParam
+							half4 Packed0 : TEXCOORD1;
 							#if defined(NOVA_LAMBERT_LIGHTING)
-								// xyz: WorldPos
-								// w: WorldNormal(x)
+								// xyz: RootPos
+								// w: TextureUV(x)
 								float4 Packed1 : TEXCOORD2;
-								// xy: TextureUV
-								// zw: WorldNormal(yz)
+								// xyz: WorldPos
+								// w: TextureUV(y)
 								float4 Packed2 : TEXCOORD3;
+								half BiasParam : TEXCOORD4;
 							#elif defined(NOVA_BLINNPHONG_LIGHTING)
-								// xyz: WorldNormal
-								// w: Specular
-								half4 Packed1 : TEXCOORD2;
+								// xyz: RootPos
+								// w: TextureUV(x)
+								float4 Packed1 : TEXCOORD2;
 								// xyz: WorldPos
-								// w: Gloss
+								// w: TextureUV(y)
 								float4 Packed2 : TEXCOORD3;
-								float2 TextureUV : TEXCOORD4;
+								// x: BiasParam
+								// y: Specular
+								// z: Gloss
+								half3 Packed3 : TEXCOORD4;
 							#elif defined(NOVA_STANDARD_LIGHTING)
-								// xyz: WorldNormal
-								// w: Smoothness
-								half4 Packed1 : TEXCOORD2;
+								// xyz: RootPos
+								// w: TextureUV(x)
+								float4 Packed1 : TEXCOORD2;
 								// xyz: WorldPos
-								// w: Metallic
+								// w: TextureUV(y)
 								float4 Packed2 : TEXCOORD3;
-								float2 TextureUV : TEXCOORD4;
+								// x: BiasParam
+								// y: Smoothness
+								// z: Metallic
+								half3 Packed3 : TEXCOORD4;
 							#elif defined(NOVA_STANDARDSPECULAR_LIGHTING)
-								// xyz: WorldNormal
-								// w: Smoothness
-								half4 Packed1 : TEXCOORD2;
+								// xyz: RootPos
+								// w: TextureUV(x)
+								float4 Packed1 : TEXCOORD2;
 								// xyz: WorldPos
-								// w: SpecularColor(x)
+								// w: TextureUV(y)
 								float4 Packed2 : TEXCOORD3;
-								// xy: TextureUV
-								// zw: SpecularColor(yz)
-								float4 Packed3 : TEXCOORD4;
+								// x: BiasParam
+								// y: Smoothness
+								half2 Packed3 : TEXCOORD4;
+								fixed3 SpecularColor : TEXCOORD5;
 							#endif
 						#else
-							float2 TextureUV : TEXCOORD2;
+							// xyz: RootPos
+							// w: ScaleParam
+							float4 Packed0 : TEXCOORD1;
+							// xy: TextureUV
+							// z: BiasParam
+							float3 Packed1 : TEXCOORD2;
 						#endif
 					#else
 						#if defined(NOVA_LIT)

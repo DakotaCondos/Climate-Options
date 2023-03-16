@@ -1,13 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
+#if UNITY_EDITOR
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 using Nova;
-using System.IO;
-using UnityEngine.WSA;
-using static UnityEditor.UIElements.ToolbarMenu;
-using Unity.VisualScripting;
 
 public class GetDatabase : MonoBehaviour
 {
@@ -69,3 +63,5 @@ public class GetDatabase : MonoBehaviour
         HVACCons.text = unit.cons;
     }
 }
+// current file contents
+#endif

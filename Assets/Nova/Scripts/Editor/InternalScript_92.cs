@@ -10,6 +10,26 @@ namespace Nova.InternalNamespace_17.InternalNamespace_22
         [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
         public static readonly float InternalField_3298 = EditorGUIUtility.singleLineHeight + InternalType_573.InternalField_2557;
 
+        public static Rect InternalMethod_3441(this ref Rect InternalParameter_3222, float InternalParameter_3223)
+        {
+            return new Rect(InternalParameter_3222.x + (InternalParameter_3222.width - InternalParameter_3223) * 0.5f, InternalParameter_3222.y, InternalParameter_3223, InternalParameter_3222.height);
+        }
+
+        public static Rect InternalMethod_3677(this ref Rect InternalParameter_3469, Vector2 InternalParameter_3470)
+        {
+            return new Rect(InternalParameter_3469.x + (InternalParameter_3469.width - InternalParameter_3470.x) * 0.5f, InternalParameter_3469.y + (InternalParameter_3469.height - InternalParameter_3470.y) * 0.5f, InternalParameter_3470.x, InternalParameter_3470.y);
+        }
+
+        public static Rect InternalMethod_3442(this ref Rect InternalParameter_3224, float InternalParameter_3225, float InternalParameter_3226)
+        {
+            return new Rect(InternalParameter_3224.xMax - InternalParameter_3225, InternalParameter_3224.y, InternalParameter_3225, InternalParameter_3226);
+        }
+
+        public static Rect InternalMethod_3443(this ref Rect InternalParameter_3227, float InternalParameter_3228, float InternalParameter_3229)
+        {
+            return new Rect(InternalParameter_3227.xMax - InternalParameter_3228, InternalParameter_3227.yMax - InternalParameter_3229, InternalParameter_3228, InternalParameter_3229);
+        }
+
         public static void InternalMethod_3247(this ref Rect InternalParameter_2992, out Rect InternalParameter_2993, out Rect InternalParameter_2994)
         {
             float InternalVar_1 = (InternalParameter_2992.width - InternalType_573.InternalField_2557) * .5f;
@@ -35,8 +55,12 @@ namespace Nova.InternalNamespace_17.InternalNamespace_22
 
         public static void InternalMethod_3251(this ref Rect InternalParameter_3007)
         {
-            float InternalVar_1 = InternalField_3298;
-            InternalParameter_3007 = new Rect(InternalParameter_3007.x, InternalParameter_3007.y + InternalVar_1, InternalParameter_3007.width, InternalParameter_3007.height);
+            InternalParameter_3007.InternalMethod_3444(InternalField_3298);
+        }
+
+        public static void InternalMethod_3444(this ref Rect InternalParameter_3230, float InternalParameter_3231)
+        {
+            InternalParameter_3230 = new Rect(InternalParameter_3230.x, InternalParameter_3230.y + InternalParameter_3231, InternalParameter_3230.width, InternalParameter_3230.height);
         }
 
         public static void InternalMethod_3252(this ref Rect InternalParameter_3008, float InternalParameter_3009)

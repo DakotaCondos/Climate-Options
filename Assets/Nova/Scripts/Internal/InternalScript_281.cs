@@ -1,4 +1,3 @@
-using Nova.InternalNamespace_0.InternalNamespace_9;
 using Nova.InternalNamespace_0.InternalNamespace_12;
 using UnityEngine;
 
@@ -6,12 +5,9 @@ namespace Nova.InternalNamespace_0.InternalNamespace_5.InternalNamespace_6
 {
     internal static class InternalType_210
     {
-        
-        public static InternalType_5 InternalMethod_1034(this UIBlock InternalParameter_1043) => InternalType_253.InternalProperty_190.InternalMethod_1158(InternalParameter_1043.InternalProperty_29) as InternalType_5;
-
         public static Matrix4x4 InternalMethod_1035(this UIBlock InternalParameter_1044)
         {
-            InternalType_5 InternalVar_1 = InternalParameter_1044.InternalMethod_1034();
+            InternalType_5 InternalVar_1 = InternalParameter_1044.InternalMethod_3592();
 
             if (InternalVar_1 != null)
             {

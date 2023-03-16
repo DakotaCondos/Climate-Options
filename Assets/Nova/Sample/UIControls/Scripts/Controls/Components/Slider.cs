@@ -19,6 +19,11 @@ namespace NovaSamples.UIControls
         [Tooltip("The numeric value associated with the slider.")]
         private float value;
 
+        [SerializeField]
+        [Range(0, 1)]
+        [Tooltip("The percent of the Min/Max range to adjust the slider value by when using the Navigation API.")]
+        private float DPadPercentAdjustment = 0.1f;
+
         /// <summary>
         /// The numeric value associated with the slider.
         /// </summary>
@@ -60,13 +65,20 @@ namespace NovaSamples.UIControls
 
         private void OnEnable()
         {
+            if (View.TryGetVisuals(out SliderVisuals visuals))
+            {
+                // Set default state
+                visuals.UpdateVisualState(VisualState.Default);
+            }
+
             // Subscribe to desired events
-            View.UIBlock.AddGestureHandler<Gesture.OnHover, SliderVisuals>(SliderVisuals.HandleSliderHovered);
-            View.UIBlock.AddGestureHandler<Gesture.OnUnhover, SliderVisuals>(SliderVisuals.HandleSliderUnhovered);
+            View.UIBlock.AddGestureHandler<Gesture.OnHover, SliderVisuals>(SliderVisuals.HandleHovered);
+            View.UIBlock.AddGestureHandler<Gesture.OnUnhover, SliderVisuals>(SliderVisuals.HandleUnhovered);
             View.UIBlock.AddGestureHandler<Gesture.OnPress, SliderVisuals>(HandleSliderPressed);
-            View.UIBlock.AddGestureHandler<Gesture.OnRelease, SliderVisuals>(SliderVisuals.HandleSliderReleased);
+            View.UIBlock.AddGestureHandler<Gesture.OnRelease, SliderVisuals>(SliderVisuals.HandleReleased);
             View.UIBlock.AddGestureHandler<Gesture.OnDrag, SliderVisuals>(HandleSliderDragged);
-            View.UIBlock.AddGestureHandler<Gesture.OnCancel, SliderVisuals>(SliderVisuals.HandleSliderPressCanceled);
+            View.UIBlock.AddGestureHandler<Gesture.OnCancel, SliderVisuals>(SliderVisuals.HandlePressCanceled);
+            View.UIBlock.AddGestureHandler<Navigate.OnDirection, SliderVisuals>(HandleSliderAdjusted);
 
             UpdateFillBar();
         }
@@ -74,12 +86,13 @@ namespace NovaSamples.UIControls
         private void OnDisable()
         {
             // Unsubscribe from events
-            View.UIBlock.RemoveGestureHandler<Gesture.OnHover, SliderVisuals>(SliderVisuals.HandleSliderHovered);
-            View.UIBlock.RemoveGestureHandler<Gesture.OnUnhover, SliderVisuals>(SliderVisuals.HandleSliderUnhovered);
+            View.UIBlock.RemoveGestureHandler<Gesture.OnHover, SliderVisuals>(SliderVisuals.HandleHovered);
+            View.UIBlock.RemoveGestureHandler<Gesture.OnUnhover, SliderVisuals>(SliderVisuals.HandleUnhovered);
             View.UIBlock.RemoveGestureHandler<Gesture.OnPress, SliderVisuals>(HandleSliderPressed);
-            View.UIBlock.RemoveGestureHandler<Gesture.OnRelease, SliderVisuals>(SliderVisuals.HandleSliderReleased);
+            View.UIBlock.RemoveGestureHandler<Gesture.OnRelease, SliderVisuals>(SliderVisuals.HandleReleased);
             View.UIBlock.RemoveGestureHandler<Gesture.OnDrag, SliderVisuals>(HandleSliderDragged);
-            View.UIBlock.RemoveGestureHandler<Gesture.OnCancel, SliderVisuals>(SliderVisuals.HandleSliderPressCanceled);
+            View.UIBlock.RemoveGestureHandler<Gesture.OnCancel, SliderVisuals>(SliderVisuals.HandlePressCanceled);
+            View.UIBlock.RemoveGestureHandler<Navigate.OnDirection, SliderVisuals>(HandleSliderAdjusted);
         }
 
         /// <summary>
@@ -114,6 +127,36 @@ namespace NovaSamples.UIControls
         }
 
         /// <summary>
+        /// Update the slider based on DPad (Navigation) input.
+        /// </summary>
+        /// <param name="evt">The direction event data.</param>
+        /// <param name="sliderVisuals">The visuals associated with the direction event.</param>
+        private void HandleSliderAdjusted(Navigate.OnDirection evt, SliderVisuals sliderVisuals)
+        {
+            if (evt.Direction.x == 0)
+            {
+                // Direct not along draggable axis
+                return;
+            }
+
+            Transform sliderTransform = sliderVisuals.DraggableRange.transform;
+
+            // Convert the current knob position into a local position of the slider
+            Vector3 previousLocalPosition = sliderTransform.InverseTransformPoint(sliderVisuals.Knob.transform.position);
+
+            // Use the padded width because the visuals will be updated relative to the padded parent width
+            float draggableWidth = sliderVisuals.DraggableRange.PaddedSize.x;
+
+            // Shift position accordingly
+            Vector3 currentLocalPosition = previousLocalPosition + new Vector3(evt.Direction.x * draggableWidth * DPadPercentAdjustment, 0, 0);
+
+            // Convert the adjusted position into world space
+            Vector3 currentWorldPosition = sliderTransform.TransformPoint(currentLocalPosition);
+
+            UpdateSliderPosition(sliderVisuals, currentWorldPosition);
+        }
+
+        /// <summary>
         /// Update the <see cref="Value"/> and visuals according to the slider position.
         /// </summary>
         /// <param name="sliderVisuals">The visuals to update.</param>
@@ -141,16 +184,19 @@ namespace NovaSamples.UIControls
         /// </summary>
         private void UpdateFillBar()
         {
-            SliderVisuals sliderControl = View.Visuals as SliderVisuals;
+            SliderVisuals sliderVisuals = View.Visuals as SliderVisuals;
+
+            // Calculate the new percentage
+            float percentFilled = Mathf.Clamp01((this.value - Min) / (Max - Min));
 
             // Update the control's fillbar to reflect its new slider value
-            sliderControl.FillBar.Size.X.Percent = Mathf.Clamp01((this.value - Min) / (Max - Min));
+            sliderVisuals.FillBar.Size.X.Percent = Mathf.Clamp01(percentFilled * (1 - sliderVisuals.FillBar.CalculatedMargin.X.Sum().Percent));
 
-            if (sliderControl.Units != null)
+            if (sliderVisuals.Units != null)
             {
                 // Update the control's unit text to display the numeric
                 // value associated with the slider control
-                sliderControl.Units.Text = string.Format(unitsFormat, Value);
+                sliderVisuals.Units.Text = string.Format(unitsFormat, Value);
             }
         }
     }

@@ -1,5 +1,5 @@
+#if UNITY_EDITOR
 using Nova;
-using NUnit.Framework;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -258,3 +258,5 @@ public class ConfigurationDetailsDisplay : MonoBehaviour
         imageBlock.SetImage(textureToSet);
     }
 }
+// current file contents
+#endif

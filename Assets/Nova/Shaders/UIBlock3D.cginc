@@ -21,8 +21,7 @@ v2f NovaVert(UIBlock3DVert v, uint instanceID : SV_InstanceID)
     o.pos = UnityWorldToClipPos(worldPos);
 
     #if defined(NOVA_CLIPPING)
-        float2 nClipRectPos = NClipRectPosFromWorld(worldPos);
-        SetNClipRectPos(o, nClipRectPos);
+        SetRootPos(o, rootSpace);
     #endif
 
     NovaColorToV2F(Color, o, shaderData.Color);
@@ -52,18 +51,15 @@ fixed4 NovaFrag(v2f i) : SV_Target
     fixed4 color = GetColor(i);
 
     #if defined(NOVA_CLIPPING)
-        half distanceOutsideBounds = DistanceOutsideCircleEdge(GetNClipRectPos(i), ClipRectNCornerOrigin, ClipRectNRadius);
-        half softenInverse = GetSoftenWidthInverse(GetNClipRectPos(i));
-        half weight = GetClipWeight10(distanceOutsideBounds, softenInverse);
-
+        half clipWeight = GetTotalVisualModifierClipping(GetRootPos(i));
         // NOTE: We don't soften here, just clip
-        clip(weight - 1.0);
+        clip(clipWeight - 1.0);
     #endif
     
-    #if defined(NOVA_CLIPPING)
-        color = ApplyClipColorModification(color, GetNClipRectPos(i));
-    #elif defined(NOVA_COLOR_MODIFIER)
-        color = ApplyClipColorModification(color);
+    #if defined(NOVA_CLIP_RECT)
+        color = ApplyGlobalColorModification(color);
+    #elif defined(NOVA_CLIP_MASK)
+        color = ApplyClipMaskAndColorModifiers(color, GetRootPos(i));
     #endif
 
     #if defined(NOVA_LIT)

@@ -1,10 +1,7 @@
 using Nova.Compat;
 using Nova.InternalNamespace_16;
-using Nova.InternalNamespace_0;
-using Nova.InternalNamespace_0.InternalNamespace_7;
 using System;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Nova
 {
@@ -99,7 +96,6 @@ namespace Nova
         #endregion
 
         #region Internal
-        [InternalType_215]
         [SerializeReference, SerializeField]
         [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
         private ItemVisuals visuals = default;

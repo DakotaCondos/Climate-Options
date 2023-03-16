@@ -1,4 +1,5 @@
 using Nova.InternalNamespace_0;
+using Nova.InternalNamespace_0.InternalNamespace_12;
 using Nova.InternalNamespace_0.InternalNamespace_5;
 using Unity.Mathematics;
 using UnityEngine;
@@ -112,24 +113,28 @@ namespace Nova
             InternalVar_19.Percent = math.clamp(InternalVar_21, 0, 1 - math.max(InternalField_3031.CalculatedMargin[InternalVar_2].Sum().Percent, 0));
             InternalField_3031.Size[InternalVar_2] = InternalVar_19;
 
-            if (InternalVar_19.Percent != InternalField_3031.CalculatedSize[InternalVar_2].Percent)
+            UIBlock InternalVar_22 = InternalField_3031.Parent;
+            float InternalVar_23 = InternalVar_22 == null ? InternalVar_5 : InternalVar_22.PaddedSize[InternalVar_2];
+            InternalVar_21 = InternalField_3031.SizeMinMax[InternalVar_2].Clamp(InternalVar_19.Percent * InternalVar_23) / InternalVar_23;
+
+            if (!InternalType_457.InternalProperty_190.InternalMethod_1852(InternalField_3031))
             {
                 InternalField_3031.CalculateLayout();
             }
 
-            float InternalVar_22 = InternalField_3031.CalculatedSize[InternalVar_2].Percent + math.min(InternalField_3031.CalculatedMargin[InternalVar_2].Sum().Percent, 0);
+            float InternalVar_24 = InternalVar_21 + math.min(InternalField_3031.CalculatedMargin[InternalVar_2].Sum().Percent, 0);
 
-            Length InternalVar_23 = InternalField_3031.Position[InternalVar_2];
+            Length InternalVar_25 = InternalField_3031.Position[InternalVar_2];
 
-            float InternalVar_24 = 1 - InternalVar_22;
-            float InternalVar_25 = 0.5f * InternalVar_24;
+            float InternalVar_26 = 1 - InternalVar_24;
+            float InternalVar_27 = 0.5f * InternalVar_26;
 
-            float InternalVar_26 = InternalVar_7 >= InternalVar_5 ? InternalVar_24 * InternalVar_9 / (InternalVar_7 - InternalVar_5) : InternalVar_14 / InternalVar_5;
-            float InternalVar_27 = math.clamp(InternalVar_26, -InternalVar_25, InternalVar_25);
+            float InternalVar_28 = InternalVar_7 >= InternalVar_5 ? InternalVar_26 * InternalVar_9 / (InternalVar_7 - InternalVar_5) : InternalVar_14 / InternalVar_5;
+            float InternalVar_29 = math.clamp(InternalVar_28, -InternalVar_27, InternalVar_27);
 
-            InternalVar_23.Percent = InternalType_182.InternalMethod_858(InternalVar_27, InternalVar_22, 1, 0, InternalField_3031.Alignment[InternalVar_2]);
+            InternalVar_25.Percent = InternalType_182.InternalMethod_858(InternalVar_29, InternalVar_24, 1, 0, InternalField_3031.Alignment[InternalVar_2]);
 
-            InternalField_3031.Position[InternalVar_2] = InternalVar_23;
+            InternalField_3031.Position[InternalVar_2] = InternalVar_25;
 
             InternalField_2996 = InternalVar_1;
             InternalField_2803 = InternalVar_5;
@@ -137,7 +142,7 @@ namespace Nova
             InternalField_2989 = InternalVar_7;
             InternalField_2986 = InternalVar_8;
             InternalField_3030 = InternalVar_9;
-            InternalField_2981 = InternalVar_23.Percent;
+            InternalField_2981 = InternalVar_25.Percent;
             InternalField_2980 = InternalVar_11;
         }
 

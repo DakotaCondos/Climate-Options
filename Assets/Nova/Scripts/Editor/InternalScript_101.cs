@@ -84,7 +84,14 @@ namespace Nova.InternalNamespace_17.InternalNamespace_21
             bool InternalVar_4 = false;
             for (int InternalVar_5 = 0; InternalVar_5 < InternalVar_2.Length; ++InternalVar_5)
             {
-                if (typeof(UIBlock).IsAssignableFrom(InternalVar_2[InternalVar_5].target.GetType()))
+                UnityEditor.Editor InternalVar_6 = InternalVar_2[InternalVar_5];
+
+                if (InternalVar_6 == null || InternalVar_6.target == null)
+                {
+                    continue;
+                }
+
+                if (typeof(UIBlock).IsAssignableFrom(InternalVar_6.target.GetType()))
                 {
                     InternalVar_4 = true;
                     InternalVar_3 = InternalVar_2[InternalVar_5].target.GetType();
@@ -425,7 +432,7 @@ namespace Nova.InternalNamespace_17.InternalNamespace_21
             InternalProperty_993 = Matrix4x4.identity;
             InternalProperty_998 = false;
 
-            UIBlock[] InternalVar_1 = Selection.GetFiltered<UIBlock>(SelectionMode.Editable);
+            UIBlock[] InternalVar_1 = Selection.GetFiltered<UIBlock>(UnityEditor.SelectionMode.Editable);
 
             if (InternalVar_1 == null || InternalVar_1.Length == 0)
             {
@@ -456,7 +463,7 @@ namespace Nova.InternalNamespace_17.InternalNamespace_21
 
             InternalProperty_982 = InternalField_3223.Cast<Object>().ToArray();
 
-            InternalField_3221 = Selection.GetFiltered<UIBlock>(SelectionMode.TopLevel | SelectionMode.Editable);
+            InternalField_3221 = Selection.GetFiltered<UIBlock>(UnityEditor.SelectionMode.TopLevel | UnityEditor.SelectionMode.Editable);
             InternalField_3222.Clear();
 
             for (int InternalVar_10 = 0; InternalVar_10 < InternalField_3221.Length; ++InternalVar_10)
@@ -553,8 +560,8 @@ namespace Nova.InternalNamespace_17.InternalNamespace_21
                 InternalParameter_2822 = Matrix4x4.identity;
             }
 
-            InternalVar_1.center = InternalType_187.InternalMethod_881(InternalVar_1.center);
-            InternalVar_1.size = InternalType_187.InternalMethod_881(InternalVar_1.size);
+            InternalVar_1.center = InternalType_187.InternalMethod_3642(InternalVar_1.center);
+            InternalVar_1.size = InternalType_187.InternalMethod_3642(InternalVar_1.size);
 
             return InternalVar_1;
         }

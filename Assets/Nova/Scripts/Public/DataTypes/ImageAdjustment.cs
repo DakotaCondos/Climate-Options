@@ -25,7 +25,19 @@ namespace Nova
         /// As the parent's size changes, the image scale will adjust automatically to ensure the image
         /// maximally fills its parent container. Preserves the image's native aspect ratio (unstretched).
         /// </summary>
-        Envelope = InternalNamespace_0.InternalType_112.InternalField_364
+        Envelope = InternalNamespace_0.InternalType_112.InternalField_364,
+        /// <summary>
+        /// The image will be displayed as a 9-sliced sprite.<br/> NOTE: the <see cref="ImageAdjustment.PixelsPerUnitMultiplier"/>
+        /// value determines the width of the borders.
+        /// </summary>
+        /// <seealso cref="ImageScaleMode.Tiled"/>
+        Sliced = InternalNamespace_0.InternalType_112.InternalField_3426,
+        /// <summary>
+        /// The image will be displayed as a 9-sliced sprite with the sections being tiled instead of stretched.<br/> 
+        /// NOTE: the <see cref="ImageAdjustment.PixelsPerUnitMultiplier"/>
+        /// value determines the width of the borders and the size of the tiles.
+        /// </summary>
+        Tiled = InternalNamespace_0.InternalType_112.InternalField_3427,
     }
 
     /// <summary>
@@ -52,6 +64,13 @@ namespace Nova
         /// </remarks>
         [SerializeField]
         public Vector2 UVScale;
+        /// <summary>
+        /// A multiplier that scales how <see cref="ImageScaleMode.Sliced"/> and <see cref="ImageScaleMode.Tiled"/> images are rendered.
+        /// Specifically, <see cref="PixelsPerUnitMultiplier">PixelsPerUnitMultiplier</see> determines how many pixels from the target image
+        /// fit into a 1x1 square in the target <see cref="UIBlock2D"/>'s local space.
+        /// </summary>
+        [SerializeField]
+        public float PixelsPerUnitMultiplier;
         [SerializeField]
         [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
         private ImageScaleMode scaleMode;
@@ -72,6 +91,7 @@ namespace Nova
                 {
                     return;
                 }
+
                 scaleMode = value;
                 CenterUV = Vector2.zero;
                 UVScale = Vector2.one;
@@ -88,6 +108,7 @@ namespace Nova
             CenterUV = centerUV;
             UVScale = uvScale;
             scaleMode = ImageScaleMode.Manual;
+            PixelsPerUnitMultiplier = 1f;
         }
 
         public static bool operator ==(ImageAdjustment lhs, ImageAdjustment rhs)
@@ -95,7 +116,8 @@ namespace Nova
             return
                 lhs.CenterUV.Equals(rhs.CenterUV) &&
                 lhs.UVScale.Equals(rhs.UVScale) &&
-                lhs.scaleMode == rhs.ScaleMode;
+                lhs.scaleMode == rhs.ScaleMode &&
+                lhs.PixelsPerUnitMultiplier.Equals(rhs.PixelsPerUnitMultiplier);
         }
         public static bool operator !=(ImageAdjustment lhs, ImageAdjustment rhs) => !(rhs == lhs);
 
@@ -105,6 +127,7 @@ namespace Nova
             InternalVar_1 = (InternalVar_1 * 7) + CenterUV.GetHashCode();
             InternalVar_1 = (InternalVar_1 * 7) + UVScale.GetHashCode();
             InternalVar_1 = (InternalVar_1 * 7) + scaleMode.GetHashCode();
+            InternalVar_1 = (InternalVar_1 * 7) + PixelsPerUnitMultiplier.GetHashCode();
             return InternalVar_1;
         }
 
@@ -132,6 +155,7 @@ namespace Nova
             UVScale = Vector2.one,
             CenterUV = Vector2.zero,
             scaleMode = ImageScaleMode.Fit,
+            PixelsPerUnitMultiplier = 1f,
         };
     }
 }

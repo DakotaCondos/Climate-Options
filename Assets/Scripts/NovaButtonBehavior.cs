@@ -1,6 +1,6 @@
+#if UNITY_EDITOR
+
 using Nova;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class NovaButtonBehavior : MonoBehaviour
@@ -17,3 +17,6 @@ public class NovaButtonBehavior : MonoBehaviour
         self.Border.Enabled = value;
     }
 }
+
+// current file contents
+#endif

@@ -16,12 +16,15 @@ namespace NovaSamples.UIControls
         private bool fireSubmitEvents = false;
 
         private Coroutine inputRoutine = null;
+        private bool requestedIme = false;
 
         /// <summary>
         /// Starts the input loop when the text field gains focus.
         /// </summary>
         protected override void HandleFocused()
         {
+            EnableIme();
+            requestedIme = true;
             inputRoutine = StartCoroutine(InputLoop());
         }
 
@@ -30,10 +33,27 @@ namespace NovaSamples.UIControls
         /// </summary>
         protected override void HandleFocusLost()
         {
+            if (requestedIme)
+            {
+                DisableIme();
+                requestedIme = false;
+            }
+
             if (inputRoutine != null)
             {
                 StopCoroutine(inputRoutine);
                 inputRoutine = null;
+            }
+        }
+
+        protected override void OnDisable()
+        {
+            base.OnDisable();
+
+            if (requestedIme)
+            {
+                DisableIme();
+                requestedIme = false;
             }
         }
 
@@ -209,5 +229,33 @@ namespace NovaSamples.UIControls
             inputField.Insert(c);
             return true;
         }
+
+        #region IME Support
+        private static int imeEnableRequests = 0;
+
+        /// <summary>
+        /// Ensures IME input events are enabled
+        /// </summary>
+        private static void EnableIme()
+        {
+            imeEnableRequests += 1;
+
+            if (imeEnableRequests == 1)
+            {
+                // Only need to do this if this is the first request
+                Input.imeCompositionMode = IMECompositionMode.On;
+            }
+        }
+
+        private static void DisableIme()
+        {
+            imeEnableRequests -= 1;
+
+            if (imeEnableRequests == 0)
+            {
+                Input.imeCompositionMode = IMECompositionMode.Auto;
+            }
+        }
+        #endregion
     }
 }

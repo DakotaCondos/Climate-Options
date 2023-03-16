@@ -1,6 +1,5 @@
+#if UNITY_EDITOR
 using Nova;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ComponentButton : MonoBehaviour
@@ -31,3 +30,5 @@ public class ComponentButton : MonoBehaviour
 
 
 }
+// current file contents
+#endif

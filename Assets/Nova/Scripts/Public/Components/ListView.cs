@@ -215,7 +215,7 @@ namespace Nova
                 return;
             }
 
-            float InternalVar_3 = InternalProperty_56.InternalProperty_548[InternalVar_2];
+            float InternalVar_3 = InternalProperty_56.InternalProperty_548[InternalVar_2] * 2;
 
             if (Mathf.Abs(delta) >= InternalVar_3)
             {
@@ -238,7 +238,7 @@ namespace Nova
         /// <exception cref="IndexOutOfRangeException">if <c><paramref name="index"/> &lt; 0 || <paramref name="index"/> &gt;= <see cref="DataSourceItemCount"/></c></exception>
         /// <exception cref="InvalidOperationException">if <c><see cref="UIBlock">UIBlock</see>.<see cref="UIBlock.AutoLayout">AutoLayout</see>.<see cref="AutoLayout.Axis">Axis</see> == <see cref="Axis"/>.<see cref="Axis.None">None</see></c></exception>
         /// <seealso cref="JumpToIndexPage(int)"/>
-        /// <seealso cref="Scroller.ScrollToIndex(int)"/>
+        /// <seealso cref="Scroller.ScrollToIndex(int, bool)"/>
         public void JumpToIndex(int index) => Scroll(JumpToIndexPage(index));
 
         /// <summary>
@@ -267,7 +267,7 @@ namespace Nova
         /// <exception cref="IndexOutOfRangeException">if <c><paramref name="index"/> &lt; 0 || <paramref name="index"/> &gt;= <see cref="DataSourceItemCount"/></c></exception>
         /// <exception cref="InvalidOperationException">if <c><see cref="UIBlock">UIBlock</see>.<see cref="UIBlock.AutoLayout">AutoLayout</see>.<see cref="AutoLayout.Axis">Axis</see> == <see cref="Axis"/>.<see cref="Axis.None">None</see></c></exception>
         /// <seealso cref="JumpToIndex(int)"/>
-        /// <seealso cref="Scroller.ScrollToIndex(int)"/>
+        /// <seealso cref="Scroller.ScrollToIndex(int, bool)"/>
         public float JumpToIndexPage(int index) => InternalMethod_2686(index, InternalParameter_2246: true);
 
         /// <summary>
@@ -706,6 +706,8 @@ namespace Nova
 
         [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
         private protected virtual int InternalProperty_52 => 1;
+        [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+        int InternalType_1.InternalProperty_1081 => InternalProperty_52;
 
         [NonSerialized, HideInInspector]
         [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
@@ -1031,7 +1033,7 @@ namespace Nova
 
             float InternalVar_6 = 0;
 
-            if (InternalMethod_225(InternalParameter_2247, out InternalType_66 InternalVar_7))
+            if (InternalMethod_919(InternalParameter_2247, out InternalType_5 InternalVar_7))
             {
                 float InternalVar_8 = InternalVar_7.InternalProperty_144[InternalVar_2].InternalField_153;
 
@@ -1049,7 +1051,7 @@ namespace Nova
                 InternalProperty_56.InternalMethod_42();
                 UIBlock.CalculateLayout();
 
-                InternalVar_6 = InternalType_182.InternalMethod_2027(InternalVar_7, InternalVar_2, InternalVar_1.Alignment);
+                InternalVar_6 = InternalType_182.InternalMethod_3654(InternalVar_7, InternalVar_2, InternalVar_1.Alignment);                
             }
 
             if (InternalParameter_2246)
@@ -1173,6 +1175,30 @@ namespace Nova
             return true;
         }
 
+        bool InternalType_1.InternalMethod_867(int sourceIndex, out InternalType_5 InternalParameter_170)
+        {
+            InternalParameter_170 = null;
+
+            if (InternalMethod_2061(sourceIndex, out _, out ItemView InternalVar_1))
+            {
+                InternalParameter_170 = InternalVar_1.UIBlock;
+                return true;
+            }
+
+            return false;
+        }
+
+        bool InternalType_1.InternalMethod_868(InternalType_5 listItem, out int sourceIndex)
+        {
+            if (listItem == null)
+            {
+                sourceIndex = -1;
+                return false;
+            }
+
+            return InternalField_102.InternalMethod_2020(listItem.InternalProperty_195, out sourceIndex);
+        }
+
         InternalType_66 InternalType_1.InternalMethod_43(bool InternalParameter_36, float InternalParameter_37)
         {
             if (InternalProperty_55 == null)
@@ -1230,15 +1256,18 @@ namespace Nova
             return InternalVar_3;
         }
 
-        private protected virtual bool InternalMethod_225(int InternalParameter_170, out InternalType_66 InternalParameter_171)
+        bool InternalType_1.InternalMethod_881(int InternalParameter_752, out InternalType_5 InternalParameter_767) => InternalMethod_919(InternalParameter_752, out InternalParameter_767);
+
+
+        private protected virtual bool InternalMethod_919(int InternalParameter_855, out InternalType_5 InternalParameter_2352)
         {
-            InternalParameter_171 = null;
-            if (!TryGetItemView(InternalParameter_170, out ItemView InternalVar_1))
+            InternalParameter_2352 = null;
+            if (!TryGetItemView(InternalParameter_855, out ItemView InternalVar_1))
             {
                 return false;
             }
 
-            InternalParameter_171 = InternalVar_1.UIBlock;
+            InternalParameter_2352 = InternalVar_1.UIBlock;
 
             return true;
         }

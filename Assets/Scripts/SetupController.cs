@@ -1,8 +1,7 @@
-using Nova;
+#if UNITY_EDITOR
 using NovaSamples.UIControls;
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using TMPro;
 using UnityEngine;
@@ -223,3 +222,5 @@ public class SetupController : MonoBehaviour
         return true;
     }
 }
+// current file contents
+#endif

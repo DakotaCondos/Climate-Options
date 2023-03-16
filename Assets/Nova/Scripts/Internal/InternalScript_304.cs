@@ -1,3 +1,4 @@
+using Nova.InternalNamespace_0;
 using Nova.InternalNamespace_0.InternalNamespace_5;
 using Nova.InternalNamespace_0.InternalNamespace_5.InternalNamespace_6;
 using UnityEngine;
@@ -8,7 +9,7 @@ namespace Nova
     {
         public static void InternalMethod_2736(UIBlock InternalParameter_2113, Vector3 InternalParameter_2032)
         {
-            InternalType_5 InternalVar_1 = InternalParameter_2113.InternalMethod_1034();
+            InternalType_5 InternalVar_1 = InternalParameter_2113.InternalMethod_3592();
             bool InternalVar_2 = InternalVar_1 != null;
 
             Vector3 InternalVar_3 = InternalVar_2 ? InternalVar_1.InternalProperty_148 : Vector3.zero;
