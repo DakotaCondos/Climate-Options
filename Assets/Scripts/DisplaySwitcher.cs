@@ -1,4 +1,4 @@
-#if UNITY_EDITOR
+//#if UNITY_EDITOR
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -34,4 +34,4 @@ public class DisplaySwitcher : MonoBehaviour
     }
 }
 // current file contents
-#endif
+//#endif

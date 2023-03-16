@@ -1,3 +1,4 @@
+using Nova.Compat;
 using Nova.InternalNamespace_16;
 using Nova.InternalNamespace_0;
 using Nova.InternalNamespace_0.InternalNamespace_2;
@@ -11,7 +12,7 @@ using System.Runtime.CompilerServices;
 using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 
-using InputModule = Nova.InternalNamespace_0.InternalType_759<Nova.UIBlock>;
+using InputModule = Nova.InternalNamespace_0.InternalType_759<Nova.UIBlock>; 
 
 namespace Nova
 {

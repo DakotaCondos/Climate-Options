@@ -1,4 +1,4 @@
-﻿#if UNITY_EDITOR
+﻿//#if UNITY_EDITOR
 using Newtonsoft.Json.Linq;
 using System.Collections;
 using System.Linq;
@@ -58,4 +58,4 @@ public class OpenWeatherMapAPIHelper : MonoBehaviour
     }
 }
 // current file contents
-#endif
+//#endif

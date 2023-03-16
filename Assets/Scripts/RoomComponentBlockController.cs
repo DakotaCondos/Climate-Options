@@ -1,4 +1,4 @@
-#if UNITY_EDITOR
+//#if UNITY_EDITOR
 using Nova;
 using System.Collections.Generic;
 using UnityEngine;
@@ -43,4 +43,4 @@ public class RoomComponentBlockController : MonoBehaviour
     }
 }
 // current file contents
-#endif
+//#endif

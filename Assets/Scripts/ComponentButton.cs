@@ -1,4 +1,4 @@
-#if UNITY_EDITOR
+//#if UNITY_EDITOR
 using Nova;
 using UnityEngine;
 
@@ -31,4 +31,4 @@ public class ComponentButton : MonoBehaviour
 
 }
 // current file contents
-#endif
+//#endif

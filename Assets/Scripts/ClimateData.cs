@@ -1,4 +1,4 @@
-#if UNITY_EDITOR
+//#if UNITY_EDITOR
 using Newtonsoft.Json.Linq;
 using System.Collections;
 using System.Linq;
@@ -97,4 +97,4 @@ public class ClimateData : MonoBehaviour
     }
 }
 // current file contents
-#endif
+//#endif

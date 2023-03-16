@@ -1,4 +1,4 @@
-#if UNITY_EDITOR
+//#if UNITY_EDITOR
 using System.Collections;
 using UnityEngine;
 
@@ -23,4 +23,4 @@ public class LoginUIController : MonoBehaviour
     }
 }
 // current file contents
-#endif
+//#endif

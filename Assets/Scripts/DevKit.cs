@@ -1,4 +1,4 @@
-#if UNITY_EDITOR
+//#if UNITY_EDITOR
 using UnityEngine;
 
 public class DevKit : MonoBehaviour
@@ -66,4 +66,4 @@ public class DevKit : MonoBehaviour
 
 }
 // current file contents
-#endif
+//#endif

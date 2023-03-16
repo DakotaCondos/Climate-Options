@@ -1,4 +1,4 @@
-#if UNITY_EDITOR
+//#if UNITY_EDITOR
 using Nova;
 using System.Linq;
 using UnityEngine;
@@ -57,4 +57,4 @@ public class NovaExpandableContainer : MonoBehaviour
     }
 }
 // current file contents
-#endif
+//#endif

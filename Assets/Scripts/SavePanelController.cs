@@ -1,4 +1,4 @@
-#if UNITY_EDITOR
+//#if UNITY_EDITOR
 using Nova;
 using System.Collections;
 using System.Text.RegularExpressions;
@@ -71,4 +71,4 @@ public class SavePanelController : MonoBehaviour
     }
 }
 // current file contents
-#endif
+//#endif

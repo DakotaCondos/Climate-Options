@@ -1,3 +1,7 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
 namespace Nova.InternalNamespace_25
 {
     internal static partial class InternalType_728

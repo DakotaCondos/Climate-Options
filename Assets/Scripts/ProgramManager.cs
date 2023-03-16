@@ -1,4 +1,3 @@
-#if UNITY_EDITOR
 using Nova;
 using System.Collections;
 using System.Collections.Generic;
@@ -101,5 +100,3 @@ public class ProgramManager : MonoBehaviour
 
 
 }
-// current file contents
-#endif

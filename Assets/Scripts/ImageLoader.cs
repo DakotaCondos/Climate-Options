@@ -1,4 +1,4 @@
-#if UNITY_EDITOR
+//#if UNITY_EDITOR
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -180,4 +180,4 @@ public class ImageLoader : MonoBehaviour
 
 }
 // current file contents
-#endif
+//#endif

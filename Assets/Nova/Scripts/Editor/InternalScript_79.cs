@@ -1,5 +1,8 @@
+using Nova.Compat;
 using Nova.InternalNamespace_17.InternalNamespace_18;
 using Nova.InternalNamespace_17.InternalNamespace_22;
+using Nova.InternalNamespace_0.InternalNamespace_12;
+using Nova.InternalNamespace_0.InternalNamespace_5.InternalNamespace_6;
 using UnityEditor;
 using UnityEngine;
 

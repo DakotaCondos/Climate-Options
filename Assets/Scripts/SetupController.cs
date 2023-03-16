@@ -1,4 +1,4 @@
-#if UNITY_EDITOR
+//#if UNITY_EDITOR
 using NovaSamples.UIControls;
 using System;
 using System.Collections;
@@ -223,4 +223,4 @@ public class SetupController : MonoBehaviour
     }
 }
 // current file contents
-#endif
+//#endif

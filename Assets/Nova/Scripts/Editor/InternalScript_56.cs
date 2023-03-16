@@ -1,5 +1,6 @@
 using Nova.Compat;
 using Nova.TMP;
+using System.Collections.Generic;
 using TMPro;
 using UnityEditor;
 using UnityEditorInternal;
@@ -8,7 +9,7 @@ using static Nova.InternalNamespace_17.InternalNamespace_20.InternalType_592;
 
 namespace Nova.InternalNamespace_17.InternalNamespace_18
 {
-
+    
     internal class InternalType_548
     {
         [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]

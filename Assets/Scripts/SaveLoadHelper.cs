@@ -1,4 +1,4 @@
-#if UNITY_EDITOR
+//#if UNITY_EDITOR
 using Nova;
 using UnityEngine;
 
@@ -24,4 +24,4 @@ public class SaveLoadHelper : MonoBehaviour
     }
 }
 // current file contents
-#endif
+//#endif

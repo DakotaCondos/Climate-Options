@@ -1,4 +1,4 @@
-#if UNITY_EDITOR
+//#if UNITY_EDITOR
 using System.Collections.Generic;
 using UnityEngine;
 using Nova;
@@ -212,4 +212,4 @@ public class ComponentSelectionController : MonoBehaviour
     }
 }
 // current file contents
-#endif
+//#endif

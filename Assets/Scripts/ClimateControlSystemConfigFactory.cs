@@ -1,4 +1,4 @@
-#if UNITY_EDITOR
+//#if UNITY_EDITOR
 using UnityEngine;
 
 public class ClimateControlSystemConfigFactory : MonoBehaviour
@@ -27,4 +27,4 @@ public class ClimateControlSystemConfigFactory : MonoBehaviour
     }
 }
 // current file contents
-#endif
+//#endif

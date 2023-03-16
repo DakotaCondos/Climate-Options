@@ -1,3 +1,4 @@
+using Nova.Compat;
 using Nova.InternalNamespace_17.InternalNamespace_20;
 using Nova.InternalNamespace_17.InternalNamespace_22;
 using System.Collections.Generic;

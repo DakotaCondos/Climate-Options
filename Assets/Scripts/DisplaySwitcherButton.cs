@@ -1,4 +1,4 @@
-#if UNITY_EDITOR
+//#if UNITY_EDITOR
 using UnityEngine;
 
 public class DisplaySwitcherButton : MonoBehaviour
@@ -13,4 +13,4 @@ public class DisplaySwitcherButton : MonoBehaviour
     }
 }
 // current file contents
-#endif
+//#endif

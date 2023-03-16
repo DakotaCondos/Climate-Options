@@ -485,7 +485,7 @@ MonoBehaviour:
     alignment: -1
     Offset: 0
   visibility:
-    ZIndex: 2
+    ZIndex: 0
     BlockType: 1
     Visible: 1
   surface:
@@ -1219,7 +1219,7 @@ MonoBehaviour:
     alignment: -1
     Offset: 0
   visibility:
-    ZIndex: 2
+    ZIndex: 0
     BlockType: 2
     Visible: 1
   surface:
@@ -1835,7 +1835,7 @@ MonoBehaviour:
     alignment: -1
     Offset: 0
   visibility:
-    ZIndex: 2
+    ZIndex: 0
     BlockType: 1
     Visible: 1
   surface:

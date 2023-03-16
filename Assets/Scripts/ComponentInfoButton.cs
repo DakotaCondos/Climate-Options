@@ -1,4 +1,4 @@
-#if UNITY_EDITOR
+//#if UNITY_EDITOR
 using UnityEngine;
 
 public class ComponentInfoButton : MonoBehaviour
@@ -17,4 +17,4 @@ public class ComponentInfoButton : MonoBehaviour
     }
 }
 // current file contents
-#endif
+//#endif

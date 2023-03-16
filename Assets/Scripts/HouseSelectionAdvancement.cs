@@ -1,4 +1,4 @@
-#if UNITY_EDITOR
+//#if UNITY_EDITOR
 using NovaSamples.UIControls;
 using System.Collections.Generic;
 using UnityEngine;
@@ -42,4 +42,4 @@ public class HouseSelectionAdvancement : MonoBehaviour
     }
 }
 // current file contents
-#endif
+//#endif

@@ -1,4 +1,4 @@
-#if UNITY_EDITOR
+//#if UNITY_EDITOR
 using Nova;
 using System;
 using System.Collections;
@@ -259,4 +259,4 @@ public class ConfigurationDetailsDisplay : MonoBehaviour
     }
 }
 // current file contents
-#endif
+//#endif

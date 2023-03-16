@@ -1,4 +1,4 @@
-#if UNITY_EDITOR
+//#if UNITY_EDITOR
 using Nova;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,4 +13,4 @@ public class TextRowHelper : MonoBehaviour, IVisible
     }
 }
 // current file contents
-#endif
+//#endif

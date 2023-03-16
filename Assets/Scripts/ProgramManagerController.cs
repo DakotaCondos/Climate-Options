@@ -1,4 +1,4 @@
-#if UNITY_EDITOR
+//#if UNITY_EDITOR
 using UnityEngine;
 
 public class ProgramManagerController : MonoBehaviour
@@ -28,4 +28,4 @@ public class ProgramManagerController : MonoBehaviour
     }
 }
 // current file contents
-#endif
+//#endif

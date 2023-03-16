@@ -9,6 +9,7 @@ using Unity.Mathematics;
 using UnityEngine;
 
 using InputRouter = Nova.InternalNamespace_0.InternalType_90<Nova.UIBlockHit>.InternalType_91;
+using Navigator = Nova.InternalNamespace_0.InternalType_757<Nova.UIBlock>;
 
 namespace Nova
 {

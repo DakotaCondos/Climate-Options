@@ -1,4 +1,4 @@
-#if UNITY_EDITOR
+//#if UNITY_EDITOR
 using Nova;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,4 +30,4 @@ public class BorderActiveGroup : MonoBehaviour
     }
 }
 // current file contents
-#endif
+//#endif

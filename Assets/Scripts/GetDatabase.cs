@@ -1,4 +1,4 @@
-#if UNITY_EDITOR
+//#if UNITY_EDITOR
 using UnityEngine;
 using TMPro;
 using Nova;
@@ -64,4 +64,4 @@ public class GetDatabase : MonoBehaviour
     }
 }
 // current file contents
-#endif
+//#endif

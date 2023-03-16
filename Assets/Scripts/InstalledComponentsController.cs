@@ -1,4 +1,4 @@
-#if UNITY_EDITOR
+//#if UNITY_EDITOR
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -60,4 +60,4 @@ public class InstalledComponentsController : MonoBehaviour
     }
 }
 // current file contents
-#endif
+//#endif

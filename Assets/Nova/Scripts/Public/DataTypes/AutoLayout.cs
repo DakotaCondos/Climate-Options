@@ -1,3 +1,4 @@
+using Nova.Compat;
 using Nova.InternalNamespace_0.InternalNamespace_5;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;

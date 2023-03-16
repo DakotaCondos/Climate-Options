@@ -1,4 +1,3 @@
-#if UNITY_EDITOR
 using Nova;
 using UnityEngine;
 using UnityEngine.Events;
@@ -49,5 +48,3 @@ namespace NovaSamples.UIControls
         private void HandleClicked(Gesture.OnClick evt, ButtonVisuals visuals) => OnClicked?.Invoke();
     }
 }
-// current file contents
-#endif

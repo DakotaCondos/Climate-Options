@@ -1,4 +1,4 @@
-#if UNITY_EDITOR
+//#if UNITY_EDITOR
 using System.Collections;
 using System.Collections.Generic;
 using Nova;
@@ -99,4 +99,4 @@ public class HouseImageController : MonoBehaviour
     }
 }
 // current file contents
-#endif
+//#endif

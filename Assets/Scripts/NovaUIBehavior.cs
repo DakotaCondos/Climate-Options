@@ -1,4 +1,4 @@
-#if UNITY_EDITOR
+//#if UNITY_EDITOR
 using UnityEngine;
 using Nova;
 
@@ -25,4 +25,4 @@ public class NovaUIBehavior : MonoBehaviour
     }
 }
 // current file contents
-#endif
+//#endif

@@ -1,4 +1,4 @@
-#if UNITY_EDITOR
+//#if UNITY_EDITOR
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -31,4 +31,4 @@ public class RoomHelper : MonoBehaviour
     }
 }
 // current file contents
-#endif
+//#endif
