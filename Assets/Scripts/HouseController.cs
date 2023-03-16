@@ -11,6 +11,8 @@ namespace NovaSamples.UIControls
         TMP_Text responseText;
         [SerializeField]
         TMP_Text houseSize;
+        public Dropdown bedroomsDropdown;
+        public Dropdown bathroomsDropdown;
 
         int houseSizeToInt;
         HouseSceneController houseSceneController;
@@ -68,11 +70,11 @@ namespace NovaSamples.UIControls
 
         public void BedroomSelect()
         {
-            //bedroom = Dropdown.selectedIndex;
+            bedroom = bedroomsDropdown.DropdownOptions.SelectedIndex;
         }
         public void BathroomSelect()
         {
-            //bathroom = Dropdown.selectedIndex;
+            bathroom = bathroomsDropdown.DropdownOptions.SelectedIndex;
         }
 
         public bool HouseSizeValidate(TMP_Text houseSize)

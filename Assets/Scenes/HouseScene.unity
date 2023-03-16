@@ -437,6 +437,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   responseText: {fileID: 1191605962}
   houseSize: {fileID: 1987574012}
+  bedroomsDropdown: {fileID: 417913558}
+  bathroomsDropdown: {fileID: 1139363792}
   houseConfig:
     rooms: []
     components: []
