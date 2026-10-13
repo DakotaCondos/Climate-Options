@@ -1,5 +1,23 @@
 # Climate Options
 
+A Unity/C# application for comparing home climate-control configurations and estimating costs using local weather data. Built as an Eastern Washington University Computer Science capstone.
+
+[Screenshots and project overview](https://red-wave-026ab431e.3.azurestaticapps.net/climateoptions) · [Release 0.1.0](https://github.com/DakotaCondos/Climate-Options/releases/tag/0.1.0)
+
+![Climate Options interface](docs/images/main-menu.png)
+
+## My contribution
+
+I led the three-person capstone team and worked on ZIP-code weather data integration, Firebase authentication and storage, and asynchronous Unity operations. One technical challenge was diagnosing Unity threading issues and stabilizing asynchronous behavior.
+
+Selected source files:
+
+- [OpenWeatherMapAPIHelper](Assets/Scripts/OpenWeatherMapAPIHelper.cs) — weather API integration.
+- [AuthController](Assets/Scripts/AuthController.cs) — account authentication.
+- [FirebaseStorageController](Assets/Scripts/FirebaseStorageController.cs) — Firebase-backed storage.
+- [AsyncRequestHelper](Assets/Scripts/AsyncRequestHelper.cs) — asynchronous request handling.
+
+
 ## Table of Contents
 
 - [Project Overview](#project-overview)
@@ -57,6 +75,7 @@ The key terms of the GPL version 3.0 include:
 - **Modification**: If you modify this project, you must clearly indicate the changes made, and you must also distribute the modified version under the terms of the GPL version 3.0.
 
 For the full text of the GNU General Public License version 3.0, please visit: [GPL-3.0 License](https://www.gnu.org/licenses/gpl-3.0.html)
+
 
 
 
